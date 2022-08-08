@@ -1,0 +1,27 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\source\\menusystem\\menusystemgamemode.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\menusystemeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\unrealeditor\\development\\menusystem\\definitions.menusystem.h",
+            "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\source\\menusystem\\menusystemgamemode.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\serverstatreplicator.generated.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\gamemodebase.generated.h",
+            "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\unrealeditor\\inc\\menusystem\\menusystemgamemode.generated.h",
+            "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\source\\menusystem\\menusystemcharacter.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\character.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\charactermovementreplication.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\charactermovementreplication.generated.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\rootmotionsource.generated.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\character.generated.h",
+            "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\unrealeditor\\inc\\menusystem\\menusystemcharacter.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

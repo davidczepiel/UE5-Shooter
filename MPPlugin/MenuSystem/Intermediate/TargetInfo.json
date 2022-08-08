@@ -1,0 +1,14 @@
+{
+	"Targets": [
+		{
+			"Name": "MenuSystem",
+			"Path": "C:\\UE5\\UE5-Shooter\\MPPlugin\\MenuSystem\\Source\\MenuSystem.Target.cs",
+			"Type": "Game"
+		},
+		{
+			"Name": "MenuSystemEditor",
+			"Path": "C:\\UE5\\UE5-Shooter\\MPPlugin\\MenuSystem\\Source\\MenuSystemEditor.Target.cs",
+			"Type": "Editor"
+		}
+	]
+}

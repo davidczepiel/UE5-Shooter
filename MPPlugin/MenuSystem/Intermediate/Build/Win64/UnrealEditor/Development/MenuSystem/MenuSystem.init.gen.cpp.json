@@ -1,0 +1,13 @@
+{
+    "Version": "1.1",
+    "Data": {
+        "Source": "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\unrealeditor\\inc\\menusystem\\menusystem.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\menusystemeditor\\development\\engine\\sharedpch.engine.shadowerrors.h.pch",
+        "Includes": [
+            "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\unrealeditor\\development\\menusystem\\definitions.menusystem.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
