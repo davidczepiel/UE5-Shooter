@@ -13,7 +13,10 @@
 //////////////////////////////////////////////////////////////////////////
 // AMenuSystemCharacter
 
-AMenuSystemCharacter::AMenuSystemCharacter() : CreateSessionCompleteDelegate(FOnCreateSessionCompleteDelegate::CreateUObject(this, &ThisClass::OnCreateSessionComplete))
+AMenuSystemCharacter::AMenuSystemCharacter() :
+	CreateSessionCompleteDelegate(FOnCreateSessionCompleteDelegate::CreateUObject(this, &ThisClass::OnCreateSessionComplete)),
+	FindSessionCompleteDelegate(FOnFindSessionsCompleteDelegate::CreateUObject(this, &ThisClass::OnFindSessionComplete)),
+	JoinSessionCompleteDelegate(FOnJoinSessionCompleteDelegate::CreateUObject(this, &ThisClass::OnJoinSessionComplete))
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -86,44 +89,6 @@ void AMenuSystemCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	PlayerInputComponent->BindTouch(IE_Released, this, &AMenuSystemCharacter::TouchStopped);
 }
 
-void AMenuSystemCharacter::OnCreateSessionComplete(FName SessionName, bool bWasSuccessful) {
-	if (bWasSuccessful) {
-		if (GEngine)
-			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, FString::Printf(TEXT("Create session: %s"), *SessionName.ToString()));
-	}
-	else {
-		if (GEngine)
-			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("Failed to create session")));
-	}
-}
-
-void AMenuSystemCharacter::CreateGameSession()
-{
-	//If the online session administrator is null or something went wrong nothing can be done until the sessions administrator are properly created
-	if (!OnlineSessionInterface.IsValid())return;
-
-	//Name of the current session that is running
-	auto existingSession = OnlineSessionInterface->GetNamedSession(NAME_GameSession);
-	//If the name is not null means that there is a session running right now and needs to be freed before creating a new one
-	if (existingSession != nullptr) OnlineSessionInterface->DestroySession(NAME_GameSession);
-
-	//Add the delegate to the list of live delegates so that it is called automatically
-	OnlineSessionInterface->AddOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegate);
-
-	//Settings for the session
-	TSharedPtr<FOnlineSessionSettings> SessionSettings = MakeShareable(new FOnlineSessionSettings());
-	SessionSettings->bIsLANMatch = false;
-	SessionSettings->NumPublicConnections = 4;
-	SessionSettings->bAllowJoinInProgress = true;
-	SessionSettings->bAllowJoinViaPresence = true;
-	SessionSettings->bShouldAdvertise = true;
-	SessionSettings->bUsesPresence = true;
-
-	//Creation of the new session with the specified settings
-	const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController();
-	OnlineSessionInterface->CreateSession(*LocalPlayer->GetPreferredUniqueNetId(), NAME_GameSession, *SessionSettings);
-}
-
 void AMenuSystemCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
 {
 	Jump();
@@ -172,5 +137,108 @@ void AMenuSystemCharacter::MoveRight(float Value)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 		// add movement in that direction
 		AddMovementInput(Direction, Value);
+	}
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//SESSION CREATION
+void AMenuSystemCharacter::CreateGameSession()
+{
+	//If the online session administrator is null or something went wrong nothing can be done until the sessions administrator are properly created
+	if (!OnlineSessionInterface.IsValid())return;
+
+	//Name of the current session that is running
+	auto existingSession = OnlineSessionInterface->GetNamedSession(NAME_GameSession);
+	//If the name is not null means that there is a session running right now and needs to be freed before creating a new one
+	if (existingSession != nullptr) OnlineSessionInterface->DestroySession(NAME_GameSession);
+
+	//Add the delegate to the list of live delegates so that it is called automatically
+	OnlineSessionInterface->AddOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegate);
+
+	//Settings for the session
+	TSharedPtr<FOnlineSessionSettings> SessionSettings = MakeShareable(new FOnlineSessionSettings());
+	SessionSettings->bIsLANMatch = false;
+	SessionSettings->NumPublicConnections = 4;
+	SessionSettings->bAllowJoinInProgress = true;
+	SessionSettings->bAllowJoinViaPresence = true;
+	SessionSettings->bShouldAdvertise = true;
+	SessionSettings->bUsesPresence = true;
+	SessionSettings->bUseLobbiesIfAvailable = true;
+	SessionSettings->Set(FName("MatchType"), FString("FreeForAll"), EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
+
+	//Creation of the new session with the specified settings
+	const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController();
+	OnlineSessionInterface->CreateSession(*LocalPlayer->GetPreferredUniqueNetId(), NAME_GameSession, *SessionSettings);
+}
+
+void AMenuSystemCharacter::OnCreateSessionComplete(FName SessionName, bool bWasSuccessful) {
+	if (bWasSuccessful) {
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, FString::Printf(TEXT("Create session: %s"), *SessionName.ToString()));
+
+		UWorld* World = GetWorld();
+		if (World) {
+			World->ServerTravel(FString("/Game/ThirdPerson/Maps/Lobby?listen"));
+		}
+	}
+	else {
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("Failed to create session")));
+	}
+}
+
+//SESSION SEARCH
+void AMenuSystemCharacter::JoinGameSession()
+{
+	//If the online session administrator is null or something went wrong nothing can be done until the sessions administrator are properly created
+	if (!OnlineSessionInterface.IsValid())return;
+
+	OnlineSessionInterface->AddOnFindSessionsCompleteDelegate_Handle(FindSessionCompleteDelegate);
+
+	SessionSearch = MakeShareable(new FOnlineSessionSearch());
+	SessionSearch->MaxSearchResults = 10000;
+	SessionSearch->bIsLanQuery = false;
+	SessionSearch->QuerySettings.Set(SEARCH_PRESENCE, true, EOnlineComparisonOp::Equals);
+
+	const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController();
+	OnlineSessionInterface->FindSessions(*LocalPlayer->GetPreferredUniqueNetId(), SessionSearch.ToSharedRef());
+}
+
+void AMenuSystemCharacter::OnFindSessionComplete(bool bWasSuccessful)
+{
+	if (!OnlineSessionInterface.IsValid())return;
+
+	for (auto result : SessionSearch->SearchResults) {
+		FString Id = result.GetSessionIdStr();
+		FString User = result.Session.OwningUserName;
+		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Cyan, FString::Printf(TEXT("ID: %s User: %s"), *Id, *User));
+
+		FString MatchType;
+		result.Session.SessionSettings.Get(FName("MatchType"), MatchType);
+		//If a wanted instance of the game is found the players travels to it to connect to the other machine
+		if (MatchType == FString("FreeForAll")) {
+			if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Cyan, FString::Printf(TEXT("Joining match type: %s"), *MatchType));
+			OnlineSessionInterface->AddOnJoinSessionCompleteDelegate_Handle(JoinSessionCompleteDelegate);
+
+			const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController();
+			OnlineSessionInterface->JoinSession(*LocalPlayer->GetPreferredUniqueNetId(), NAME_GameSession, result);
+		}
+	}
+}
+
+void AMenuSystemCharacter::OnJoinSessionComplete(FName sessionName, EOnJoinSessionCompleteResult::Type Result)
+{
+	if (!OnlineSessionInterface.IsValid())return;
+
+	//When player saw another machine with the specified mode that he is searching he travels to that instance of the game to play together
+	FString Address;
+	if (OnlineSessionInterface->GetResolvedConnectString(NAME_GameSession, Address)) {
+		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Yellow, FString::Printf(TEXT("Connect string: %s"), *Address));
+
+		APlayerController* PlayerController = GetGameInstance()->GetFirstLocalPlayerController();
+		if (PlayerController) {
+			PlayerController->ClientTravel(Address, ETravelType::TRAVEL_Absolute);
+		}
 	}
 }
