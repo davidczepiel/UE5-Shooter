@@ -7,6 +7,8 @@
 #include "Interfaces/OnlineSessionInterface.h"
 #include "MultiplayerSessionsSubsystem.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMultiplayerOnCreateSessionComplete, bool, bWasSuccessful);
+
 /**
  *
  */
@@ -31,6 +33,11 @@ public:
 
 	void StartSession();
 
+	/// <summary>
+	/// Our own custom delegaes
+	/// </summary>
+	FMultiplayerOnCreateSessionComplete MultiplayerOnCreateSessionComplete;
+
 protected:
 
 	//Callbacks for delegates
@@ -41,6 +48,7 @@ protected:
 	void OnDestroySessionComplete(FName SessionName, bool bWasSuccesful);
 private:
 	IOnlineSessionPtr SessionInterface;
+	TSharedPtr<FOnlineSessionSettings> LastSessionSettings;
 
 	//Delegates
 	FOnCreateSessionCompleteDelegate CreateSessionCompleteDelegate;

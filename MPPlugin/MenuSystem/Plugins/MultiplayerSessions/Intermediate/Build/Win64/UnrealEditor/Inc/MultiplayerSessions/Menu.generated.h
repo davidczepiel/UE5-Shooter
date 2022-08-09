@@ -16,11 +16,17 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_15_SPARSE_DATA
 #define FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_15_RPC_WRAPPERS \
  \
+	DECLARE_FUNCTION(execJoinButtonClick); \
+	DECLARE_FUNCTION(execHostButtonClick); \
+	DECLARE_FUNCTION(execOnCreateSession); \
 	DECLARE_FUNCTION(execMenuSetUp);
 
 
 #define FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_15_RPC_WRAPPERS_NO_PURE_DECLS \
  \
+	DECLARE_FUNCTION(execJoinButtonClick); \
+	DECLARE_FUNCTION(execHostButtonClick); \
+	DECLARE_FUNCTION(execOnCreateSession); \
 	DECLARE_FUNCTION(execMenuSetUp);
 
 
