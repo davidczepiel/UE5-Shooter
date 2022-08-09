@@ -1,23 +1,4 @@
 ﻿  Using bundled DotNet SDK
   Log file: C:\Users\David\AppData\Local\UnrealBuildTool\Log.txt
-  Invalidating makefile for MenuSystemEditor (working set of source files changed)
-  Parsing headers for MenuSystemEditor
-    Running UnrealHeaderTool "C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\MenuSystem.uproject" "C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\MenuSystemEditor\Development\MenuSystemEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\David\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
-  Reflection code generated for MenuSystemEditor in 2,395179 seconds
-  Building MenuSystemEditor...
-  Using Visual Studio 2019 14.29.30146 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
-  [Adaptive Build] Excluded from MenuSystem unity file: MenuSystem.cpp, MenuSystemCharacter.cpp, MenuSystemGameMode.cpp
-  Determining max actions to execute in parallel (4 physical cores, 8 logical cores)
-    Executing up to 4 processes, one per physical core
-    Requested 1,5 GB free memory per action, 5,59 GB available: limiting max parallel actions to 3
-  Building 6 actions with 3 processes...
-  [1/6] Compile MenuSystemCharacter.gen.cpp
-  [2/6] Compile MenuSystemGameMode.cpp
-  [3/6] Compile MenuSystemCharacter.cpp
-  [4/6] Link UnrealEditor-MenuSystem-0020.lib
-     Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0020.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0020.exp
-  [5/6] Link UnrealEditor-MenuSystem-0020.dll
-     Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0020.suppressed.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0020.suppressed.exp
-  [6/6] WriteMetadata MenuSystemEditor.target
-  Total time in Parallel executor: 3,70 seconds
-  Total execution time: 7,85 seconds
+  Target is up to date
+  Total execution time: 0,76 seconds

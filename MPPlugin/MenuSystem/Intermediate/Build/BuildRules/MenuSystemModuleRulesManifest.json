@@ -1,6 +1,7 @@
 {
 	"SourceFiles": [
 		"C:\\UE5\\UE5-Shooter\\MPPlugin\\MenuSystem\\Source\\MenuSystem\\MenuSystem.Build.cs",
+		"C:\\UE5\\UE5-Shooter\\MPPlugin\\MenuSystem\\Plugins\\MultiplayerSessions\\Source\\MultiplayerSessions\\MultiplayerSessions.Build.cs",
 		"C:\\UE5\\UE5-Shooter\\MPPlugin\\MenuSystem\\Source\\MenuSystem.Target.cs",
 		"C:\\UE5\\UE5-Shooter\\MPPlugin\\MenuSystem\\Source\\MenuSystemEditor.Target.cs"
 	],
