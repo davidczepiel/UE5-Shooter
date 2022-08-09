@@ -13,6 +13,13 @@
             "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\source\\runtime\\engine\\classes\\gameframework\\rootmotionsource.h",
             "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\rootmotionsource.generated.h",
             "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\character.generated.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\interfaces\\onlinesessioninterface.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinesubsystemtypes.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinesubsystemnames.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinesubsystempackage.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinedelegatemacros.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinekeyvaluepair.h",
+            "c:\\ue5\\unreal engine 5\\ue_5.0\\engine\\plugins\\online\\onlinesubsystem\\source\\public\\onlinesubsystempackage.h",
             "c:\\ue5\\ue5-shooter\\mpplugin\\menusystem\\intermediate\\build\\win64\\unrealeditor\\inc\\menusystem\\menusystemcharacter.generated.h"
         ],
         "ImportedModules": [],

@@ -8,12 +8,12 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "OnlineSubsystem.h"
-#include "Interfaces/OnlineSessionInterface.h"
+#include "OnlineSessionSettings.h"
 
 //////////////////////////////////////////////////////////////////////////
 // AMenuSystemCharacter
 
-AMenuSystemCharacter::AMenuSystemCharacter()
+AMenuSystemCharacter::AMenuSystemCharacter() : CreateSessionCompleteDelegate(FOnCreateSessionCompleteDelegate::CreateUObject(this, &ThisClass::OnCreateSessionComplete))
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -84,6 +84,44 @@ void AMenuSystemCharacter::SetupPlayerInputComponent(class UInputComponent* Play
 	// handle touch devices
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &AMenuSystemCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &AMenuSystemCharacter::TouchStopped);
+}
+
+void AMenuSystemCharacter::OnCreateSessionComplete(FName SessionName, bool bWasSuccessful) {
+	if (bWasSuccessful) {
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue, FString::Printf(TEXT("Create session: %s"), *SessionName.ToString()));
+	}
+	else {
+		if (GEngine)
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("Failed to create session")));
+	}
+}
+
+void AMenuSystemCharacter::CreateGameSession()
+{
+	//If the online session administrator is null or something went wrong nothing can be done until the sessions administrator are properly created
+	if (!OnlineSessionInterface.IsValid())return;
+
+	//Name of the current session that is running
+	auto existingSession = OnlineSessionInterface->GetNamedSession(NAME_GameSession);
+	//If the name is not null means that there is a session running right now and needs to be freed before creating a new one
+	if (existingSession != nullptr) OnlineSessionInterface->DestroySession(NAME_GameSession);
+
+	//Add the delegate to the list of live delegates so that it is called automatically
+	OnlineSessionInterface->AddOnCreateSessionCompleteDelegate_Handle(CreateSessionCompleteDelegate);
+
+	//Settings for the session
+	TSharedPtr<FOnlineSessionSettings> SessionSettings = MakeShareable(new FOnlineSessionSettings());
+	SessionSettings->bIsLANMatch = false;
+	SessionSettings->NumPublicConnections = 4;
+	SessionSettings->bAllowJoinInProgress = true;
+	SessionSettings->bAllowJoinViaPresence = true;
+	SessionSettings->bShouldAdvertise = true;
+	SessionSettings->bUsesPresence = true;
+
+	//Creation of the new session with the specified settings
+	const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController();
+	OnlineSessionInterface->CreateSession(*LocalPlayer->GetPreferredUniqueNetId(), NAME_GameSession, *SessionSettings);
 }
 
 void AMenuSystemCharacter::TouchStarted(ETouchIndex::Type FingerIndex, FVector Location)
