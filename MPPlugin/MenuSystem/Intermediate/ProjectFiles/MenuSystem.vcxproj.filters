@@ -80,6 +80,12 @@
     <Filter Include="Source\MenuSystem">
       <UniqueIdentifier>{76995420-26DF-3107-ACA4-A59A13E7D0DF}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\MenuSystem\LobbyGameMode.cpp">
+      <Filter>Source\MenuSystem</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\MenuSystem\LobbyGameMode.h">
+      <Filter>Source\MenuSystem</Filter>
+    </ClInclude>
     <None Include="..\..\Source\MenuSystem\MenuSystem.Build.cs">
       <Filter>Source\MenuSystem</Filter>
     </None>

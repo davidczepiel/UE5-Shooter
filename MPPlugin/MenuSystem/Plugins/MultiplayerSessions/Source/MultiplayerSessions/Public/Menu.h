@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "Interfaces/OnlineSessionInterface.h"
 #include "Menu.generated.h"
 
 /**
@@ -22,8 +23,11 @@ protected:
 	virtual void OnLevelRemovedFromWorld(ULevel* InLevel, UWorld* InWorld) override;
 
 	//callbacks for the custom delegates on the MultiplayerSessionSubsystem
-	UFUNCTION()
-		void OnCreateSession(bool bWasSuccessful);
+	UFUNCTION()	void OnCreateSession(bool bWasSuccessful);
+	void OnFindSession(const TArray<FOnlineSessionSearchResult>& SessionResults, bool bWasSuccesful);
+	void OnJoinSession(EOnJoinSessionCompleteResult::Type Result);
+	UFUNCTION() void OnDestroySession(bool bWasSuccessful);
+	UFUNCTION() void OnStartsession(bool bWasSuccessful);
 
 private:
 	UPROPERTY(meta = (BindWidget)) class UButton* HostButton;
