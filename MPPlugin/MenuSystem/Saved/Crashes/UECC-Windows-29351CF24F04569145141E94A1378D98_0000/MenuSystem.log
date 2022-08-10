@@ -1,0 +1,1456 @@
+﻿Log file open, 08/10/22 11:11:12
+LogWindows: Failed to load 'aqProf.dll' (GetLastError=126)
+LogWindows: File 'aqProf.dll' does not exist
+LogProfilingDebugging: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+LogWindows: Failed to load 'VtuneApi.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi.dll' does not exist
+LogWindows: Failed to load 'VtuneApi32e.dll' (GetLastError=126)
+LogWindows: File 'VtuneApi32e.dll' does not exist
+LogWindows: Started CrashReportClient (pid=1000)
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogConsoleResponse: Display: Failed to find resolution value strings in scalability ini. Falling back to default.
+LogInit: Display: Running engine for game: MenuSystem
+LogCore: UnrealTraceServer: Trace store launch successful
+LogCsvProfiler: Display: Metadata set : platform="Windows"
+LogCsvProfiler: Display: Metadata set : config="Development"
+LogCsvProfiler: Display: Metadata set : buildversion="++UE5+Release-5.0-CL-20979098"
+LogCsvProfiler: Display: Metadata set : engineversion="5.0.3-20979098+++UE5+Release-5.0"
+LogCsvProfiler: Display: Metadata set : commandline="" C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\MenuSystem.uproject""
+LogCsvProfiler: Display: Metadata set : os="Windows 10 (21H1) [10.0.19043.1826] "
+LogCsvProfiler: Display: Metadata set : cpu="GenuineIntel|Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz"
+LogCsvProfiler: Display: Metadata set : pgoenabled="0"
+LogCsvProfiler: Display: Metadata set : loginid="019833c94ac741641f8de2ba611da3a5"
+LogCsvProfiler: Display: Metadata set : llm="0"
+LogPlatformFile: Not using cached read wrapper
+LogStats: Stats thread started at 0.271776
+LogICUInternationalization: ICU TimeZone Detection - Raw Offset: +1:00, Platform Override: ''
+LogInit: Session CrashGUID >====================================================
+         Session CrashGUID >   UECC-Windows-29351CF24F04569145141E94A1378D98
+         Session CrashGUID >====================================================
+LogConfig: Display: Loading HoloLens ini files took 0.03 seconds
+LogConfig: Display: Loading Android ini files took 0.03 seconds
+LogConfig: Display: Loading IOS ini files took 0.03 seconds
+LogPluginManager: Mounting Engine plugin Bridge
+LogConfig: Display: Loading Linux ini files took 0.05 seconds
+LogPluginManager: Mounting Engine plugin FastBuildController
+LogPluginManager: Mounting Engine plugin MeshPainting
+LogConfig: Display: Loading Mac ini files took 0.03 seconds
+LogPluginManager: Mounting Engine plugin XGEController
+LogPluginManager: Mounting Engine plugin AISupport
+LogPluginManager: Mounting Engine plugin EnvironmentQueryEditor
+LogConfig: Display: Loading TVOS ini files took 0.03 seconds
+LogPluginManager: Mounting Engine plugin Paper2D
+LogPluginManager: Mounting Engine plugin AnimationModifierLibrary
+LogPluginManager: Mounting Engine plugin BlendSpaceMotionAnalysis
+LogPluginManager: Mounting Engine plugin ControlRigSpline
+LogConfig: Display: Loading LinuxArm64 ini files took 0.05 seconds
+LogPluginManager: Mounting Engine plugin ControlRig
+LogConfig: Display: Loading VulkanPC ini files took 0.02 seconds
+LogPluginManager: Mounting Engine plugin IKRig
+LogPluginManager: Mounting Engine plugin GameplayCameras
+LogConfig: Display: Loading Unix ini files took 0.03 seconds
+LogPluginManager: Mounting Engine plugin OodleNetwork
+LogPluginManager: Mounting Engine plugin CameraShakePreviewer
+LogPluginManager: Mounting Engine plugin AnimationSharing
+LogPluginManager: Mounting Engine plugin CodeLiteSourceCodeAccess
+LogConfig: Display: Loading Windows ini files took 0.03 seconds
+LogPluginManager: Mounting Engine plugin CLionSourceCodeAccess
+LogPluginManager: Mounting Engine plugin GitSourceControl
+LogPluginManager: Mounting Engine plugin KDevelopSourceCodeAccess
+LogPluginManager: Mounting Engine plugin NullSourceCodeAccess
+LogPluginManager: Mounting Engine plugin PerforceSourceControl
+LogPluginManager: Mounting Engine plugin PixWinPlugin
+LogPluginManager: Mounting Engine plugin PlasticSourceControl
+LogPluginManager: Mounting Engine plugin PluginUtils
+LogPluginManager: Mounting Engine plugin PropertyAccessNode
+LogPluginManager: Mounting Engine plugin RiderSourceCodeAccess
+LogPluginManager: Mounting Engine plugin SubversionSourceControl
+LogPluginManager: Mounting Engine plugin TextureFormatOodle
+LogPluginManager: Mounting Engine plugin TraceDataFilters
+LogPluginManager: Mounting Engine plugin VisualStudioCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin UObjectPlugin
+LogPluginManager: Mounting Engine plugin VisualStudioSourceCodeAccess
+LogPluginManager: Mounting Engine plugin XCodeSourceCodeAccess
+LogPluginManager: Mounting Engine plugin AssetManagerEditor
+LogPluginManager: Mounting Engine plugin CurveEditorTools
+LogPluginManager: Mounting Engine plugin CryptoKeys
+LogPluginManager: Mounting Engine plugin DataValidation
+LogPluginManager: Mounting Engine plugin EditorDebugTools
+LogPluginManager: Mounting Engine plugin GameplayTagsEditor
+LogPluginManager: Mounting Engine plugin EditorScriptingUtilities
+LogPluginManager: Mounting Engine plugin FacialAnimation
+LogPluginManager: Mounting Engine plugin MacGraphicsSwitching
+LogPluginManager: Mounting Engine plugin GeometryMode
+LogPluginManager: Mounting Engine plugin MaterialAnalyzer
+LogPluginManager: Mounting Engine plugin MobileLauncherProfileWizard
+LogPluginManager: Mounting Engine plugin ModelingToolsEditorMode
+LogPluginManager: Mounting Engine plugin PluginBrowser
+LogPluginManager: Mounting Engine plugin SpeedTreeImporter
+LogPluginManager: Mounting Engine plugin SequencerAnimTools
+LogPluginManager: Mounting Engine plugin StylusInput
+LogPluginManager: Mounting Engine plugin WorldPartitionHLODUtilities
+LogPluginManager: Mounting Engine plugin DatasmithContent
+LogPluginManager: Mounting Engine plugin VariantManagerContent
+LogPluginManager: Mounting Engine plugin Niagara
+LogPluginManager: Mounting Engine plugin AlembicImporter
+LogPluginManager: Mounting Engine plugin AutomationUtils
+LogPluginManager: Mounting Engine plugin BackChannel
+LogPluginManager: Mounting Engine plugin ChaosCloth
+LogPluginManager: Mounting Engine plugin ChaosClothEditor
+LogPluginManager: Mounting Engine plugin ChaosEditor
+LogPluginManager: Mounting Engine plugin ChaosSolverPlugin
+LogPluginManager: Mounting Engine plugin ChaosNiagara
+LogPluginManager: Mounting Engine plugin CharacterAI
+LogPluginManager: Mounting Engine plugin FullBodyIK
+LogPluginManager: Mounting Engine plugin GeometryCollectionPlugin
+LogPluginManager: Mounting Engine plugin GeometryFlow
+LogPluginManager: Mounting Engine plugin AndroidMedia
+LogPluginManager: Mounting Engine plugin MeshLODToolset
+LogPluginManager: Mounting Engine plugin MeshModelingToolsetExp
+LogPluginManager: Mounting Engine plugin AvfMedia
+LogPluginManager: Mounting Engine plugin TcpMessaging
+LogPluginManager: Mounting Engine plugin OpenImageDenoise
+LogPluginManager: Mounting Engine plugin UdpMessaging
+LogPluginManager: Mounting Engine plugin ActorSequence
+LogPluginManager: Mounting Engine plugin LevelSequenceEditor
+LogPluginManager: Mounting Engine plugin MatineeToLevelSequence
+LogPluginManager: Mounting Engine plugin PlanarCut
+LogPluginManager: Mounting Engine plugin PlatformCrypto
+LogPluginManager: Mounting Engine plugin SequencerScripting
+LogPluginManager: Mounting Engine plugin TemplateSequence
+LogPluginManager: Mounting Engine plugin ProxyLODPlugin
+LogPluginManager: Mounting Engine plugin ImgMedia
+LogPluginManager: Mounting Engine plugin MediaCompositing
+LogPluginManager: Mounting Engine plugin PythonScriptPlugin
+LogPluginManager: Mounting Engine plugin MediaPlayerEditor
+LogPluginManager: Mounting Engine plugin WebMMedia
+LogPluginManager: Mounting Engine plugin SkeletalReduction
+LogPluginManager: Mounting Engine plugin WmfMedia
+LogPluginManager: Mounting Engine plugin LauncherChunkInstaller
+LogPluginManager: Mounting Engine plugin OnlineSubsystem
+LogPluginManager: Mounting Engine plugin OnlineBase
+LogPluginManager: Mounting Engine plugin OnlineSubsystemNull
+LogPluginManager: Mounting Engine plugin OnlineSubsystemSteam
+LogPluginManager: Mounting Engine plugin OnlineSubsystemUtils
+LogPluginManager: Mounting Engine plugin ActorLayerUtilities
+LogPluginManager: Mounting Engine plugin AndroidDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin AndroidFileServer
+LogPluginManager: Mounting Engine plugin AndroidMoviePlayer
+LogPluginManager: Mounting Engine plugin AndroidPermission
+LogPluginManager: Mounting Engine plugin AppleImageUtils
+LogPluginManager: Mounting Engine plugin AppleMoviePlayer
+LogPluginManager: Mounting Engine plugin AssetTags
+LogPluginManager: Mounting Engine plugin ArchVisCharacter
+LogPluginManager: Mounting Engine plugin AudioCapture
+LogPluginManager: Mounting Engine plugin AudioSynesthesia
+LogPluginManager: Mounting Engine plugin ChunkDownloader
+LogPluginManager: Mounting Engine plugin CableComponent
+LogPluginManager: Mounting Engine plugin CustomMeshComponent
+LogPluginManager: Mounting Engine plugin ExampleDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin GeometryCache
+LogPluginManager: Mounting Engine plugin GeometryProcessing
+LogPluginManager: Mounting Engine plugin GoogleCloudMessaging
+LogPluginManager: Mounting Engine plugin GooglePAD
+LogPluginManager: Mounting Engine plugin HairStrands
+LogPluginManager: Mounting Engine plugin LinuxDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin IOSDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin LocationServicesBPLibrary
+LogPluginManager: Mounting Engine plugin MeshModelingToolset
+LogPluginManager: Mounting Engine plugin MobilePatchingUtils
+LogPluginManager: Mounting Engine plugin ProceduralMeshComponent
+LogPluginManager: Mounting Engine plugin PropertyAccessEditor
+LogPluginManager: Mounting Engine plugin ResonanceAudio
+LogPluginManager: Mounting Engine plugin RuntimePhysXCooking
+LogPluginManager: Mounting Engine plugin SignificanceManager
+LogPluginManager: Mounting Engine plugin SoundFields
+LogPluginManager: Mounting Engine plugin Synthesis
+LogPluginManager: Mounting Engine plugin WebMMoviePlayer
+LogPluginManager: Mounting Engine plugin WindowsDeviceProfileSelector
+LogPluginManager: Mounting Engine plugin WindowsMoviePlayer
+LogPluginManager: Mounting Engine plugin ContentBrowserClassDataSource
+LogPluginManager: Mounting Engine plugin ContentBrowserAssetDataSource
+LogPluginManager: Mounting Engine plugin ContentBrowserFileDataSource
+LogPluginManager: Mounting Engine plugin InterchangeEditor
+LogPluginManager: Mounting Engine plugin Interchange
+LogPluginManager: Mounting Engine plugin OnlineSubsystemGooglePlay
+LogPluginManager: Mounting Engine plugin OnlineServices
+LogPluginManager: Mounting Engine plugin OnlineSubsystemIOS
+LogPluginManager: Mounting Engine plugin SteamShared
+LogPluginManager: Mounting Project plugin MultiplayerSessions
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Bridge/Content/' mounted to '/Bridge/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/2D/Paper2D/Content/' mounted to '/Paper2D/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/ControlRigSpline/Content/' mounted to '/ControlRigSpline/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/ControlRig/Content/' mounted to '/ControlRig/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Animation/IKRig/Content/' mounted to '/IKRig/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Developer/AnimationSharing/Content/' mounted to '/AnimationSharing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/GeometryMode/Content/' mounted to '/GeometryMode/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/ModelingToolsEditorMode/Content/' mounted to '/ModelingToolsEditorMode/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Editor/SpeedTreeImporter/Content/' mounted to '/SpeedTreeImporter/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Enterprise/DatasmithContent/Content/' mounted to '/DatasmithContent/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/FX/Niagara/Content/' mounted to '/Niagara/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosClothEditor/Content/' mounted to '/ChaosClothEditor/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosSolverPlugin/Content/' mounted to '/ChaosSolverPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/ChaosNiagara/Content/' mounted to '/ChaosNiagara/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/FullBodyIK/Content/' mounted to '/FullBodyIK/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/GeometryCollectionPlugin/Content/' mounted to '/GeometryCollectionPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/GeometryFlow/Content/' mounted to '/GeometryFlow/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/MeshLODToolset/Content/' mounted to '/MeshLODToolset/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/MeshModelingToolsetExp/Content/' mounted to '/MeshModelingToolsetExp/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/MovieScene/SequencerScripting/Content/' mounted to '/SequencerScripting/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Media/MediaCompositing/Content/' mounted to '/MediaCompositing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Experimental/PythonScriptPlugin/Content/' mounted to '/PythonScriptPlugin/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/AudioSynesthesia/Content/' mounted to '/AudioSynesthesia/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/GeometryProcessing/Content/' mounted to '/GeometryProcessing/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/HairStrands/Content/' mounted to '/HairStrands/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/MeshModelingToolset/Content/' mounted to '/MeshModelingToolset/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/ResonanceAudio/Content/' mounted to '/ResonanceAudio/'
+LogPackageName: Display: FPackageName: Mount point added: '../../Plugins/Runtime/Synthesis/Content/' mounted to '/Synthesis/'
+LogPackageName: Display: FPackageName: Mount point added: '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Plugins/MultiplayerSessions/Content/' mounted to '/MultiplayerSessions/'
+SourceControl: Source control is disabled
+SourceControl: Source control is disabled
+LogInit: Warning: Incompatible or missing module: MultiplayerSessions
+Running C:/UE5/Unreal Engine 5/UE_5.0/Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe Development Win64 -Project="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/MenuSystem.uproject" -TargetType=Editor -Progress -NoEngineChanges -NoHotReloadFromIDE
+Log file: C:\Users\David\AppData\Local\UnrealBuildTool\Log.txt
+Creating makefile for MenuSystemEditor (no existing makefile)
+@progress push 5%
+Parsing headers for MenuSystemEditor
+  Running UnrealHeaderTool "C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\MenuSystem.uproject" "C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\MenuSystemEditor\Development\MenuSystemEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\David\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
+Reflection code generated for MenuSystemEditor in 2,2146985 seconds
+@progress pop
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0002.dll
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0002.pdb
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0003.dll
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0003.pdb
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0004.dll
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0004.pdb
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-4160.dll
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-4160.pdb
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0002.lib
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0003.lib
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0004.lib
+Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-4160.lib
+Building MenuSystemEditor...
+Using Visual Studio 2019 14.29.30146 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
+[Adaptive Build] Excluded from MenuSystem unity file: LobbyGameMode.cpp, MenuSystem.cpp, MenuSystemCharacter.cpp, MenuSystemGameMode.cpp
+Determining max actions to execute in parallel (4 physical cores, 8 logical cores)
+  Executing up to 4 processes, one per physical core
+Building 8 actions with 4 processes...
+[1/8] Resource Default.rc2
+[2/8] Link UnrealEditor-MenuSystem.lib
+   Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.exp
+[3/8] Link UnrealEditor-MenuSystem.dll
+   Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.suppressed.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.suppressed.exp
+[4/8] Compile Module.MultiplayerSessions.gen.cpp
+[5/8] Compile Module.MultiplayerSessions.cpp
+[6/8] Link UnrealEditor-MultiplayerSessions.lib
+   Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.exp
+[7/8] Link UnrealEditor-MultiplayerSessions.dll
+   Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.suppressed.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.suppressed.exp
+[8/8] WriteMetadata MenuSystemEditor.target
+Total time in Parallel executor: 8,21 seconds
+Total execution time: 12,06 seconds
+PixWinPlugin: PIX capture plugin failed to initialize! Check that the process is launched from PIX.
+LogInit: Using libcurl 7.55.1-DEV
+LogInit:  - built for x86_64-pc-win32
+LogInit:  - supports SSL with OpenSSL/1.1.1
+LogInit:  - supports HTTP deflate (compression) using libz 1.2.8
+LogInit:  - other features:
+LogInit:      CURL_VERSION_SSL
+LogInit:      CURL_VERSION_LIBZ
+LogInit:      CURL_VERSION_IPV6
+LogInit:      CURL_VERSION_ASYNCHDNS
+LogInit:      CURL_VERSION_LARGEFILE
+LogInit:      CURL_VERSION_IDN
+LogInit:  CurlRequestOptions (configurable via config and command line):
+LogInit:  - bVerifyPeer = true  - Libcurl will verify peer certificate
+LogInit:  - bUseHttpProxy = false  - Libcurl will NOT use HTTP proxy
+LogInit:  - bDontReuseConnections = false  - Libcurl will reuse connections
+LogInit:  - MaxHostConnections = 16  - Libcurl will limit the number of connections to a host
+LogInit:  - LocalHostAddr = Default
+LogInit:  - BufferSize = 65536
+LogSteamShared: Display: Loading Steam SDK 1.51
+LogSteamShared: Steam SDK Loaded!
+LogOnline: Display: STEAM: OnlineSubsystemSteam::Shutdown()
+LogOnline: OSS: Unable to create OnlineSubsystem module Steam
+LogInit: WinSock: version 1.1 (2.2), MaxSocks=32767, MaxUdp=65467
+LogOnline: OSS: Created online subsystem instance for: NULL
+LogOnline: OSS: TryLoadSubsystemAndSetDefault: Loaded subsystem for module [NULL]
+LogInit: Build: ++UE5+Release-5.0-CL-20979098
+LogInit: Engine Version: 5.0.3-20979098+++UE5+Release-5.0
+LogInit: Compatible Engine Version: 5.0.0-19505902+++UE5+Release-5.0
+LogInit: Net CL: 19505902
+LogInit: OS: Windows 10 (21H1) [10.0.19043.1826] (), CPU: Intel(R) Core(TM) i7-7700K CPU @ 4.20GHz, GPU: NVIDIA GeForce GTX 1060 6GB
+LogInit: Compiled (64-bit): Jul  7 2022 02:16:06
+LogInit: Compiled with Visual C++: 19.29.30138.00
+LogInit: Build Configuration: Development
+LogInit: Branch Name: ++UE5+Release-5.0
+LogInit: Command Line: 
+LogInit: Base Directory: C:/UE5/Unreal Engine 5/UE_5.0/Engine/Binaries/Win64/
+LogInit: Allocator: Mimalloc
+LogInit: Installed Engine Build: 1
+LogDevObjectVersion: Number of dev versions registered: 34
+LogDevObjectVersion:   Dev-Blueprints (B0D832E4-1F89-4F0D-ACCF-7EB736FD4AA2): 10
+LogDevObjectVersion:   Dev-Build (E1C64328-A22C-4D53-A36C-8E866417BD8C): 0
+LogDevObjectVersion:   Dev-Core (375EC13C-06E4-48FB-B500-84F0262A717E): 4
+LogDevObjectVersion:   Dev-Editor (E4B068ED-F494-42E9-A231-DA0B2E46BB41): 40
+LogDevObjectVersion:   Dev-Framework (CFFC743F-43B0-4480-9391-14DF171D2073): 37
+LogDevObjectVersion:   Dev-Mobile (B02B49B5-BB20-44E9-A304-32B752E40360): 3
+LogDevObjectVersion:   Dev-Networking (A4E4105C-59A1-49B5-A7C5-40C4547EDFEE): 0
+LogDevObjectVersion:   Dev-Online (39C831C9-5AE6-47DC-9A44-9C173E1C8E7C): 0
+LogDevObjectVersion:   Dev-Physics (78F01B33-EBEA-4F98-B9B4-84EACCB95AA2): 20
+LogDevObjectVersion:   Dev-Platform (6631380F-2D4D-43E0-8009-CF276956A95A): 0
+LogDevObjectVersion:   Dev-Rendering (12F88B9F-8875-4AFC-A67C-D90C383ABD29): 45
+LogDevObjectVersion:   Dev-Sequencer (7B5AE74C-D270-4C10-A958-57980B212A5A): 13
+LogDevObjectVersion:   Dev-VR (D7296918-1DD6-4BDD-9DE2-64A83CC13884): 3
+LogDevObjectVersion:   Dev-LoadTimes (C2A15278-BFE7-4AFE-6C17-90FF531DF755): 1
+LogDevObjectVersion:   Private-Geometry (6EACA3D4-40EC-4CC1-B786-8BED09428FC5): 3
+LogDevObjectVersion:   Dev-AnimPhys (29E575DD-E0A3-4627-9D10-D276232CDCEA): 17
+LogDevObjectVersion:   Dev-Anim (AF43A65D-7FD3-4947-9873-3E8ED9C1BB05): 15
+LogDevObjectVersion:   Dev-ReflectionCapture (6B266CEC-1EC7-4B8F-A30B-E4D90942FC07): 1
+LogDevObjectVersion:   Dev-Automation (0DF73D61-A23F-47EA-B727-89E90C41499A): 1
+LogDevObjectVersion:   FortniteMain (601D1886-AC64-4F84-AA16-D3DE0DEAC7D6): 59
+LogDevObjectVersion:   FortniteRelease (E7086368-6B23-4C58-8439-1B7016265E91): 3
+LogDevObjectVersion:   Dev-Enterprise (9DFFBCD6-494F-0158-E221-12823C92A888): 10
+LogDevObjectVersion:   Dev-Niagara (F2AED0AC-9AFE-416F-8664-AA7FFA26D6FC): 1
+LogDevObjectVersion:   Dev-Destruction (174F1F0B-B4C6-45A5-B13F-2EE8D0FB917D): 10
+LogDevObjectVersion:   Dev-Physics-Ext (35F94A83-E258-406C-A318-09F59610247C): 41
+LogDevObjectVersion:   Dev-PhysicsMaterial-Chaos (B68FC16E-8B1B-42E2-B453-215C058844FE): 1
+LogDevObjectVersion:   Dev-CineCamera (B2E18506-4273-CFC2-A54E-F4BB758BBA07): 1
+LogDevObjectVersion:   Dev-VirtualProduction (64F58936-FD1B-42BA-BA96-7289D5D0FA4E): 1
+LogDevObjectVersion:   UE5-Main (697DD581-E64F-41AB-AA4A-51ECBEB7B628): 59
+LogDevObjectVersion:   UE5-Release (D89B5E42-24BD-4D46-8412-ACA8DF641779): 36
+LogDevObjectVersion:   UE5-PrivateFrosty (59DA5D52-1232-4948-B878-597870B8E98B): 8
+LogDevObjectVersion:   UE5-Dev-Cooker (26075A32-730F-4708-88E9-8C32F1599D05): 0
+LogDevObjectVersion:   Dev-MediaFramework (6F0ED827-A609-4895-9C91-998D90180EA4): 2
+LogDevObjectVersion:   UE5-Dev-LWCRendering (30D58BE3-95EA-4282-A6E3-B159D8EBB06A): 1
+LogInit: Presizing for max 25165824 objects, including 0 objects not considered by GC, pre-allocating 0 bytes for permanent pool.
+LogInit: Object subsystem initialized
+LogConfig: CVar [[con.DebugLateDefault:1]] deferred - dummy variable created
+LogConfig: CVar [[con.DebugLateCheat:1]] deferred - dummy variable created
+LogConfig: CVar [[r.DetectAndWarnOfBadDrivers:0]] deferred - dummy variable created
+LogConfig: CVar [[LogNamedEventFilters:Frame *]] deferred - dummy variable created
+LogConfig: CVar [[framepro.ScopeMinTimeMicroseconds:10]] deferred - dummy variable created
+LogConfig: CVar [[QualityLevelMapping:high]] deferred - dummy variable created
+[2022.08.10-09.11.27:065][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererSettings] File [Engine]
+[2022.08.10-09.11.27:065][  0]LogConfig: CVar [[VisualizeCalibrationColorMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationColor.PPM_DefaultCalibrationColor]] deferred - dummy variable created
+[2022.08.10-09.11.27:065][  0]LogConfig: CVar [[VisualizeCalibrationGrayscaleMaterialPath:/Engine/EngineMaterials/PPM_DefaultCalibrationGrayscale.PPM_DefaultCalibrationGrayscale]] deferred - dummy variable created
+[2022.08.10-09.11.27:065][  0]LogConfig: CVar [[MaxSkinBones:(Default=65536,PerPlatform=(("Mobile", 256)))]] deferred - dummy variable created
+[2022.08.10-09.11.27:065][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.RendererOverrideSettings] File [Engine]
+[2022.08.10-09.11.27:066][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.StreamingSettings] File [Engine]
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[s.MaxPackageSummarySize:16384]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__SoundBase]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__MaterialInterface]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[FixedBootOrder:/Script/Engine/Default__DeviceProfileManager]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.GarbageCollectionSettings] File [Engine]
+[2022.08.10-09.11.27:066][  0]LogConfig: Applying CVar settings from Section [/Script/Engine.NetworkSettings] File [Engine]
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Average",ToolTip="Simulates average internet conditions")]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[NetworkEmulationProfiles:(ProfileName="Bad",ToolTip="Simulates laggy internet conditions")]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: Applying CVar settings from Section [/Script/UnrealEd.CookerSettings] File [Engine]
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[DefaultPVRTCQuality:1]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[DefaultASTCQualityBySpeed:1]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[DefaultASTCQualityBySize:3]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:WidgetBlueprint]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GroupActor]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MetaData]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ObjectRedirector]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NavMeshRenderingComponent]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ReflectionCaptureComponent]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:TextRenderComponent]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:Font]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:InterpCurveEdSetup]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MaterialExpression]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:MatineeActorCameraAnim]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraEmitter]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:NiagaraScript]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleEmitter]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleLODLevel]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:ParticleModule]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SubUVAnimation]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:SoundNode]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedServer:GameplayEffectUIData]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:WidgetBlueprint]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:GroupActor]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:MetaData]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:ObjectRedirector]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:InterpCurveEdSetup]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[ClassesExcludedOnDedicatedClient:MatineeActorCameraAnim]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.AllowStaticLighting]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.GBuffer]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.VelocityOutputPass]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.SelectiveBasePassOutputs]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.DBuffer]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Symbols]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.GenerateSymbols]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.WriteSymbols]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.AllowUniqueSymbols]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.ExtraData]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.Shaders.Optimize]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.CompileShadersForDevelopment]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.MobileHDR]] deferred - dummy variable created
+[2022.08.10-09.11.27:066][  0]LogConfig: CVar [[VersionedIntRValues:r.UsePreExposure]] deferred - dummy variable created
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [ViewDistanceQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [AntiAliasingQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [ShadowQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [GlobalIlluminationQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [ReflectionQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [PostProcessQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [TextureQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [EffectsQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [FoliageQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: Applying CVar settings from Section [ShadingQuality@3] File [Scalability]
+[2022.08.10-09.11.27:068][  0]LogConfig: CVar [[r.HairStrands.Interpolation.UseSingleGuide:0]] deferred - dummy variable created
+[2022.08.10-09.11.27:083][  0]LogD3D12RHI: Aftermath initialized
+[2022.08.10-09.11.27:083][  0]LogD3D12RHI: Loading WinPixEventRuntime.dll for PIX profiling (from ../../../Engine/Binaries/ThirdParty/Windows/WinPixEventRuntime/x64).
+[2022.08.10-09.11.27:231][  0]LogD3D12RHI: Found D3D12 adapter 0: NVIDIA GeForce GTX 1060 6GB (Max supported Feature Level 12_1, shader model 6.6)
+[2022.08.10-09.11.27:231][  0]LogD3D12RHI: Adapter has 6052MB of dedicated video memory, 0MB of dedicated system memory, and 8171MB of shared system memory, 1 output[s]
+[2022.08.10-09.11.27:254][  0]LogD3D12RHI: Found D3D12 adapter 1: Microsoft Basic Render Driver (Max supported Feature Level 12_1, shader model 6.2)
+[2022.08.10-09.11.27:254][  0]LogD3D12RHI: Adapter has 0MB of dedicated video memory, 0MB of dedicated system memory, and 8171MB of shared system memory, 0 output[s]
+[2022.08.10-09.11.27:254][  0]LogD3D12RHI: Chosen D3D12 Adapter Id = 0
+[2022.08.10-09.11.27:254][  0]LogInit: Selected Device Profile: [WindowsEditor]
+[2022.08.10-09.11.27:254][  0]LogDeviceProfileManager: Applying CVar settings loaded from the selected device profile: [WindowsEditor]
+[2022.08.10-09.11.27:254][  0]LogHAL: Display: Platform has ~ 16 GB [17137795072 / 17179869184 / 16], which maps to Larger [LargestMinGB=32, LargerMinGB=12, DefaultMinGB=8, SmallerMinGB=6, SmallestMinGB=0)
+[2022.08.10-09.11.27:254][  0]LogDeviceProfileManager: Going up to parent DeviceProfile [Windows]
+[2022.08.10-09.11.27:254][  0]LogDeviceProfileManager: Going up to parent DeviceProfile []
+[2022.08.10-09.11.27:254][  0]LogConfig: Applying CVar settings from Section [Startup] File [../../../Engine/Config/ConsoleVariables.ini]
+[2022.08.10-09.11.27:254][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [Engine]
+[2022.08.10-09.11.27:254][  0]LogConfig: Applying CVar settings from Section [ConsoleVariables] File [C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Saved/Config/WindowsEditor/Editor.ini]
+[2022.08.10-09.11.27:255][  0]LogInit: Computer: DESKTOP-5LTOOHE
+[2022.08.10-09.11.27:255][  0]LogInit: User: David
+[2022.08.10-09.11.27:255][  0]LogInit: CPU Page size=4096, Cores=4
+[2022.08.10-09.11.27:255][  0]LogInit: High frequency timer resolution =10.000000 MHz
+[2022.08.10-09.11.27:255][  0]LogMemory: Memory total: Physical=16.0GB (16GB approx)
+[2022.08.10-09.11.27:255][  0]LogMemory: Platform Memory Stats for WindowsEditor
+[2022.08.10-09.11.27:255][  0]LogMemory: Process Physical Memory: 267.49 MB used, 277.02 MB peak
+[2022.08.10-09.11.27:255][  0]LogMemory: Process Virtual Memory: 212.73 MB used, 212.73 MB peak
+[2022.08.10-09.11.27:255][  0]LogMemory: Physical Memory: 8004.25 MB used,  8339.62 MB free, 16343.88 MB total
+[2022.08.10-09.11.27:255][  0]LogMemory: Virtual Memory: 12558.57 MB used,  6217.30 MB free, 18775.88 MB total
+[2022.08.10-09.11.27:255][  0]LogCsvProfiler: Display: Metadata set : extradevelopmentmemorymb="0"
+[2022.08.10-09.11.27:260][  0]LogWindows: WindowsPlatformFeatures enabled
+[2022.08.10-09.11.27:280][  0]LogInit: Physics initialised using underlying interface: Chaos
+[2022.08.10-09.11.27:282][  0]LogInit: Overriding language with editor language configuration option (en).
+[2022.08.10-09.11.27:282][  0]LogInit: Overriding language with editor locale configuration option (en).
+[2022.08.10-09.11.27:474][  0]LogInit: Setting process to per monitor DPI aware
+[2022.08.10-09.11.27:482][  0]LogWindowsTextInputMethodSystem: Available input methods:
+[2022.08.10-09.11.27:482][  0]LogWindowsTextInputMethodSystem:   - Español (España, internacional) - (Keyboard).
+[2022.08.10-09.11.27:482][  0]LogWindowsTextInputMethodSystem: Activated input method: Español (España, internacional) - (Keyboard).
+[2022.08.10-09.11.27:495][  0]LogSlate: New Slate User Created.  User Index 0, Is Virtual User: 0
+[2022.08.10-09.11.27:495][  0]LogSlate: Slate User Registered.  User Index 0, Is Virtual User: 0
+[2022.08.10-09.11.27:683][  0]LogD3D12RHI: InitD3DDevice: -D3DDebug = off -D3D12GPUValidation = off
+[2022.08.10-09.11.27:687][  0]LogD3D12RHI: [Aftermath] Aftermath crash dumping enabled
+[2022.08.10-09.11.27:687][  0]LogD3D12RHI: Emitting draw events for PIX profiling.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: [Aftermath] Aftermath enabled and primed
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: [Aftermath] Aftermath resource tracking enabled
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: ID3D12Device1 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: ID3D12Device2 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: ID3D12Device3 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: ID3D12Device4 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: ID3D12Device5 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: ID3D12Device6 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: ID3D12Device7 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: D3D12 ray tracing tier 1.0 is supported.
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: AtomicInt64OnTypedResource is supported
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: AtomicInt64OnGroupShared is supported
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: AtomicInt64OnDescriptorHeapResource is supported
+[2022.08.10-09.11.27:752][  0]LogD3D12RHI: Shader Model 6.6 atomic64 is supported
+[2022.08.10-09.11.27:798][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for 3D Queue 0
+[2022.08.10-09.11.27:804][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for Copy Queue 0
+[2022.08.10-09.11.27:813][  0]LogD3D12RHI: [GPUBreadCrumb] Successfully setup breadcrumb resource for Compute Queue 0
+[2022.08.10-09.11.27:823][  0]LogD3D12RHI: Display: Not using pipeline state disk cache per r.D3D12.PSO.DiskCache=0
+[2022.08.10-09.11.27:823][  0]LogD3D12RHI: Display: Not using driver-optimized pipeline state disk cache per r.D3D12.PSO.DriverOptimizedDiskCache=0
+[2022.08.10-09.11.27:870][  0]LogD3D12RHI: Warning: Ray tracing is disabled for NVIDIA cards with the Pascal architecture.
+[2022.08.10-09.11.27:870][  0]LogD3D12RHI:     GPU DeviceId: 0x1c03 (for the marketing name, search the web for "GPU Device Id")
+[2022.08.10-09.11.27:870][  0]LogWindows: Attached monitors:
+[2022.08.10-09.11.27:870][  0]LogWindows:     resolution: 1920x1080, work area: (0, 0) -> (1920, 1040), device: '\\.\DISPLAY1' [PRIMARY]
+[2022.08.10-09.11.27:870][  0]LogWindows: Found 1 attached monitors.
+[2022.08.10-09.11.27:870][  0]LogWindows: EnumDisplayDevices:
+[2022.08.10-09.11.27:870][  0]LogWindows:    0. 'NVIDIA GeForce GTX 1060 6GB' (P:1 D:1), name: '\\.\DISPLAY1'
+[2022.08.10-09.11.27:870][  0]LogWindows:    1. 'NVIDIA GeForce GTX 1060 6GB' (P:0 D:0), name: '\\.\DISPLAY2'
+[2022.08.10-09.11.27:871][  0]LogWindows:    2. 'NVIDIA GeForce GTX 1060 6GB' (P:0 D:0), name: '\\.\DISPLAY3'
+[2022.08.10-09.11.27:871][  0]LogWindows:    3. 'NVIDIA GeForce GTX 1060 6GB' (P:0 D:0), name: '\\.\DISPLAY4'
+[2022.08.10-09.11.27:871][  0]LogWindows: DebugString: FoundDriverCount:4 
+[2022.08.10-09.11.27:871][  0]LogD3D12RHI:     Adapter Name: NVIDIA GeForce GTX 1060 6GB
+[2022.08.10-09.11.27:871][  0]LogD3D12RHI:   Driver Version: 516.59 (internal:31.0.15.1659, unified:516.59)
+[2022.08.10-09.11.27:871][  0]LogD3D12RHI:      Driver Date: 6-23-2022
+[2022.08.10-09.11.27:871][  0]LogRHI: Texture pool is 3328 MB (70% of 4755 MB)
+[2022.08.10-09.11.27:871][  0]LogD3D12RHI: Async texture creation enabled
+[2022.08.10-09.11.27:871][  0]LogD3D12RHI: RHI has support for 64 bit atomics
+[2022.08.10-09.11.27:881][  0]LogRHI: GeForceNow SDK initialized: 0
+[2022.08.10-09.11.27:888][  0]LogTurnkeySupport: Running Turnkey SDK detection: ' -ScriptsForProject="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/MenuSystem.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Intermediate/TurnkeyReport_0.log" -log="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Intermediate/TurnkeyLog_0.log" -project="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/MenuSystem.uproject"  -platform=all'
+[2022.08.10-09.11.27:888][  0]LogMonitoredProcess: Running Serialized UAT: [ cmd.exe /c ""C:/UE5/Unreal Engine 5/UE_5.0/Engine/Build/BatchFiles/RunUAT.bat"  -ScriptsForProject="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/MenuSystem.uproject" Turnkey -utf8output -WaitForUATMutex -command=VerifySdk -ReportFilename="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Intermediate/TurnkeyReport_0.log" -log="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Intermediate/TurnkeyLog_0.log" -project="C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/MenuSystem.uproject"  -platform=all" ]
+[2022.08.10-09.11.27:910][  0]LogTextureFormatETC2: Display: ETC2 Texture loading DLL: TextureConverter.dll
+[2022.08.10-09.11.27:921][  0]LogTextureFormatOodle: Display: Oodle Texture TFO init; latest sdk version = 2.9.5
+[2022.08.10-09.11.27:921][  0]LogTextureFormatOodle: Display: Oodle Texture loading DLL: oo2tex_win64_2.9.5.dll
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTC'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXT'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'AndroidClient'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ASTCClient'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_DXTClient'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_ETC2Client'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_Multi'
+[2022.08.10-09.11.27:932][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Android_MultiClient'
+[2022.08.10-09.11.27:954][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'HoloLens'
+[2022.08.10-09.11.27:954][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'HoloLensClient'
+[2022.08.10-09.11.27:958][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOS'
+[2022.08.10-09.11.27:958][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'IOSClient'
+[2022.08.10-09.11.27:962][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Linux'
+[2022.08.10-09.11.27:962][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxEditor'
+[2022.08.10-09.11.27:962][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxServer'
+[2022.08.10-09.11.27:962][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxClient'
+[2022.08.10-09.11.27:964][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64'
+[2022.08.10-09.11.27:964][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64Server'
+[2022.08.10-09.11.27:964][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'LinuxArm64Client'
+[2022.08.10-09.11.27:966][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOS'
+[2022.08.10-09.11.27:967][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'TVOSClient'
+[2022.08.10-09.11.27:972][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'Windows'
+[2022.08.10-09.11.27:972][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsEditor'
+[2022.08.10-09.11.27:972][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsServer'
+[2022.08.10-09.11.27:972][  0]LogTargetPlatformManager: Display: Loaded TargetPlatform 'WindowsClient'
+[2022.08.10-09.11.27:972][  0]LogTargetPlatformManager: Display: Building Assets For WindowsEditor
+[2022.08.10-09.11.27:982][  0]LogAudioDebug: Display: Lib vorbis DLL was dynamically loaded.
+[2022.08.10-09.11.27:986][  0]LogTargetPlatformManager: Unable to find audio format BINKA from hinted modules, loading all potential format modules to find it
+[2022.08.10-09.11.27:986][  0]LogTargetPlatformManager: Loaded format module AudioFormatADPCM
+[2022.08.10-09.11.27:986][  0]LogTargetPlatformManager:   ADPCM
+[2022.08.10-09.11.27:986][  0]LogTargetPlatformManager:   PCM
+[2022.08.10-09.11.27:993][  0]LogTargetPlatformManager: Loaded format module AudioFormatBink
+[2022.08.10-09.11.27:993][  0]LogTargetPlatformManager:   BINKA
+[2022.08.10-09.11.27:993][  0]LogTargetPlatformManager: Loaded format module AudioFormatOgg
+[2022.08.10-09.11.27:993][  0]LogTargetPlatformManager:   OGG
+[2022.08.10-09.11.27:993][  0]LogTargetPlatformManager: Loaded format module AudioFormatOpus
+[2022.08.10-09.11.27:993][  0]LogTargetPlatformManager:   OPUS
+[2022.08.10-09.11.28:134][  0]LogTargetPlatformManager: Unable to find shader format SF_METAL from hinted modules, loading all potential format modules to find it
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager: Loaded format module MetalShaderFormat
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   SF_METAL
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   SF_METAL_MRT
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   SF_METAL_TVOS
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   SF_METAL_MRT_TVOS
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   SF_METAL_SM5
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   SF_METAL_MACES3_1
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   SF_METAL_MRT_MAC
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager: Loaded format module ShaderFormatD3D
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   PCD3D_SM6
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   PCD3D_SM5
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   PCD3D_ES31
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   D3D_ES3_1_HOLOLENS
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager: Loaded format module ShaderFormatOpenGL
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   GLSL_150_ES31
+[2022.08.10-09.11.28:145][  0]LogTargetPlatformManager:   GLSL_ES3_1_ANDROID
+[2022.08.10-09.11.28:148][  0]LogTargetPlatformManager: Loaded format module ShaderFormatVectorVM
+[2022.08.10-09.11.28:148][  0]LogTargetPlatformManager:   VVM_1_0
+[2022.08.10-09.11.28:148][  0]LogTargetPlatformManager: Loaded format module VulkanShaderFormat
+[2022.08.10-09.11.28:148][  0]LogTargetPlatformManager:   SF_VULKAN_SM5
+[2022.08.10-09.11.28:148][  0]LogTargetPlatformManager:   SF_VULKAN_ES31_ANDROID
+[2022.08.10-09.11.28:148][  0]LogTargetPlatformManager:   SF_VULKAN_ES31
+[2022.08.10-09.11.28:148][  0]LogTargetPlatformManager:   SF_VULKAN_SM5_ANDROID
+[2022.08.10-09.11.28:149][  0]LogRendererCore: Ray tracing is disabled. Reason: r.RayTracing=0.
+[2022.08.10-09.11.28:149][  0]LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../UE5-Shooter/MPPlugin/MenuSystem/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush
+[2022.08.10-09.11.28:149][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2022.08.10-09.11.28:149][  0]LogShaderCompilers: Display: Compiling shader autogen file: ../../../../../UE5-Shooter/MPPlugin/MenuSystem/Intermediate/ShaderAutogen/PCD3D_ES31/AutogenShaderHeaders.ush
+[2022.08.10-09.11.28:149][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.
+[2022.08.10-09.11.28:152][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  Pak pak cache file ../../../../../UE5-Shooter/MPPlugin/MenuSystem/DerivedDataCache/DDC.ddp not found, will not use a pak cache.
+[2022.08.10-09.11.28:152][  0]LogDerivedDataCache: Unable to find inner node Pak for hierarchy Hierarchy.
+[2022.08.10-09.11.28:152][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  CompressedPak pak cache file ../../../../../UE5-Shooter/MPPlugin/MenuSystem/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2022.08.10-09.11.28:152][  0]LogDerivedDataCache: Unable to find inner node CompressedPak for hierarchy Hierarchy.
+[2022.08.10-09.11.28:174][  0]LogDerivedDataCache: Display: ../../../Engine/DerivedDataCache/Compressed.ddp: Opened pak cache for reading. (1230 MiB)
+[2022.08.10-09.11.28:174][  0]LogDerivedDataCache: FDerivedDataBackendGraph:  EnterprisePak pak cache file ../../../Enterprise/DerivedDataCache/Compressed.ddp not found, will not use a pak cache.
+[2022.08.10-09.11.28:174][  0]LogDerivedDataCache: Unable to find inner node EnterprisePak for hierarchy Hierarchy.
+[2022.08.10-09.11.28:183][  0]LogDerivedDataCache: Speed tests for C:/Users/David/AppData/Local/UnrealEngine/Common/DerivedDataCache took 0.01 seconds
+[2022.08.10-09.11.28:183][  0]LogDerivedDataCache: Display: Performance to C:/Users/David/AppData/Local/UnrealEngine/Common/DerivedDataCache: Latency=0.05ms. RandomReadSpeed=194.48MBs, RandomWriteSpeed=241.28MBs. Assigned SpeedClass 'Local'
+[2022.08.10-09.11.28:184][  0]LogDerivedDataCache: Using Local data cache path C:/Users/David/AppData/Local/UnrealEngine/Common/DerivedDataCache: Writable
+[2022.08.10-09.11.28:184][  0]LogDerivedDataCache: Shared data cache path not found in *engine.ini, will not use an Shared cache.
+[2022.08.10-09.11.28:184][  0]LogDerivedDataCache: Unable to find inner node Shared for hierarchy Hierarchy.
+[2022.08.10-09.11.28:189][  0]LogVirtualization: VirtualizationSystem name found in ini file: None
+[2022.08.10-09.11.28:189][  0]LogVirtualization: FNullVirtualizationSystem mounted, virtualization will be disabled
+[2022.08.10-09.11.28:190][  0]LogShaderCompilers: Guid format shader working directory is 0 characters bigger than the processId version (../../../../../UE5-Shooter/MPPlugin/MenuSystem/Intermediate/Shaders/WorkingDirectory/9984/).
+[2022.08.10-09.11.28:190][  0]LogShaderCompilers: Cleaned the shader compiler working directory 'C:/Users/David/AppData/Local/Temp/UnrealShaderWorkingDir/7171ED044ED65B9E35991197EA685953/'.
+[2022.08.10-09.11.28:190][  0]LogXGEController: Cannot use XGE Controller as Incredibuild is not installed on this machine.
+[2022.08.10-09.11.28:190][  0]LogShaderCompilers: Display: Using Local Shader Compiler with 5 workers.
+[2022.08.10-09.11.29:651][  0]LogTurnkeySupport: Completed SDK detection: ExitCode = 0
+[2022.08.10-09.11.29:651][  0]LogSlate: Using FreeType 2.10.0
+[2022.08.10-09.11.29:652][  0]LogSlate: SlateFontServices - WITH_FREETYPE: 1, WITH_HARFBUZZ: 1
+[2022.08.10-09.11.29:691][  0]LogAssetRegistry: FAssetRegistry took 0.0109 seconds to start up
+[2022.08.10-09.11.29:696][  0]LogEditorDomain: Display: EditorDomain is Disabled
+[2022.08.10-09.11.29:854][  0]LogSerialization: UsePackageTrailer: 'false'
+[2022.08.10-09.11.29:855][  0]LogTexture: Display: Texture Encode Speed: FinalIfAvailable (editor).
+[2022.08.10-09.11.30:121][  0]LogInit: Selected Device Profile: [WindowsEditor]
+[2022.08.10-09.11.30:121][  0]LogDeviceProfileManager: Active device profile: [0000047180B463C0][0000047171EE0000 50] WindowsEditor
+[2022.08.10-09.11.30:121][  0]LogDeviceProfileManager: Profiles: [0000047180B45E80][0000047167DF0000 50] Windows, [0000047180B463C0][0000047171EE0000 50] WindowsEditor, [0000047180B42300][0000047180E10000 50] WindowsServer, [0000047180B44980][0000047180E15000 50] WindowsClient, [0000047180B42680][0000047180E17800 50] IOS, [0000047180B43800][0000047180E1A000 50] iPadAir2, [0000047180B45080][0000047171EE2800 50] IPadPro, [0000047180B47000][0000047180E1C800 50] iPadAir3, [0000047180B45B00][0000047180DF0000 50] iPadAir4, [0000047180B41880][0000047180DF5000 50] iPadMini4, [0000047180B46AC0][0000047180DF7800 50] iPadMini5, [0000047180B44B40][0000047180DFA000 50] iPadMini6, [0000047180B49A00][0000047180E60000 50] iPhone6S, [0000047180B49840][0000047180E62800 50] iPhone7, [0000047180B494C0][0000047180E65000 50] iPodTouch7, [0000047180B44280][0000047180E6A000 50] iPhone6SPlus, [0000047180B43480][0000047180E6C800 50] iPhone7Plus, [0000047180B43B80][0000047180E12800 50] iPhoneSE, [0000047180B49BC0][0000047180DFC800 50] iPhone8, [0000047180B455C0][0000047180E67800 50] iPhone8Plus, [0000047180B49680][0000047180E20000 50] iPhoneX, [0000047180B45940][0000047180E25000 50] iPhoneXS, [0000047180B44D00][0000047180E27800 50] iPhoneXSMax, [0000047180B44440][0000047180E2A000 50] iPhoneXR, [0000047180B42F40][0000047180E2C800 50] iPhone11, [0000047180B43640][0000047180DF2800 50] iPhone11Pro, [0000047180B48C00][0000047180E30000 50] iPhone11ProMax, [0000047180B42D80][0000047180E35000 50] iPhoneSE2, [0000047180B46580][0000047180E37800 50] iPhone12Mini, [0000047180B46E40][0000047180E3A000 50] iPhone12, [0000047180B45400][0000047180E3C800 50] iPhone12Pro, [0000047180B47540][0000047180E22800 50] iPhone12ProMax, [0000047180B471C0][0000047180E40000 50] iPhone13Mini, [0000047180B49140][0000047180E45000 50] iPhone13, [0000047180B45240][0000047180E47800 50] iPhone13Pro, [0000047180B42BC0][0000047180E4A000 50] iPhone13ProMax, [0000047180B48180][0000047180E4C800 50] iPadPro105, [0000047180B49300][0000047180E32800 50] iPadPro129, [0000047180B48F80][0000047180E50000 50] iPadPro97, [0000047180B43F00][0000047180E55000 50] iPadPro2_129, [0000047180B486C0][0000047180E57800 50] iPad5, [0000047180B47700][0000047180E5A000 50] iPad6, [0000047180B41F80][0000047180E5C800 50] iPad7, [0000047180B41500][0000047180E42800 50] iPad8, [0000047180B43D40][0000047180E70000 50] iPad9, [0000047180B40FC0][0000047180E75000 50] iPadPro11, [0000047180B47380][0000047180E77800 50] iPadPro2_11, [0000047180B46200][0000047180E7A000 50] iPadPro3_11, [0000047180B47E00][0000047180E7C800 50] iPadPro3_129, [0000047180B44600][0000047180E52800 50] iPadPro4_129, [0000047180B48A40][0000047180E80000 50] iPadPro5_129, [0000047180B48880][0000047180E85000 50] AppleTV, [0000047180B42840][0000047180E87800 50] AppleTV4K, [0000047180B45780][0000047180E8A000 50] TVOS, [0000047180B4BB40][0000047180E72800 50] Mac, [0000047180B4BEC0][0000047180E8C800 50] MacEditor, [0000047180B478C0][0000047180EA0000 50] MacClient, [0000047180B48500][0000047180EA5000 50] MacServer, [0000047180B4B0C0][0000047180EAA000 50] Linux, [0000047180B43100][0000047180EA7800 50] LinuxEditor, [0000047180B4B980][0000047180EAC800 50] LinuxArm64Editor, [0000047180B46900][0000047180E82800 50] LinuxArm64, [0000047180B47FC0][0000047180E90000 50] LinuxClient, [0000047180B4A9C0][0000047180E95000 50] LinuxArm64Client, [0000047180B42A00][0000047180E97800 50] LinuxServer, [0000047180B4BD00][0000047180E9A000 50] LinuxArm64Server, [0000047180B4CB00][0000047180E9C800 50] Android, [0000047180B4A800][0000047180EA2800 50] Android_Preview_OpenGL, [0000047180B416C0][0000047180EB0000 50] Android_Preview_Vulkan, [0000047180B4AB80][0000047180EB5000 50] Android_Low, [0000047180B4C940][0000047180EB7800 50] Android_Mid, [0000047180B4B440][0000047180EBA000 50] Android_High, [0000047180B4C780][0000047180EBC800 50] Android_Default, [0000047180B47C40][0000047180E92800 50] Android_Adreno4xx, [0000047180B424C0][0000047180EC0000 50] Android_Adreno5xx_Low, [0000047180B432C0][0000047180EC5000 50] Android_Adreno5xx, [0000047180B44EC0][0000047180EC7800 50] Android_Adreno6xx, [0000047180B47A80][0000047180ECA000 50] Android_Adreno6xx_Vulkan, [0000047180B4A640][0000047180ECC800 50] Android_Adreno7xx, [0000047180B46740][0000047180EB2800 50] Android_Adreno7xx_Vulkan, [0000047180B447C0][0000047180ED0000 50] Android_Mali_T6xx, [0000047180B42140][0000047180ED5000 50] Android_Mali_T7xx, [0000047180B48340][0000047180ED7800 50] Android_Mali_T8xx, [0000047180B48DC0][0000047180EDA000 50] Android_Mali_G71, [0000047180B4D900][0000047180EDC800 50] Android_Mali_G72, [0000047180B4C400][0000047180EC2800 50] Android_Mali_G72_Vulkan, [0000047180B4D3C0][0000047180EE0000 50] Android_Mali_G76, [0000047180B49F40][0000047180EE5000 50] Android_Mali_G76_Vulkan, [0000047180B49D80][0000047180EE7800 50] Android_Mali_G77, [0000047180B4D580][0000047180EEA000 50] Android_Mali_G77_Vulkan, [0000047180B4E000][0000047180EEC800 50] Android_Mali_G78, [0000047180B4CCC0][0000047180ED2800 50] Android_Mali_G78_Vulkan, [0000047180B4E380][0000047180EF0000 50] Android_Mali_G710, [0000047180B4C080][0000047180EF5000 50] Android_Mali_G710_Vulkan, [0000047180B4E540][0000047180EF7800 50] Android_Xclipse_920, [0000047180B4AD40][0000047180EFA000 50] Android_Xclipse_920_Vulkan, [0000047180B440C0][0000047180EFC800 50] Android_Vulkan_SM5, [0000047180B4DC80][0000047180EE2800 50] Android_PowerVR_G6xxx, [0000047180B4EE00][0000047180F00000 50] Android_PowerVR_GT7xxx, [0000047180B4B7C0][0000047180F05000 50] Android_PowerVR_GE8xxx, [0000047180B4F340][0000047180F07800 50] Android_PowerVR_GM9xxx, [0000047180B4E8C0][0000047180F0A000 50] Android_PowerVR_GM9xxx_Vulkan, [0000047180B4F6C0][0000047180F0C800 50] Android_TegraK1, [0000047180B4A2C0][0000047180EF2800 50] Android_Unknown_Vulkan, [0000047180B4F880][0000047180F10000 50] Oculus_Quest, [0000047180B4A100][0000047180F15000 50] Oculus_Quest2, [0000047180B4DAC0][0000047180F17800 50] HoloLens, 
+[2022.08.10-09.11.30:121][  0]LogCsvProfiler: Display: Metadata set : deviceprofile="WindowsEditor"
+[2022.08.10-09.11.30:124][  0]LogTurnkeySupport: Turnkey Platform: Android: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=r21a, MaxAllowed=r23a, Flags="Platform_ValidHostPrerequisites")
+[2022.08.10-09.11.30:124][  0]LogTurnkeySupport: Turnkey Platform: HoloLens: (Status=Valid, Installed=10.0.18362.0, AutoSDK=, MinAllowed=10.0.00000.0, MaxAllowed=10.9.99999.0, Flags="InstalledSdk_ValidVersionExists")
+[2022.08.10-09.11.30:124][  0]LogTurnkeySupport: Turnkey Platform: IOS: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=1100.0.0.0, MaxAllowed=1399.0, Flags="Platform_ValidHostPrerequisites")
+[2022.08.10-09.11.30:124][  0]LogTurnkeySupport: Turnkey Platform: Linux: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=v20_clang-13.0.1-centos7, MaxAllowed=v20_clang-13.0.1-centos7, Flags="Platform_ValidHostPrerequisites")
+[2022.08.10-09.11.30:124][  0]LogTurnkeySupport: Turnkey Platform: LinuxArm64: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=v20_clang-13.0.1-centos7, MaxAllowed=v20_clang-13.0.1-centos7, Flags="Platform_ValidHostPrerequisites")
+[2022.08.10-09.11.30:124][  0]LogTurnkeySupport: Turnkey Platform: TVOS: (Status=Invalid, Installed=, AutoSDK=, MinAllowed=1100.0.0.0, MaxAllowed=1399.0, Flags="Platform_ValidHostPrerequisites")
+[2022.08.10-09.11.30:124][  0]LogTurnkeySupport: Turnkey Platform: Win64: (Status=Valid, Installed=10.0.18362.0, AutoSDK=, MinAllowed=10.0.00000.0, MaxAllowed=10.9.99999.0, Flags="InstalledSdk_ValidVersionExists")
+[2022.08.10-09.11.30:155][  0]LogTexture: Display: Oodle Texture Encode Speed settings: Fast: RDO Off Lambda=0, Effort=Normal Final: RDO Off Lambda=0, Effort=Normal
+[2022.08.10-09.11.30:332][  0]LogMeshReduction: Using QuadricMeshReduction for automatic static mesh reduction
+[2022.08.10-09.11.30:332][  0]LogMeshReduction: Using SimplygonMeshReduction for automatic skeletal mesh reduction
+[2022.08.10-09.11.30:332][  0]LogMeshReduction: Using ProxyLODMeshReduction for automatic mesh merging
+[2022.08.10-09.11.30:332][  0]LogMeshReduction: No distributed automatic mesh merging module available
+[2022.08.10-09.11.30:332][  0]LogMeshMerging: No distributed automatic mesh merging module available
+[2022.08.10-09.11.30:347][  0]LogNetVersion: MenuSystem 1.0.0, NetCL: 19505902, EngineNetVer: 23, GameNetVer: 0 (Checksum: 4150556124)
+[2022.08.10-09.11.30:499][  0]LogSlate: Border
+[2022.08.10-09.11.30:499][  0]LogSlate: BreadcrumbButton
+[2022.08.10-09.11.30:499][  0]LogSlate: Default
+[2022.08.10-09.11.30:499][  0]LogSlate: Icons.Save
+[2022.08.10-09.11.30:499][  0]LogSlate: Icons.Toolbar.Settings
+[2022.08.10-09.11.30:499][  0]LogSlate: ListView
+[2022.08.10-09.11.30:499][  0]LogSlate: SoftwareCursor_CardinalCross
+[2022.08.10-09.11.30:499][  0]LogSlate: SoftwareCursor_Grab
+[2022.08.10-09.11.30:499][  0]LogSlate: TableView.DarkRow
+[2022.08.10-09.11.30:499][  0]LogSlate: TableView.Row
+[2022.08.10-09.11.30:499][  0]LogSlate: TreeView
+[2022.08.10-09.11.30:706][  0]SourceControl: Source control is disabled
+[2022.08.10-09.11.30:736][  0]SourceControl: Source control is disabled
+[2022.08.10-09.11.30:736][  0]SourceControl: Source control is disabled
+[2022.08.10-09.11.30:850][  0]LogUObjectArray: 20565 objects as part of root set at end of initial load.
+[2022.08.10-09.11.30:850][  0]LogUObjectAllocator: 5604192 out of 0 bytes used by permanent object pool.
+[2022.08.10-09.11.30:850][  0]LogUObjectArray: CloseDisregardForGC: 0/0 objects in disregard for GC pool
+[2022.08.10-09.11.31:243][  0]LogNiagaraDebuggerClient: Niagara Debugger Client Initialized | Session: E396F4504771A2063B189195B118798F | Instance: 1954D5274C27B3F98582369EB179AD07 (DESKTOP-5LTOOHE-9984).
+[2022.08.10-09.11.31:282][  0]LogTcpMessaging: Initializing TcpMessaging bridge
+[2022.08.10-09.11.31:287][  0]LogUdpMessaging: Initializing bridge on interface 0.0.0.0:0 to multicast group 230.0.0.1:6666.
+[2022.08.10-09.11.31:305][  0]LogPython: Using Python 3.9.7
+[2022.08.10-09.11.32:508][  0]SourceControl: Source control is disabled
+[2022.08.10-09.11.32:515][  0]SourceControl: Source control is disabled
+[2022.08.10-09.11.32:538][  0]SourceControl: Source control is disabled
+[2022.08.10-09.11.32:549][  0]LogUProjectInfo: Found projects:
+[2022.08.10-09.11.32:989][  0]LogOpenImageDenoise: OIDN starting up
+[2022.08.10-09.11.33:064][  0]LogAndroidPermission: UAndroidPermissionCallbackProxy::GetInstance
+[2022.08.10-09.11.33:103][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2022.08.10-09.11.33:103][  0]LogAudioCaptureCore: Display: No Audio Capture implementations found. Audio input will be silent.
+[2022.08.10-09.11.33:268][  0]LogCollectionManager: Loaded 0 collections in 0.002562 seconds
+[2022.08.10-09.11.33:398][  0]LogFileCache: Scanning file cache for directory 'C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Saved/Collections/' took 0.00s
+[2022.08.10-09.11.33:398][  0]LogFileCache: Scanning file cache for directory 'C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Content/Developers/David/Collections/' took 0.00s
+[2022.08.10-09.11.33:398][  0]LogFileCache: Scanning file cache for directory 'C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Content/Collections/' took 0.00s
+[2022.08.10-09.11.33:711][  0]LogEngine: Initializing Engine...
+[2022.08.10-09.11.33:721][  0]LogStylusInput: Initializing StylusInput subsystem.
+[2022.08.10-09.11.33:723][  0]LogStats: UGameplayTagsManager::InitializeManager -  0.000 s
+[2022.08.10-09.11.33:973][  0]LogInit: Initializing FReadOnlyCVARCache
+[2022.08.10-09.11.33:974][  0]LogSubsystemCollection: Failed to initialize subsystem dependency (WorldPartitionSubsystem)
+[2022.08.10-09.11.33:982][  0]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.11.34:005][  0]LogAIModule: Creating AISystem for world Untitled
+[2022.08.10-09.11.34:005][  0]LogAudio: Display: Initializing Audio Device Manager...
+[2022.08.10-09.11.34:022][  0]LogAudio: Display: Loading Default Audio Settings Objects...
+[2022.08.10-09.11.34:022][  0]LogAudio: Display: No default SoundConcurrencyObject specified (or failed to load).
+[2022.08.10-09.11.34:022][  0]LogAudio: Display: Registering Engine Module Parameter Interfaces...
+[2022.08.10-09.11.34:023][  0]LogAudio: Display: Audio Device Manager Initialized
+[2022.08.10-09.11.34:023][  0]LogAudio: Display: Creating Audio Device:                 Id: 1, Scope: Shared, Realtime: True
+[2022.08.10-09.11.34:023][  0]LogAudioMixer: Display: Audio Mixer Platform Settings:
+[2022.08.10-09.11.34:023][  0]LogAudioMixer: Display: 	Sample Rate:						  48000
+[2022.08.10-09.11.34:023][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size Requested: 1024
+[2022.08.10-09.11.34:023][  0]LogAudioMixer: Display: 	Callback Buffer Frame Size To Use:	  1024
+[2022.08.10-09.11.34:023][  0]LogAudioMixer: Display: 	Number of buffers to queue:			  2
+[2022.08.10-09.11.34:023][  0]LogAudioMixer: Display: 	Max Channels (voices):				  0
+[2022.08.10-09.11.34:023][  0]LogAudioMixer: Display: 	Number of Async Source Workers:		  0
+[2022.08.10-09.11.34:023][  0]LogAudio: Display: AudioDevice MaxSources: 32
+[2022.08.10-09.11.34:023][  0]LogAudio: Display: Audio Spatialization Plugin: None (built-in).
+[2022.08.10-09.11.34:023][  0]LogAudio: Display: Audio Reverb Plugin: None (built-in).
+[2022.08.10-09.11.34:023][  0]LogAudio: Display: Audio Occlusion Plugin: None (built-in).
+[2022.08.10-09.11.34:032][  0]LogAudioMixer: Display: Initializing audio mixer using platform API: 'XAudio2'
+[2022.08.10-09.11.34:150][  0]LogAudioMixer: Display: Using Audio Hardware Device SyncMaster (NVIDIA High Definition Audio)
+[2022.08.10-09.11.34:150][  0]LogAudioMixer: Display: Initializing Sound Submixes...
+[2022.08.10-09.11.34:153][  0]LogAudioMixer: Display: Creating Master Submix 'MasterSubmixDefault'
+[2022.08.10-09.11.34:153][  0]LogAudioMixer: Display: Creating Master Submix 'MasterReverbSubmixDefault'
+[2022.08.10-09.11.34:155][  0]LogAudioMixer: FMixerPlatformXAudio2::StartAudioStream() called. InstanceID=1
+[2022.08.10-09.11.34:155][  0]LogAudioMixer: Display: Output buffers initialized: Frames=1024, Channels=2, Samples=2048, InstanceID=1
+[2022.08.10-09.11.34:155][  0]LogAudioMixer: Display: Starting AudioMixerPlatformInterface::RunInternal(), InstanceID=1
+[2022.08.10-09.11.34:155][  0]LogAudioMixer: Display: FMixerPlatformXAudio2::SubmitBuffer() called for the first time. InstanceID=1
+[2022.08.10-09.11.34:155][  0]LogInit: FAudioDevice initialized.
+[2022.08.10-09.11.34:155][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled'.
+[2022.08.10-09.11.34:155][  0]LogNetVersion: Set ProjectVersion to 1.0.0.0. Version Checksum will be recalculated on next use.
+[2022.08.10-09.11.34:155][  0]LogInit: Texture streaming: Enabled
+[2022.08.10-09.11.34:184][  0]LogAnalytics: Display: [UEEditor.Rocket.Release] APIServer = https://datarouter.ol.epicgames.com/. AppVersion = 5.0.3-20979098+++UE5+Release-5.0
+[2022.08.10-09.11.34:191][  0]LogEngineSessionManager: EngineSessionManager initialized
+[2022.08.10-09.11.34:222][  0]LogCsvProfiler: Display: Metadata set : largeworldcoordinates="1"
+[2022.08.10-09.11.34:250][  0]LogInit: Transaction tracking system initialized
+[2022.08.10-09.11.34:320][  0]BlueprintLog: New page: Editor Load
+[2022.08.10-09.11.34:461][  0]LocalizationService: Localization service is disabled
+[2022.08.10-09.11.34:496][  0]TimingProfiler: Initialize
+[2022.08.10-09.11.34:496][  0]TimingProfiler: OnSessionChanged
+[2022.08.10-09.11.34:497][  0]LoadingProfiler: Initialize
+[2022.08.10-09.11.34:497][  0]LoadingProfiler: OnSessionChanged
+[2022.08.10-09.11.34:497][  0]NetworkingProfiler: Initialize
+[2022.08.10-09.11.34:497][  0]NetworkingProfiler: OnSessionChanged
+[2022.08.10-09.11.34:497][  0]MemoryProfiler: Initialize
+[2022.08.10-09.11.34:497][  0]MemoryProfiler: OnSessionChanged
+[2022.08.10-09.11.34:994][  0]LogFileCache: Scanning file cache for directory 'C:/UE5/UE5-Shooter/MPPlugin/MenuSystem/Content/' took 0.01s
+[2022.08.10-09.11.34:994][  0]LogLevelSequenceEditor: LevelSequenceEditor subsystem initialized.
+[2022.08.10-09.11.35:125][  0]LogInit: Display: Engine is initialized. Leaving FEngineLoop::Init()
+[2022.08.10-09.11.35:127][  0]SourceControl: Source control is disabled
+[2022.08.10-09.11.35:127][  0]LogUnrealEdMisc: Loading editor; pre map load, took 23.044
+[2022.08.10-09.11.35:127][  0]Cmd: MAP LOAD FILE="../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/ThirdPersonMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2022.08.10-09.11.35:130][  0]LightingResults: New page: Lighting Build
+[2022.08.10-09.11.35:135][  0]LogWorld: UWorld::CleanupWorld for Untitled, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.11.35:136][  0]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.11.35:136][  0]MapCheck: New page: Map Check
+[2022.08.10-09.11.35:136][  0]LightingResults: New page: Lighting Build
+[2022.08.10-09.11.35:142][  0]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.08.10-09.11.35:145][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.48ms
+[2022.08.10-09.11.35:215][  0]LogAudio: Display: Audio Device (ID: 1) registered with world 'ThirdPersonMap'.
+[2022.08.10-09.11.35:221][  0]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.11.35:222][  0]LogAIModule: Creating AISystem for world ThirdPersonMap
+[2022.08.10-09.11.35:222][  0]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.08.10-09.11.35:222][  0]LogWorldPartition: UWorldPartition::Initialize(IsEditor=1, IsGame=0, IsCooking=0)
+[2022.08.10-09.11.35:301][  0]LogWorldPartition: Display: WorldPartition initialize took 79 ms
+[2022.08.10-09.11.35:303][  0]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2022.08.10-09.11.35:311][  0]LogUObjectHash: Compacting FUObjectHashTables data took   0.50ms
+[2022.08.10-09.11.35:312][  0]Cmd: MAP CHECKDEP NOCLEARLOG
+[2022.08.10-09.11.35:312][  0]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.262ms to complete.
+[2022.08.10-09.11.35:312][  0]LogFileHelpers: Loading map 'ThirdPersonMap' took 0.185
+[2022.08.10-09.11.35:325][  0]LogUnrealEdMisc: Total Editor Startup Time, took 23.241
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: ================================================
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: === FShaderJobCache stats ===
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: Total job queries 0, among them cache hits 0 (0.00%)
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: Tracking 0 distinct input hashes that result in 0 distinct outputs (0.00%)
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: RAM used: 0.00 MB (0.00 GB) of 819.20 MB (0.80 GB) budget. Usage: 0.00%
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: === Shader Compilation stats ===
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: Shaders Compiled: 0
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: Jobs assigned 0, completed 0 (0.00%)
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: Time at least one job was in flight (either pending or executed): 0.00 s
+[2022.08.10-09.11.35:325][  0]LogShaderCompilers: Display: ================================================
+[2022.08.10-09.11.35:457][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.08.10-09.11.35:464][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.08.10-09.11.35:469][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.08.10-09.11.35:474][  0]LogSlate: Updating window title bar state: overlay mode, drag disabled, window buttons hidden, title bar hidden
+[2022.08.10-09.11.35:488][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/StarterContent.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:488][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:489][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_FirstPerson.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:489][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:491][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_FirstPersonBP.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:491][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:492][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_HandheldARBP.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:492][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:496][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_ThirdPerson.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:496][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:497][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_ThirdPersonBP.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:498][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:499][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_TopDown.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:499][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:500][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_TopDownBP.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:500][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:502][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_VehicleAdvBP.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:502][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:503][  0]LogPakFile: Display: Mounted Pak file 'C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_VirtualRealityBP.upack', mount point: 'root:/'
+[2022.08.10-09.11.35:503][  0]LogPakFile: Display: Mount point: 'root:/' is not mounted to a valid Root Path yet, assets in this pak file may not be accessible until a corresponding UFS Mount Point is added through FPackageName::RegisterMountPoint.
+[2022.08.10-09.11.35:503][  0]LogFeaturePack: Error: Error in Feature pack C:/UE5/Unreal Engine 5/UE_5.0/FeaturePacks/TP_VirtualRealityBP.upack. Failed to parse manifest: Invalid Json Token. Line: 43 Ch: 4
+[2022.08.10-09.11.35:726][  0]LogSlate: Took 0.000774 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Regular.ttf' (155K)
+[2022.08.10-09.11.35:729][  0]LogSlate: Took 0.000745 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Bold.ttf' (160K)
+[2022.08.10-09.11.35:730][  0]LogSlate: Took 0.000753 seconds to synchronously load lazily loaded font '../../../Engine/Content/Editor/Slate/Fonts/FontAwesome.ttf' (139K)
+[2022.08.10-09.11.35:732][  0]LogSlate: Took 0.000719 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/DroidSansMono.ttf' (77K)
+[2022.08.10-09.11.35:755][  0]LogViewport: Scene viewport resized to 1526x585, mode Windowed.
+[2022.08.10-09.11.35:794][  0]LogSlate: Took 0.000689 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2022.08.10-09.11.36:482][  0]LogStall: Startup...
+[2022.08.10-09.11.36:483][  0]LogStall: Startup complete.
+[2022.08.10-09.11.36:505][  0]LogLoad: (Engine Initialization) Total time: 24.42 seconds
+[2022.08.10-09.11.36:505][  0]LogLoad: (Engine Initialization) Total Blueprint compile time: 0.00 seconds
+[2022.08.10-09.11.36:560][  0]LogAssetRegistry: Asset discovery search completed in 6.8704 seconds
+[2022.08.10-09.11.36:564][  0]LogCollectionManager: Fixed up redirectors for 0 collections in 0.000002 seconds (updated 0 objects)
+[2022.08.10-09.11.36:566][  0]LogContentStreaming: Texture pool size now 1000 MB
+[2022.08.10-09.11.43:329][526]LogAssetEditorSubsystem: Opening Asset editor for Blueprint /Game/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.BP_ThirdPersonCharacter
+[2022.08.10-09.11.43:331][526]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.11.44:546][526]LogSlate: Took 0.000687 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-BoldCondensed.ttf' (158K)
+[2022.08.10-09.11.49:131][901]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2022.08.10-09.11.49:136][901]LogSlate: Window 'BP_ThirdPersonCharacter' being destroyed
+[2022.08.10-09.11.49:143][901]LogWorld: UWorld::CleanupWorld for World_1, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.11.49:143][901]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.12.24:382][ 37]LogAssetEditorSubsystem: Opening Asset editor for WidgetBlueprint /MultiplayerSessions/WBP_Menu.WBP_Menu
+[2022.08.10-09.12.24:382][ 37]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.12.24:403][ 37]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.12.24:412][ 37]LogSlate: Warning: The command 'UMGEditor.OpenAnimDrawer' has the same default chord as 'EditorViewport.Next' [Ctrl+Shift+Space Bar]
+[2022.08.10-09.12.24:833][ 37]LogSlateStyle: Warning: Unable to find Slate Widget Style 'None'. Using FToolbarStyle defaults instead.
+[2022.08.10-09.12.24:833][ 37]LogSlateStyle: Warning: Unable to find Slate Widget Style 'None'. Using FToolbarStyle defaults instead.
+[2022.08.10-09.12.24:971][ 37]LogSlateStyle: Warning: Missing Resource from 'CoreStyle' Style: 'Unable to find SlateColor 'Foreground'.'
+[2022.08.10-09.12.31:589][754]LogSlate: Took 0.000824 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Italic.ttf' (157K)
+[2022.08.10-09.12.33:945][ 31]LogSlateStyle: Warning: Unable to find Slate Widget Style 'None'. Using FToolbarStyle defaults instead.
+[2022.08.10-09.12.33:945][ 31]LogSlateStyle: Warning: Unable to find Slate Widget Style 'None'. Using FToolbarStyle defaults instead.
+[2022.08.10-09.12.48:877][417]LogSlate: Took 0.000094 seconds to synchronously load lazily loaded font '../../../Engine/Content/Slate/Fonts/Roboto-Light.ttf' (167K)
+[2022.08.10-09.12.50:098][559]LogAssetEditorSubsystem: Opening Asset editor for LevelScriptBlueprint /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap:PersistentLevel.ThirdPersonMap
+[2022.08.10-09.12.50:105][559]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.13.04:768][223]LogFileHelpers: No new changes to save!
+[2022.08.10-09.13.04:839][223]LogUObjectHash: Compacting FUObjectHashTables data took   1.81ms
+[2022.08.10-09.13.04:850][223]LogPackageLocalizationCache: Processed 31 localized package path(s) for 1 prioritized culture(s) in 0.007894 seconds
+[2022.08.10-09.13.04:866][223]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Maps/ThirdPersonMap
+[2022.08.10-09.13.04:866][223]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/ThirdPersonMap76B98E33462FF676E362B791D8B32E42.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/ThirdPersonMap.umap'
+[2022.08.10-09.13.04:874][223]LogFileHelpers: Saving map 'ThirdPersonMap' took 0.106
+[2022.08.10-09.13.04:884][223]AssetCheck: New page: Asset Save: ThirdPersonMap
+[2022.08.10-09.13.04:885][223]LogContentValidation: Display: Validating World /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap
+[2022.08.10-09.13.13:002][ 17]LogUObjectHash: Compacting FUObjectHashTables data took   1.56ms
+[2022.08.10-09.13.28:565][132]LogDerivedDataCache: C:/Users/David/AppData/Local/UnrealEngine/Common/DerivedDataCache: Maintenance finished in +00:00:00.236 and deleted 0 file(s) with total size 0 MiB.
+[2022.08.10-09.13.49:639][ 83]LogContentBrowser: Deferred new asset file creation: NewWorld
+[2022.08.10-09.13.49:644][ 83]LogContentBrowser: Creating deferred item: NewWorld
+[2022.08.10-09.13.49:652][ 84]LogContentBrowser: Renaming the item being created (Deferred Item: NewWorld).
+[2022.08.10-09.13.57:729][801]LogContentBrowser: Attempting asset rename: NewWorld -> Sample
+[2022.08.10-09.13.57:730][801]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.13.57:740][801]LogContentBrowser: End creating deferred item NewWorld
+[2022.08.10-09.13.58:904][903]LogUObjectHash: Compacting FUObjectHashTables data took   1.53ms
+[2022.08.10-09.14.00:420][903]LogSlate: Window 'Save Content' being destroyed
+[2022.08.10-09.14.02:435][ 86]LogObjectTools: Deleting 1 worlds: /Game/ThirdPerson/Maps/Sample.Sample
+[2022.08.10-09.14.02:435][ 86]LogObjectTools: Currently 5 active worlds: /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap, /Engine/Transient.World_0, /Engine/Transient.World_2, /Engine/Transient.World_3, /Engine/Transient.World_4
+[2022.08.10-09.14.02:476][ 86]LogUObjectHash: Compacting FUObjectHashTables data took   0.54ms
+[2022.08.10-09.14.03:531][ 86]LogSlate: Window 'Delete Assets' being destroyed
+[2022.08.10-09.14.03:536][ 86]LogWorld: UWorld::CleanupWorld for Sample, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.14.03:536][ 86]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.14.03:543][ 86]LogWorld: Warning: UWorld::CleanupWorld called twice or called without InitWorld called first.
+[2022.08.10-09.14.03:543][ 86]LogWorld: UWorld::CleanupWorld for Sample, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.14.03:543][ 86]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.14.03:582][ 86]LogUObjectHash: Compacting FUObjectHashTables data took   1.48ms
+[2022.08.10-09.14.03:622][ 86]LogUObjectHash: Compacting FUObjectHashTables data took   1.17ms
+[2022.08.10-09.14.03:662][ 86]LogUObjectHash: Compacting FUObjectHashTables data took   0.87ms
+[2022.08.10-09.14.08:282][323]LogSlate: Window 'New Level' being destroyed
+[2022.08.10-09.14.08:289][323]Cmd: MAP LOAD FILE="../../../Engine/Content/Maps/Templates/OpenWorld.umap" TEMPLATE=1 SHOWPROGRESS=1 FEATURELEVEL=3
+[2022.08.10-09.14.08:289][323]LightingResults: New page: Lighting Build
+[2022.08.10-09.14.08:289][323]LoadErrors: New page: Loading map: OpenWorld.umap
+[2022.08.10-09.14.08:299][323]LogWorld: UWorld::CleanupWorld for World_4, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.14.08:299][323]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.14.08:327][323]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.14.08:328][323]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.14.08:330][323]MapCheck: New page: Map Check
+[2022.08.10-09.14.08:330][323]LightingResults: New page: Lighting Build
+[2022.08.10-09.14.08:362][323]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.08.10-09.14.08:367][323]LogUObjectHash: Compacting FUObjectHashTables data took   1.46ms
+[2022.08.10-09.14.08:378][323]LogAudio: Display: Audio Device (ID: 1) registered with world 'Untitled_1'.
+[2022.08.10-09.14.08:378][323]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.14.08:378][323]LogAIModule: Creating AISystem for world Untitled_1
+[2022.08.10-09.14.08:379][323]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.08.10-09.14.08:379][323]LogWorldPartition: UWorldPartition::Initialize(IsEditor=1, IsGame=0, IsCooking=0)
+[2022.08.10-09.14.08:721][323]LogWorldPartition: Display: WorldPartition initialize took 341 ms
+[2022.08.10-09.14.08:993][323]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2022.08.10-09.14.09:035][323]LogUObjectHash: Compacting FUObjectHashTables data took   1.49ms
+[2022.08.10-09.14.09:035][323]Cmd: MAP CHECKDEP NOCLEARLOG
+[2022.08.10-09.14.09:046][323]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 10.375ms to complete.
+[2022.08.10-09.14.09:046][323]LogFileHelpers: Loading map 'OpenWorld' took 0.757
+[2022.08.10-09.14.29:065][249]LogSlate: Window 'Save Level As' being destroyed
+[2022.08.10-09.14.29:318][249]Message dialog closed, result: Ok, title: Unable to Check Out From Source Control!, text: The following assets could not be successfully checked out from source control:
+/Game/ThirdPerson/Maps/SampleMap_HLOD0_Instancing
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/3P/Q6E2BX1K0SD7VZ3R7EFYBS
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/2/LU/BEM4RPTQXQO15SJFITJ8RM
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/7/7U/XTCDIIDIHJ79SAYSVLC38U
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/4/DU/K2YGFB40J7N6FN8VE1GABQ
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/D/QH/WF8RHP9NFXYQLK1YIUI314
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/8/IK/GA137YMQP164L3KBILULH9
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/2P/UM7ZG5E6OSV6GFIXHO3LLG
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/SH/1MF276KCFA0U09U3PSI7DC
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/1P/02QCZULRWKKW9YKJW4CV0C
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ID/4L761SOTZHUT4ZXDT1UTKB
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/27/R6HYO8CCETNNCC7B2N8JMB
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/I2/1UMLZNKTRKOC0XZNWGWPSV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/N22KZ95F0CXVOHHYX0Q3A8
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/05/CBAR7H23M7RFR61859LR04
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/ZU/7KE621V4I15PLMHAXHZCLZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/ZO/1XNL8U7M7LE5TKERG1NNWU
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/E6/AHAG9FN7Z1TVFCN8L3XQ92
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/9G/LH3SVH85T0R0JILH9L6HYQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ZN/KS5M9WHE1GF9T77N32TX4N
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/P8/URX8BSFCA6QWKGYHVB5V18
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/CA/W1WV1GZRAJN3DAW77CZVOJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/SC/9JUAG2KK2Q0QX3WPK993B9
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/KY/FM4D9AJBFX39PXCB921LSQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/4V/FAJDVR6N2EF5F6RLR8L4HR
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/8M/DC7RPR64IUR54ZN852QBNZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/U1/0DA30UN9OV02MJWWSZABU5
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/N4/N0CQB2M49C1463HWKP933N
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1W/QI19JEXFX8AOTCN6MD7ZJJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/8V/M6RLT01AZ74QNI4P9D26DQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/618BNB7YU2GY3KGMSBTT13
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/VB/DDPW1I278ZH2310AUSDYTS
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L5/UMLCPACZVI0BJGZ92FJ183
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/EF/OYODKFMK98XYJCXIIWQUZ4
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/AY/KQK85Y0XH9G494QP84QYKE
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/WK/W2N1DE1255S6NUQD1DTQMV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/4F/RJ6JLT47YEJPXMWR9A7CTY
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L7/WF9269RNI12UYDVVUKCKYC
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/PL/GJ7QX3DT1G47NLF71WXUNJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/5W/QXC6YZSBY953L9L8NZFVNK
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/TV/HOGLAQVOBBXB7BS79BFK2P
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/9U/UTUJMQVDMOXRGCA386U1LT
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PO/MVQ089DUROOOD15ZQFZYLG
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/Q4/AV0A335Q98DHM8KPXFA8SY
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/SL/GGSL58MNTPFYNL0ZK4V2CO
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/O3/9RSQ9HCDNIB8E1A98UT6S5
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/UK/Q1ND0EZ1OBSQD3BN3THUUX
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/RM/68R44YFDW0SR1U1N9TZ6DR
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/SF/TQ78QUP7UBGKWZ1D7O9VAN
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/G4/F597Y1G7LUGVF9ES2V6WFL
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/2/F0/1GR7G3ZFXCV4SMA7PIYEET
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/30/QR76O6H8F1CR32Q1EQKPGV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/GF4CTGS9HYI4AMPEXBKQQG
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/LD/BOHRLNNP3YVXKGKX0X2A7A
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7P/OGMTJPR0D5N3BIPOFZ94H3
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/09/1VMO2OR8OWRU5ULGE37KO7
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/E5/SAMOBJQT5MOFPM0MNXRPMK
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/F/4D/AKXGKSZUSK6GL3BI3JVJPP
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1V/K40QHYWQ31VLUZU177CBTV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/II/QM375MOKLIJ2XEFIRNVMA4
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/0A/WYRKBX6ERFDQQP2LJ750P1
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/Y1/GEZM6E2WXF7JW8XBEEYA76
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/4Z/BQXNEBBL7V7NTGP49MZBBI
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/32/LHY1F1LND3RITZ382K7NA1
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/7A/84V9EBX9T8KE9GU6OQGKKJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/MW/4YEZ8LGAFI4IW4B7VLUJIQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/VL/PELMJSUR0TC75JWA8LS8RU
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1O/TZMO43XICVB155CNB3C4FJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/G2/FWRCDZ7B6H3X6XCC8V0DUX
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/B9/R46KJPM7W5Y3Y9NCKX88G6
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/0N/YX4P8R58QIN6RTVDI9NX4W
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/OS/81IP4QL8209EA2G6IWRWK1
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/Z2/GI87C7LJZ1H7KWF913YFP8
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/LP/QULN706CSW6YWRI5V93L8Z
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/XH/LJYNQYJMVV37ABQXGKY6VF
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/YJ/DOMOEUBXG5Q6VX5Q4LG383
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/T7/ATV5ATXHD0RPIM0KZ6H2TP
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/8R/VKT56DXDY89IKAY0NBDU7A
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PW/H3N4WEDD525XW5YGOQ7OHL
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/T0/9WZI494POTS3M5ZO2JM95N
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/CP/ZLFQ0THMG1CRMK89E82SSC
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/LX/SYRDOP2Z13YQZM5OU8CBH0
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/WU/LUPCCHL3NLVMPB4WLQRVFZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/K4/M8KLKO5JGS9A34QTVMI02H
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PS/ZPGRARBXWT69X0UEW38HXB
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/BX/AE0FVDLHKU9R3NX7B60EUX
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/GJ/5SDTT8V7F3ZW596C2UQYDV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7W/QV6E8QP6Q7A6DH606BHWUV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/GD/GVD81FUGQYLCLR04BN8S6J
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/ZC/BR25SPP3LZOSNB8RP2X7EO
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PS/9IVVJ565HPQ9ZBYY5ONAAK
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/LKV61A4PZXTYZZ6L3L01NO
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/CW/5SH9XS3NC8G79JEO9E689F
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/76/81RRPO1E7WAGCW1AF0H6HI
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/J3/8Z71UR5N4CHGUHPK677L4B
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/CF/7NPTWJZ4L3VZYAQM2Q9JOW
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/AR/4TZNYY1FUQFWS0FM5M340Y
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/JE/QZR0TLFDWHLDPD7ASOMPZZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/XF/KM9VC5MU39DES4MUPJLLSY
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/Z6/YAL57GO2BLNZ0DWAORPI7O
+[2022.08.10-09.14.29:319][249]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Maps/SampleMap_HLOD0_Instancing
+[2022.08.10-09.14.29:320][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/SampleMap_HLOD0_Instancing7CB2CF81455FFDC151D850B44AD1316C.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/SampleMap_HLOD0_Instancing.uasset'
+[2022.08.10-09.14.29:321][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/3P/Q6E2BX1K0SD7VZ3R7EFYBS
+[2022.08.10-09.14.29:322][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/Q6E2BX1K0SD7VZ3R7EFYBS90F23F6C43DE1DFB7BA11282E28C6522.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/3P/Q6E2BX1K0SD7VZ3R7EFYBS.uasset'
+[2022.08.10-09.14.29:324][249]LogSavePackage: Moving output files for package: /Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/2/LU/BEM4RPTQXQO15SJFITJ8RM
+[2022.08.10-09.14.29:324][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/BEM4RPTQXQO15SJFITJ8RM1F40E6CC4042BE84FD66D7AC9CD6568D.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalObjects__/ThirdPerson/Maps/SampleMap/2/LU/BEM4RPTQXQO15SJFITJ8RM.uasset'
+[2022.08.10-09.14.29:326][249]LogSavePackage: Moving output files for package: /Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/7/7U/XTCDIIDIHJ79SAYSVLC38U
+[2022.08.10-09.14.29:326][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/XTCDIIDIHJ79SAYSVLC38UF7C3B89F4A6BB4BD74FA8CB5B624E61F.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalObjects__/ThirdPerson/Maps/SampleMap/7/7U/XTCDIIDIHJ79SAYSVLC38U.uasset'
+[2022.08.10-09.14.29:328][249]LogSavePackage: Moving output files for package: /Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/4/DU/K2YGFB40J7N6FN8VE1GABQ
+[2022.08.10-09.14.29:328][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/K2YGFB40J7N6FN8VE1GABQ5762236745A123366B42D89949A6329A.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalObjects__/ThirdPerson/Maps/SampleMap/4/DU/K2YGFB40J7N6FN8VE1GABQ.uasset'
+[2022.08.10-09.14.29:330][249]LogSavePackage: Moving output files for package: /Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/D/QH/WF8RHP9NFXYQLK1YIUI314
+[2022.08.10-09.14.29:330][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/WF8RHP9NFXYQLK1YIUI314DB135BB64F5EEA5F4546B38EF412119D.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalObjects__/ThirdPerson/Maps/SampleMap/D/QH/WF8RHP9NFXYQLK1YIUI314.uasset'
+[2022.08.10-09.14.29:334][249]LogSavePackage: Moving output files for package: /Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/8/IK/GA137YMQP164L3KBILULH9
+[2022.08.10-09.14.29:334][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/GA137YMQP164L3KBILULH907BF243D4145BF14BDB45B901BE69870.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalObjects__/ThirdPerson/Maps/SampleMap/8/IK/GA137YMQP164L3KBILULH9.uasset'
+[2022.08.10-09.14.29:342][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/2P/UM7ZG5E6OSV6GFIXHO3LLG
+[2022.08.10-09.14.29:342][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/UM7ZG5E6OSV6GFIXHO3LLG890EEEB34CB5664F8C100BBA0D688A93.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/2P/UM7ZG5E6OSV6GFIXHO3LLG.uasset'
+[2022.08.10-09.14.29:344][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/SH/1MF276KCFA0U09U3PSI7DC
+[2022.08.10-09.14.29:344][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/1MF276KCFA0U09U3PSI7DCB1B716A24F23B8800122749CCC4C8BF7.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/SH/1MF276KCFA0U09U3PSI7DC.uasset'
+[2022.08.10-09.14.29:349][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/1P/02QCZULRWKKW9YKJW4CV0C
+[2022.08.10-09.14.29:350][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/02QCZULRWKKW9YKJW4CV0C677FDB5943E631B6853A0BA8B8EC975C.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/1P/02QCZULRWKKW9YKJW4CV0C.uasset'
+[2022.08.10-09.14.29:354][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ID/4L761SOTZHUT4ZXDT1UTKB
+[2022.08.10-09.14.29:354][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/4L761SOTZHUT4ZXDT1UTKBF123748143B7F3BEC085E394A3497F33.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ID/4L761SOTZHUT4ZXDT1UTKB.uasset'
+[2022.08.10-09.14.29:357][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/27/R6HYO8CCETNNCC7B2N8JMB
+[2022.08.10-09.14.29:357][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/R6HYO8CCETNNCC7B2N8JMB3CF7D4C94370DD0C99364C82EA76F2DE.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/27/R6HYO8CCETNNCC7B2N8JMB.uasset'
+[2022.08.10-09.14.29:361][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/I2/1UMLZNKTRKOC0XZNWGWPSV
+[2022.08.10-09.14.29:361][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/1UMLZNKTRKOC0XZNWGWPSVA85800AF42A55676A4D5339326F5EE0E.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/I2/1UMLZNKTRKOC0XZNWGWPSV.uasset'
+[2022.08.10-09.14.29:367][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/N22KZ95F0CXVOHHYX0Q3A8
+[2022.08.10-09.14.29:367][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/N22KZ95F0CXVOHHYX0Q3A8F47A64354ECBA40828C20CA6CBB10128.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/N22KZ95F0CXVOHHYX0Q3A8.uasset'
+[2022.08.10-09.14.29:370][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/05/CBAR7H23M7RFR61859LR04
+[2022.08.10-09.14.29:370][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/CBAR7H23M7RFR61859LR046BC9DAFC43C85B951852428E85B575C2.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/05/CBAR7H23M7RFR61859LR04.uasset'
+[2022.08.10-09.14.29:381][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/ZU/7KE621V4I15PLMHAXHZCLZ
+[2022.08.10-09.14.29:381][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/7KE621V4I15PLMHAXHZCLZ55FB0FDD4050B7B9385D7EBE3F00B678.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/ZU/7KE621V4I15PLMHAXHZCLZ.uasset'
+[2022.08.10-09.14.29:393][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/ZO/1XNL8U7M7LE5TKERG1NNWU
+[2022.08.10-09.14.29:393][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/1XNL8U7M7LE5TKERG1NNWU95E0097F4378C185CE38A38C685A4606.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/ZO/1XNL8U7M7LE5TKERG1NNWU.uasset'
+[2022.08.10-09.14.29:403][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/E6/AHAG9FN7Z1TVFCN8L3XQ92
+[2022.08.10-09.14.29:403][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/AHAG9FN7Z1TVFCN8L3XQ92BD04CF464F4EE97F3A2D69932F8F44DA.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/E6/AHAG9FN7Z1TVFCN8L3XQ92.uasset'
+[2022.08.10-09.14.29:414][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/9G/LH3SVH85T0R0JILH9L6HYQ
+[2022.08.10-09.14.29:414][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/LH3SVH85T0R0JILH9L6HYQ523BBC4E4885BA015C63DFA35D3F201A.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/9G/LH3SVH85T0R0JILH9L6HYQ.uasset'
+[2022.08.10-09.14.29:426][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ZN/KS5M9WHE1GF9T77N32TX4N
+[2022.08.10-09.14.29:426][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/KS5M9WHE1GF9T77N32TX4NED435E4648E58A26F4EEE49437F3DCC9.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ZN/KS5M9WHE1GF9T77N32TX4N.uasset'
+[2022.08.10-09.14.29:436][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/P8/URX8BSFCA6QWKGYHVB5V18
+[2022.08.10-09.14.29:436][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/URX8BSFCA6QWKGYHVB5V180479B4A945A78497997774A0F92EF8A2.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/P8/URX8BSFCA6QWKGYHVB5V18.uasset'
+[2022.08.10-09.14.29:447][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/CA/W1WV1GZRAJN3DAW77CZVOJ
+[2022.08.10-09.14.29:448][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/W1WV1GZRAJN3DAW77CZVOJ808C4B9040158E86DBC2BD8175112F7B.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/CA/W1WV1GZRAJN3DAW77CZVOJ.uasset'
+[2022.08.10-09.14.29:459][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/SC/9JUAG2KK2Q0QX3WPK993B9
+[2022.08.10-09.14.29:460][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/9JUAG2KK2Q0QX3WPK993B9D1B722F64DEB93FA4B75CE87DAEA99D1.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/SC/9JUAG2KK2Q0QX3WPK993B9.uasset'
+[2022.08.10-09.14.29:468][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/KY/FM4D9AJBFX39PXCB921LSQ
+[2022.08.10-09.14.29:468][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/FM4D9AJBFX39PXCB921LSQFC1AEE8E4FECD5D808D0488CABA6C039.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/KY/FM4D9AJBFX39PXCB921LSQ.uasset'
+[2022.08.10-09.14.29:480][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/4V/FAJDVR6N2EF5F6RLR8L4HR
+[2022.08.10-09.14.29:480][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/FAJDVR6N2EF5F6RLR8L4HRE5BF70DA45E1B32BD827F99776085DCB.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/4V/FAJDVR6N2EF5F6RLR8L4HR.uasset'
+[2022.08.10-09.14.29:488][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/8M/DC7RPR64IUR54ZN852QBNZ
+[2022.08.10-09.14.29:489][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/DC7RPR64IUR54ZN852QBNZAEA0A4EF4F5CD3AC486056BD1AF8155B.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/8M/DC7RPR64IUR54ZN852QBNZ.uasset'
+[2022.08.10-09.14.29:501][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/U1/0DA30UN9OV02MJWWSZABU5
+[2022.08.10-09.14.29:501][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/0DA30UN9OV02MJWWSZABU5C721B3214AE590D1356ED6BD1190DB38.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/U1/0DA30UN9OV02MJWWSZABU5.uasset'
+[2022.08.10-09.14.29:510][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/N4/N0CQB2M49C1463HWKP933N
+[2022.08.10-09.14.29:510][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/N0CQB2M49C1463HWKP933NEFD610BB463AB9C4FF6117BC203E86EB.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/N4/N0CQB2M49C1463HWKP933N.uasset'
+[2022.08.10-09.14.29:522][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1W/QI19JEXFX8AOTCN6MD7ZJJ
+[2022.08.10-09.14.29:522][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/QI19JEXFX8AOTCN6MD7ZJJ71317E1741AEF3FB5724A4BF8766F571.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1W/QI19JEXFX8AOTCN6MD7ZJJ.uasset'
+[2022.08.10-09.14.29:535][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/8V/M6RLT01AZ74QNI4P9D26DQ
+[2022.08.10-09.14.29:535][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/M6RLT01AZ74QNI4P9D26DQE6BAB6364E5DF341778CF484A796D209.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/8V/M6RLT01AZ74QNI4P9D26DQ.uasset'
+[2022.08.10-09.14.29:545][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/618BNB7YU2GY3KGMSBTT13
+[2022.08.10-09.14.29:545][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/618BNB7YU2GY3KGMSBTT13DC8F56E04B7EF31A41C881A02D67278E.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/618BNB7YU2GY3KGMSBTT13.uasset'
+[2022.08.10-09.14.29:557][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/VB/DDPW1I278ZH2310AUSDYTS
+[2022.08.10-09.14.29:557][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/DDPW1I278ZH2310AUSDYTS9F3A8AB54E6E9D2F712E9A8DD08802B9.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/VB/DDPW1I278ZH2310AUSDYTS.uasset'
+[2022.08.10-09.14.29:566][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L5/UMLCPACZVI0BJGZ92FJ183
+[2022.08.10-09.14.29:566][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/UMLCPACZVI0BJGZ92FJ183681F74D746F7DE57513D229B3F6754FD.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L5/UMLCPACZVI0BJGZ92FJ183.uasset'
+[2022.08.10-09.14.29:580][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/EF/OYODKFMK98XYJCXIIWQUZ4
+[2022.08.10-09.14.29:580][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/OYODKFMK98XYJCXIIWQUZ4F5F37DCF4D99065E9BD6AF876416723F.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/EF/OYODKFMK98XYJCXIIWQUZ4.uasset'
+[2022.08.10-09.14.29:589][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/AY/KQK85Y0XH9G494QP84QYKE
+[2022.08.10-09.14.29:589][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/KQK85Y0XH9G494QP84QYKE89BE2F4740D07CEBAE8BFAAFB023292F.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/AY/KQK85Y0XH9G494QP84QYKE.uasset'
+[2022.08.10-09.14.29:598][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/WK/W2N1DE1255S6NUQD1DTQMV
+[2022.08.10-09.14.29:598][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/W2N1DE1255S6NUQD1DTQMV98BC5CCB45470D96D0A286825C3883C4.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/WK/W2N1DE1255S6NUQD1DTQMV.uasset'
+[2022.08.10-09.14.29:607][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/4F/RJ6JLT47YEJPXMWR9A7CTY
+[2022.08.10-09.14.29:607][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/RJ6JLT47YEJPXMWR9A7CTY69831B3F468FF9841203BE82F5726188.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/4F/RJ6JLT47YEJPXMWR9A7CTY.uasset'
+[2022.08.10-09.14.29:615][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L7/WF9269RNI12UYDVVUKCKYC
+[2022.08.10-09.14.29:615][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/WF9269RNI12UYDVVUKCKYC774E3C4F47E089056F8B36990C2E284A.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L7/WF9269RNI12UYDVVUKCKYC.uasset'
+[2022.08.10-09.14.29:623][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/PL/GJ7QX3DT1G47NLF71WXUNJ
+[2022.08.10-09.14.29:623][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/GJ7QX3DT1G47NLF71WXUNJ9BCF0D7B4340B6CB72E916858B373AE0.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/PL/GJ7QX3DT1G47NLF71WXUNJ.uasset'
+[2022.08.10-09.14.29:631][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/5W/QXC6YZSBY953L9L8NZFVNK
+[2022.08.10-09.14.29:631][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/QXC6YZSBY953L9L8NZFVNK8674A8004C309FFDF01B26AE4D57BBBA.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/5W/QXC6YZSBY953L9L8NZFVNK.uasset'
+[2022.08.10-09.14.29:639][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/TV/HOGLAQVOBBXB7BS79BFK2P
+[2022.08.10-09.14.29:639][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/HOGLAQVOBBXB7BS79BFK2P1B4B1CD84533D19537C31680FECF1B37.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/TV/HOGLAQVOBBXB7BS79BFK2P.uasset'
+[2022.08.10-09.14.29:649][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/9U/UTUJMQVDMOXRGCA386U1LT
+[2022.08.10-09.14.29:649][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/UTUJMQVDMOXRGCA386U1LT90EBEFCC4E228415F112438592B1D7B2.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/9U/UTUJMQVDMOXRGCA386U1LT.uasset'
+[2022.08.10-09.14.29:657][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PO/MVQ089DUROOOD15ZQFZYLG
+[2022.08.10-09.14.29:657][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/MVQ089DUROOOD15ZQFZYLGF1F526FC4B7EF7FBDD0B03A9DA4F85C1.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PO/MVQ089DUROOOD15ZQFZYLG.uasset'
+[2022.08.10-09.14.29:667][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/Q4/AV0A335Q98DHM8KPXFA8SY
+[2022.08.10-09.14.29:667][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/AV0A335Q98DHM8KPXFA8SYCAC3767940FC528581491CBC29C5CE62.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/Q4/AV0A335Q98DHM8KPXFA8SY.uasset'
+[2022.08.10-09.14.29:676][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/SL/GGSL58MNTPFYNL0ZK4V2CO
+[2022.08.10-09.14.29:676][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/GGSL58MNTPFYNL0ZK4V2CO76FC08584FC21D865F36E5B4B22E391F.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/SL/GGSL58MNTPFYNL0ZK4V2CO.uasset'
+[2022.08.10-09.14.29:685][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/O3/9RSQ9HCDNIB8E1A98UT6S5
+[2022.08.10-09.14.29:685][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/9RSQ9HCDNIB8E1A98UT6S509E2307349D6377E86F979A6099645F3.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/O3/9RSQ9HCDNIB8E1A98UT6S5.uasset'
+[2022.08.10-09.14.29:693][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/UK/Q1ND0EZ1OBSQD3BN3THUUX
+[2022.08.10-09.14.29:693][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/Q1ND0EZ1OBSQD3BN3THUUX78393C984F9521607D0710908768D490.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/UK/Q1ND0EZ1OBSQD3BN3THUUX.uasset'
+[2022.08.10-09.14.29:701][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/RM/68R44YFDW0SR1U1N9TZ6DR
+[2022.08.10-09.14.29:702][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/68R44YFDW0SR1U1N9TZ6DRE627A8F146AF48C58B2977A67A6762EF.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/RM/68R44YFDW0SR1U1N9TZ6DR.uasset'
+[2022.08.10-09.14.29:710][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/SF/TQ78QUP7UBGKWZ1D7O9VAN
+[2022.08.10-09.14.29:710][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/TQ78QUP7UBGKWZ1D7O9VAN4DA1FF1E41AE72686C5728A682B926B0.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/SF/TQ78QUP7UBGKWZ1D7O9VAN.uasset'
+[2022.08.10-09.14.29:718][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/G4/F597Y1G7LUGVF9ES2V6WFL
+[2022.08.10-09.14.29:719][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/F597Y1G7LUGVF9ES2V6WFLFFB8966D455869343ED237A04672DEFE.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/G4/F597Y1G7LUGVF9ES2V6WFL.uasset'
+[2022.08.10-09.14.29:727][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/2/F0/1GR7G3ZFXCV4SMA7PIYEET
+[2022.08.10-09.14.29:727][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/1GR7G3ZFXCV4SMA7PIYEET4CBFEFC4437A1418300111943EF9C943.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/2/F0/1GR7G3ZFXCV4SMA7PIYEET.uasset'
+[2022.08.10-09.14.29:736][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/30/QR76O6H8F1CR32Q1EQKPGV
+[2022.08.10-09.14.29:736][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/QR76O6H8F1CR32Q1EQKPGV7345ABF74D4A1A5A89B679B9A010C160.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/30/QR76O6H8F1CR32Q1EQKPGV.uasset'
+[2022.08.10-09.14.29:745][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/GF4CTGS9HYI4AMPEXBKQQG
+[2022.08.10-09.14.29:745][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/GF4CTGS9HYI4AMPEXBKQQGDAE8D38942687AA738F25BBC61B891C7.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/GF4CTGS9HYI4AMPEXBKQQG.uasset'
+[2022.08.10-09.14.29:754][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/LD/BOHRLNNP3YVXKGKX0X2A7A
+[2022.08.10-09.14.29:754][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/BOHRLNNP3YVXKGKX0X2A7AC19B2E9A40886F1C76208EBA8518D354.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/LD/BOHRLNNP3YVXKGKX0X2A7A.uasset'
+[2022.08.10-09.14.29:763][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7P/OGMTJPR0D5N3BIPOFZ94H3
+[2022.08.10-09.14.29:763][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/OGMTJPR0D5N3BIPOFZ94H3B015E7CE4BCC0AFF8321A0ADD698606E.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7P/OGMTJPR0D5N3BIPOFZ94H3.uasset'
+[2022.08.10-09.14.29:774][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/09/1VMO2OR8OWRU5ULGE37KO7
+[2022.08.10-09.14.29:775][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/1VMO2OR8OWRU5ULGE37KO7BDA00D494A0B1C1022CDA5AF6B84CEDE.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/09/1VMO2OR8OWRU5ULGE37KO7.uasset'
+[2022.08.10-09.14.29:783][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/E5/SAMOBJQT5MOFPM0MNXRPMK
+[2022.08.10-09.14.29:783][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/SAMOBJQT5MOFPM0MNXRPMK935070C04AABC1857C69D2BF203DE616.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/E5/SAMOBJQT5MOFPM0MNXRPMK.uasset'
+[2022.08.10-09.14.29:791][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/F/4D/AKXGKSZUSK6GL3BI3JVJPP
+[2022.08.10-09.14.29:792][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/AKXGKSZUSK6GL3BI3JVJPP076F546E41E4808D50B1B0961A900FE7.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/F/4D/AKXGKSZUSK6GL3BI3JVJPP.uasset'
+[2022.08.10-09.14.29:800][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1V/K40QHYWQ31VLUZU177CBTV
+[2022.08.10-09.14.29:800][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/K40QHYWQ31VLUZU177CBTVAC0FDC3E4A6DCF43DE331DB83491B05F.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1V/K40QHYWQ31VLUZU177CBTV.uasset'
+[2022.08.10-09.14.29:809][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/II/QM375MOKLIJ2XEFIRNVMA4
+[2022.08.10-09.14.29:809][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/QM375MOKLIJ2XEFIRNVMA48717B7604A15310346F7F69F30A3FD29.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/II/QM375MOKLIJ2XEFIRNVMA4.uasset'
+[2022.08.10-09.14.29:817][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/0A/WYRKBX6ERFDQQP2LJ750P1
+[2022.08.10-09.14.29:818][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/WYRKBX6ERFDQQP2LJ750P1F36C5A5841499E0B9B3CA08904FB0E93.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/0A/WYRKBX6ERFDQQP2LJ750P1.uasset'
+[2022.08.10-09.14.29:831][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/Y1/GEZM6E2WXF7JW8XBEEYA76
+[2022.08.10-09.14.29:831][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/GEZM6E2WXF7JW8XBEEYA76E5F4461545690BA84A063083D83B9DD6.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/Y1/GEZM6E2WXF7JW8XBEEYA76.uasset'
+[2022.08.10-09.14.29:843][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/4Z/BQXNEBBL7V7NTGP49MZBBI
+[2022.08.10-09.14.29:843][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/BQXNEBBL7V7NTGP49MZBBID096E12C4C28FF01669867AB3690647E.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/4Z/BQXNEBBL7V7NTGP49MZBBI.uasset'
+[2022.08.10-09.14.29:851][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/32/LHY1F1LND3RITZ382K7NA1
+[2022.08.10-09.14.29:851][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/LHY1F1LND3RITZ382K7NA11DF7A3E84BC7E2DB8A7D18A90593FAEE.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/32/LHY1F1LND3RITZ382K7NA1.uasset'
+[2022.08.10-09.14.29:861][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/7A/84V9EBX9T8KE9GU6OQGKKJ
+[2022.08.10-09.14.29:861][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/84V9EBX9T8KE9GU6OQGKKJ6B6F7D4C42BE8F69AD66F3AAE58CF767.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/7A/84V9EBX9T8KE9GU6OQGKKJ.uasset'
+[2022.08.10-09.14.29:869][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/MW/4YEZ8LGAFI4IW4B7VLUJIQ
+[2022.08.10-09.14.29:869][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/4YEZ8LGAFI4IW4B7VLUJIQB0F320884535CF0C21B4FD801626F5AD.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/MW/4YEZ8LGAFI4IW4B7VLUJIQ.uasset'
+[2022.08.10-09.14.29:876][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/VL/PELMJSUR0TC75JWA8LS8RU
+[2022.08.10-09.14.29:877][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/PELMJSUR0TC75JWA8LS8RUA4AE3F734EF47C4025434987A4B85E73.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/VL/PELMJSUR0TC75JWA8LS8RU.uasset'
+[2022.08.10-09.14.29:884][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1O/TZMO43XICVB155CNB3C4FJ
+[2022.08.10-09.14.29:884][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/TZMO43XICVB155CNB3C4FJ07B4BF7D4630EAE23CDEC9AF502AD56F.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1O/TZMO43XICVB155CNB3C4FJ.uasset'
+[2022.08.10-09.14.29:892][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/G2/FWRCDZ7B6H3X6XCC8V0DUX
+[2022.08.10-09.14.29:892][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/FWRCDZ7B6H3X6XCC8V0DUX0B2C4DDB45EF2122137E09BA07B5F4A6.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/G2/FWRCDZ7B6H3X6XCC8V0DUX.uasset'
+[2022.08.10-09.14.29:901][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/B9/R46KJPM7W5Y3Y9NCKX88G6
+[2022.08.10-09.14.29:901][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/R46KJPM7W5Y3Y9NCKX88G648E395A14C9585F5E3D0B6BABB5E7659.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/B9/R46KJPM7W5Y3Y9NCKX88G6.uasset'
+[2022.08.10-09.14.29:909][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/0N/YX4P8R58QIN6RTVDI9NX4W
+[2022.08.10-09.14.29:910][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/YX4P8R58QIN6RTVDI9NX4W399C378A4287DC1468620597894CA8FF.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/0N/YX4P8R58QIN6RTVDI9NX4W.uasset'
+[2022.08.10-09.14.29:918][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/OS/81IP4QL8209EA2G6IWRWK1
+[2022.08.10-09.14.29:918][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/81IP4QL8209EA2G6IWRWK17FF7CB754D54407924FE4886558B2F40.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/OS/81IP4QL8209EA2G6IWRWK1.uasset'
+[2022.08.10-09.14.29:927][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/Z2/GI87C7LJZ1H7KWF913YFP8
+[2022.08.10-09.14.29:927][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/GI87C7LJZ1H7KWF913YFP89C49AF334975BF0C848C2F9D725BC000.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/Z2/GI87C7LJZ1H7KWF913YFP8.uasset'
+[2022.08.10-09.14.29:935][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/LP/QULN706CSW6YWRI5V93L8Z
+[2022.08.10-09.14.29:935][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/QULN706CSW6YWRI5V93L8Z96C64D6B44DB1D52EDCB61A529E5FBDF.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/LP/QULN706CSW6YWRI5V93L8Z.uasset'
+[2022.08.10-09.14.29:945][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/XH/LJYNQYJMVV37ABQXGKY6VF
+[2022.08.10-09.14.29:945][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/LJYNQYJMVV37ABQXGKY6VF5C47B71B42B96E44149807AFE1ACE7C7.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/XH/LJYNQYJMVV37ABQXGKY6VF.uasset'
+[2022.08.10-09.14.29:953][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/YJ/DOMOEUBXG5Q6VX5Q4LG383
+[2022.08.10-09.14.29:954][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/DOMOEUBXG5Q6VX5Q4LG3833CAEE4234EFB767D35D0218297E007DF.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/YJ/DOMOEUBXG5Q6VX5Q4LG383.uasset'
+[2022.08.10-09.14.29:962][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/T7/ATV5ATXHD0RPIM0KZ6H2TP
+[2022.08.10-09.14.29:962][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/ATV5ATXHD0RPIM0KZ6H2TPE98F80FB48C1A5640C5DF5B3842617D6.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/T7/ATV5ATXHD0RPIM0KZ6H2TP.uasset'
+[2022.08.10-09.14.29:971][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/8R/VKT56DXDY89IKAY0NBDU7A
+[2022.08.10-09.14.29:971][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/VKT56DXDY89IKAY0NBDU7A91ABC50E4794F915EC0085A3283D0F9D.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/8R/VKT56DXDY89IKAY0NBDU7A.uasset'
+[2022.08.10-09.14.29:979][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PW/H3N4WEDD525XW5YGOQ7OHL
+[2022.08.10-09.14.29:980][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/H3N4WEDD525XW5YGOQ7OHLCD67705343769B607E4D8DB33427669F.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PW/H3N4WEDD525XW5YGOQ7OHL.uasset'
+[2022.08.10-09.14.30:152][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/T0/9WZI494POTS3M5ZO2JM95N
+[2022.08.10-09.14.30:152][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/9WZI494POTS3M5ZO2JM95N043CD1514DF6E438609CEEBF255CDA3A.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/T0/9WZI494POTS3M5ZO2JM95N.uasset'
+[2022.08.10-09.14.30:482][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/CP/ZLFQ0THMG1CRMK89E82SSC
+[2022.08.10-09.14.30:482][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/ZLFQ0THMG1CRMK89E82SSC7B73765C409A60B4197562BCC4C02972.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/CP/ZLFQ0THMG1CRMK89E82SSC.uasset'
+[2022.08.10-09.14.31:440][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/LX/SYRDOP2Z13YQZM5OU8CBH0
+[2022.08.10-09.14.31:440][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/SYRDOP2Z13YQZM5OU8CBH02A1E005741102AFD8FA33C809A0DF5C8.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/LX/SYRDOP2Z13YQZM5OU8CBH0.uasset'
+[2022.08.10-09.14.31:602][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/WU/LUPCCHL3NLVMPB4WLQRVFZ
+[2022.08.10-09.14.31:602][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/LUPCCHL3NLVMPB4WLQRVFZ06BC4715472F89BA8CAF9BA1F0927360.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/WU/LUPCCHL3NLVMPB4WLQRVFZ.uasset'
+[2022.08.10-09.14.31:765][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/K4/M8KLKO5JGS9A34QTVMI02H
+[2022.08.10-09.14.31:765][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/M8KLKO5JGS9A34QTVMI02H15AE31664A7A2FB431E776B7918A6E22.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/K4/M8KLKO5JGS9A34QTVMI02H.uasset'
+[2022.08.10-09.14.31:931][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PS/ZPGRARBXWT69X0UEW38HXB
+[2022.08.10-09.14.31:931][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/ZPGRARBXWT69X0UEW38HXB8F5BFB194242AF11FDB2D28AEF4432FD.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PS/ZPGRARBXWT69X0UEW38HXB.uasset'
+[2022.08.10-09.14.32:737][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/BX/AE0FVDLHKU9R3NX7B60EUX
+[2022.08.10-09.14.32:737][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/AE0FVDLHKU9R3NX7B60EUX64E36781488A9B614592029FA414BEBC.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/BX/AE0FVDLHKU9R3NX7B60EUX.uasset'
+[2022.08.10-09.14.33:093][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/GJ/5SDTT8V7F3ZW596C2UQYDV
+[2022.08.10-09.14.33:093][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/5SDTT8V7F3ZW596C2UQYDV3F8FC5674EB14483282EA6A8C7D4DA55.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/GJ/5SDTT8V7F3ZW596C2UQYDV.uasset'
+[2022.08.10-09.14.33:276][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7W/QV6E8QP6Q7A6DH606BHWUV
+[2022.08.10-09.14.33:276][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/QV6E8QP6Q7A6DH606BHWUV1BDC067C43C81AFBCF39B48382583394.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7W/QV6E8QP6Q7A6DH606BHWUV.uasset'
+[2022.08.10-09.14.33:749][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/GD/GVD81FUGQYLCLR04BN8S6J
+[2022.08.10-09.14.33:749][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/GVD81FUGQYLCLR04BN8S6J86846E574315F34C31E33695E3521147.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/GD/GVD81FUGQYLCLR04BN8S6J.uasset'
+[2022.08.10-09.14.33:912][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/ZC/BR25SPP3LZOSNB8RP2X7EO
+[2022.08.10-09.14.33:912][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/BR25SPP3LZOSNB8RP2X7EO439A4AAC42E3A0247E6943866873D8BC.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/ZC/BR25SPP3LZOSNB8RP2X7EO.uasset'
+[2022.08.10-09.14.34:229][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PS/9IVVJ565HPQ9ZBYY5ONAAK
+[2022.08.10-09.14.34:229][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/9IVVJ565HPQ9ZBYY5ONAAK4A40C4794C0E8FD91C344EAFB03044B3.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PS/9IVVJ565HPQ9ZBYY5ONAAK.uasset'
+[2022.08.10-09.14.35:217][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/LKV61A4PZXTYZZ6L3L01NO
+[2022.08.10-09.14.35:217][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/LKV61A4PZXTYZZ6L3L01NO0A55C49E40B21BD8F0B63AA4A0A658F1.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/LKV61A4PZXTYZZ6L3L01NO.uasset'
+[2022.08.10-09.14.35:382][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/CW/5SH9XS3NC8G79JEO9E689F
+[2022.08.10-09.14.35:382][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/5SH9XS3NC8G79JEO9E689F661C4C7546290F26FB18ABAD4BBE8DA1.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/CW/5SH9XS3NC8G79JEO9E689F.uasset'
+[2022.08.10-09.14.35:706][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/76/81RRPO1E7WAGCW1AF0H6HI
+[2022.08.10-09.14.35:706][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/81RRPO1E7WAGCW1AF0H6HIAE450F134C1B07A05541A6B5EFC90E7E.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/76/81RRPO1E7WAGCW1AF0H6HI.uasset'
+[2022.08.10-09.14.35:878][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/J3/8Z71UR5N4CHGUHPK677L4B
+[2022.08.10-09.14.35:878][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/8Z71UR5N4CHGUHPK677L4BA3104B754DE688F31C54538BB8FC27BC.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/J3/8Z71UR5N4CHGUHPK677L4B.uasset'
+[2022.08.10-09.14.36:204][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/CF/7NPTWJZ4L3VZYAQM2Q9JOW
+[2022.08.10-09.14.36:204][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/7NPTWJZ4L3VZYAQM2Q9JOW9FA6CD7040269E38E7EFE3965564D835.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/CF/7NPTWJZ4L3VZYAQM2Q9JOW.uasset'
+[2022.08.10-09.14.36:367][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/AR/4TZNYY1FUQFWS0FM5M340Y
+[2022.08.10-09.14.36:367][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/4TZNYY1FUQFWS0FM5M340YA496069B4A707C91458DAF8B4DD23346.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/AR/4TZNYY1FUQFWS0FM5M340Y.uasset'
+[2022.08.10-09.14.36:685][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/JE/QZR0TLFDWHLDPD7ASOMPZZ
+[2022.08.10-09.14.36:685][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/QZR0TLFDWHLDPD7ASOMPZZD6D2C4E443EEB5966A832B83FB28ADDC.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/JE/QZR0TLFDWHLDPD7ASOMPZZ.uasset'
+[2022.08.10-09.14.36:847][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/XF/KM9VC5MU39DES4MUPJLLSY
+[2022.08.10-09.14.36:848][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/KM9VC5MU39DES4MUPJLLSY1A15D72D4A03440F6CA87A8B5A0DA5E1.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/XF/KM9VC5MU39DES4MUPJLLSY.uasset'
+[2022.08.10-09.14.37:984][249]LogSavePackage: Moving output files for package: /Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/Z6/YAL57GO2BLNZ0DWAORPI7O
+[2022.08.10-09.14.37:984][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/YAL57GO2BLNZ0DWAORPI7OD625D5454AD2EAA8614BCEACB90B0659.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/Z6/YAL57GO2BLNZ0DWAORPI7O.uasset'
+[2022.08.10-09.14.37:993][249]Message dialog closed, result: Ok, title: Unable to Check Out From Source Control!, text: The following assets could not be successfully checked out from source control:
+/Game/ThirdPerson/Maps/SampleMap_HLOD0_Instancing
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/3P/Q6E2BX1K0SD7VZ3R7EFYBS
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/2/LU/BEM4RPTQXQO15SJFITJ8RM
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/7/7U/XTCDIIDIHJ79SAYSVLC38U
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/4/DU/K2YGFB40J7N6FN8VE1GABQ
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/D/QH/WF8RHP9NFXYQLK1YIUI314
+/Game/__ExternalObjects__/ThirdPerson/Maps/SampleMap/8/IK/GA137YMQP164L3KBILULH9
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/2P/UM7ZG5E6OSV6GFIXHO3LLG
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/SH/1MF276KCFA0U09U3PSI7DC
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/1P/02QCZULRWKKW9YKJW4CV0C
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ID/4L761SOTZHUT4ZXDT1UTKB
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/27/R6HYO8CCETNNCC7B2N8JMB
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/I2/1UMLZNKTRKOC0XZNWGWPSV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/N22KZ95F0CXVOHHYX0Q3A8
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/05/CBAR7H23M7RFR61859LR04
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/ZU/7KE621V4I15PLMHAXHZCLZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/ZO/1XNL8U7M7LE5TKERG1NNWU
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/E6/AHAG9FN7Z1TVFCN8L3XQ92
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/9G/LH3SVH85T0R0JILH9L6HYQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/ZN/KS5M9WHE1GF9T77N32TX4N
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/P8/URX8BSFCA6QWKGYHVB5V18
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/CA/W1WV1GZRAJN3DAW77CZVOJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/SC/9JUAG2KK2Q0QX3WPK993B9
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/KY/FM4D9AJBFX39PXCB921LSQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/4V/FAJDVR6N2EF5F6RLR8L4HR
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/8M/DC7RPR64IUR54ZN852QBNZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/U1/0DA30UN9OV02MJWWSZABU5
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/N4/N0CQB2M49C1463HWKP933N
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1W/QI19JEXFX8AOTCN6MD7ZJJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/8V/M6RLT01AZ74QNI4P9D26DQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/618BNB7YU2GY3KGMSBTT13
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/VB/DDPW1I278ZH2310AUSDYTS
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L5/UMLCPACZVI0BJGZ92FJ183
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/EF/OYODKFMK98XYJCXIIWQUZ4
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/AY/KQK85Y0XH9G494QP84QYKE
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/WK/W2N1DE1255S6NUQD1DTQMV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/4F/RJ6JLT47YEJPXMWR9A7CTY
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/L7/WF9269RNI12UYDVVUKCKYC
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/PL/GJ7QX3DT1G47NLF71WXUNJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/5W/QXC6YZSBY953L9L8NZFVNK
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/TV/HOGLAQVOBBXB7BS79BFK2P
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/9U/UTUJMQVDMOXRGCA386U1LT
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PO/MVQ089DUROOOD15ZQFZYLG
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/Q4/AV0A335Q98DHM8KPXFA8SY
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/SL/GGSL58MNTPFYNL0ZK4V2CO
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/O3/9RSQ9HCDNIB8E1A98UT6S5
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/UK/Q1ND0EZ1OBSQD3BN3THUUX
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/RM/68R44YFDW0SR1U1N9TZ6DR
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/SF/TQ78QUP7UBGKWZ1D7O9VAN
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/G4/F597Y1G7LUGVF9ES2V6WFL
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/2/F0/1GR7G3ZFXCV4SMA7PIYEET
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/30/QR76O6H8F1CR32Q1EQKPGV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/C1/GF4CTGS9HYI4AMPEXBKQQG
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/LD/BOHRLNNP3YVXKGKX0X2A7A
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7P/OGMTJPR0D5N3BIPOFZ94H3
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/09/1VMO2OR8OWRU5ULGE37KO7
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/E5/SAMOBJQT5MOFPM0MNXRPMK
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/F/4D/AKXGKSZUSK6GL3BI3JVJPP
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1V/K40QHYWQ31VLUZU177CBTV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/II/QM375MOKLIJ2XEFIRNVMA4
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/0A/WYRKBX6ERFDQQP2LJ750P1
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/9/Y1/GEZM6E2WXF7JW8XBEEYA76
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/4Z/BQXNEBBL7V7NTGP49MZBBI
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/32/LHY1F1LND3RITZ382K7NA1
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/7A/84V9EBX9T8KE9GU6OQGKKJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/MW/4YEZ8LGAFI4IW4B7VLUJIQ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/VL/PELMJSUR0TC75JWA8LS8RU
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/1O/TZMO43XICVB155CNB3C4FJ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/G2/FWRCDZ7B6H3X6XCC8V0DUX
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/B9/R46KJPM7W5Y3Y9NCKX88G6
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/0N/YX4P8R58QIN6RTVDI9NX4W
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/OS/81IP4QL8209EA2G6IWRWK1
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/Z2/GI87C7LJZ1H7KWF913YFP8
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/LP/QULN706CSW6YWRI5V93L8Z
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/XH/LJYNQYJMVV37ABQXGKY6VF
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/YJ/DOMOEUBXG5Q6VX5Q4LG383
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/T7/ATV5ATXHD0RPIM0KZ6H2TP
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/8R/VKT56DXDY89IKAY0NBDU7A
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PW/H3N4WEDD525XW5YGOQ7OHL
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/T0/9WZI494POTS3M5ZO2JM95N
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/CP/ZLFQ0THMG1CRMK89E82SSC
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/LX/SYRDOP2Z13YQZM5OU8CBH0
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/WU/LUPCCHL3NLVMPB4WLQRVFZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/K4/M8KLKO5JGS9A34QTVMI02H
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/0/PS/ZPGRARBXWT69X0UEW38HXB
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/E/BX/AE0FVDLHKU9R3NX7B60EUX
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/5/GJ/5SDTT8V7F3ZW596C2UQYDV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/3/7W/QV6E8QP6Q7A6DH606BHWUV
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/GD/GVD81FUGQYLCLR04BN8S6J
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/B/ZC/BR25SPP3LZOSNB8RP2X7EO
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/D/PS/9IVVJ565HPQ9ZBYY5ONAAK
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/5H/LKV61A4PZXTYZZ6L3L01NO
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/1/CW/5SH9XS3NC8G79JEO9E689F
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/76/81RRPO1E7WAGCW1AF0H6HI
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/4/J3/8Z71UR5N4CHGUHPK677L4B
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/6/CF/7NPTWJZ4L3VZYAQM2Q9JOW
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/C/AR/4TZNYY1FUQFWS0FM5M340Y
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/A/JE/QZR0TLFDWHLDPD7ASOMPZZ
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/7/XF/KM9VC5MU39DES4MUPJLLSY
+/Game/__ExternalActors__/ThirdPerson/Maps/SampleMap/8/Z6/YAL57GO2BLNZ0DWAORPI7O
+[2022.08.10-09.14.37:993][249]Cmd: OBJ SAVEPACKAGE PACKAGE="/Game/ThirdPerson/Maps/SampleMap" FILE="../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/SampleMap.umap" SILENT=true AUTOSAVING=false KEEPDIRTY=false
+[2022.08.10-09.14.38:066][249]LogUObjectHash: Compacting FUObjectHashTables data took   2.29ms
+[2022.08.10-09.14.38:069][249]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Maps/SampleMap
+[2022.08.10-09.14.38:069][249]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/SampleMapB027FFA64FE242A7FACE6BA9F23F3C97.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/SampleMap.umap'
+[2022.08.10-09.14.38:126][249]LogFileHelpers: Saving map 'SampleMap' took 9.055
+[2022.08.10-09.14.38:126][249]Cmd: MAP LOAD FILE="../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/SampleMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2022.08.10-09.14.38:126][249]LightingResults: New page: Lighting Build
+[2022.08.10-09.14.38:126][249]LoadErrors: New page: Loading map: SampleMap.umap
+[2022.08.10-09.14.38:150][249]LogWorld: UWorld::CleanupWorld for SampleMap, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.14.38:150][249]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.14.38:154][249]MapCheck: New page: Map Check
+[2022.08.10-09.14.38:154][249]LightingResults: New page: Lighting Build
+[2022.08.10-09.14.38:184][249]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.08.10-09.14.38:223][249]LogUObjectHash: Compacting FUObjectHashTables data took   1.87ms
+[2022.08.10-09.14.38:234][249]LogAudio: Display: Audio Device (ID: 1) registered with world 'SampleMap'.
+[2022.08.10-09.14.38:234][249]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.14.38:235][249]LogAIModule: Creating AISystem for world SampleMap
+[2022.08.10-09.14.38:235][249]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.08.10-09.14.38:235][249]LogWorldPartition: UWorldPartition::Initialize(IsEditor=1, IsGame=0, IsCooking=0)
+[2022.08.10-09.14.38:445][249]LogWorldPartition: Display: WorldPartition initialize took 209 ms
+[2022.08.10-09.14.38:623][249]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2022.08.10-09.14.38:657][249]LogUObjectHash: Compacting FUObjectHashTables data took   1.51ms
+[2022.08.10-09.14.38:661][249]Cmd: MAP CHECKDEP NOCLEARLOG
+[2022.08.10-09.14.38:662][249]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.264ms to complete.
+[2022.08.10-09.14.38:662][249]LogFileHelpers: Loading map 'SampleMap' took 0.535
+[2022.08.10-09.14.38:687][249]AssetCheck: New page: Asset Save: multiple assets
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_2_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_1_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_0_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_0_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_3_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_3_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_7_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_4_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_2_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_3_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_7_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_7_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_3_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_3_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_3_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_2_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_1_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_1_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_1_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_1_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_0_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_0_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_0_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_6_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_6_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_4_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_4_5_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_5_0
+[2022.08.10-09.14.38:687][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_3_4_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_2_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_2_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_2_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_1_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_1_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_1_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_0_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_0_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_0_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_7_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_7_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_7_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_5_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_6_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_6_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_6_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_5_5_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_5_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_4_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_4_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_2_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_7_3_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_2_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_6_3_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_7_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_7_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_6_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_6_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_6_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_5_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_2_4_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_4_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_5_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_1_4_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating LandscapeStreamingProxy /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.LandscapeStreamingProxy_D7T4VF4LBP34PHV9XOEVM5TIG_1_0_5_0
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating VolumetricCloud /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.VolumetricCloud_UAID_A85E45CFE40401D200_1470381760
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating SkyLight /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.SkyLight_UAID_A85E45CFE40401D200_1470380759
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating Landscape /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.Landscape_UAID_A85E45CFE404FBD100_1221515703
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating DirectionalLight /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.DirectionalLight_UAID_A85E45CFE40401D200_1470382761
+[2022.08.10-09.14.38:688][249]LogContentValidation: Display: Validating WorldPartitionMiniMap /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.WorldPartitionMiniMap_UAID_3497F631D5890DD300_1296925927
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating SkyAtmosphere /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.SkyAtmosphere_UAID_A85E45CFE40401D200_1470382762
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating ExponentialHeightFog /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.ExponentialHeightFog_UAID_A85E45CFE40401D200_1470382763
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating StaticMeshActor /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.StaticMeshActor_UAID_A4AE111137DC54FB00_1240666663
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating ActorFolder /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.ActorFolder_UID_F0B34F1C-498F52BA-314B94B2-A472577C
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating ActorFolder /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.ActorFolder_UID_5D23A82E-411A5CFD-F61C6285-B0703174
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating ActorFolder /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.ActorFolder_UID_26DBD2B7-434D115B-68D5CB88-82E789AF
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating ActorFolder /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.ActorFolder_UID_069B7288-4681824D-D41E3894-8B3951F3
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating ActorFolder /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.ActorFolder_UID_B7E9BD5B-45A65265-4791988D-EF54CCEB
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating WorldDataLayers /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.WorldDataLayers
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating World /Game/ThirdPerson/Maps/SampleMap.SampleMap
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating HLODLayer /Game/ThirdPerson/Maps/SampleMap_HLOD0_Instancing.SampleMap_HLOD0_Instancing
+[2022.08.10-09.14.38:689][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000db5f9a5d
+[2022.08.10-09.14.38:689][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000db5f9a5d'
+[2022.08.10-09.14.38:690][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_0000000010d5f002
+[2022.08.10-09.14.38:690][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_0000000010d5f002'
+[2022.08.10-09.14.38:690][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d190b65e
+[2022.08.10-09.14.38:690][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d190b65e'
+[2022.08.10-09.14.38:690][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_0000000053252892
+[2022.08.10-09.14.38:690][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_0000000053252892'
+[2022.08.10-09.14.38:690][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000b0cde8dc
+[2022.08.10-09.14.38:690][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000b0cde8dc'
+[2022.08.10-09.14.38:690][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000837d3c27
+[2022.08.10-09.14.38:690][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000837d3c27'
+[2022.08.10-09.14.38:690][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000596e8a41
+[2022.08.10-09.14.38:690][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000596e8a41'
+[2022.08.10-09.14.38:690][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d560b8ee
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d560b8ee'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d3a4e6c0
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d3a4e6c0'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d580238e
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000d580238e'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000001344ec12
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000001344ec12'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000002e9978b4
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000002e9978b4'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000006f064fc3
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000006f064fc3'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000ffcbbfa1
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000ffcbbfa1'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000c6baa641
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000c6baa641'
+[2022.08.10-09.14.38:691][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000adcdef81
+[2022.08.10-09.14.38:691][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000adcdef81'
+[2022.08.10-09.14.38:692][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000dea15624
+[2022.08.10-09.14.38:692][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000dea15624'
+[2022.08.10-09.14.38:692][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000dfad0108
+[2022.08.10-09.14.38:692][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000dfad0108'
+[2022.08.10-09.14.38:692][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_0000000083c582a7
+[2022.08.10-09.14.38:692][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_0000000083c582a7'
+[2022.08.10-09.14.38:692][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000923d253d
+[2022.08.10-09.14.38:692][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_00000000923d253d'
+[2022.08.10-09.14.38:692][249]LogContentValidation: Display: Validating WorldPartitionHLOD /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000004e144344
+[2022.08.10-09.14.38:692][249]LogUObjectGlobals: Warning: Failed to find object 'Object /Game/ThirdPerson/Maps/SampleMap.SampleMap:PersistentLevel.HLOD0_Instancing_000000004e144344'
+[2022.08.10-09.14.44:317][477]LogUObjectHash: Compacting FUObjectHashTables data took   1.86ms
+[2022.08.10-09.14.44:395][477]LogAssetEditorSubsystem: Opening Asset editor for World /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap
+[2022.08.10-09.14.44:395][477]Cmd: MAP LOAD FILE="../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/ThirdPersonMap.umap" TEMPLATE=0 SHOWPROGRESS=1 FEATURELEVEL=3
+[2022.08.10-09.14.44:395][477]LightingResults: New page: Lighting Build
+[2022.08.10-09.14.44:396][477]LoadErrors: New page: Loading map: ThirdPersonMap.umap
+[2022.08.10-09.14.44:418][477]LogWorld: UWorld::CleanupWorld for SampleMap, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.14.44:418][477]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.14.44:421][477]MapCheck: New page: Map Check
+[2022.08.10-09.14.44:421][477]LightingResults: New page: Lighting Build
+[2022.08.10-09.14.44:452][477]LogAudio: Display: Audio Device unregistered from world 'None'.
+[2022.08.10-09.14.44:468][477]LogUObjectHash: Compacting FUObjectHashTables data took   1.79ms
+[2022.08.10-09.14.44:475][477]LogWorld: UWorld::CleanupWorld for ThirdPersonMap, bSessionEnded=true, bCleanupResources=true
+[2022.08.10-09.14.44:475][477]LogSlate: InvalidateAllWidgets triggered.  All widgets were invalidated
+[2022.08.10-09.14.44:504][477]LogUObjectHash: Compacting FUObjectHashTables data took   1.13ms
+[2022.08.10-09.14.44:532][477]LogUObjectHash: Compacting FUObjectHashTables data took   1.08ms
+[2022.08.10-09.14.44:553][477]LogAudio: Display: Audio Device (ID: 1) registered with world 'ThirdPersonMap'.
+[2022.08.10-09.14.44:553][477]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.14.44:553][477]LogAIModule: Creating AISystem for world ThirdPersonMap
+[2022.08.10-09.14.44:553][477]LogWorldPartition: Display: WorldPartition initialize started...
+[2022.08.10-09.14.44:553][477]LogWorldPartition: UWorldPartition::Initialize(IsEditor=1, IsGame=0, IsCooking=0)
+[2022.08.10-09.14.44:577][477]LogWorldPartition: Display: WorldPartition initialize took 23 ms
+[2022.08.10-09.14.44:590][477]LogEditorServer: Finished looking for orphan Actors (0.000 secs)
+[2022.08.10-09.14.44:621][477]LogUObjectHash: Compacting FUObjectHashTables data took   1.44ms
+[2022.08.10-09.14.44:628][477]Cmd: MAP CHECKDEP NOCLEARLOG
+[2022.08.10-09.14.44:628][477]MapCheck: Map check complete: 0 Error(s), 0 Warning(s), took 0.195ms to complete.
+[2022.08.10-09.14.44:628][477]LogFileHelpers: Loading map 'ThirdPersonMap' took 0.233
+[2022.08.10-09.14.49:842][985]LogAssetEditorSubsystem: Opening Asset editor for LevelScriptBlueprint /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap:PersistentLevel.ThirdPersonMap
+[2022.08.10-09.14.49:843][985]LogChaos: FPhysicsSolverBase::AsyncDt:-1.000000
+[2022.08.10-09.14.59:092][ 23]LogFileHelpers: No new changes to save!
+[2022.08.10-09.14.59:135][ 23]LogUObjectHash: Compacting FUObjectHashTables data took   1.67ms
+[2022.08.10-09.14.59:139][ 23]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Maps/ThirdPersonMap
+[2022.08.10-09.14.59:140][ 23]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/ThirdPersonMapE1814506442E2274457233A2E3AB63D5.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/ThirdPersonMap.umap'
+[2022.08.10-09.14.59:146][ 23]LogFileHelpers: Saving map 'ThirdPersonMap' took 0.054
+[2022.08.10-09.14.59:156][ 23]AssetCheck: New page: Asset Save: ThirdPersonMap
+[2022.08.10-09.14.59:156][ 23]LogContentValidation: Display: Validating World /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap
+[2022.08.10-09.15.00:211][148]BlueprintLog: New page: Compile ThirdPersonMap
+[2022.08.10-09.15.00:272][148]LogUObjectHash: Compacting FUObjectHashTables data took   1.75ms
+[2022.08.10-09.15.00:867][205]LogFileHelpers: No new changes to save!
+[2022.08.10-09.15.00:907][205]LogUObjectHash: Compacting FUObjectHashTables data took   0.51ms
+[2022.08.10-09.15.00:911][205]LogSavePackage: Moving output files for package: /Game/ThirdPerson/Maps/ThirdPersonMap
+[2022.08.10-09.15.00:912][205]LogSavePackage: Moving '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Saved/ThirdPersonMap2F2E50074B479C7B5337A59C8D4057FE.tmp' to '../../../../../UE5-Shooter/MPPlugin/MenuSystem/Content/ThirdPerson/Maps/ThirdPersonMap.umap'
+[2022.08.10-09.15.00:917][205]LogFileHelpers: Saving map 'ThirdPersonMap' took 0.051
+[2022.08.10-09.15.00:929][205]AssetCheck: New page: Asset Save: ThirdPersonMap
+[2022.08.10-09.15.00:929][205]LogContentValidation: Display: Validating World /Game/ThirdPerson/Maps/ThirdPersonMap.ThirdPersonMap
+[2022.08.10-09.15.05:607][646]LogDebuggerCommands: Repeating last play command: Selected Viewport
+[2022.08.10-09.15.05:615][646]LogWorldPartition: Display: GenerateStreaming started...
+[2022.08.10-09.15.05:615][646]LogWorldPartition: Display: GetPartitionedActors started...
+[2022.08.10-09.15.05:615][646]LogWorldPartition: Warning: Invalid world bounds, grid partitioning will use a runtime grid with 1 cell.
+[2022.08.10-09.15.05:615][646]LogWorldPartition: Display: ValidateSingleActorReferer started...
+[2022.08.10-09.15.05:615][646]LogWorldPartition: Display: ValidateSingleActorReferer took 0 us
+[2022.08.10-09.15.05:615][646]LogWorldPartition: Display: GetPartitionedActors took 50 us
+[2022.08.10-09.15.05:616][646]LogWorldPartition: Display: GenerateStreaming took 250 us
+[2022.08.10-09.15.05:623][646]LogPlayLevel: PlayLevel: No blueprints needed recompiling
+[2022.08.10-09.15.05:623][646]PIE: New page: PIE session: ThirdPersonMap (Aug 10, 2022, 1:15:05 PM)
+[2022.08.10-09.15.05:627][646]LogOutputDevice: Warning: 
+
+Script Stack (0 frames):
+
+[2022.08.10-09.15.06:676][646]LogStats: FPlatformStackWalk::StackWalkAndDump -  1.049 s
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: === Handled ensure: ===
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: 
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: Ensure condition failed: SessionInterface.IsUnique() [File:D:\build\++UE5\Sync\Engine\Plugins\Online\OnlineSubsystemNull\Source\Private\OnlineSubsystemNull.cpp] [Line: 268]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: 
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: Stack: 
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff9c7af5e62 UnrealEditor-OnlineSubsystemNull.dll!FOnlineSubsystemNull::Shutdown() [D:\build\++UE5\Sync\Engine\Plugins\Online\OnlineSubsystemNull\Source\Private\OnlineSubsystemNull.cpp:268]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff9c86dfcf4 UnrealEditor-OnlineSubsystem.dll!FOnlineSubsystemModule::DestroyOnlineSubsystem() [D:\build\++UE5\Sync\Engine\Plugins\Online\OnlineSubsystem\Source\Private\OnlineSubsystemModule.cpp:413]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff9c870477a UnrealEditor-OnlineSubsystem.dll!FOnlineSubsystemModule::ReloadDefaultSubsystem() [D:\build\++UE5\Sync\Engine\Plugins\Online\OnlineSubsystem\Source\Private\OnlineSubsystemModule.cpp:207]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff9c87048a4 UnrealEditor-OnlineSubsystem.dll!IOnlineSubsystem::ReloadDefaultSubsystem() [D:\build\++UE5\Sync\Engine\Plugins\Online\OnlineSubsystem\Source\Public\OnlineSubsystem.h:227]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ffa462dd16c UnrealEditor-UnrealEd.dll!UEditorEngine::StartPlayInEditorSession() [D:\build\++UE5\Sync\Engine\Source\Editor\UnrealEd\Private\PlayLevel.cpp:2696]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ffa462e0cb7 UnrealEditor-UnrealEd.dll!UEditorEngine::StartQueuedPlaySessionRequestImpl() [D:\build\++UE5\Sync\Engine\Source\Editor\UnrealEd\Private\PlayLevel.cpp:1148]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ffa462e05a1 UnrealEditor-UnrealEd.dll!UEditorEngine::StartQueuedPlaySessionRequest() [D:\build\++UE5\Sync\Engine\Source\Editor\UnrealEd\Private\PlayLevel.cpp:1051]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ffa45c7dcf3 UnrealEditor-UnrealEd.dll!UEditorEngine::Tick() [D:\build\++UE5\Sync\Engine\Source\Editor\UnrealEd\Private\EditorEngine.cpp:1665]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ffa4660aac6 UnrealEditor-UnrealEd.dll!UUnrealEdEngine::Tick() [D:\build\++UE5\Sync\Engine\Source\Editor\UnrealEd\Private\UnrealEdEngine.cpp:474]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff6cd4682f6 UnrealEditor.exe!FEngineLoop::Tick() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\LaunchEngineLoop.cpp:5215]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff6cd480d9c UnrealEditor.exe!GuardedMain() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Launch.cpp:183]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff6cd480e8a UnrealEditor.exe!GuardedMainWrapper() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Windows\LaunchWindows.cpp:147]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff6cd483c4d UnrealEditor.exe!LaunchWindowsStartup() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Windows\LaunchWindows.cpp:283]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff6cd495564 UnrealEditor.exe!WinMain() [D:\build\++UE5\Sync\Engine\Source\Runtime\Launch\Private\Windows\LaunchWindows.cpp:330]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ff6cd498736 UnrealEditor.exe!__scrt_common_main_seh() [d:\a01\_work\6\s\src\vctools\crt\vcstartup\src\startup\exe_common.inl:288]
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ffa89677034 KERNEL32.DLL!UnknownFunction []
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: [Callstack] 0x00007ffa8aec2651 ntdll.dll!UnknownFunction []
+[2022.08.10-09.15.06:676][646]LogOutputDevice: Error: 

@@ -6,10 +6,11 @@
 #include "OnlineSessionSettings.h"
 #include "OnlineSubsystem.h"
 
-void UMenu::MenuSetUp(int32 numPubConnections, FString TypeOfMatch)
+void UMenu::MenuSetUp(int32 numPubConnections, FString TypeOfMatch, FString LobbyPath)
 {
 	NumPublicConnections = (numPubConnections);
 	MatchType = (TypeOfMatch);
+	PathToLobby = FString::Printf(TEXT("%s?listen"), *LobbyPath);
 	AddToViewport();
 	SetVisibility(ESlateVisibility::Visible);
 	bIsFocusable = true;
@@ -65,10 +66,11 @@ void UMenu::OnCreateSession(bool bWasSuccessful)
 	if (bWasSuccessful) {
 		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Cyan, FString::Printf(TEXT("Session Created successfully")));
 		UWorld* World = GetWorld();
-		if (World) World->ServerTravel("/Game/ThirdPerson/Maps/Lobby?listen");
+		if (World) World->ServerTravel(PathToLobby);
 	}
 	else {
 		if (GEngine) GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Red, FString::Printf(TEXT("Session could not be created successfully")));
+		HostButton->SetIsEnabled(true);
 	}
 }
 
@@ -83,6 +85,8 @@ void UMenu::OnFindSession(const TArray<FOnlineSessionSearchResult>& SessionResul
 			return;
 		}
 	}
+	if (!bWasSuccesful || SessionResults.Num() == 0)
+		JoinButton->SetIsEnabled(true);
 }
 
 void UMenu::OnJoinSession(EOnJoinSessionCompleteResult::Type Result)
@@ -100,6 +104,8 @@ void UMenu::OnJoinSession(EOnJoinSessionCompleteResult::Type Result)
 			}
 		}
 	}
+	if (Result != EOnJoinSessionCompleteResult::Success)
+		JoinButton->SetIsEnabled(true);
 }
 
 void UMenu::OnDestroySession(bool bWasSuccessful)
@@ -112,6 +118,7 @@ void UMenu::OnStartsession(bool bWasSuccessful)
 
 void UMenu::HostButtonClick()
 {
+	HostButton->SetIsEnabled(false);
 	if (MultiplayerSessionsSubsystem) {
 		MultiplayerSessionsSubsystem->CreateSession(NumPublicConnections, MatchType);
 	}
@@ -119,6 +126,7 @@ void UMenu::HostButtonClick()
 
 void UMenu::JoinButtonClick()
 {
+	JoinButton->SetIsEnabled(false);
 	if (MultiplayerSessionsSubsystem) {
 		MultiplayerSessionsSubsystem->FindSessions(10000);
 	}
