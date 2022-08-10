@@ -15,6 +15,8 @@ class MENUSYSTEM_API ALobbyGameMode : public AGameModeBase
 	GENERATED_BODY()
 
 public:
+	//MEthod called when a new player has joined the session
 	virtual void PostLogin(APlayerController* NewPlayer) override;
+	//MEthod called when a new player exits the session
 	virtual void Logout(AController* Exiting) override;
 };

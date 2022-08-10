@@ -11,7 +11,9 @@ void ALobbyGameMode::PostLogin(APlayerController* NewPlayer)
 		int32 NumberOfPlayers = GameState.Get()->PlayerArray.Num();
 
 		if (GEngine) {
+			//Player count message
 			GEngine->AddOnScreenDebugMessage(1, 6.f, FColor::Yellow, FString::Printf(TEXT("Player count %d"), NumberOfPlayers));
+			//Player Name message
 			APlayerState* NewPlayerState = NewPlayer->GetPlayerState<APlayerState>();
 			FString PlayerName;
 			if (NewPlayerState) {
@@ -28,7 +30,9 @@ void ALobbyGameMode::Logout(AController* Exiting)
 	if (GameState) {
 		int32 NumberOfPlayers = GameState.Get()->PlayerArray.Num();
 		if (GEngine) {
+			//Player count message
 			GEngine->AddOnScreenDebugMessage(1, 6.f, FColor::Yellow, FString::Printf(TEXT("Player count %d"), NumberOfPlayers - 1));
+			//Player Name message
 			APlayerState* NewPlayerState = Exiting->GetPlayerState<APlayerState>();
 			FString PlayerName;
 			if (NewPlayerState) {

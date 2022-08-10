@@ -85,7 +85,9 @@ void EmptyLinkFunctionForGeneratedCodeMenu() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMenu_HostButtonClick_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Functions that are going to be called when each menu button is clicked\n" },
 		{ "ModuleRelativePath", "Public/Menu.h" },
+		{ "ToolTip", "Functions that are going to be called when each menu button is clicked" },
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMenu_HostButtonClick_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMenu, nullptr, "HostButtonClick", nullptr, nullptr, 0, nullptr, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMenu_HostButtonClick_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMenu_HostButtonClick_Statics::Function_MetaDataParams)) };
@@ -147,10 +149,12 @@ void EmptyLinkFunctionForGeneratedCodeMenu() {}
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UMenu_MenuSetUp_Statics::Function_MetaDataParams[] = {
+		{ "Comment", "//Function to prepare the menu with the configuration for the desireg game the player is goind to search/host\n" },
 		{ "CPP_Default_LobbyPath", "/Game/ThirdPerson/Maps/Lobby" },
 		{ "CPP_Default_numPubConnections", "4" },
 		{ "CPP_Default_TypeOfMatch", "FreeForAll" },
 		{ "ModuleRelativePath", "Public/Menu.h" },
+		{ "ToolTip", "Function to prepare the menu with the configuration for the desireg game the player is goind to search/host" },
 	};
 #endif
 	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UMenu_MenuSetUp_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UMenu, nullptr, "MenuSetUp", nullptr, nullptr, sizeof(Z_Construct_UFunction_UMenu_MenuSetUp_Statics::Menu_eventMenuSetUp_Parms), Z_Construct_UFunction_UMenu_MenuSetUp_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UMenu_MenuSetUp_Statics::PropPointers), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x04020401, 0, 0, METADATA_PARAMS(Z_Construct_UFunction_UMenu_MenuSetUp_Statics::Function_MetaDataParams, UE_ARRAY_COUNT(Z_Construct_UFunction_UMenu_MenuSetUp_Statics::Function_MetaDataParams)) };
@@ -305,16 +309,15 @@ void EmptyLinkFunctionForGeneratedCodeMenu() {}
 		(UObject* (*)())Z_Construct_UPackage__Script_MultiplayerSessions,
 	};
 	const FClassFunctionLinkInfo Z_Construct_UClass_UMenu_Statics::FuncInfo[] = {
-		{ &Z_Construct_UFunction_UMenu_HostButtonClick, "HostButtonClick" }, // 2246518282
+		{ &Z_Construct_UFunction_UMenu_HostButtonClick, "HostButtonClick" }, // 3437380101
 		{ &Z_Construct_UFunction_UMenu_JoinButtonClick, "JoinButtonClick" }, // 3114327141
-		{ &Z_Construct_UFunction_UMenu_MenuSetUp, "MenuSetUp" }, // 1516606757
+		{ &Z_Construct_UFunction_UMenu_MenuSetUp, "MenuSetUp" }, // 1768096119
 		{ &Z_Construct_UFunction_UMenu_OnCreateSession, "OnCreateSession" }, // 429675414
 		{ &Z_Construct_UFunction_UMenu_OnDestroySession, "OnDestroySession" }, // 323453316
 		{ &Z_Construct_UFunction_UMenu_OnStartsession, "OnStartsession" }, // 667957081
 	};
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMenu_Statics::Class_MetaDataParams[] = {
-		{ "Comment", "/**\n *\n */" },
 		{ "IncludePath", "Menu.h" },
 		{ "ModuleRelativePath", "Public/Menu.h" },
 	};
@@ -322,8 +325,10 @@ void EmptyLinkFunctionForGeneratedCodeMenu() {}
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UMenu_Statics::NewProp_HostButton_MetaData[] = {
 		{ "BindWidget", "" },
+		{ "Comment", "//References to the menu buttons work with them if needed\n//meta is used to specify that in the widget ther is an existing button with the exact same name that can be tracked an used for these variables\n" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Menu.h" },
+		{ "ToolTip", "References to the menu buttons work with them if needed\nmeta is used to specify that in the widget ther is an existing button with the exact same name that can be tracked an used for these variables" },
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UMenu_Statics::NewProp_HostButton = { "HostButton", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(UMenu, HostButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(Z_Construct_UClass_UMenu_Statics::NewProp_HostButton_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_UMenu_Statics::NewProp_HostButton_MetaData)) };
@@ -375,9 +380,9 @@ void EmptyLinkFunctionForGeneratedCodeMenu() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UMenu, UMenu::StaticClass, TEXT("UMenu"), &Z_Registration_Info_UClass_UMenu, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMenu), 3942468554U) },
+		{ Z_Construct_UClass_UMenu, UMenu::StaticClass, TEXT("UMenu"), &Z_Registration_Info_UClass_UMenu, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UMenu), 941226743U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_2075835268(TEXT("/Script/MultiplayerSessions"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_1576659732(TEXT("/Script/MultiplayerSessions"),
 		Z_CompiledInDeferFile_FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_MenuSystem_Plugins_MultiplayerSessions_Source_MultiplayerSessions_Public_Menu_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);
