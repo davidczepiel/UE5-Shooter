@@ -3,35 +3,34 @@
   Creating makefile for MenuSystemEditor (no existing makefile)
   Parsing headers for MenuSystemEditor
     Running UnrealHeaderTool "C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\MenuSystem.uproject" "C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\MenuSystemEditor\Development\MenuSystemEditor.uhtmanifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -abslog="C:\Users\David\AppData\Local\UnrealBuildTool\Log_UHT.txt" -installed
-  Reflection code generated for MenuSystemEditor in 4,2836776 seconds
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0001.dll
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0001.pdb
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0002.dll
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0002.pdb
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0003.dll
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Binaries\Win64\UnrealEditor-MenuSystem-0003.pdb
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0001.lib
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0002.lib
-  Deleted hot-reload file: C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem-0003.lib
+  Reflection code generated for MenuSystemEditor in 2,2072653 seconds
   Building MenuSystemEditor...
   Using Visual Studio 2019 14.29.30146 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133) and Windows 10.0.18362.0 SDK (C:\Program Files (x86)\Windows Kits\10).
   [Adaptive Build] Excluded from MenuSystem unity file: LobbyGameMode.cpp, MenuSystem.cpp, MenuSystemCharacter.cpp, MenuSystemGameMode.cpp
   Determining max actions to execute in parallel (4 physical cores, 8 logical cores)
     Executing up to 4 processes, one per physical core
-  Building 10 actions with 4 processes...
-  [1/10] Resource Default.rc2
-  [2/10] Compile LobbyGameMode.gen.cpp
-  [3/10] Compile LobbyGameMode.cpp
-  [4/10] Link UnrealEditor-MenuSystem.lib
+  Building 18 actions with 4 processes...
+  [1/18] Resource Default.rc2
+  [2/18] Resource Default.rc2
+  [3/18] Compile SharedPCH.Engine.ShadowErrors.cpp
+  [4/18] Compile MenuSystem.init.gen.cpp
+  [5/18] Compile MenuSystemGameMode.gen.cpp
+  [6/18] Compile MenuSystemGameMode.cpp
+  [7/18] Compile MenuSystemCharacter.gen.cpp
+  [8/18] Compile LobbyGameMode.cpp
+  [9/18] Compile LobbyGameMode.gen.cpp
+  [10/18] Compile MenuSystem.cpp
+  [11/18] Compile MenuSystemCharacter.cpp
+  [12/18] Link UnrealEditor-MenuSystem.lib
      Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.exp
-  [5/10] Link UnrealEditor-MenuSystem.dll
+  [13/18] Link UnrealEditor-MenuSystem.dll
      Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.suppressed.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Intermediate\Build\Win64\UnrealEditor\Development\MenuSystem\UnrealEditor-MenuSystem.suppressed.exp
-  [6/10] Compile Module.MultiplayerSessions.gen.cpp
-  [7/10] Compile Module.MultiplayerSessions.cpp
-  [8/10] Link UnrealEditor-MultiplayerSessions.lib
+  [14/18] Compile Module.MultiplayerSessions.gen.cpp
+  [15/18] Compile Module.MultiplayerSessions.cpp
+  [16/18] Link UnrealEditor-MultiplayerSessions.lib
      Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.exp
-  [9/10] Link UnrealEditor-MultiplayerSessions.dll
+  [17/18] Link UnrealEditor-MultiplayerSessions.dll
      Creando biblioteca C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.suppressed.lib y objeto C:\UE5\UE5-Shooter\MPPlugin\MenuSystem\Plugins\MultiplayerSessions\Intermediate\Build\Win64\UnrealEditor\Development\MultiplayerSessions\UnrealEditor-MultiplayerSessions.suppressed.exp
-  [10/10] WriteMetadata MenuSystemEditor.target
-  Total time in Parallel executor: 10,75 seconds
-  Total execution time: 17,03 seconds
+  [18/18] WriteMetadata MenuSystemEditor.target
+  Total time in Parallel executor: 52,40 seconds
+  Total execution time: 56,98 seconds

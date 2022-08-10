@@ -39,6 +39,7 @@ void UMultiplayerSessionsSubsystem::CreateSession(int32 NumPublicConections, FSt
 	LastSessionSettings->bUsesPresence = true;
 	LastSessionSettings->Set(FName("MatchType"), MatchType, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 	LastSessionSettings->BuildUniqueId = 1;
+	LastSessionSettings->bUseLobbiesIfAvailable = true;
 
 	//A new session is created using the player, if it was not created successfuly it is communicated to the menu and the delegate handle is removed from the online system
 	const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController();
