@@ -18,10 +18,10 @@ public:
 	UPROPERTY(meta = (BindWidget))
 		class UTextBlock* DisplayText;
 
-	void SetDisplayedText(FString TextToDisplay);
-
 	UFUNCTION(BlueprintCallable)
 		void ShowPlayerNetRole(APawn* InPawn);
+
+	void SetDisplayedText(FString TextToDisplay);
 
 protected:
 	virtual void OnLevelRemovedFromWorld(ULevel* InLevel, UWorld* InWorld) override;
