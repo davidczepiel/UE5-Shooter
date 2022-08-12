@@ -39,5 +39,10 @@ private:
 	UPROPERTY(ReplicatedUsing = OnRep_EquippedWeapon)
 		class AWeapon* EquippedWeapon;
 
+	UPROPERTY(EditAnywhere)
+		float BaseWalkSpeed;
+	UPROPERTY(EditAnywhere)
+		float AimWalkSpeed;
+
 public:
 };
