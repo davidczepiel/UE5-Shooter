@@ -142,3 +142,7 @@ void ABlasterCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 }
+
+bool ABlasterCharacter::IsWeaponEquipped() {
+	return Combat && Combat->EquippedWeapon;
+}
