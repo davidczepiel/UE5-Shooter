@@ -32,6 +32,8 @@ ABlasterCharacter::ABlasterCharacter()
 	Combat = CreateDefaultSubobject<UCombatComponent>(TEXT("CombatComponent"));
 	Combat->SetIsReplicated(true);
 
+	GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
+
 	/*OverheadWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("OverheadWidget"));
 	OverheadWidget->SetupAttachment(RootComponent); */
 }
@@ -50,6 +52,9 @@ void ABlasterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	//Callbacks are asigned to each action
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Equip", IE_Pressed, this, &ABlasterCharacter::EquipButtonPress);
+	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &ABlasterCharacter::CrouchButtonPress);
+	PlayerInputComponent->BindAction("Aim", IE_Pressed, this, &ABlasterCharacter::AimButtonPress);
+	PlayerInputComponent->BindAction("Aim", IE_Released, this, &ABlasterCharacter::AimButtonReleased);
 
 	PlayerInputComponent->BindAxis("MoveForward", this, &ABlasterCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ABlasterCharacter::MoveRight);
@@ -110,6 +115,28 @@ void ABlasterCharacter::EquipButtonPress()
 		ServerEquipButtonPress();
 }
 
+void ABlasterCharacter::CrouchButtonPress()
+{
+	if (bIsCrouched)
+		UnCrouch();
+	else
+		Crouch();
+}
+
+void ABlasterCharacter::AimButtonPress()
+{
+	if (Combat) {
+		Combat->SetAiming(true);
+	}
+}
+
+void ABlasterCharacter::AimButtonReleased()
+{
+	if (Combat) {
+		Combat->SetAiming(false);
+	}
+}
+
 void ABlasterCharacter::ServerEquipButtonPress_Implementation()
 {
 	if (Combat) {
@@ -145,4 +172,8 @@ void ABlasterCharacter::Tick(float DeltaTime)
 
 bool ABlasterCharacter::IsWeaponEquipped() {
 	return Combat && Combat->EquippedWeapon;
+}
+
+bool ABlasterCharacter::IsAiming() {
+	return Combat && Combat->bAiming;
 }
