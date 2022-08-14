@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Blaster/BlasterTypes/TurningInPlace.h"
 #include "BlasterCharacter.generated.h"
 
 UCLASS()
@@ -27,6 +28,8 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	virtual void Jump() override;
+
 	virtual void MoveForward(float Value);
 	void MoveRight(float Value);
 	void Turn(float Value);
@@ -36,6 +39,8 @@ protected:
 	void CrouchButtonPress();
 	void AimButtonPress();
 	void AimButtonReleased();
+
+	void AimOffset(float DeltaTime);
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = Camera)
@@ -58,8 +63,22 @@ private:
 
 	UFUNCTION(Server, Reliable)
 		void ServerEquipButtonPress();
+
+	float AO_Yaw;
+	float InterpAO_Yaw;
+	float AO_Pitch;
+	FRotator StartingAimRotation;
+
+	ETurningInPlace TurningInPlace;
 public:
 	void SetOverlappingWeapon(AWeapon* Weapon);
 	bool IsWeaponEquipped();
 	bool IsAiming();
+
+	void TurnInplace(float DeltaTime);
+
+	FORCEINLINE float GetAO_Yaw() const { return AO_Yaw; }
+	FORCEINLINE float GetAO_Pitch() const { return AO_Pitch; }
+	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
+	AWeapon* GetEquippedWeapon();
 };
