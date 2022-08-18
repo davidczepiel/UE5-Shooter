@@ -65,7 +65,9 @@ void UCombatComponent::FireButtonPressed(bool bPressed)
 	bFireButtonPressed = bPressed;
 
 	if (bFireButtonPressed) {
-		ServerFire();
+		FHitResult hitresult;
+		TraceUnderCrosshairs(hitresult);
+		ServerFire(hitresult.ImpactPoint);
 	}
 }
 
@@ -85,26 +87,20 @@ void UCombatComponent::TraceUnderCrosshairs(FHitResult& TraceHitResult)
 		FVector end = start + (CrosshairWorldDirection * TRACE_LENGTH);
 
 		GetWorld()->LineTraceSingleByChannel(TraceHitResult, start, end, ECollisionChannel::ECC_Visibility);
-		if (!TraceHitResult.bBlockingHit) {
-			TraceHitResult.ImpactPoint = end;
-		}
-		else {
-			DrawDebugSphere(GetWorld(), TraceHitResult.ImpactPoint, 12.f, 12, FColor::Red);
-		}
 	}
 }
 
-void UCombatComponent::ServerFire_Implementation()
+void UCombatComponent::ServerFire_Implementation(const FVector_NetQuantize& TraceHitTarget)
 {
-	MulticastFire();
+	MulticastFire(TraceHitTarget);
 }
 
-void UCombatComponent::MulticastFire_Implementation()
+void UCombatComponent::MulticastFire_Implementation(const FVector_NetQuantize& TraceHitTarget)
 {
 	if (EquippedWeapon == nullptr) return;
 	if (Character && bFireButtonPressed) {
 		Character->PlayFireMontage(bAiming);
-		EquippedWeapon->Fire();
+		EquippedWeapon->Fire(TraceHitTarget);
 	}
 }
 
@@ -112,8 +108,6 @@ void UCombatComponent::MulticastFire_Implementation()
 void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-	FHitResult hitresult;
-	TraceUnderCrosshairs(hitresult);
 }
 
 void UCombatComponent::EquipWeapon(AWeapon* WeaponToEquip)

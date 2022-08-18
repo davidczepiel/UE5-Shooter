@@ -4,21 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Projectile.generated.h"
+#include "Casing.generated.h"
 
 UCLASS()
-class BLASTER_API AProjectile : public AActor
+class BLASTER_API ACasing : public AActor
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AProjectile();
-
+	ACasing();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
-	virtual void Destroyed() override;
 
 protected:
 	// Called when the game starts or when spawned
@@ -28,21 +25,14 @@ protected:
 		virtual void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 
 private:
-	UPROPERTY(EditAnywhere)
-		class UBoxComponent* CollisionBox;
-
 	UPROPERTY(VisibleAnywhere)
-		class UProjectileMovementComponent* ProjectileMovementComponent;
+		UStaticMeshComponent* CasingMesh;
 
 	UPROPERTY(EditAnywhere)
-		class UParticleSystem* Tracer;
-
-	class UParticleSystemComponent* TracerComponent;
+		float ShellEjectionImpulse;
 
 	UPROPERTY(EditAnywhere)
-		UParticleSystem* ImpactParticles;
+		class USoundCue* ShellSound;
 
-	UPROPERTY(EditAnywhere)
-		class USoundCue* ImpactSound;
 public:
 };

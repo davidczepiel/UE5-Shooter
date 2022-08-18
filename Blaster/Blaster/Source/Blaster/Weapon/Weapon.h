@@ -31,7 +31,7 @@ public:
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
-	void Fire();
+	virtual void Fire(const FVector& HitTarget);
 
 protected:
 	// Called when the game starts or when spawned
@@ -74,6 +74,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Weapon Properties")
 		class UAnimationAsset* FireAnimation;
+
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<class ACasing>  CasingClass;
 
 public:
 	void SetWeaponState(EWeaponState NewState);
