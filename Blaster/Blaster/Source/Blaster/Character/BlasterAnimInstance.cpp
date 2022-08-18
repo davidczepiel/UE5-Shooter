@@ -62,5 +62,18 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 		BlasterCharacter->GetMesh()->TransformToBoneSpace(FName("hand_r"), LeftHandTransform.GetLocation(), FRotator::ZeroRotator, OutPosition, OutRotation);
 		LeftHandTransform.SetLocation(OutPosition);
 		LeftHandTransform.SetRotation(FQuat(OutRotation));
+
+		if (BlasterCharacter->IsLocallyControlled()) {
+			bLocallyControlled = true;
+			FTransform RightHandTr = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("Hand_R"), ERelativeTransformSpace::RTS_World);
+			FRotator lookatrotation = UKismetMathLibrary::FindLookAtRotation(RightHandTr.GetLocation(), RightHandTr.GetLocation() + (RightHandTr.GetLocation() - BlasterCharacter->GetHitTarget()));
+			RightHandRotation = FMath::RInterpTo(RightHandRotation, lookatrotation, DeltaTime, 30.f);
+		}
+
+		//Debug lines from weapon to screen center
+		//FTransform MuzzleTiptransform = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("MuzzleFlash"), ERelativeTransformSpace::RTS_World);
+		//FVector MuzzleX(FRotationMatrix(MuzzleTiptransform.GetRotation().Rotator()).GetUnitAxis(EAxis::X));
+		//DrawDebugLine(GetWorld(), MuzzleTiptransform.GetLocation(), MuzzleTiptransform.GetLocation() + MuzzleX * 1000, FColor::Red);
+		//DrawDebugLine(GetWorld(), MuzzleTiptransform.GetLocation(), BlasterCharacter->GetHitTarget(), FColor::Green);
 	}
 }

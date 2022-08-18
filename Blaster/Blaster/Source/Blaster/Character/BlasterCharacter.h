@@ -5,10 +5,11 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Blaster/BlasterTypes/TurningInPlace.h"
+#include "Blaster/Interfaces/InteractWithCrosshairsInterface.h"
 #include "BlasterCharacter.generated.h"
 
 UCLASS()
-class BLASTER_API ABlasterCharacter : public ACharacter
+class BLASTER_API ABlasterCharacter : public ACharacter, public IInteractWithCrosshairsInterface
 {
 	GENERATED_BODY()
 
@@ -25,7 +26,10 @@ public:
 	virtual void PostInitializeComponents() override;
 
 	void PlayFireMontage(bool bAiming);
+	void PlayHitReactMontage();
 
+	UFUNCTION(NetMulticast, Unreliable)
+		void MulticastHit();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -68,6 +72,8 @@ private:
 	UFUNCTION(Server, Reliable)
 		void ServerEquipButtonPress();
 
+	void HideCameraIfCharacterClose();
+
 	float AO_Yaw;
 	float InterpAO_Yaw;
 	float AO_Pitch;
@@ -77,6 +83,12 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Combat)
 		class UAnimMontage* FireWeaponMontage;
+
+	UPROPERTY(EditAnywhere, Category = Combat)
+		class UAnimMontage* HitReactMontage;
+
+	UPROPERTY(EditAnywhere)
+		float CameraThreshHold;
 public:
 	void SetOverlappingWeapon(AWeapon* Weapon);
 	bool IsWeaponEquipped();
@@ -87,5 +99,9 @@ public:
 	FORCEINLINE float GetAO_Yaw() const { return AO_Yaw; }
 	FORCEINLINE float GetAO_Pitch() const { return AO_Pitch; }
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
+	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
 	AWeapon* GetEquippedWeapon();
+
+	FVector GetHitTarget() const;
 };

@@ -11,6 +11,7 @@
 #include "Blaster/BlasterComponents/CombatComponent.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "BlasterAnimInstance.h"
+#include "Blaster/Blaster.h"
 
 // Sets default values
 ABlasterCharacter::ABlasterCharacter()
@@ -38,7 +39,9 @@ ABlasterCharacter::ABlasterCharacter()
 	GetCharacterMovement()->NavAgentProps.bCanCrouch = true;
 
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
+	GetMesh()->SetCollisionObjectType(ECC_SkeletalMesh);
 	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
+	GetMesh()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Visibility, ECollisionResponse::ECR_Block);
 	GetCharacterMovement()->RotationRate = FRotator(0.f, 0.f, 850.f);
 
 	TurningInPlace = ETurningInPlace::ETIP_NotTurning;
@@ -110,6 +113,18 @@ void ABlasterCharacter::PlayFireMontage(bool bAiming)
 		animinstance->Montage_Play(FireWeaponMontage);
 		FName sectionname;
 		sectionname = bAiming ? FName("RifleAim") : FName("RifleHip");
+		animinstance->Montage_JumpToSection(sectionname);
+	}
+}
+
+void ABlasterCharacter::PlayHitReactMontage()
+{
+	if (Combat == nullptr || Combat->EquippedWeapon == nullptr) return;
+
+	UAnimInstance* animinstance = GetMesh()->GetAnimInstance();
+	if (animinstance && HitReactMontage) {
+		animinstance->Montage_Play(HitReactMontage);
+		FName sectionname = FName("FromFront");
 		animinstance->Montage_JumpToSection(sectionname);
 	}
 }
@@ -243,6 +258,28 @@ void ABlasterCharacter::OnRep_OverlappingWeapon(AWeapon* LastWeapon)
 		LastWeapon->ShowPickupWidget(false);
 }
 
+void ABlasterCharacter::MulticastHit_Implementation()
+{
+	PlayHitReactMontage();
+}
+
+void ABlasterCharacter::HideCameraIfCharacterClose()
+{
+	if (!IsLocallyControlled()) return;
+	if ((FollowCamera->GetComponentLocation() - GetActorLocation()).Size() < CameraThreshHold) {
+		GetMesh()->SetVisibility(false);
+		if (Combat && Combat->EquippedWeapon && Combat->EquippedWeapon->GetWeaponMesh()) {
+			Combat->EquippedWeapon->GetWeaponMesh()->bOwnerNoSee = true;
+		}
+	}
+	else {
+		GetMesh()->SetVisibility(true);
+		if (Combat && Combat->EquippedWeapon && Combat->EquippedWeapon->GetWeaponMesh()) {
+			Combat->EquippedWeapon->GetWeaponMesh()->bOwnerNoSee = false;
+		}
+	}
+}
+
 void ABlasterCharacter::SetOverlappingWeapon(AWeapon* Weapon)
 {
 	if (OverlappingWeapon) OverlappingWeapon->ShowPickupWidget(false);
@@ -260,6 +297,7 @@ void ABlasterCharacter::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 	AimOffset(DeltaTime);
+	HideCameraIfCharacterClose();
 }
 
 bool ABlasterCharacter::IsWeaponEquipped() {
@@ -294,4 +332,11 @@ AWeapon* ABlasterCharacter::GetEquippedWeapon()
 	if (Combat == nullptr)
 		return nullptr;
 	else return Combat->EquippedWeapon;
+}
+
+FVector ABlasterCharacter::GetHitTarget() const
+{
+	if (Combat == nullptr)
+		return FVector();
+	return Combat->HitTarget;
 }

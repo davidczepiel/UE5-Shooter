@@ -44,5 +44,6 @@ private:
 
 	UPROPERTY(EditAnywhere)
 		class USoundCue* ImpactSound;
+
 public:
 };
