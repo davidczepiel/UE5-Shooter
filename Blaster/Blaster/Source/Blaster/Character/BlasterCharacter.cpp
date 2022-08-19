@@ -12,6 +12,8 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "BlasterAnimInstance.h"
 #include "Blaster/Blaster.h"
+#include "Blaster/PlayerController/BlasterPlayerController.h"
+#include "Blaster/GameMode/BlasterGameMode.h"
 
 // Sets default values
 ABlasterCharacter::ABlasterCharacter()
@@ -49,8 +51,8 @@ ABlasterCharacter::ABlasterCharacter()
 	NetUpdateFrequency = 66.f;
 	MinNetUpdateFrequency = 33.f;
 
-	/*OverheadWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("OverheadWidget"));
-	OverheadWidget->SetupAttachment(RootComponent); */
+	OverheadWidget = CreateDefaultSubobject<UWidgetComponent>(TEXT("OverheadWidget"));
+	OverheadWidget->SetupAttachment(RootComponent);
 }
 
 void ABlasterCharacter::OnRep_ReplicatedMovement()
@@ -60,10 +62,29 @@ void ABlasterCharacter::OnRep_ReplicatedMovement()
 	TimeSinceLastMovementReplication = 0.f;
 }
 
+void ABlasterCharacter::Elim_Implementation()
+{
+	bElim = true;
+	PlayElimMontage();
+}
+
 // Called when the game starts or when spawned
 void ABlasterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	UpdateHUDHealth();
+	if (HasAuthority()) {
+		OnTakeAnyDamage.AddDynamic(this, &ABlasterCharacter::ReceiveDamage);
+	}
+}
+
+void ABlasterCharacter::UpdateHUDHealth()
+{
+	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
+	if (BlasterPlayerController) {
+		BlasterPlayerController->SetHUDHelth(CurrentHealth, MaxHealth);
+	}
 }
 
 void ABlasterCharacter::Jump()
@@ -100,6 +121,7 @@ void ABlasterCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	DOREPLIFETIME(ABlasterCharacter, CurrentHealth);
 	DOREPLIFETIME_CONDITION(ABlasterCharacter, OverlappingWeapon, COND_OwnerOnly);
 }
 
@@ -121,6 +143,13 @@ void ABlasterCharacter::PlayFireMontage(bool bAiming)
 		FName sectionname;
 		sectionname = bAiming ? FName("RifleAim") : FName("RifleHip");
 		animinstance->Montage_JumpToSection(sectionname);
+	}
+}
+void ABlasterCharacter::PlayElimMontage()
+{
+	UAnimInstance* animinstance = GetMesh()->GetAnimInstance();
+	if (animinstance && ElimMontage) {
+		animinstance->Montage_Play(ElimMontage);
 	}
 }
 
@@ -288,6 +317,23 @@ void ABlasterCharacter::SimProxiesTurn()
 	TurningInPlace = ETurningInPlace::ETIP_NotTurning;
 }
 
+void ABlasterCharacter::ReceiveDamage(AActor* DamagedActor, float Damage, const UDamageType* DType, AController* InstigatorController, AActor* DamageCauser)
+{
+	CurrentHealth = FMath::Clamp(CurrentHealth - Damage, 0.f, MaxHealth);
+
+	UpdateHUDHealth();
+	PlayHitReactMontage();
+
+	if (CurrentHealth <= 0.f) {
+		ABlasterGameMode* gmd = GetWorld()->GetAuthGameMode<ABlasterGameMode>();
+		if (gmd) {
+			BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
+			ABlasterPlayerController* otherController = Cast<ABlasterPlayerController>(InstigatorController);
+			gmd->PlayerEliminated(this, BlasterPlayerController, otherController);
+		}
+	}
+}
+
 void ABlasterCharacter::ServerEquipButtonPress_Implementation()
 {
 	if (Combat) {
@@ -302,11 +348,6 @@ void ABlasterCharacter::OnRep_OverlappingWeapon(AWeapon* LastWeapon)
 	}
 	if (LastWeapon)
 		LastWeapon->ShowPickupWidget(false);
-}
-
-void ABlasterCharacter::MulticastHit_Implementation()
-{
-	PlayHitReactMontage();
 }
 
 void ABlasterCharacter::HideCameraIfCharacterClose()
@@ -324,6 +365,12 @@ void ABlasterCharacter::HideCameraIfCharacterClose()
 			Combat->EquippedWeapon->GetWeaponMesh()->bOwnerNoSee = false;
 		}
 	}
+}
+
+void ABlasterCharacter::OnRep_Health()
+{
+	UpdateHUDHealth();
+	PlayHitReactMontage();
 }
 
 void ABlasterCharacter::SetOverlappingWeapon(AWeapon* Weapon)

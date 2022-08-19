@@ -26,15 +26,20 @@ public:
 	virtual void PostInitializeComponents() override;
 
 	void PlayFireMontage(bool bAiming);
+	void PlayElimMontage();
 	void PlayHitReactMontage();
 
-	UFUNCTION(NetMulticast, Unreliable)
-		void MulticastHit();
-
 	virtual void OnRep_ReplicatedMovement() override;
+
+	//Player was eliminated
+	UFUNCTION(NetMulticast, Reliable)
+		void Elim();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	void UpdateHUDHealth();
 
 	virtual void Jump() override;
 
@@ -53,6 +58,8 @@ protected:
 	void AimOffset(float DeltaTime);
 	void CalculateAO_Pitch();
 	void SimProxiesTurn();
+	UFUNCTION()
+		void ReceiveDamage(AActor* DamagedActor, float Damage, const UDamageType* DType, AController* InstigatorController, AActor* DamageCauser);
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = Camera)
@@ -92,6 +99,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = Combat)
 		class UAnimMontage* HitReactMontage;
 
+	UPROPERTY(EditAnywhere, Category = Combat)
+		class UAnimMontage* ElimMontage;
+
 	UPROPERTY(EditAnywhere)
 		float CameraThreshHold;
 
@@ -101,6 +111,21 @@ private:
 	float TimeSinceLastMovementReplication;
 	FRotator ProxyRotationLastFrame;
 	FRotator ProxyRotation;
+
+	//Health
+	UPROPERTY(EditAnywhere, Category = "Player Stats")
+		float MaxHealth = 100.f;
+
+	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = "Player Stats")
+		float CurrentHealth = 100.f;
+
+	bool bElim = false;
+
+	class ABlasterPlayerController* BlasterPlayerController;
+
+	UFUNCTION()
+		void OnRep_Health();
+
 public:
 	void SetOverlappingWeapon(AWeapon* Weapon);
 	bool IsWeaponEquipped();
@@ -111,6 +136,7 @@ public:
 
 	FORCEINLINE float GetAO_Yaw() const { return AO_Yaw; }
 	FORCEINLINE float GetAO_Pitch() const { return AO_Pitch; }
+	FORCEINLINE bool IsElimmed() const { return bElim; }
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 

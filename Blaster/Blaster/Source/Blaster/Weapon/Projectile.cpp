@@ -38,16 +38,13 @@ void AProjectile::BeginPlay()
 		TracerComponent = UGameplayStatics::SpawnEmitterAttached(Tracer, CollisionBox, FName(), GetActorLocation(), GetActorRotation(), EAttachLocation::KeepWorldPosition);
 	}
 
-	if (!HasAuthority()) return;
-	CollisionBox->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+	if (HasAuthority()) {
+		CollisionBox->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+	}
 }
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	ABlasterCharacter* BCharacter = Cast<ABlasterCharacter>(OtherActor);
-	if (BCharacter) {
-		BCharacter->MulticastHit();
-	}
 	Destroy();
 }
 
