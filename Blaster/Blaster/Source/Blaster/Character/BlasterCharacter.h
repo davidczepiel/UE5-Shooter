@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Blaster/BlasterTypes/TurningInPlace.h"
 #include "Blaster/Interfaces/InteractWithCrosshairsInterface.h"
+#include "Components/TimelineComponent.h"
 #include "BlasterCharacter.generated.h"
 
 UCLASS()
@@ -33,7 +34,9 @@ public:
 
 	//Player was eliminated
 	UFUNCTION(NetMulticast, Reliable)
-		void Elim();
+		void MulticastElim();
+
+	void Elim();
 
 protected:
 	// Called when the game starts or when spawned
@@ -125,6 +128,30 @@ private:
 
 	UFUNCTION()
 		void OnRep_Health();
+
+	UPROPERTY(EditDefaultsOnly)
+		float ElimDelay = 3.f;
+	FTimerHandle ElimTimer;
+	void ElimTimerFinished();
+
+	//DisolveEffect
+	UPROPERTY(VisibleAnywhere)
+		UTimelineComponent* DissolveTimeline;
+	FOnTimelineFloat DissolveTrack;
+
+	UFUNCTION()
+		void UpdateDissolveMaterial(float DissolveValue);
+	void StartDissolve();
+
+	UPROPERTY(EditAnywhere)
+		UCurveFloat* DissolveCurve;
+
+	//Dynamic instance thtat can be changed at runtime
+	UPROPERTY(VisibleAnywhere, Category = Elim)
+		UMaterialInstanceDynamic* DynamicDissolveMaterialInstance;
+	//material set by blueprints that will be used by the instnace
+	UPROPERTY(EditAnywhere, Category = Elim)
+		UMaterialInstance* DissolveMaterialInstance;
 
 public:
 	void SetOverlappingWeapon(AWeapon* Weapon);
