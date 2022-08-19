@@ -30,6 +30,8 @@ public:
 
 	UFUNCTION(NetMulticast, Unreliable)
 		void MulticastHit();
+
+	virtual void OnRep_ReplicatedMovement() override;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -49,6 +51,8 @@ protected:
 	void FireButtonReleased();
 
 	void AimOffset(float DeltaTime);
+	void CalculateAO_Pitch();
+	void SimProxiesTurn();
 
 private:
 	UPROPERTY(VisibleAnywhere, Category = Camera)
@@ -73,6 +77,7 @@ private:
 		void ServerEquipButtonPress();
 
 	void HideCameraIfCharacterClose();
+	float CalculateSpeed();
 
 	float AO_Yaw;
 	float InterpAO_Yaw;
@@ -89,12 +94,20 @@ private:
 
 	UPROPERTY(EditAnywhere)
 		float CameraThreshHold;
+
+	bool bRotateRootBone;
+	float TurnThreshold = 0.5f;
+	float ProxyYaw;
+	float TimeSinceLastMovementReplication;
+	FRotator ProxyRotationLastFrame;
+	FRotator ProxyRotation;
 public:
 	void SetOverlappingWeapon(AWeapon* Weapon);
 	bool IsWeaponEquipped();
 	bool IsAiming();
 
 	void TurnInplace(float DeltaTime);
+	FORCEINLINE bool ShouldRotateRootBone() const { return bRotateRootBone; }
 
 	FORCEINLINE float GetAO_Yaw() const { return AO_Yaw; }
 	FORCEINLINE float GetAO_Pitch() const { return AO_Pitch; }
