@@ -27,6 +27,8 @@ void UCombatComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 
 	DOREPLIFETIME(UCombatComponent, EquippedWeapon);
 	DOREPLIFETIME(UCombatComponent, bAiming);
+	DOREPLIFETIME(UCombatComponent, CombatState);
+	DOREPLIFETIME_CONDITION(UCombatComponent, CarriedAmmo, COND_OwnerOnly);
 }
 
 // Called when the game starts
@@ -40,7 +42,15 @@ void UCombatComponent::BeginPlay()
 			DefaultFov = Character->GetFollowCamera()->FieldOfView;
 			CurrentFov = DefaultFov;
 		}
+
+		if (Character->HasAuthority())
+			InitCarriedAmmo();
 	}
+}
+
+void UCombatComponent::InitCarriedAmmo()
+{
+	CarriedAmmoMap.Emplace(EWeaponType::EWT_AssaultRifle, StartingRifleAmmo);
 }
 
 // Called every frame
@@ -114,6 +124,12 @@ void UCombatComponent::SetHUDCrosshairs(float DeltaTime)
 	}
 }
 
+bool UCombatComponent::CanFire()
+{
+	if (EquippedWeapon == nullptr || !bCanFire || !EquippedWeapon->HasAmmo()) return false;
+	return true;
+}
+
 void UCombatComponent::InterpFOV(float DeltaTime)
 {
 	if (EquippedWeapon == nullptr) return;
@@ -127,6 +143,14 @@ void UCombatComponent::InterpFOV(float DeltaTime)
 
 	if (Character && Character->GetFollowCamera()) {
 		Character->GetFollowCamera()->SetFieldOfView(CurrentFov);
+	}
+}
+
+void UCombatComponent::OnRep_CarriedAmmo()
+{
+	Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
+	if (Controller) {
+		Controller->SetHUDCarriedAmmo(CarriedAmmo);
 	}
 }
 
@@ -168,6 +192,11 @@ void UCombatComponent::OnRep_EquippedWeapon()
 {
 	if (EquippedWeapon && Character)
 	{
+		EquippedWeapon->SetWeaponState(EWeaponState::EWS_Equiped);
+		const USkeletalMeshSocket* HandSocket = Character->GetMesh()->GetSocketByName(FName("RightHandSocket"));
+		if (HandSocket) {
+			HandSocket->AttachActor(EquippedWeapon, Character->GetMesh());
+		}
 		Character->GetCharacterMovement()->bOrientRotationToMovement = false;
 		Character->bUseControllerRotationYaw = true;
 	}
@@ -175,7 +204,7 @@ void UCombatComponent::OnRep_EquippedWeapon()
 
 void UCombatComponent::Fire()
 {
-	if (bCanFire) {
+	if (CanFire()) {
 		FHitResult hitresult;
 		TraceUnderCrosshairs(hitresult);
 		ServerFire(hitresult.ImpactPoint);
@@ -242,15 +271,64 @@ void UCombatComponent::EquipWeapon(AWeapon* WeaponToEquip)
 {
 	if (Character == nullptr || WeaponToEquip == nullptr) return;
 
+	if (EquippedWeapon) {
+		EquippedWeapon->Dropped();
+	}
+
 	EquippedWeapon = WeaponToEquip;
 	EquippedWeapon->SetWeaponState(EWeaponState::EWS_Equiped);
-
 	const USkeletalMeshSocket* HandSocket = Character->GetMesh()->GetSocketByName(FName("RightHandSocket"));
 	if (HandSocket) {
 		HandSocket->AttachActor(EquippedWeapon, Character->GetMesh());
 	}
 
 	EquippedWeapon->SetOwner(Character);
+	EquippedWeapon->SetHUDWeaponAmmo();
+
+	if (CarriedAmmoMap.Contains(EquippedWeapon->GetWeaponType())) {
+		CarriedAmmo = CarriedAmmoMap[EquippedWeapon->GetWeaponType()];
+	}
+	Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
+	if (Controller) {
+		Controller->SetHUDCarriedAmmo(CarriedAmmo);
+	}
 	Character->GetCharacterMovement()->bOrientRotationToMovement = false;
 	Character->bUseControllerRotationYaw = true;
+}
+
+void UCombatComponent::HandleReload()
+{
+	Character->PlayReloadMontage();
+}
+
+void UCombatComponent::Reload()
+{
+	if (CarriedAmmo > 0 && CombatState != ECombatState::ECS_Reloading) {
+		ServerReload();
+	}
+}
+
+void UCombatComponent::FinishReloading()
+{
+	if (Character == nullptr)return;
+	if (Character->HasAuthority()) {
+		CombatState = ECombatState::ECS_Unoccupied;
+	}
+}
+
+void UCombatComponent::ServerReload_Implementation()
+{
+	if (Character == nullptr)return;
+	CombatState = ECombatState::ECS_Reloading;
+
+	HandleReload();
+}
+
+void UCombatComponent::OnRep_CombatState()
+{
+	switch (CombatState) {
+	case ECombatState::ECS_Reloading:
+		HandleReload();
+		break;
+	}
 }

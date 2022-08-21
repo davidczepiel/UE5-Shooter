@@ -7,6 +7,7 @@
 #include "Blaster/BlasterTypes/TurningInPlace.h"
 #include "Blaster/Interfaces/InteractWithCrosshairsInterface.h"
 #include "Components/TimelineComponent.h"
+#include "Blaster/BlasterTypes/CombatState.h"
 #include "BlasterCharacter.generated.h"
 
 UCLASS()
@@ -27,6 +28,7 @@ public:
 	virtual void PostInitializeComponents() override;
 
 	void PlayFireMontage(bool bAiming);
+	void PlayReloadMontage();
 	void PlayElimMontage();
 	void PlayHitReactMontage();
 
@@ -53,10 +55,13 @@ protected:
 
 	void EquipButtonPress();
 	void CrouchButtonPress();
+	void ReloadButtonPress();
 	void AimButtonPress();
 	void AimButtonReleased();
 	void FireButtonPressed();
 	void FireButtonReleased();
+
+	void PollInit();
 
 	void AimOffset(float DeltaTime);
 	void CalculateAO_Pitch();
@@ -80,7 +85,7 @@ private:
 	UFUNCTION()
 		void OnRep_OverlappingWeapon(AWeapon* LastWeapon);
 
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 		class UCombatComponent* Combat;
 
 	UFUNCTION(Server, Reliable)
@@ -98,6 +103,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Combat)
 		class UAnimMontage* FireWeaponMontage;
+
+	UPROPERTY(EditAnywhere, Category = Combat)
+		class UAnimMontage* ReloadMontage;
 
 	UPROPERTY(EditAnywhere, Category = Combat)
 		class UAnimMontage* HitReactMontage;
@@ -124,7 +132,8 @@ private:
 
 	bool bElim = false;
 
-	class ABlasterPlayerController* BlasterPlayerController;
+	UPROPERTY()
+		class ABlasterPlayerController* BlasterPlayerController;
 
 	UFUNCTION()
 		void OnRep_Health();
@@ -163,11 +172,16 @@ public:
 
 	FORCEINLINE float GetAO_Yaw() const { return AO_Yaw; }
 	FORCEINLINE float GetAO_Pitch() const { return AO_Pitch; }
+	FORCEINLINE float GetHealth() const { return CurrentHealth; }
+	FORCEINLINE float GetMaxHealth() const { return MaxHealth; }
 	FORCEINLINE bool IsElimmed() const { return bElim; }
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	ECombatState GetCombatState();
 
 	AWeapon* GetEquippedWeapon();
 
 	FVector GetHitTarget() const;
+	UPROPERTY()
+		class ABlasterPlayerState* BlasterPlayerState;
 };

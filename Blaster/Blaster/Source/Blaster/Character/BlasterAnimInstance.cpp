@@ -5,6 +5,7 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Blaster/Weapon/Weapon.h"
+#include "Blaster/BlasterTypes/CombatState.h"
 
 void UBlasterAnimInstance::NativeInitializeAnimation()
 {
@@ -72,6 +73,8 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 			FRotator lookatrotation = UKismetMathLibrary::FindLookAtRotation(RightHandTr.GetLocation(), RightHandTr.GetLocation() + (RightHandTr.GetLocation() - BlasterCharacter->GetHitTarget()));
 			RightHandRotation = FMath::RInterpTo(RightHandRotation, lookatrotation, DeltaTime, 30.f);
 		}
+
+		bUSeFabrik = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading;
 
 		//Debug lines from weapon to screen center
 		//FTransform MuzzleTiptransform = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("MuzzleFlash"), ERelativeTransformSpace::RTS_World);

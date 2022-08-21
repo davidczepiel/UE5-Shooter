@@ -9,6 +9,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Casing.h"
 #include "Engine/SkeletalMeshSocket.h"
+#include "Blaster/PlayerController/BlasterPlayerController.h"
 
 // Sets default values
 AWeapon::AWeapon()
@@ -63,10 +64,33 @@ void AWeapon::ShowPickupWidget(bool bShowWidget)
 	}
 }
 
+void AWeapon::Dropped()
+{
+	SetWeaponState(EWeaponState::EWS_Dropped);
+	FDetachmentTransformRules Detachrules(EDetachmentRule::KeepWorld, true);
+	WeaponMesh->DetachFromComponent(Detachrules);
+	SetOwner(nullptr);
+	OwnerCharacter = nullptr;
+	OwnerController = nullptr;
+}
+
 void AWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(AWeapon, WeaponState);
+	DOREPLIFETIME(AWeapon, CurrentAmmo);
+}
+
+void AWeapon::OnRep_Owner()
+{
+	Super::OnRep_Owner();
+	if (Owner == nullptr) {
+		OwnerCharacter = nullptr;
+		OwnerController = nullptr;
+	}
+	else {
+		SetHUDWeaponAmmo();
+	}
 }
 
 void AWeapon::Fire(const FVector& HitTarget)
@@ -84,6 +108,7 @@ void AWeapon::Fire(const FVector& HitTarget)
 			}
 		}
 	}
+	SpendRound();
 }
 
 void AWeapon::OnSphereOverlap(
@@ -109,6 +134,29 @@ void AWeapon::OnSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 	}
 }
 
+void AWeapon::OnRep_Ammo()
+{
+	OwnerCharacter = OwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : OwnerCharacter;
+	SetHUDWeaponAmmo();
+}
+
+void AWeapon::SetHUDWeaponAmmo()
+{
+	OwnerCharacter = OwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : OwnerCharacter;
+	if (OwnerCharacter) {
+		OwnerController = OwnerController == nullptr ? Cast<ABlasterPlayerController>(OwnerCharacter->Controller) : OwnerController;
+		if (OwnerController) {
+			OwnerController->SetHUDWeaponAmmo(CurrentAmmo);
+		}
+	}
+}
+
+void AWeapon::SpendRound()
+{
+	CurrentAmmo = FMath::Clamp(CurrentAmmo - 1, 0, MaxAmmo);
+	SetHUDWeaponAmmo();
+}
+
 void AWeapon::SetWeaponState(EWeaponState NewState)
 {
 	WeaponState = NewState;
@@ -116,6 +164,15 @@ void AWeapon::SetWeaponState(EWeaponState NewState)
 	case EWeaponState::EWS_Equiped:
 		ShowPickupWidget(false);
 		AreaSphere->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		WeaponMesh->SetSimulatePhysics(false);
+		WeaponMesh->SetEnableGravity(false);
+		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		break;
+	case EWeaponState::EWS_Dropped:
+		if (HasAuthority()) AreaSphere->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+		WeaponMesh->SetSimulatePhysics(true);
+		WeaponMesh->SetEnableGravity(true);
+		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 		break;
 	}
 }
@@ -129,6 +186,14 @@ void AWeapon::OnRep_WeaponState()
 	switch (WeaponState) {
 	case EWeaponState::EWS_Equiped:
 		ShowPickupWidget(false);
+		WeaponMesh->SetSimulatePhysics(false);
+		WeaponMesh->SetEnableGravity(false);
+		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		break;
+	case EWeaponState::EWS_Dropped:
+		WeaponMesh->SetSimulatePhysics(true);
+		WeaponMesh->SetEnableGravity(true);
+		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 		break;
 	}
 }

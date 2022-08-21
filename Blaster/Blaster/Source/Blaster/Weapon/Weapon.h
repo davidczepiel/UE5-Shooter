@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "WeaponTypes.h"
 #include "Components/SphereComponent.h"
 
 #include "Weapon.generated.h"
@@ -29,7 +30,13 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	void ShowPickupWidget(bool bShowWidget);
 
+	void SetHUDWeaponAmmo();
+
+	void Dropped();
+
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+	virtual void OnRep_Owner() override;
 
 	virtual void Fire(const FVector& HitTarget);
 
@@ -103,10 +110,30 @@ private:
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<class ACasing>  CasingClass;
 
+	UFUNCTION()
+		void OnRep_Ammo();
+
+	void SpendRound();
+
+	UPROPERTY(EditAnywhere, Category = "Weapon Properties", ReplicatedUsing = OnRep_Ammo)
+		int32 CurrentAmmo = 30;
+	UPROPERTY(EditAnywhere, Category = "Weapon Properties")
+		int32 MaxAmmo = 30;
+
+	UPROPERTY()
+		class ABlasterPlayerController* OwnerController;
+	UPROPERTY()
+		class ABlasterCharacter* OwnerCharacter;
+
+	UPROPERTY(EditAnywhere)
+		EWeaponType WeaponType;
+
 public:
 	void SetWeaponState(EWeaponState NewState);
 	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() const { return WeaponMesh; }
 	FORCEINLINE float GetZoomFOV() const { return ZoomedFov; }
+	FORCEINLINE bool HasAmmo() const { return CurrentAmmo > 0; }
 	FORCEINLINE float GetZoomInterpSpeed() const { return ZoomInterpSpeed; }
+	FORCEINLINE EWeaponType GetWeaponType() const { return WeaponType; }
 	USphereComponent* GetAreaShpere();
 };

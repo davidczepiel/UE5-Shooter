@@ -15,6 +15,9 @@
 #include "Blaster/PlayerController/BlasterPlayerController.h"
 #include "Blaster/GameMode/BlasterGameMode.h"
 #include "TimerManager.h"
+#include "Blaster/PlayerState/BlasterPlayerState.h"
+#include "Blaster/Weapon/WeaponTypes.h"
+
 // Sets default values
 ABlasterCharacter::ABlasterCharacter()
 {
@@ -66,6 +69,9 @@ void ABlasterCharacter::OnRep_ReplicatedMovement()
 
 void ABlasterCharacter::Elim()
 {
+	if (Combat && Combat->EquippedWeapon) {
+		Combat->EquippedWeapon->Dropped();
+	}
 	MulticastElim();
 	GetWorldTimerManager().SetTimer(ElimTimer, this, &ABlasterCharacter::ElimTimerFinished, ElimDelay);
 }
@@ -80,6 +86,9 @@ void ABlasterCharacter::ElimTimerFinished()
 
 void ABlasterCharacter::MulticastElim_Implementation()
 {
+	if (BlasterPlayerController) {
+		BlasterPlayerController->SetHUDWeaponAmmo(0);
+	}
 	bElim = true;
 	PlayElimMontage();
 
@@ -90,6 +99,16 @@ void ABlasterCharacter::MulticastElim_Implementation()
 		DynamicDissolveMaterialInstance->SetScalarParameterValue(TEXT("Glow"), 200.f);
 	}
 	StartDissolve();
+
+	//Disable the movement component and the collision component to let the dissolve anim play
+	GetCharacterMovement()->DisableMovement(); //Prevent move
+	GetCharacterMovement()->StopMovementImmediately(); //Prevent rotate
+
+	if (BlasterPlayerController) {
+		DisableInput(BlasterPlayerController);
+	}
+	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
 
 // Called when the game starts or when spawned
@@ -130,6 +149,7 @@ void ABlasterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ABlasterCharacter::Jump);
 	PlayerInputComponent->BindAction("Equip", IE_Pressed, this, &ABlasterCharacter::EquipButtonPress);
 	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &ABlasterCharacter::CrouchButtonPress);
+	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ABlasterCharacter::ReloadButtonPress);
 	PlayerInputComponent->BindAction("Aim", IE_Pressed, this, &ABlasterCharacter::AimButtonPress);
 	PlayerInputComponent->BindAction("Aim", IE_Released, this, &ABlasterCharacter::AimButtonReleased);
 
@@ -139,6 +159,11 @@ void ABlasterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAxis("LookUp", this, &ABlasterCharacter::LookUp);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ABlasterCharacter::FireButtonPressed);
 	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ABlasterCharacter::FireButtonReleased);
+
+	int intVar = 5;
+	float floatVar = 3.7f;
+	FString fstringVar = "Llamado desde inicio";
+	UE_LOG(LogTemp, Warning, TEXT("Text, %d %f %s"), intVar, floatVar, *fstringVar);
 }
 
 void ABlasterCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -169,6 +194,29 @@ void ABlasterCharacter::PlayFireMontage(bool bAiming)
 		animinstance->Montage_JumpToSection(sectionname);
 	}
 }
+
+void ABlasterCharacter::PlayReloadMontage()
+{
+	if (Combat == nullptr || Combat->EquippedWeapon == nullptr) return;
+
+	int intVar = 5;
+	float floatVar = 3.7f;
+	FString fstringVar = "LLamado al iniciar animacion";
+	UE_LOG(LogTemp, Warning, TEXT("Text, %d %f %s"), intVar, floatVar, *fstringVar);
+
+	UAnimInstance* animinstance = GetMesh()->GetAnimInstance();
+	if (animinstance && ReloadMontage) {
+		animinstance->Montage_Play(ReloadMontage);
+		FName sectionname;
+		switch (Combat->EquippedWeapon->GetWeaponType()) {
+		case EWeaponType::EWT_AssaultRifle:
+			sectionname = FName("Rifle");
+			break;
+		}
+		animinstance->Montage_JumpToSection(sectionname);
+	}
+}
+
 void ABlasterCharacter::PlayElimMontage()
 {
 	UAnimInstance* animinstance = GetMesh()->GetAnimInstance();
@@ -234,6 +282,16 @@ void ABlasterCharacter::CrouchButtonPress()
 	else
 		Crouch();
 }
+void ABlasterCharacter::ReloadButtonPress()
+{
+	int intVar = 5;
+	float floatVar = 3.7f;
+	FString fstringVar = "Llamado al ser pulsado el boton de recargar";
+	UE_LOG(LogTemp, Warning, TEXT("Text, %d %f %s"), intVar, floatVar, *fstringVar);
+	if (Combat) {
+		Combat->Reload();
+	}
+}
 
 void ABlasterCharacter::AimButtonPress()
 {
@@ -260,6 +318,16 @@ void ABlasterCharacter::FireButtonReleased()
 {
 	if (Combat) {
 		Combat->FireButtonPressed(false);
+	}
+}
+void ABlasterCharacter::PollInit()
+{
+	if (BlasterPlayerState == nullptr) {
+		BlasterPlayerState = GetPlayerState<ABlasterPlayerState>();
+		if (BlasterPlayerState) {
+			BlasterPlayerState->AddToScore(0);
+			BlasterPlayerState->AddToDefeats(0);
+		}
 	}
 }
 float ABlasterCharacter::CalculateSpeed()
@@ -428,6 +496,7 @@ void ABlasterCharacter::SetOverlappingWeapon(AWeapon* Weapon)
 void ABlasterCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	PollInit();
 
 	if (GetLocalRole() > ENetRole::ROLE_SimulatedProxy && IsLocallyControlled())
 	{
@@ -483,4 +552,10 @@ FVector ABlasterCharacter::GetHitTarget() const
 	if (Combat == nullptr)
 		return FVector();
 	return Combat->HitTarget;
+}
+
+ECombatState ABlasterCharacter::GetCombatState()
+{
+	if (Combat == nullptr) return ECombatState::ECS_MAX;
+	return Combat->CombatState;
 }

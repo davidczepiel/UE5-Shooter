@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Blaster/HUD/BlasterHUD.h"
+#include "Blaster/Weapon/WeaponTypes.h"
+#include "Blaster/BlasterTypes/CombatState.h"
 #include "CombatComponent.generated.h"
 
 #define TRACE_LENGTH 8000.f
@@ -22,6 +24,11 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	void EquipWeapon(class AWeapon* WeaponToEquip);
+
+	void Reload();
+
+	UFUNCTION(BlueprintCallable)
+		void FinishReloading();
 
 protected:
 	virtual void BeginPlay() override;
@@ -46,11 +53,22 @@ protected:
 
 	void SetHUDCrosshairs(float DeltaTime);
 
+	UFUNCTION(Server, Reliable)
+		void ServerReload();
+
+	void HandleReload();
+
 private:
 	class ABlasterCharacter* Character;
 
 	class ABlasterPlayerController* Controller;
 	class ABlasterHUD* HUD;
+
+	UFUNCTION()
+		void OnRep_CombatState();
+
+	UPROPERTY(ReplicatedUsing = OnRep_CombatState)
+		ECombatState CombatState = ECombatState::ECS_Unoccupied;
 
 	UPROPERTY(Replicated)
 		bool bAiming;
@@ -64,6 +82,7 @@ private:
 		float AimWalkSpeed;
 
 	bool bFireButtonPressed;
+	bool CanFire();
 
 	//HUD and Crosshairs
 	float CrosshairVelFactor;
@@ -82,6 +101,18 @@ private:
 		float ZoomInterpSpeed = 20.f;
 
 	float CurrentFov;
+
+	UFUNCTION()
+		void OnRep_CarriedAmmo();
+
+	TMap<EWeaponType, int32> CarriedAmmoMap;
+	//Carried ammo for currently equipped weapon
+	UPROPERTY(ReplicatedUsing = OnRep_CarriedAmmo)
+		int32 CarriedAmmo;
+
+	UPROPERTY(EditAnywhere)
+		int32 StartingRifleAmmo = 30;
+	void InitCarriedAmmo();
 
 	void InterpFOV(float DeltaTime);
 
