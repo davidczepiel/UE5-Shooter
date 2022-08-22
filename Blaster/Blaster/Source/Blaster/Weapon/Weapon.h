@@ -40,6 +40,8 @@ public:
 
 	virtual void Fire(const FVector& HitTarget);
 
+	void AddAmmo(int32 Amount);
+
 	//Crosshair textures
 
 	UPROPERTY(EditAnywhere, Category = Crosshairs)
@@ -64,6 +66,9 @@ public:
 		float FireDelay = 0.15f;
 	UPROPERTY(EditAnywhere, Category = Combat)
 		bool bAutomatic = true;
+
+	UPROPERTY(EditAnywhere)
+		class USoundCue* EquipSound;
 
 protected:
 	// Called when the game starts or when spawned
@@ -134,6 +139,8 @@ public:
 	FORCEINLINE float GetZoomFOV() const { return ZoomedFov; }
 	FORCEINLINE bool HasAmmo() const { return CurrentAmmo > 0; }
 	FORCEINLINE float GetZoomInterpSpeed() const { return ZoomInterpSpeed; }
+	FORCEINLINE int32 GetAmmo() const { return CurrentAmmo; }
+	FORCEINLINE int32 GetMagCapacity() const { return MaxAmmo; }
 	FORCEINLINE EWeaponType GetWeaponType() const { return WeaponType; }
 	USphereComponent* GetAreaShpere();
 };

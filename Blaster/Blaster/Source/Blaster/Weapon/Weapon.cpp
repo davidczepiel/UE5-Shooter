@@ -111,6 +111,12 @@ void AWeapon::Fire(const FVector& HitTarget)
 	SpendRound();
 }
 
+void AWeapon::AddAmmo(int32 Amount)
+{
+	CurrentAmmo = FMath::Clamp(CurrentAmmo - Amount, 0, MaxAmmo);
+	SetHUDWeaponAmmo();
+}
+
 void AWeapon::OnSphereOverlap(
 	UPrimitiveComponent* OverlappedComponent,
 	AActor* OtherActor,

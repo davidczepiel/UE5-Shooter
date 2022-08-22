@@ -26,9 +26,11 @@ public:
 	void EquipWeapon(class AWeapon* WeaponToEquip);
 
 	void Reload();
+	void FireButtonPressed(bool bPressed);
 
 	UFUNCTION(BlueprintCallable)
 		void FinishReloading();
+	void UpdateAmmo();
 
 protected:
 	virtual void BeginPlay() override;
@@ -40,8 +42,6 @@ protected:
 
 	UFUNCTION()
 		void OnRep_EquippedWeapon();
-
-	void FireButtonPressed(bool bPressed);
 
 	UFUNCTION(Server, Reliable)
 		void ServerFire(const FVector_NetQuantize& TraceHitTarget);
@@ -57,6 +57,8 @@ protected:
 		void ServerReload();
 
 	void HandleReload();
+
+	int32 AmountToReload();
 
 private:
 	class ABlasterCharacter* Character;

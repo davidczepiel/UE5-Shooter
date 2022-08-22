@@ -20,6 +20,7 @@ public:
 	ABlasterCharacter();
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	void RotateInPlace(float DeltaTime);
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
@@ -33,6 +34,7 @@ public:
 	void PlayHitReactMontage();
 
 	virtual void OnRep_ReplicatedMovement() override;
+	virtual void Destroyed() override;
 
 	//Player was eliminated
 	UFUNCTION(NetMulticast, Reliable)
@@ -40,6 +42,10 @@ public:
 
 	void Elim();
 
+	UPROPERTY(Replicated)
+		bool bDisableGameplay = false;
+
+	void FireButtonPressed();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -58,7 +64,6 @@ protected:
 	void ReloadButtonPress();
 	void AimButtonPress();
 	void AimButtonReleased();
-	void FireButtonPressed();
 	void FireButtonReleased();
 
 	void PollInit();
@@ -175,8 +180,10 @@ public:
 	FORCEINLINE float GetHealth() const { return CurrentHealth; }
 	FORCEINLINE float GetMaxHealth() const { return MaxHealth; }
 	FORCEINLINE bool IsElimmed() const { return bElim; }
+	FORCEINLINE bool GetDisableGameplay() const { return bDisableGameplay; }
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+	FORCEINLINE UCombatComponent* GetCombat() const { return Combat; }
 	ECombatState GetCombatState();
 
 	AWeapon* GetEquippedWeapon();

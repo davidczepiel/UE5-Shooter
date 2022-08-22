@@ -76,6 +76,8 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 
 		bUSeFabrik = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading;
 
+		bUseAimOffsets = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading && !BlasterCharacter->GetDisableGameplay();
+		bTransformRightHand = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading && !BlasterCharacter->GetDisableGameplay();
 		//Debug lines from weapon to screen center
 		//FTransform MuzzleTiptransform = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("MuzzleFlash"), ERelativeTransformSpace::RTS_World);
 		//FVector MuzzleX(FRotationMatrix(MuzzleTiptransform.GetRotation().Rotator()).GetUnitAxis(EAxis::X));
