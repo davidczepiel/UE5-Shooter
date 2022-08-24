@@ -31,21 +31,15 @@ class BLASTER_API ABlasterHUD : public AHUD
 
 public:
 	virtual void DrawHUD() override;
-
-	UPROPERTY(EditAnywhere, Category = "Player Stats")
-		TSubclassOf<class UUserWidget> CharacterOverlayClass;
-
-	UPROPERTY()
-		class UCharacterOverlay* CharacterOverlay;
-
-	UPROPERTY(EditAnywhere, Category = "Announcements")
-		TSubclassOf<UUserWidget> AnouncementClass;
-
-	UPROPERTY()
-		class UAnouncement* Anouncement;
-
 	void AddCharacterOverlay();
 	void AddAnouncement();
+
+	//Type of overlays that are going to be used
+	UPROPERTY(EditAnywhere, Category = "Player Stats")		TSubclassOf<class UUserWidget> CharacterOverlayClass;
+	UPROPERTY()												class UCharacterOverlay* CharacterOverlay;
+	UPROPERTY(EditAnywhere, Category = "Announcements")		TSubclassOf<UUserWidget> AnouncementClass;
+	UPROPERTY()												class UAnouncement* Anouncement;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -53,9 +47,8 @@ private:
 
 	void DrawCrosshair(UTexture2D* Texture, FVector2D ViewportCenter, FVector2D Spread, FLinearColor color);
 
+	UPROPERTY(EditAnywhere)		float CrosshairSpreadMax = 16.f;
 	FHUDPackage HUDPackage;
-	UPROPERTY(EditAnywhere)
-		float CrosshairSpreadMax = 16.f;
 
 public:
 	FORCEINLINE void SetHUDPackage(const FHUDPackage& Package) { HUDPackage = Package; }

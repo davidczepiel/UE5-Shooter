@@ -14,10 +14,7 @@ class BLASTER_API UAnouncement : public UUserWidget
 {
 public:
 	GENERATED_BODY()
-		UPROPERTY(meta = (BindWidget))
-		class UTextBlock* WarmUpTime;
-	UPROPERTY(meta = (BindWidget))
-		class UTextBlock* AnouncementText;
-	UPROPERTY(meta = (BindWidget))
-		class UTextBlock* InfoText;
+		UPROPERTY(meta = (BindWidget))	class UTextBlock* WarmUpTime;
+	UPROPERTY(meta = (BindWidget))		class UTextBlock* AnouncementText;
+	UPROPERTY(meta = (BindWidget))		class UTextBlock* InfoText;
 };

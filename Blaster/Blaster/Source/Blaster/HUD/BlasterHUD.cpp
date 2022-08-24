@@ -5,16 +5,24 @@
 #include "CharacterOverlay.h"
 #include "Anouncement.h"
 
+void ABlasterHUD::BeginPlay()
+{
+	Super::BeginPlay();
+}
+
 void ABlasterHUD::DrawHUD() {
 	Super::DrawHUD();
 
 	FVector2D ViewPortSize;
 	if (GEngine) {
+		//Viewport dimensions
 		GEngine->GameViewport->GetViewportSize(ViewPortSize);
 		const FVector2D ViewportCenter(ViewPortSize.X / 2.f, ViewPortSize.Y / 2.f);
 
+		//Crosshair spread
 		float SpreadScaled = CrosshairSpreadMax * HUDPackage.CrosshairSpread;
 
+		//Crosshair drawing
 		if (HUDPackage.CrosshairCenter) {
 			FVector2D Spread(0.f, 0.f);
 			DrawCrosshair(HUDPackage.CrosshairCenter, ViewportCenter, Spread, HUDPackage.CrosshairsColor);
@@ -34,14 +42,10 @@ void ABlasterHUD::DrawHUD() {
 	}
 }
 
-void ABlasterHUD::BeginPlay()
-{
-	Super::BeginPlay();
-}
-
 void ABlasterHUD::AddCharacterOverlay()
 {
 	APlayerController* PlayerController = GetOwningPlayerController();
+	//If both the character and its overlay class are avaliable a new overlay is created and displayed
 	if (PlayerController && CharacterOverlayClass)
 	{
 		CharacterOverlay = CreateWidget<UCharacterOverlay>(PlayerController, CharacterOverlayClass);
@@ -52,6 +56,7 @@ void ABlasterHUD::AddCharacterOverlay()
 void ABlasterHUD::AddAnouncement()
 {
 	APlayerController* PlayerController = GetOwningPlayerController();
+	//If both the character and its anouncements overlay class are avaliable a new overlay is created and displayed
 	if (PlayerController && AnouncementClass)
 	{
 		Anouncement = CreateWidget<UAnouncement>(PlayerController, AnouncementClass);
@@ -63,7 +68,8 @@ void ABlasterHUD::DrawCrosshair(UTexture2D* Texture, FVector2D ViewportCenter, F
 {
 	const float TextWidth = Texture->GetSizeX();
 	const float TextHeight = Texture->GetSizeY();
-	const FVector2D TextDrawPoint(ViewportCenter.X - (TextWidth / 2.f) + Spread.X, ViewportCenter.Y - (TextHeight / 2.f) + Spread.Y);
 
+	//Position from where the texture needs to start its drawing
+	const FVector2D TextDrawPoint(ViewportCenter.X - (TextWidth / 2.f) + Spread.X, ViewportCenter.Y - (TextHeight / 2.f) + Spread.Y);
 	DrawTexture(Texture, TextDrawPoint.X, TextDrawPoint.Y, TextWidth, TextHeight, 0.f, 0.f, 1.f, 1.f, color);
 }

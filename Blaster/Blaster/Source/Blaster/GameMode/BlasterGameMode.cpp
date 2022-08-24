@@ -26,44 +26,40 @@ void ABlasterGameMode::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 
 	if (MatchState == MatchState::WaitingToStart) {
+		//If timer ended while waiting, a new match is going to start
 		CountDownTime = WarmupTime - GetWorld()->GetTimeSeconds() + LevelStartingTime;
-		if (CountDownTime < 0.f) {
-			StartMatch();
-		}
+		if (CountDownTime < 0.f)			StartMatch();
 	}
 	else if (MatchState == MatchState::InProgress) {
+		//If the timer ends while playing a match, means the match has come to its end
 		CountDownTime = WarmupTime + MatchTime - GetWorld()->GetTimeSeconds() + LevelStartingTime;
-		if (CountDownTime <= 0.f) {
-			SetMatchState(MatchState::Cooldown);
-		}
+		if (CountDownTime <= 0.f)			SetMatchState(MatchState::Cooldown);
 	}
 	else if (MatchState == MatchState::Cooldown)
 	{
+		//If in cooldown and the timer has ended, a restart is needed and a new game is played
 		CountDownTime = CooldownTime + WarmupTime + MatchTime - GetWorld()->GetTimeSeconds() + LevelStartingTime;
-		if (CountDownTime <= 0.f)
-		{
-			RestartGame();
-		}
+		if (CountDownTime <= 0.f)			RestartGame();
 	}
 }
 
 void ABlasterGameMode::OnMatchStateSet() {
 	Super::OnMatchStateSet();
 
+	//Every controller from the world is fetched and is notified with the match state the game is in
 	for (FConstPlayerControllerIterator it = GetWorld()->GetPlayerControllerIterator(); it; ++it) {
 		ABlasterPlayerController* p = Cast<ABlasterPlayerController>(*it);
-		if (p) {
-			p->OnMatchStateSet(MatchState);
-		}
+		if (p) 	p->OnMatchStateSet(MatchState);
 	}
 }
 
 void ABlasterGameMode::PlayerEliminated(class ABlasterCharacter* ElimCharacter, class ABlasterPlayerController* VictimController, ABlasterPlayerController* Attacker5Controller) {
+	//Players involved int he kill
 	ABlasterPlayerState* AtState = Attacker5Controller ? Cast<ABlasterPlayerState>(Attacker5Controller->PlayerState) : nullptr;
 	ABlasterPlayerState* VictimState = VictimController ? Cast<ABlasterPlayerState>(VictimController->PlayerState) : nullptr;
 
+	//The game state is obtained and the kills/deaths are updated
 	ABlasterGameState* BlasterGameState = GetGameState<ABlasterGameState>();
-
 	if (AtState && AtState != VictimState && BlasterGameState) {
 		AtState->AddToScore(1.f);
 		BlasterGameState->UpdateTopScore(AtState);

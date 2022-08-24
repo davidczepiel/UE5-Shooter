@@ -31,14 +31,14 @@ void ACasing::BeginPlay()
 {
 	Super::BeginPlay();
 
+	//Sets the callback for when the casing hits something to destroy itself
 	CasingMesh->OnComponentHit.AddDynamic(this, &ACasing::OnHit);
+	//Casing is ejected from the weapon
 	CasingMesh->AddImpulse(GetActorForwardVector() * ShellEjectionImpulse);
 }
 
 void ACasing::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
 {
-	if (ShellSound) {
-		UGameplayStatics::PlaySoundAtLocation(this, ShellSound, GetActorLocation());
-	}
+	if (ShellSound) UGameplayStatics::PlaySoundAtLocation(this, ShellSound, GetActorLocation());
 	Destroy();
 }

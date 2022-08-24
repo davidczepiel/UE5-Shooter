@@ -18,26 +18,22 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 {
 	Super::NativeUpdateAnimation(DeltaTime);
 
-	if (BlasterCharacter == nullptr) {
-		BlasterCharacter = Cast<ABlasterCharacter>(TryGetPawnOwner());
-	}
-
+	if (BlasterCharacter == nullptr) BlasterCharacter = Cast<ABlasterCharacter>(TryGetPawnOwner());
 	if (BlasterCharacter == nullptr) return;
 
+	bRotateRootBone = BlasterCharacter->ShouldRotateRootBone();
+	bIsInAir = BlasterCharacter->GetCharacterMovement()->IsFalling();
+	bIsAccelerating = BlasterCharacter->GetCharacterMovement()->GetCurrentAcceleration().Size() > 0.f;
+	bWeaponEquipped = BlasterCharacter->IsWeaponEquipped();
+	bIsCrouched = BlasterCharacter->bIsCrouched;
+	bAiming = BlasterCharacter->IsAiming();
+
+	//Speed
 	FVector Velocity = BlasterCharacter->GetVelocity();
 	Velocity.Z = 0;
 	Speed = Velocity.Size();
 
-	bRotateRootBone = BlasterCharacter->ShouldRotateRootBone();
-
-	bIsInAir = BlasterCharacter->GetCharacterMovement()->IsFalling();
-	bIsAccelerating = BlasterCharacter->GetCharacterMovement()->GetCurrentAcceleration().Size() > 0.f;
-
-	bWeaponEquipped = BlasterCharacter->IsWeaponEquipped();
-	EquippedWeapon = BlasterCharacter->GetEquippedWeapon();
-	bIsCrouched = BlasterCharacter->bIsCrouched;
-	bAiming = BlasterCharacter->IsAiming();
-
+	//Character upper body rotation
 	FRotator AimRotation = BlasterCharacter->GetBaseAimRotation();
 	FRotator MovementRotation = UKismetMathLibrary::MakeRotFromX(BlasterCharacter->GetVelocity());
 	TurningInPlace = BlasterCharacter->GetTurningInPlace();
@@ -54,10 +50,11 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 	const float Target = Delta.Yaw / DeltaTime;
 	const float Interp = FMath::FInterpTo(Lean, Target, DeltaTime, 6.f);
 	Lean = FMath::Clamp(Interp, -90.f, 90.f);
-
 	AO_Yaw = BlasterCharacter->GetAO_Yaw();
 	AO_Pitch = BlasterCharacter->GetAO_Pitch();
 
+	//If a weapon is equipped the players upper body is handled separately
+	EquippedWeapon = BlasterCharacter->GetEquippedWeapon();
 	if (bWeaponEquipped && EquippedWeapon && EquippedWeapon->GetWeaponMesh() != nullptr && BlasterCharacter->GetMesh() != nullptr) {
 		LeftHandTransform = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("LeftHandSocket"), ERelativeTransformSpace::RTS_World);
 		LeftHandTransform;
@@ -67,6 +64,7 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 		LeftHandTransform.SetLocation(OutPosition);
 		LeftHandTransform.SetRotation(FQuat(OutRotation));
 
+		//If this character is a proxy, the aimimng acuracy(skeleton) must be higher
 		if (BlasterCharacter->IsLocallyControlled()) {
 			bLocallyControlled = true;
 			FTransform RightHandTr = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("Hand_R"), ERelativeTransformSpace::RTS_World);
@@ -74,10 +72,11 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 			RightHandRotation = FMath::RInterpTo(RightHandRotation, lookatrotation, DeltaTime, 30.f);
 		}
 
+		//Hand transformations must only occur if the player is not reloading, cause if not, the animations look strange
 		bUSeFabrik = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading;
-
 		bUseAimOffsets = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading && !BlasterCharacter->GetDisableGameplay();
 		bTransformRightHand = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading && !BlasterCharacter->GetDisableGameplay();
+
 		//Debug lines from weapon to screen center
 		//FTransform MuzzleTiptransform = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("MuzzleFlash"), ERelativeTransformSpace::RTS_World);
 		//FVector MuzzleX(FRotationMatrix(MuzzleTiptransform.GetRotation().Rotator()).GetUnitAxis(EAxis::X));

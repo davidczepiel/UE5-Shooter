@@ -15,22 +15,20 @@ void ABlasterPlayerState::OnRep_Score() {
 	Super::OnRep_Score();
 
 	Character = Character == nullptr ? Cast<ABlasterCharacter>(GetPawn()) : Character;
+	//if a character is avaliable the score in the HUD is updated
 	if (Character) {
 		Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
-		if (Controller) {
-			Controller->SetHUDScore(GetScore());
-		}
+		if (Controller)		Controller->SetHUDScore(GetScore());
 	}
 }
 
 void ABlasterPlayerState::OnRep_Defeats()
 {
 	Character = Character == nullptr ? Cast<ABlasterCharacter>(GetPawn()) : Character;
+	//if a character is avaliable the defeats in the HUD are updated
 	if (Character) {
 		Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
-		if (Controller) {
-			Controller->SetHUDDefeats(Defeats);
-		}
+		if (Controller)		Controller->SetHUDDefeats(Defeats);
 	}
 }
 
@@ -40,9 +38,7 @@ void ABlasterPlayerState::AddToScore(float delta) {
 	Character = Character == nullptr ? Cast<ABlasterCharacter>(GetPawn()) : Character;
 	if (Character) {
 		Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
-		if (Controller) {
-			Controller->SetHUDScore(GetScore());
-		}
+		if (Controller)		Controller->SetHUDScore(GetScore());
 	}
 }
 
@@ -51,8 +47,6 @@ void ABlasterPlayerState::AddToDefeats(int32 delta) {
 	Character = Character == nullptr ? Cast<ABlasterCharacter>(GetPawn()) : Character;
 	if (Character) {
 		Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
-		if (Controller) {
-			Controller->SetHUDDefeats(Defeats);
-		}
+		if (Controller)		Controller->SetHUDDefeats(Defeats);
 	}
 }

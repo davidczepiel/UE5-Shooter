@@ -31,14 +31,32 @@ void ABlasterPlayerController::GetLifetimeReplicatedProps(TArray<FLifetimeProper
 void ABlasterPlayerController::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 
+	//The time displayed in the HUD is fetched
 	SetHUDTime();
 	CheckTimeSync(DeltaTime);
 	PollInit();
 }
 
+void ABlasterPlayerController::PollInit()
+{
+	if (CharacterOverlay == nullptr) {
+		if (BlasterHUD && BlasterHUD->CharacterOverlay) {
+			CharacterOverlay = BlasterHUD->CharacterOverlay;
+			if (CharacterOverlay) {
+				SetHUDHelth(HUDHealth, HUDMaxHealth);
+				SetHUDScore(HUDScore);
+				SetHUDDefeats(HUDDefeats);
+			}
+		}
+	}
+}
+
+//////////////////////////////////Time sync server/client/////////////////////////////////////////////////
+
 void ABlasterPlayerController::CheckTimeSync(float DeltaTime)
 {
 	TimeSyncRunningTime += DeltaTime;
+	//Only controlled characters should ask for the time (they are the only ones with a HUD to display its value)
 	if (IsLocalController() && TimeSyncRunningTime > TimeSyncFrequency) {
 		TimeSyncRunningTime = 0.f;
 		ServerRequestServerTime(GetWorld()->GetTimeSeconds());
@@ -58,19 +76,22 @@ void ABlasterPlayerController::ClientReportServerTime_Implementation(float TimeO
 	ClientServerDelta = CurrentServerTime - GetWorld()->GetTimeSeconds();
 }
 
-void ABlasterPlayerController::OnPossess(APawn* pawn) {
-	Super::OnPossess(pawn);
-
-	ABlasterCharacter* character = Cast<ABlasterCharacter>(pawn);
-	if (character) {
-		SetHUDHelth(character->GetHealth(), character->GetMaxHealth());
-	}
-}
-
 float ABlasterPlayerController::GetServerTime()
 {
 	if (HasAuthority()) return GetWorld()->GetTimeSeconds();
 	else return GetWorld()->GetTimeSeconds() + ClientServerDelta;
+}
+
+/////////////////////////////////////////////////Player respawn///////////////////////////////////////////////////////////
+
+void ABlasterPlayerController::OnPossess(APawn* pawn) {
+	Super::OnPossess(pawn);
+
+	//If the controlled actor is a blaster character the HUD is updated
+	ABlasterCharacter* character = Cast<ABlasterCharacter>(pawn);
+	if (character) {
+		SetHUDHelth(character->GetHealth(), character->GetMaxHealth());
+	}
 }
 
 void ABlasterPlayerController::ReceivedPlayer() {
@@ -79,6 +100,8 @@ void ABlasterPlayerController::ReceivedPlayer() {
 		ServerRequestServerTime(GetWorld()->GetTimeSeconds());
 	}
 }
+
+////////////////////////////////////////////////////////////////////////HUD//////////////////////////////////////////////////
 
 void ABlasterPlayerController::SetHUDHelth(float Health, float MaxHealth) {
 	BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
@@ -89,6 +112,7 @@ void ABlasterPlayerController::SetHUDHelth(float Health, float MaxHealth) {
 		FString t = FString::Printf(TEXT("%d/%d"), FMath::CeilToInt(Health), FMath::CeilToInt(MaxHealth));
 		BlasterHUD->CharacterOverlay->HealthText->SetText(FText::FromString(t));
 	}
+	//If HUD cannot be accesses or is not avaliable
 	else {
 		bInitCharacterOverlay = true;
 		HUDHealth = Health;
@@ -103,6 +127,7 @@ void ABlasterPlayerController::SetHUDScore(float Score) {
 		FString t = FString::Printf(TEXT("%d"), FMath::FloorToInt(Score));
 		BlasterHUD->CharacterOverlay->ScoreAmount->SetText(FText::FromString(t));
 	}
+	//If HUD cannot be accesses or is not avaliable
 	else {
 		bInitCharacterOverlay = true;
 		HUDScore = Score;
@@ -116,6 +141,7 @@ void ABlasterPlayerController::SetHUDDefeats(int32 Defeats) {
 		FString t = FString::Printf(TEXT("%d"), Defeats);
 		BlasterHUD->CharacterOverlay->DefeatsAmount->SetText(FText::FromString(t));
 	}
+	//If HUD cannot be accesses or is not avaliable
 	else {
 		bInitCharacterOverlay = true;
 		HUDDefeats = Defeats;
@@ -202,6 +228,8 @@ void ABlasterPlayerController::SetHUDTime()
 	CountdownInt = SecondsLeft;
 }
 
+/////////////////////////////////////////////////Match stuff/////////////////////////////////////////////////////////////////
+
 void ABlasterPlayerController::OnMatchStateSet(FName state) {
 	MatchState = state;
 
@@ -255,16 +283,6 @@ void ABlasterPlayerController::OnRep_MatchState()
 	}
 }
 
-void ABlasterPlayerController::HandleMatchHasStarted()
-{
-	BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
-	if (BlasterHUD) {
-		BlasterHUD->AddCharacterOverlay();
-		if (BlasterHUD->Anouncement) {
-			BlasterHUD->Anouncement->SetVisibility(ESlateVisibility::Hidden);
-		}
-	}
-}
 void ABlasterPlayerController::HandleCooldown()
 {
 	BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
@@ -315,16 +333,13 @@ void ABlasterPlayerController::HandleCooldown()
 	}
 }
 
-void ABlasterPlayerController::PollInit()
+void ABlasterPlayerController::HandleMatchHasStarted()
 {
-	if (CharacterOverlay == nullptr) {
-		if (BlasterHUD && BlasterHUD->CharacterOverlay) {
-			CharacterOverlay = BlasterHUD->CharacterOverlay;
-			if (CharacterOverlay) {
-				SetHUDHelth(HUDHealth, HUDMaxHealth);
-				SetHUDScore(HUDScore);
-				SetHUDDefeats(HUDDefeats);
-			}
+	BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
+	if (BlasterHUD) {
+		BlasterHUD->AddCharacterOverlay();
+		if (BlasterHUD->Anouncement) {
+			BlasterHUD->Anouncement->SetVisibility(ESlateVisibility::Hidden);
 		}
 	}
 }

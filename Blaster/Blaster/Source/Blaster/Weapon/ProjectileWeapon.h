@@ -15,12 +15,8 @@ class BLASTER_API AProjectileWeapon : public AWeapon
 	GENERATED_BODY()
 
 public:
-
 	virtual void Fire(const FVector& HitTarget) override;
 protected:
-
 private:
-
-	UPROPERTY(EditAnywhere)
-		TSubclassOf<class AProjectile> ProjectileClass;
+	UPROPERTY(EditAnywhere)	TSubclassOf<class AProjectile> ProjectileClass;
 };

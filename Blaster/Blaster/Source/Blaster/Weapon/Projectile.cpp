@@ -17,6 +17,7 @@ AProjectile::AProjectile()
 	PrimaryActorTick.bCanEverTick = true;
 	bReplicates = true;
 
+	//Sets the projectile collision properties
 	CollisionBox = CreateDefaultSubobject<UBoxComponent>(TEXT("CollisionBox"));
 	SetRootComponent(CollisionBox);
 	CollisionBox->SetCollisionObjectType(ECollisionChannel::ECC_WorldDynamic);
@@ -25,8 +26,9 @@ AProjectile::AProjectile()
 	CollisionBox->SetCollisionResponseToChannel(ECollisionChannel::ECC_WorldStatic, ECollisionResponse::ECR_Block);
 	CollisionBox->SetCollisionResponseToChannel(ECC_SkeletalMesh, ECollisionResponse::ECR_Block);
 
+	//Adds a new movement component so that the projectile is fired
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("ProjectileMovementComponent"));
-	ProjectileMovementComponent->bRotationFollowsVelocity = true;
+	ProjectileMovementComponent->bRotationFollowsVelocity = true; //Points towards movement direction
 }
 
 // Called when the game starts or when spawned
@@ -34,13 +36,10 @@ void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (Tracer) {
-		TracerComponent = UGameplayStatics::SpawnEmitterAttached(Tracer, CollisionBox, FName(), GetActorLocation(), GetActorRotation(), EAttachLocation::KeepWorldPosition);
-	}
-
-	if (HasAuthority()) {
-		CollisionBox->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
-	}
+	//Spawn a tracer so that the projectile can be seen by the players
+	if (Tracer)				TracerComponent = UGameplayStatics::SpawnEmitterAttached(Tracer, CollisionBox, FName(), GetActorLocation(), GetActorRotation(), EAttachLocation::KeepWorldPosition);
+	//A callback is set for when the projectile collides with something (Only if the projectile exists on the server)
+	if (HasAuthority())		CollisionBox->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
@@ -58,10 +57,7 @@ void AProjectile::Destroyed()
 {
 	Super::Destroyed();
 
-	if (ImpactParticles) {
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactParticles, GetActorTransform());
-	}
-	if (ImpactSound) {
-		UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation());
-	}
+	//If effects are avaliable
+	if (ImpactParticles) 	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ImpactParticles, GetActorTransform());
+	if (ImpactSound) 		UGameplayStatics::PlaySoundAtLocation(this, ImpactSound, GetActorLocation());
 }
