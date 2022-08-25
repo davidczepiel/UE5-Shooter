@@ -16,6 +16,7 @@ AWeapon::AWeapon()
 {
 	PrimaryActorTick.bCanEverTick = false;
 	bReplicates = true;
+	SetReplicateMovement(true);
 
 	//Weapon mesh adjustments
 	WeaponMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("WeaponMesh"));
