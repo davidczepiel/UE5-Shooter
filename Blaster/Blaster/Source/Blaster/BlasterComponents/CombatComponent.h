@@ -28,6 +28,9 @@ public:
 	void Reload();
 	UFUNCTION(BlueprintCallable)		void FinishReloading();
 	void UpdateAmmo();
+	void UpdateCarriedAmmo();
+
+	void PickUpAmmo(EWeaponType type, int32 amount);
 
 protected:
 	virtual void BeginPlay() override;

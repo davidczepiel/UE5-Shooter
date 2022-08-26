@@ -34,6 +34,7 @@ public:
 	virtual void OnRep_ReplicatedMovement() override;
 	virtual void Destroyed() override;
 	UPROPERTY(Replicated)		bool bDisableGameplay = false;
+	void UpdateHUDHealth();
 
 	//Player was eliminated
 	UFUNCTION(NetMulticast, Reliable)		void MulticastElim();
@@ -53,8 +54,6 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 	void PollInit();
-
-	void UpdateHUDHealth();
 
 	//Player Actions
 	virtual void MoveForward(float Value);
@@ -90,6 +89,7 @@ private:
 	UFUNCTION()		void OnRep_OverlappingWeapon(AWeapon* LastWeapon);
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))		class UCombatComponent* Combat;
+	UPROPERTY(VisibleAnywhere)		class UBuffComponent* Buff;
 
 	UFUNCTION(Server, Reliable)		void ServerEquipButtonPress();
 
@@ -113,7 +113,7 @@ private:
 	FRotator ProxyRotation;
 
 	//Health
-	UFUNCTION()		void OnRep_Health();
+	UFUNCTION()		void OnRep_Health(float lastHealth);
 	UPROPERTY(EditAnywhere, Category = "Player Stats")											float MaxHealth = 100.f;
 	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = "Player Stats")		float CurrentHealth = 100.f;
 
@@ -139,10 +139,12 @@ public:
 	FORCEINLINE float GetAO_Yaw() const { return AO_Yaw; }
 	FORCEINLINE float GetAO_Pitch() const { return AO_Pitch; }
 	FORCEINLINE float GetHealth() const { return CurrentHealth; }
+	FORCEINLINE void SetHealth(float amount) { CurrentHealth = amount; }
 	FORCEINLINE float GetMaxHealth() const { return MaxHealth; }
 	FORCEINLINE bool IsElimmed() const { return bElim; }
 	FORCEINLINE bool GetDisableGameplay() const { return bDisableGameplay; }
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }
 	FORCEINLINE UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 	FORCEINLINE UCombatComponent* GetCombat() const { return Combat; }
+	FORCEINLINE UBuffComponent* GetBuff() const { return Buff; }
 };

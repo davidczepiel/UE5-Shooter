@@ -311,6 +311,37 @@ void UCombatComponent::UpdateAmmo()
 	EquippedWeapon->AddAmmo(-ReloadAmount);
 }
 
+void UCombatComponent::UpdateCarriedAmmo()
+{
+	if (EquippedWeapon == nullptr) return;
+	if (CarriedAmmoMap.Contains(EquippedWeapon->GetWeaponType()))
+	{
+		CarriedAmmo = CarriedAmmoMap[EquippedWeapon->GetWeaponType()];
+	}
+
+	Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
+	if (Controller)
+	{
+		Controller->SetHUDCarriedAmmo(CarriedAmmo);
+	}
+}
+
+void UCombatComponent::PickUpAmmo(EWeaponType type, int32 amount)
+{
+	if (CarriedAmmoMap.Contains(type)) {
+		CarriedAmmoMap[type] += amount;
+
+		if (EquippedWeapon->GetWeaponType() == type) {
+			CarriedAmmo += amount;
+			UpdateCarriedAmmo();
+		}
+	}
+
+	if (EquippedWeapon && !EquippedWeapon->HasAmmo() && EquippedWeapon->GetWeaponType() == type) {
+		Reload();
+	}
+}
+
 void UCombatComponent::ServerReload_Implementation()
 {
 	if (Character == nullptr || EquippedWeapon == nullptr)return;

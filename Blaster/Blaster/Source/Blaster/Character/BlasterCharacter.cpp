@@ -18,6 +18,7 @@
 #include "Blaster/PlayerState/BlasterPlayerState.h"
 #include "Blaster/Weapon/WeaponTypes.h"
 #include "Kismet/GameplayStatics.h"
+#include "Blaster/BlasterComponents/BuffComponent.h"
 
 // Sets default values
 ABlasterCharacter::ABlasterCharacter()
@@ -45,6 +46,10 @@ ABlasterCharacter::ABlasterCharacter()
 	//Combat
 	Combat = CreateDefaultSubobject<UCombatComponent>(TEXT("CombatComponent"));
 	Combat->SetIsReplicated(true);
+
+	//Buff
+	Buff = CreateDefaultSubobject<UBuffComponent>(TEXT("BuffComponent"));
+	Buff->SetIsReplicated(true);
 
 	//Collisions
 	GetCapsuleComponent()->SetCollisionResponseToChannel(ECollisionChannel::ECC_Camera, ECollisionResponse::ECR_Ignore);
@@ -189,6 +194,10 @@ void ABlasterCharacter::PostInitializeComponents()
 	Super::PostInitializeComponents();
 	if (Combat) {
 		Combat->Character = this;
+	}
+
+	if (Buff) {
+		Buff->Character = this;
 	}
 }
 
@@ -564,10 +573,12 @@ void ABlasterCharacter::UpdateHUDHealth()
 	}
 }
 
-void ABlasterCharacter::OnRep_Health()
+void ABlasterCharacter::OnRep_Health(float lastHealth)
 {
 	UpdateHUDHealth();
-	PlayHitReactMontage();
+	if (CurrentHealth < lastHealth) {
+		PlayHitReactMontage();
+	}
 }
 
 void ABlasterCharacter::HideCameraIfCharacterClose()
