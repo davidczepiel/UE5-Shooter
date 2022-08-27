@@ -35,6 +35,7 @@ public:
 	virtual void Destroyed() override;
 	UPROPERTY(Replicated)		bool bDisableGameplay = false;
 	void UpdateHUDHealth();
+	void UpdateHUDShield();
 
 	//Player was eliminated
 	UFUNCTION(NetMulticast, Reliable)		void MulticastElim();
@@ -50,6 +51,9 @@ public:
 	AWeapon* GetEquippedWeapon();
 	FVector GetHitTarget() const;
 	UPROPERTY()		class ABlasterPlayerState* BlasterPlayerState;
+
+	void SpawnDefaultWeapon();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -75,6 +79,8 @@ protected:
 	void AimOffset(float DeltaTime);
 	void CalculateAO_Pitch();
 	void SimProxiesTurn();
+
+	void UpdateHUDAmmo();
 
 private:
 	//Camera
@@ -115,7 +121,11 @@ private:
 	//Health
 	UFUNCTION()		void OnRep_Health(float lastHealth);
 	UPROPERTY(EditAnywhere, Category = "Player Stats")											float MaxHealth = 100.f;
-	UPROPERTY(ReplicatedUsing = OnRep_Health, VisibleAnywhere, Category = "Player Stats")		float CurrentHealth = 100.f;
+	UPROPERTY(ReplicatedUsing = OnRep_Health, EditAnywhere, Category = "Player Stats")		float CurrentHealth = 100.f;
+
+	UFUNCTION()		void OnRep_Shield(float lastShield);
+	UPROPERTY(EditAnywhere, Category = "Player Stats")											float MaxShield = 100.f;
+	UPROPERTY(ReplicatedUsing = OnRep_Shield, EditAnywhere, Category = "Player Stats")		float CurrentShield = 25.f;
 
 	//Death
 	void ElimTimerFinished();
@@ -134,6 +144,10 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = Elim)		UMaterialInstanceDynamic* DynamicDissolveMaterialInstance;
 	UPROPERTY(EditAnywhere, Category = Elim)		UMaterialInstance* DissolveMaterialInstance;
 
+	//DefaultWeapon
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<AWeapon> DefaultWeapon;
+
 public:
 	FORCEINLINE bool ShouldRotateRootBone() const { return bRotateRootBone; }
 	FORCEINLINE float GetAO_Yaw() const { return AO_Yaw; }
@@ -141,6 +155,9 @@ public:
 	FORCEINLINE float GetHealth() const { return CurrentHealth; }
 	FORCEINLINE void SetHealth(float amount) { CurrentHealth = amount; }
 	FORCEINLINE float GetMaxHealth() const { return MaxHealth; }
+	FORCEINLINE float GetShield() const { return CurrentShield; }
+	FORCEINLINE void SetShield(float amount) { CurrentShield = amount; }
+	FORCEINLINE float GetMaxShield() const { return MaxShield; }
 	FORCEINLINE bool IsElimmed() const { return bElim; }
 	FORCEINLINE bool GetDisableGameplay() const { return bDisableGameplay; }
 	FORCEINLINE ETurningInPlace GetTurningInPlace() const { return TurningInPlace; }

@@ -1,17 +1,10 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "HealthPickUp.h"
+#include "SpeedPickUp.h"
 #include "Blaster/Character/BlasterCharacter.h"
 #include "Blaster/BlasterComponents/BuffComponent.h"
-#include "NiagaraFunctionLibrary.h"
-#include "NiagaraComponent.h"
 
-AHealthPickup::AHealthPickup()
-{
-	bReplicates = true;
-}
-
-void AHealthPickup::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+void ASpeedPickUp::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	Super::OnSphereOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 
@@ -20,14 +13,9 @@ void AHealthPickup::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AA
 	{
 		UBuffComponent* buff = BlasterCharacter->GetBuff();
 		if (buff) {
-			buff->Heal(HealAmount, HealingTime);
+			buff->BuffSpeed(BaseSpeedBuff, CrouchSpeedBuff, SpeedBuffTime);
 		}
 	}
 
 	Destroy();
-}
-
-void AHealthPickup::Destroyed()
-{
-	Super::Destroyed();
 }

@@ -4,6 +4,8 @@
 #include "Kismet/GameplayStatics.h"
 #include "Sound/SoundCue.h"
 #include "Components/SphereComponent.h"
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
 
 // Sets default values
 APickUp::APickUp()
@@ -28,22 +30,33 @@ APickUp::APickUp()
 
 	PickupMesh->SetRenderCustomDepth(true);
 	PickupMesh->SetCustomDepthStencilValue(250);
+
+	PickupEffectComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("PickupEffectComponent"));
+	PickupEffectComponent->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
 void APickUp::BeginPlay()
 {
 	Super::BeginPlay();
-
-	if (HasAuthority())
-	{
-		OverlapSphere->OnComponentBeginOverlap.AddDynamic(this, &APickUp::OnSphereOverlap);
+	if (HasAuthority()) {
+		GetWorldTimerManager().SetTimer(BindOverlapTimer, this, &APickUp::BindOverlapTimerFinished, BindOverlapTime);
 	}
 }
 
 void APickUp::Destroyed()
 {
 	Super::Destroyed();
+
+	if (PickupEffect)
+	{
+		UNiagaraFunctionLibrary::SpawnSystemAtLocation(
+			this,
+			PickupEffect,
+			GetActorLocation(),
+			GetActorRotation()
+		);
+	}
 
 	if (PickupSound) {
 		UGameplayStatics::PlaySoundAtLocation(this, PickupSound, GetActorLocation());
@@ -62,4 +75,12 @@ void APickUp::Tick(float DeltaTime)
 
 void APickUp::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+}
+
+void APickUp::BindOverlapTimerFinished()
+{
+	if (HasAuthority())
+	{
+		OverlapSphere->OnComponentBeginOverlap.AddDynamic(this, &APickUp::OnSphereOverlap);
+	}
 }

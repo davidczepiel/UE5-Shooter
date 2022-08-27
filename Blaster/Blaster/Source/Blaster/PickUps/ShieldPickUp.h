@@ -4,18 +4,15 @@
 
 #include "CoreMinimal.h"
 #include "PickUp.h"
-#include "HealthPickup.generated.h"
+#include "ShieldPickup.generated.h"
 
 /**
  *
  */
 UCLASS()
-class BLASTER_API AHealthPickup : public APickUp
+class BLASTER_API AShieldPickup : public APickUp
 {
 	GENERATED_BODY()
-public:
-	AHealthPickup();
-	virtual void Destroyed() override;
 protected:
 	virtual void OnSphereOverlap(
 		UPrimitiveComponent* OverlappedComponent,
@@ -28,8 +25,8 @@ protected:
 private:
 
 	UPROPERTY(EditAnywhere)
-		float HealAmount = 100.f;
+		float ShieldReplenishAmount = 100.f;
 
 	UPROPERTY(EditAnywhere)
-		float HealingTime = 5.f;
+		float ShieldReplenishTime = 5.f;
 };

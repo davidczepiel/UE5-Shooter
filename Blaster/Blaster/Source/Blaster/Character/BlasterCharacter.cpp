@@ -98,7 +98,13 @@ void ABlasterCharacter::Destroyed()
 void ABlasterCharacter::Elim()
 {
 	if (Combat && Combat->EquippedWeapon) {
-		Combat->EquippedWeapon->Dropped();
+		if (Combat->EquippedWeapon->bDestroyWeapon)
+		{
+			Combat->EquippedWeapon->Destroy();
+		}
+		else {
+			Combat->EquippedWeapon->Dropped();
+		}
 	}
 	MulticastElim();
 	GetWorldTimerManager().SetTimer(ElimTimer, this, &ABlasterCharacter::ElimTimerFinished, ElimDelay);
@@ -148,7 +154,11 @@ void ABlasterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
+	SpawnDefaultWeapon();
+	UpdateHUDAmmo();
+
 	UpdateHUDHealth();
+	UpdateHUDShield();
 	if (HasAuthority()) {
 		OnTakeAnyDamage.AddDynamic(this, &ABlasterCharacter::ReceiveDamage);
 	}
@@ -185,6 +195,7 @@ void ABlasterCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ABlasterCharacter, CurrentHealth);
+	DOREPLIFETIME(ABlasterCharacter, CurrentShield);
 	DOREPLIFETIME(ABlasterCharacter, bDisableGameplay);
 	DOREPLIFETIME_CONDITION(ABlasterCharacter, OverlappingWeapon, COND_OwnerOnly);
 }
@@ -198,6 +209,8 @@ void ABlasterCharacter::PostInitializeComponents()
 
 	if (Buff) {
 		Buff->Character = this;
+		Buff->SetInitialSpeeds(GetCharacterMovement()->MaxWalkSpeed, GetCharacterMovement()->MaxWalkSpeedCrouched);
+		Buff->SetInitialJumpVelocity(GetCharacterMovement()->JumpZVelocity);
 	}
 }
 
@@ -344,9 +357,15 @@ void ABlasterCharacter::LookUp(float Value)
 
 void ABlasterCharacter::ReceiveDamage(AActor* DamagedActor, float Damage, const UDamageType* DType, AController* InstigatorController, AActor* DamageCauser)
 {
-	CurrentHealth = FMath::Clamp(CurrentHealth - Damage, 0.f, MaxHealth);
+	CurrentShield -= Damage;
+	if (CurrentShield < 0) {
+		CurrentHealth += CurrentShield;
+		CurrentShield = 0;
+	}
+	CurrentHealth = FMath::Clamp(CurrentHealth, 0.f, MaxHealth);
 
 	UpdateHUDHealth();
+	UpdateHUDShield();
 	PlayHitReactMontage();
 
 	if (CurrentHealth <= 0.f) {
@@ -565,6 +584,15 @@ void ABlasterCharacter::OnRep_OverlappingWeapon(AWeapon* LastWeapon)
 
 //////////////////////////////////////////////Health//////////////////////////////////////////
 
+void ABlasterCharacter::UpdateHUDAmmo()
+{
+	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
+	if (BlasterPlayerController && Combat && Combat->EquippedWeapon) {
+		BlasterPlayerController->SetHUDCarriedAmmo(Combat->CarriedAmmo);
+		BlasterPlayerController->SetHUDWeaponAmmo(Combat->EquippedWeapon->GetAmmo());
+	}
+}
+
 void ABlasterCharacter::UpdateHUDHealth()
 {
 	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
@@ -577,6 +605,22 @@ void ABlasterCharacter::OnRep_Health(float lastHealth)
 {
 	UpdateHUDHealth();
 	if (CurrentHealth < lastHealth) {
+		PlayHitReactMontage();
+	}
+}
+
+void ABlasterCharacter::UpdateHUDShield()
+{
+	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
+	if (BlasterPlayerController) {
+		BlasterPlayerController->SetHUDShield(CurrentShield, MaxShield);
+	}
+}
+
+void ABlasterCharacter::OnRep_Shield(float lastShield)
+{
+	UpdateHUDShield();
+	if (CurrentShield < lastShield) {
 		PlayHitReactMontage();
 	}
 }
@@ -638,6 +682,21 @@ FVector ABlasterCharacter::GetHitTarget() const
 	if (Combat == nullptr)
 		return FVector();
 	return Combat->HitTarget;
+}
+
+void ABlasterCharacter::SpawnDefaultWeapon()
+{
+	ABlasterGameMode* BlasterGameMode = Cast<ABlasterGameMode>(UGameplayStatics::GetGameMode(this));
+	UWorld* World = GetWorld();
+	if (BlasterGameMode && World && !bElim && DefaultWeapon)
+	{
+		AWeapon* StartingWeapon = World->SpawnActor<AWeapon>(DefaultWeapon);
+		StartingWeapon->bDestroyWeapon = true;
+		if (Combat)
+		{
+			Combat->EquipWeapon(StartingWeapon);
+		}
+	}
 }
 
 ECombatState ABlasterCharacter::GetCombatState()

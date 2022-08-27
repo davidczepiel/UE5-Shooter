@@ -23,6 +23,7 @@ public:
 
 	//HUD Methods
 	void SetHUDHelth(float Health, float MaxHealth);
+	void SetHUDShield(float shield, float MaxShield);
 	void SetHUDScore(float Score);
 	void SetHUDDefeats(int32 Defeats);
 	void SetHUDWeaponAmmo(int32 ammo);
@@ -62,9 +63,18 @@ private:
 
 	//HUD related variables
 	UPROPERTY()	class ABlasterHUD* BlasterHUD;
-	bool bInitCharacterOverlay = false;
+	bool bInitHealth = false;
+	bool bInitShield = false;
+	bool bInitScore = false;
+	bool bInitDefeats = false;
+	bool bInitWeaponAmmo = false;
+	bool bInitCarriedAmmo = false;
+	float HUDCarriedAmmo;
+	float HUDWeaponAmmo;
 	float HUDHealth;
 	float HUDMaxHealth;
+	float HUDShield;
+	float HUDMaxShield;
 	float matchtime = 120.f;
 	float WarmUptime = 0.f;
 	float CooldownTime = 0.f;
