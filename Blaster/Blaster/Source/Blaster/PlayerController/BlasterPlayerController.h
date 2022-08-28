@@ -16,6 +16,7 @@ class BLASTER_API ABlasterPlayerController : public APlayerController
 
 public:
 	virtual void Tick(float DeltaTime);
+	void CheckPing(float DeltaTime);
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 	void OnPossess(APawn* pawn) override;
 	void CheckTimeSync(float DeltaTime);
@@ -52,6 +53,9 @@ protected:
 	float ClientServerDelta = 0.f;
 	float TimeSyncRunningTime = 0.f;
 
+	void HighPingWarning();
+	void  StopHighPingWarning();
+
 private:
 	//Character overhead overlay
 	UPROPERTY()	class UCharacterOverlay* CharacterOverlay;
@@ -82,4 +86,16 @@ private:
 	float LevelStartingTime = 0.f;
 	int32 HUDDefeats;
 	int32 HUDScore;
+
+	//Ping
+	UPROPERTY(EditAnywhere)
+		float HighPingRunningTime = 0.f;
+	UPROPERTY(EditAnywhere)
+		float HighPingDuration = 5.f;
+	UPROPERTY(EditAnywhere)
+		float CheckPingFrequency = 5.f;
+	UPROPERTY(EditAnywhere)
+		float HighPingThreshold = 50.f;
+	UPROPERTY(EditAnywhere)
+		float PingAnimationRunningTime = 0.f;
 };

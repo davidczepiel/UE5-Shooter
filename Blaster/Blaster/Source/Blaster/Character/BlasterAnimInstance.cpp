@@ -74,6 +74,9 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 
 		//Hand transformations must only occur if the player is not reloading, cause if not, the animations look strange
 		bUSeFabrik = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading;
+		if (BlasterCharacter->IsLocallyControlled()) {
+			bUSeFabrik = !BlasterCharacter->IsLocallyReloading();
+		}
 		bUseAimOffsets = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading && !BlasterCharacter->GetDisableGameplay();
 		bTransformRightHand = BlasterCharacter->GetCombatState() != ECombatState::ECS_Reloading && !BlasterCharacter->GetDisableGameplay();
 

@@ -45,16 +45,13 @@ void AWeapon::BeginPlay()
 	//If a pick up widget is avaliable it is inmediatelly turned on
 	if (PickupWidget)		PickupWidget->SetVisibility(false);
 
-	//The weapon has collision properties only on the server
-	if (HasAuthority()) {
-		//Trigger adjustments
-		AreaSphere->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
-		AreaSphere->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
+	//Trigger adjustments
+	AreaSphere->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+	AreaSphere->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 
-		//Callbacks for on trigger enter/exit
-		AreaSphere->OnComponentBeginOverlap.AddDynamic(this, &AWeapon::OnSphereOverlap);
-		AreaSphere->OnComponentEndOverlap.AddDynamic(this, &ThisClass::OnSphereEndOverlap);
-	}
+	//Callbacks for on trigger enter/exit
+	AreaSphere->OnComponentBeginOverlap.AddDynamic(this, &AWeapon::OnSphereOverlap);
+	AreaSphere->OnComponentEndOverlap.AddDynamic(this, &ThisClass::OnSphereEndOverlap);
 }
 
 // Called every frame
@@ -87,7 +84,7 @@ void AWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
 
 	//It is important to replicate state and ammo for all of the clients when a change is made at the server
 	DOREPLIFETIME(AWeapon, WeaponState);
-	DOREPLIFETIME(AWeapon, CurrentAmmo);
+	//DOREPLIFETIME(AWeapon, CurrentAmmo);
 }
 
 void AWeapon::OnRep_WeaponState()
@@ -109,11 +106,11 @@ void AWeapon::OnRep_WeaponState()
 	}
 }
 
-void AWeapon::OnRep_Ammo()
-{
-	OwnerCharacter = OwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : OwnerCharacter;
-	SetHUDWeaponAmmo();
-}
+//void AWeapon::OnRep_Ammo()
+//{
+//	OwnerCharacter = OwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : OwnerCharacter;
+//	SetHUDWeaponAmmo();
+//}
 
 void AWeapon::OnRep_Owner()
 {
@@ -153,10 +150,31 @@ void AWeapon::SpendRound()
 {
 	CurrentAmmo = FMath::Clamp(CurrentAmmo - 1, 0, MaxAmmo);
 	SetHUDWeaponAmmo();
+	if (HasAuthority()) {
+		ClientUpdateAmmo(CurrentAmmo);
+	}
+	else { ++Sequence; }
+}
+void AWeapon::ClientUpdateAmmo_Implementation(int32 Amount)
+{
+	if (HasAuthority()) return;
+
+	CurrentAmmo = Amount;
+	--Sequence;
+	CurrentAmmo -= Sequence;;
+	SetHUDWeaponAmmo();
 }
 
 void AWeapon::AddAmmo(int32 Amount)
 {
+	CurrentAmmo = FMath::Clamp(CurrentAmmo - Amount, 0, MaxAmmo);
+	SetHUDWeaponAmmo();
+	ClientAddAmmo(Amount);
+}
+
+void AWeapon::ClientAddAmmo_Implementation(int32 Amount)
+{
+	if (HasAuthority()) return;
 	CurrentAmmo = FMath::Clamp(CurrentAmmo - Amount, 0, MaxAmmo);
 	SetHUDWeaponAmmo();
 }

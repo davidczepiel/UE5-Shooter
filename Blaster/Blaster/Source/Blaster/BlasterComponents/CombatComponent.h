@@ -32,6 +32,8 @@ public:
 
 	void PickUpAmmo(EWeaponType type, int32 amount);
 
+	bool bLocallyReloading = false;
+
 protected:
 	virtual void BeginPlay() override;
 
@@ -62,7 +64,13 @@ private:
 	UFUNCTION()					void OnRep_CarriedAmmo();
 	UPROPERTY(ReplicatedUsing = OnRep_CombatState)		ECombatState CombatState = ECombatState::ECS_Unoccupied;
 	UPROPERTY(ReplicatedUsing = OnRep_EquippedWeapon)		class AWeapon* EquippedWeapon;
-	UPROPERTY(Replicated)		bool bAiming;
+
+	UPROPERTY(ReplicatedUsing = OnRep_Aiming)
+		bool bAiming = false;
+	bool bAimButtonPressed = false;
+	UFUNCTION()
+		void OnRep_Aiming();
+
 	void InitCarriedAmmo();
 	TMap<EWeaponType, int32> CarriedAmmoMap;
 	UPROPERTY(ReplicatedUsing = OnRep_CarriedAmmo)		int32 CarriedAmmo;
@@ -74,6 +82,7 @@ private:
 	void FireTimerFinished();
 	void StartFireTimer();
 	void Fire();
+	void LocalFire(const FVector_NetQuantize& TraceHitTarget);
 	FTimerHandle FireTimer;
 	bool bCanFire = true;
 	bool bFireButtonPressed;

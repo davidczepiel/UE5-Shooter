@@ -80,8 +80,15 @@ protected:
 private:
 
 	UFUNCTION()		void OnRep_WeaponState();
-	UFUNCTION()		void OnRep_Ammo();
+	//UFUNCTION()		void OnRep_Ammo();
 	void SpendRound();
+	UFUNCTION(Client, Reliable)
+		void ClientUpdateAmmo(int32 ServerAmmo);
+	UFUNCTION(Client, Reliable)
+		void ClientAddAmmo(int32 AmmoToAdd);
+
+	//Number of unprocessed serer requests for Ammo (incremented in spend round/ decremented in clientAddAmmo)
+	int32 Sequence = 0;
 
 	//Weapon assets
 	UPROPERTY(VisibleAnywhere, Category = "Weapon Properties")		USkeletalMeshComponent* WeaponMesh;
@@ -93,7 +100,7 @@ private:
 	//Weapon data
 	UPROPERTY(EditAnywhere)																				EWeaponType WeaponType;
 	UPROPERTY(VisibleAnywhere, Category = "Weapon Properties", ReplicatedUsing = OnRep_WeaponState)		EWeaponState WeaponState;
-	UPROPERTY(EditAnywhere, Category = "Weapon Properties", ReplicatedUsing = OnRep_Ammo)				int32 CurrentAmmo = 30;
+	UPROPERTY(EditAnywhere, Category = "Weapon Properties"/*, ReplicatedUsing = OnRep_Ammo*/)				int32 CurrentAmmo = 30;
 	UPROPERTY(EditAnywhere, Category = "Weapon Properties")												int32 MaxAmmo = 30;
 	UPROPERTY()																							class ABlasterPlayerController* OwnerController;
 	UPROPERTY()																							class ABlasterCharacter* OwnerCharacter;

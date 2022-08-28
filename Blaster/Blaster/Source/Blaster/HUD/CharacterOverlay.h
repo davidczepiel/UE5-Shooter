@@ -24,4 +24,7 @@ public:
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* WeaponAmmoAmount;
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* CarriedAmmoAmount;
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* MatchCountDownText;
+
+	UPROPERTY(meta = (BindWidget))	 class UImage* HighPingImage;
+	UPROPERTY(meta = (BindWidgetAnim), Transient)UWidgetAnimation* HighPingAnimation;
 };
