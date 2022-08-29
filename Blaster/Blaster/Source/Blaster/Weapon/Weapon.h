@@ -77,6 +77,14 @@ protected:
 		int32 OtherBodyIndex
 	);
 
+	UPROPERTY(EditAnywhere)
+		float Damage = 20.f;
+
+	UPROPERTY(EditAnywhere)
+		bool bUseServerSideRewind = false;
+	UPROPERTY()																							class ABlasterPlayerController* OwnerController;
+	UPROPERTY()																							class ABlasterCharacter* OwnerCharacter;
+
 private:
 
 	UFUNCTION()		void OnRep_WeaponState();
@@ -102,8 +110,6 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = "Weapon Properties", ReplicatedUsing = OnRep_WeaponState)		EWeaponState WeaponState;
 	UPROPERTY(EditAnywhere, Category = "Weapon Properties"/*, ReplicatedUsing = OnRep_Ammo*/)				int32 CurrentAmmo = 30;
 	UPROPERTY(EditAnywhere, Category = "Weapon Properties")												int32 MaxAmmo = 30;
-	UPROPERTY()																							class ABlasterPlayerController* OwnerController;
-	UPROPERTY()																							class ABlasterCharacter* OwnerCharacter;
 
 public:
 	FORCEINLINE USkeletalMeshComponent* GetWeaponMesh() const { return WeaponMesh; }
@@ -113,4 +119,5 @@ public:
 	FORCEINLINE int32 GetAmmo() const { return CurrentAmmo; }
 	FORCEINLINE int32 GetMagCapacity() const { return MaxAmmo; }
 	FORCEINLINE EWeaponType GetWeaponType() const { return WeaponType; }
+	FORCEINLINE float GetDamage() const { return Damage; }
 };

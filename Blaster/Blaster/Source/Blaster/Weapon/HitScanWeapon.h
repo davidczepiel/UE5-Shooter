@@ -13,17 +13,25 @@ UCLASS()
 class BLASTER_API AHitScanWeapon : public AWeapon
 {
 	GENERATED_BODY()
-
 public:
 	virtual void Fire(const FVector& HitTarget) override;
 protected:
 
-private:
-	void TraceUnderCrosshairs(FHitResult& TraceHitResult);
+	void WeaponTraceHit(const FVector& TraceStart, const FVector& HitTarget, FHitResult& OutHit);
 
 	UPROPERTY(EditAnywhere)
 		class UParticleSystem* ImpactParticles;
 
 	UPROPERTY(EditAnywhere)
-		float Damage = 20.f;
+		USoundCue* HitSound;
+private:
+
+	UPROPERTY(EditAnywhere)
+		UParticleSystem* BeamParticles;
+
+	UPROPERTY(EditAnywhere)
+		UParticleSystem* MuzzleFlash;
+
+	UPROPERTY(EditAnywhere)
+		USoundCue* FireSound;
 };
