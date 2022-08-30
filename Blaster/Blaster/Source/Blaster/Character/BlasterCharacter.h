@@ -8,6 +8,7 @@
 #include "Blaster/Interfaces/InteractWithCrosshairsInterface.h"
 #include "Components/TimelineComponent.h"
 #include "Blaster/BlasterTypes/CombatState.h"
+#include "Blaster/BlasterTypes/Team.h"
 #include "BlasterCharacter.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLeftGame);
@@ -31,6 +32,7 @@ public:
 	void PlayReloadMontage();
 	void PlayElimMontage();
 	void PlayHitReactMontage();
+	void SetTeamColor(ETeam Team);
 
 	//Movement and death
 	virtual void OnRep_ReplicatedMovement() override;
@@ -189,9 +191,31 @@ private:
 	UPROPERTY(VisibleAnywhere, Category = Elim)		UMaterialInstanceDynamic* DynamicDissolveMaterialInstance;
 	UPROPERTY(EditAnywhere, Category = Elim)		UMaterialInstance* DissolveMaterialInstance;
 
+	/**
+* Team colors
+*/
+
+	UPROPERTY(EditAnywhere, Category = Elim)
+		UMaterialInstance* RedDissolveMatInst;
+
+	UPROPERTY(EditAnywhere, Category = Elim)
+		UMaterialInstance* RedMaterial;
+
+	UPROPERTY(EditAnywhere, Category = Elim)
+		UMaterialInstance* BlueDissolveMatInst;
+
+	UPROPERTY(EditAnywhere, Category = Elim)
+		UMaterialInstance* BlueMaterial;
+
+	UPROPERTY(EditAnywhere, Category = Elim)
+		UMaterialInstance* OriginalMaterial;
+
 	//DefaultWeapon
 	UPROPERTY(EditAnywhere)
 		TSubclassOf<AWeapon> DefaultWeapon;
+
+	UPROPERTY()
+		class ABlasterGameMode* BlasterGameMode;
 
 public:
 	FORCEINLINE bool ShouldRotateRootBone() const { return bRotateRootBone; }

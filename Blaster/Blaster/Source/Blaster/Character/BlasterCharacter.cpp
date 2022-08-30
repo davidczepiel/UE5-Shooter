@@ -179,7 +179,7 @@ void ABlasterCharacter::Destroyed()
 	//	ElimBotComponent->DestroyComponent();
 	//}
 	//If the match still continues and a weapon is equipped, the weapon must be destroyed in order to prevent having 2 weapons later in that match
-	ABlasterGameMode* BlasterGameMode = Cast<ABlasterGameMode>(UGameplayStatics::GetGameMode(this));
+	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
 	bool bMatchNotInProgress = BlasterGameMode && BlasterGameMode->GetMatchState() != MatchState::InProgress;
 	if (Combat && Combat->EquippedWeapon && bMatchNotInProgress)
 	{
@@ -189,7 +189,7 @@ void ABlasterCharacter::Destroyed()
 
 void ABlasterCharacter::ServerLeaveGame_Implementation()
 {
-	ABlasterGameMode* BlasterGameMode = GetWorld()->GetAuthGameMode<ABlasterGameMode>();
+	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
 	BlasterPlayerState = BlasterPlayerState == nullptr ? GetPlayerState<ABlasterPlayerState>() : BlasterPlayerState;
 	if (BlasterGameMode && BlasterPlayerState)
 	{
@@ -213,9 +213,9 @@ void ABlasterCharacter::Elim(bool bPlayerLeftGame)
 
 void ABlasterCharacter::ElimTimerFinished()
 {
-	ABlasterGameMode* gmd = GetWorld()->GetAuthGameMode<ABlasterGameMode>();
-	if (gmd && !bLeftGame) {
-		gmd->RequestRespawn(this, Controller);
+	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
+	if (BlasterGameMode && !bLeftGame) {
+		BlasterGameMode->RequestRespawn(this, Controller);
 	}
 	if (bLeftGame && IsLocallyControlled())
 	{
@@ -267,7 +267,7 @@ void ABlasterCharacter::MulticastGainedTheLead_Implementation()
 	{
 		CrownComponent = UNiagaraFunctionLibrary::SpawnSystemAttached(
 			CrownSystem,
-			GetCapsuleComponent(),
+			GetMesh(),
 			FName(),
 			GetActorLocation() + FVector(0.f, 0.f, 110.f),
 			GetActorRotation(),
@@ -376,6 +376,7 @@ void ABlasterCharacter::PollInit()
 		if (BlasterPlayerState) {
 			BlasterPlayerState->AddToScore(0);
 			BlasterPlayerState->AddToDefeats(0);
+			SetTeamColor(BlasterPlayerState->GetTeam());
 
 			ABlasterGameState* BlasterGameState = Cast<ABlasterGameState>(UGameplayStatics::GetGameState(this));
 
@@ -512,6 +513,10 @@ void ABlasterCharacter::LookUp(float Value)
 
 void ABlasterCharacter::ReceiveDamage(AActor* DamagedActor, float Damage, const UDamageType* DType, AController* InstigatorController, AActor* DamageCauser)
 {
+	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
+	if (bElim || BlasterGameMode == nullptr) return;
+	Damage = BlasterGameMode->CalculateDamage(InstigatorController, Controller, Damage);
+
 	CurrentShield -= Damage;
 	if (CurrentShield < 0) {
 		CurrentHealth += CurrentShield;
@@ -524,11 +529,10 @@ void ABlasterCharacter::ReceiveDamage(AActor* DamagedActor, float Damage, const 
 	PlayHitReactMontage();
 
 	if (CurrentHealth <= 0.f) {
-		ABlasterGameMode* gmd = GetWorld()->GetAuthGameMode<ABlasterGameMode>();
-		if (gmd) {
+		if (BlasterGameMode) {
 			BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
 			ABlasterPlayerController* otherController = Cast<ABlasterPlayerController>(InstigatorController);
-			gmd->PlayerEliminated(this, BlasterPlayerController, otherController);
+			BlasterGameMode->PlayerEliminated(this, BlasterPlayerController, otherController);
 		}
 	}
 }
@@ -797,6 +801,26 @@ void ABlasterCharacter::HideCameraIfCharacterClose()
 	}
 }
 
+void ABlasterCharacter::SetTeamColor(ETeam Team)
+{
+	if (GetMesh() == nullptr || OriginalMaterial == nullptr) return;
+	switch (Team)
+	{
+	case ETeam::ET_NoTeam:
+		GetMesh()->SetMaterial(0, OriginalMaterial);
+		DissolveMaterialInstance = BlueDissolveMatInst;
+		break;
+	case ETeam::ET_BlueTeam:
+		GetMesh()->SetMaterial(0, BlueMaterial);
+		DissolveMaterialInstance = BlueDissolveMatInst;
+		break;
+	case ETeam::ET_RedTeam:
+		GetMesh()->SetMaterial(0, RedMaterial);
+		DissolveMaterialInstance = RedDissolveMatInst;
+		break;
+	}
+}
+
 ////////////////////////////////////DIsolve material/////////////////////////////////////////////
 
 void ABlasterCharacter::UpdateDissolveMaterial(float DissolveValue)
@@ -841,7 +865,7 @@ FVector ABlasterCharacter::GetHitTarget() const
 
 void ABlasterCharacter::SpawnDefaultWeapon()
 {
-	ABlasterGameMode* BlasterGameMode = Cast<ABlasterGameMode>(UGameplayStatics::GetGameMode(this));
+	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
 	UWorld* World = GetWorld();
 	if (BlasterGameMode && World && !bElim && DefaultWeapon)
 	{

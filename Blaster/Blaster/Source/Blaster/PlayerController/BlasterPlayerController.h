@@ -37,7 +37,8 @@ public:
 
 	//Match related methods
 	virtual void ReceivedPlayer() override;
-	void OnMatchStateSet(FName state);
+	void OnMatchStateSet(FName State, bool bTeamsMatch = false);
+	void HandleMatchHasStarted(bool bTeamsMatch = false);
 	void HandleCooldown();
 
 	float SingleTripTime = 0.f;
@@ -45,9 +46,13 @@ public:
 
 	void BroadcastElim(APlayerState* Attacker, APlayerState* Victim);
 
+	void HideTeamScores();
+	void InitTeamScores();
+	void SetHUDRedTeamScore(int32 RedScore);
+	void SetHUDBlueTeamScore(int32 BlueScore);
+
 protected:
 	virtual void BeginPlay() override;
-	void HandleMatchHasStarted();
 	void PollInit();
 
 	virtual void SetupInputComponent() override;
@@ -69,6 +74,15 @@ protected:
 
 	UFUNCTION(Client, Reliable)
 		void ClientElimAnnouncement(APlayerState* Attacker, APlayerState* Victim);
+
+	UPROPERTY(ReplicatedUsing = OnRep_ShowTeamScores)
+		bool bShowTeamScores = false;
+
+	UFUNCTION()
+		void OnRep_ShowTeamScores();
+
+	FString GetInfoText(const TArray<class ABlasterPlayerState*>& Players);
+	FString GetTeamsInfoText(class ABlasterGameState* BlasterGameState);
 private:
 	//Character overhead overlay
 	UPROPERTY()	class UCharacterOverlay* CharacterOverlay;

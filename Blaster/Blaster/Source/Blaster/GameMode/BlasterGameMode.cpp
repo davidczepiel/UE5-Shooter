@@ -23,6 +23,11 @@ void ABlasterGameMode::BeginPlay() {
 	LevelStartingTime = GetWorld()->GetTimeSeconds();
 }
 
+float ABlasterGameMode::CalculateDamage(AController* Attacker, AController* Victim, float BaseDamage)
+{
+	return BaseDamage;
+}
+
 void ABlasterGameMode::Tick(float DeltaTime) {
 	Super::Tick(DeltaTime);
 
@@ -50,7 +55,9 @@ void ABlasterGameMode::OnMatchStateSet() {
 	//Every controller from the world is fetched and is notified with the match state the game is in
 	for (FConstPlayerControllerIterator it = GetWorld()->GetPlayerControllerIterator(); it; ++it) {
 		ABlasterPlayerController* p = Cast<ABlasterPlayerController>(*it);
-		if (p) 	p->OnMatchStateSet(MatchState);
+		if (p) {
+			p->OnMatchStateSet(MatchState, bTeamsMatch);
+		}
 	}
 }
 
