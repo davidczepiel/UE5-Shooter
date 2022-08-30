@@ -61,6 +61,8 @@ public:
 
 	bool bDestroyWeapon = false;
 
+	UPROPERTY(EditAnywhere)
+		float HeadShotDamage = 40.f;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -127,4 +129,5 @@ public:
 	FORCEINLINE int32 GetMagCapacity() const { return MaxAmmo; }
 	FORCEINLINE EWeaponType GetWeaponType() const { return WeaponType; }
 	FORCEINLINE float GetDamage() const { return Damage; }
+	FORCEINLINE float GetHeadShotDamage() const { return HeadShotDamage; }
 };

@@ -7,6 +7,7 @@
 #include "GameFramework/PlayerStart.h"
 #include "Blaster/PlayerState/BlasterPlayerState.h"
 #include "Blaster/GameState/BlasterGameState.h"
+#include "Blaster/Character/BlasterCharacter.h"
 
 namespace MatchState {
 	const FName Cooldown = FName("Cooldown");
@@ -61,14 +62,65 @@ void ABlasterGameMode::PlayerEliminated(class ABlasterCharacter* ElimCharacter, 
 	//The game state is obtained and the kills/deaths are updated
 	ABlasterGameState* BlasterGameState = GetGameState<ABlasterGameState>();
 	if (AtState && AtState != VictimState && BlasterGameState) {
+		TArray<ABlasterPlayerState*> PlayersCurrentlyInTheLead;
+		for (auto LeadPlayer : BlasterGameState->TopScoringPlayers)
+		{
+			PlayersCurrentlyInTheLead.Add(LeadPlayer);
+		}
+
 		AtState->AddToScore(1.f);
 		BlasterGameState->UpdateTopScore(AtState);
+
+		if (BlasterGameState->TopScoringPlayers.Contains(AtState))
+		{
+			ABlasterCharacter* Leader = Cast<ABlasterCharacter>(AtState->GetPawn());
+			if (Leader)
+			{
+				Leader->MulticastGainedTheLead();
+			}
+		}
+
+		for (int32 i = 0; i < PlayersCurrentlyInTheLead.Num(); i++)
+		{
+			if (!BlasterGameState->TopScoringPlayers.Contains(PlayersCurrentlyInTheLead[i]))
+			{
+				ABlasterCharacter* Loser = Cast<ABlasterCharacter>(PlayersCurrentlyInTheLead[i]->GetPawn());
+				if (Loser)
+				{
+					Loser->MulticastLostTheLead();
+				}
+			}
+		}
 	}
 	if (VictimState) {
 		VictimState->AddToDefeats(1);
 	}
 	if (ElimCharacter) {
-		ElimCharacter->Elim();
+		ElimCharacter->Elim(false);
+	}
+
+	for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
+	{
+		ABlasterPlayerController* BlasterPlayer = Cast<ABlasterPlayerController>(*It);
+		if (BlasterPlayer && AtState && VictimState)
+		{
+			BlasterPlayer->BroadcastElim(AtState, VictimState);
+		}
+	}
+}
+
+void ABlasterGameMode::PlayerLeftGame(ABlasterPlayerState* PlayerLeaving)
+{
+	if (PlayerLeaving == nullptr) return;
+	ABlasterGameState* BlasterGameState = GetGameState<ABlasterGameState>();
+	if (BlasterGameState && BlasterGameState->TopScoringPlayers.Contains(PlayerLeaving))
+	{
+		BlasterGameState->TopScoringPlayers.Remove(PlayerLeaving);
+	}
+	ABlasterCharacter* CharacterLeaving = Cast<ABlasterCharacter>(PlayerLeaving->GetPawn());
+	if (CharacterLeaving)
+	{
+		CharacterLeaving->Elim(true);
 	}
 }
 

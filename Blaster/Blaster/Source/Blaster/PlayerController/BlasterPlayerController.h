@@ -42,10 +42,15 @@ public:
 
 	float SingleTripTime = 0.f;
 	FHighPingDelegate HighPingDelegate;
+
+	void BroadcastElim(APlayerState* Attacker, APlayerState* Victim);
+
 protected:
 	virtual void BeginPlay() override;
 	void HandleMatchHasStarted();
 	void PollInit();
+
+	virtual void SetupInputComponent() override;
 
 	//Sync time between client and server
 	UFUNCTION(Server, Reliable)		void ServerRequestServerTime(float TimeOfClientRequest);
@@ -60,6 +65,10 @@ protected:
 	void HighPingWarning();
 	void  StopHighPingWarning();
 
+	void ShowReturnToMainMenu();
+
+	UFUNCTION(Client, Reliable)
+		void ClientElimAnnouncement(APlayerState* Attacker, APlayerState* Victim);
 private:
 	//Character overhead overlay
 	UPROPERTY()	class UCharacterOverlay* CharacterOverlay;
@@ -90,6 +99,18 @@ private:
 	float LevelStartingTime = 0.f;
 	int32 HUDDefeats;
 	int32 HUDScore;
+
+	/**
+* Return to main menu
+*/
+
+	UPROPERTY(EditAnywhere, Category = HUD)
+		TSubclassOf<class UUserWidget> ReturnToMainMenuWidget;
+
+	UPROPERTY()
+		class UReturnToMainMenu* ReturnToMainMenu;
+
+	bool bReturnToMainMenuOpen = false;
 
 	//Ping
 	UPROPERTY(EditAnywhere)

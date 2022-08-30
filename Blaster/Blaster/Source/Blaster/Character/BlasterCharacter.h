@@ -10,6 +10,8 @@
 #include "Blaster/BlasterTypes/CombatState.h"
 #include "BlasterCharacter.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnLeftGame);
+
 UCLASS()
 class BLASTER_API ABlasterCharacter : public ACharacter, public IInteractWithCrosshairsInterface
 {
@@ -38,8 +40,8 @@ public:
 	void UpdateHUDShield();
 
 	//Player was eliminated
-	UFUNCTION(NetMulticast, Reliable)		void MulticastElim();
-	void Elim();
+	UFUNCTION(NetMulticast, Reliable)		void MulticastElim(bool bPlayerLeftGame);
+	void Elim(bool bPlayerLeftGame);
 
 	//Weapon related
 	void FireButtonPressed();
@@ -51,6 +53,9 @@ public:
 	AWeapon* GetEquippedWeapon();
 	FVector GetHitTarget() const;
 	UPROPERTY()		class ABlasterPlayerState* BlasterPlayerState;
+
+	UPROPERTY(EditAnywhere)		class UNiagaraSystem* CrownSystem;
+	UPROPERTY()					class UNiagaraComponent* CrownComponent;
 
 	void SpawnDefaultWeapon();
 
@@ -79,6 +84,17 @@ public:
 	UPROPERTY(EditAnywhere)		UBoxComponent* foot_r;
 
 	UPROPERTY()					TMap<FName, class UBoxComponent*> HitCollisionBoxes;
+
+	UFUNCTION(Server, Reliable)
+		void ServerLeaveGame();
+
+	FOnLeftGame OnLeftGame;
+
+	UFUNCTION(NetMulticast, Reliable)
+		void MulticastGainedTheLead();
+
+	UFUNCTION(NetMulticast, Reliable)
+		void MulticastLostTheLead();
 
 protected:
 	// Called when the game starts or when spawned
@@ -153,6 +169,8 @@ private:
 	UFUNCTION()		void OnRep_Shield(float lastShield);
 	UPROPERTY(EditAnywhere, Category = "Player Stats")											float MaxShield = 100.f;
 	UPROPERTY(ReplicatedUsing = OnRep_Shield, EditAnywhere, Category = "Player Stats")		float CurrentShield = 25.f;
+
+	bool bLeftGame = false;
 
 	//Death
 	void ElimTimerFinished();

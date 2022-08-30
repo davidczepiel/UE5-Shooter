@@ -24,6 +24,8 @@ public:
 	virtual void PlayerEliminated(class ABlasterCharacter* ElimCharacter, class ABlasterPlayerController* VictimController, ABlasterPlayerController* Attacker5Controller);
 	virtual bool RequestRespawn(class ACharacter* ElimCharacter, class AController* ElimController);
 
+	void PlayerLeftGame(class ABlasterPlayerState* PlayerLeaving);
+
 	//Time related variables
 	UPROPERTY(EditDefaultsOnly)		float WarmupTime = 10.f;
 	UPROPERTY(EditDefaultsOnly)		float MatchTime = 120.f;
