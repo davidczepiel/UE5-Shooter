@@ -35,6 +35,10 @@ public:
 	void Dropped();
 	void SetWeaponState(EWeaponState NewState);
 
+	void OnDropped();
+
+	void OnEquipped();
+
 	//Crosshair textures
 	UPROPERTY(EditAnywhere, Category = Crosshairs)		class UTexture2D* CrosshairsCenter;
 	UPROPERTY(EditAnywhere, Category = Crosshairs)		UTexture2D* CrosshairsLeft;
@@ -80,11 +84,14 @@ protected:
 	UPROPERTY(EditAnywhere)
 		float Damage = 20.f;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(Replicated, EditAnywhere)
 		bool bUseServerSideRewind = false;
+
 	UPROPERTY()																							class ABlasterPlayerController* OwnerController;
 	UPROPERTY()																							class ABlasterCharacter* OwnerCharacter;
 
+	UFUNCTION()
+		void OnPingTooHigh(bool bPingTooHigh);
 private:
 
 	UFUNCTION()		void OnRep_WeaponState();

@@ -78,12 +78,18 @@ void AWeapon::Dropped()
 	OwnerController = nullptr;
 }
 
+void AWeapon::OnPingTooHigh(bool bPingTooHigh)
+{
+	bUseServerSideRewind = !bPingTooHigh;
+}
+
 void AWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	//It is important to replicate state and ammo for all of the clients when a change is made at the server
 	DOREPLIFETIME(AWeapon, WeaponState);
+	DOREPLIFETIME_CONDITION(AWeapon, bUseServerSideRewind, COND_OwnerOnly);
 	//DOREPLIFETIME(AWeapon, CurrentAmmo);
 }
 
@@ -194,20 +200,48 @@ void AWeapon::SetWeaponState(EWeaponState NewState)
 	WeaponState = NewState;
 	switch (WeaponState) {
 	case EWeaponState::EWS_Equiped:
-		ShowPickupWidget(false);
-		//NO collision when equiped
-		AreaSphere->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-		WeaponMesh->SetSimulatePhysics(false);
-		WeaponMesh->SetEnableGravity(false);
-		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+		OnEquipped();
 		break;
 	case EWeaponState::EWS_Dropped:
-		//Collisions are activated
-		if (HasAuthority()) AreaSphere->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-		WeaponMesh->SetSimulatePhysics(true);
-		WeaponMesh->SetEnableGravity(true);
-		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		OnDropped();
 		break;
+	}
+}
+
+void AWeapon::OnDropped()
+{
+	//Collisions are activated
+	if (HasAuthority()) AreaSphere->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	WeaponMesh->SetSimulatePhysics(true);
+	WeaponMesh->SetEnableGravity(true);
+	WeaponMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+
+	OwnerCharacter = OwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : OwnerCharacter;
+	//If the weapon is currently being used by a player, its ammo is displayed on the players HUD
+	if (OwnerCharacter && bUseServerSideRewind) {
+		OwnerController = OwnerController == nullptr ? Cast<ABlasterPlayerController>(OwnerCharacter->Controller) : OwnerController;
+		if (OwnerController && HasAuthority() && OwnerController->HighPingDelegate.IsBound()) {
+			OwnerController->HighPingDelegate.RemoveDynamic(this, &AWeapon::OnPingTooHigh);
+		}
+	}
+}
+
+void AWeapon::OnEquipped()
+{
+	ShowPickupWidget(false);
+	//NO collision when equiped
+	AreaSphere->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	WeaponMesh->SetSimulatePhysics(false);
+	WeaponMesh->SetEnableGravity(false);
+	WeaponMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	OwnerCharacter = OwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : OwnerCharacter;
+	//If the weapon is currently being used by a player, its ammo is displayed on the players HUD
+	if (OwnerCharacter && bUseServerSideRewind) {
+		OwnerController = OwnerController == nullptr ? Cast<ABlasterPlayerController>(OwnerCharacter->Controller) : OwnerController;
+		if (OwnerController && HasAuthority() && !OwnerController->HighPingDelegate.IsBound()) {
+			OwnerController->HighPingDelegate.AddDynamic(this, &AWeapon::OnPingTooHigh);
+		}
 	}
 }
 

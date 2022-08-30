@@ -19,4 +19,7 @@ public:
 protected:
 private:
 	UPROPERTY(EditAnywhere)	TSubclassOf<class AProjectile> ProjectileClass;
+private:
+	UPROPERTY(EditAnywhere)
+		TSubclassOf<AProjectile> ServerSideRewindProjectileClass;
 };
