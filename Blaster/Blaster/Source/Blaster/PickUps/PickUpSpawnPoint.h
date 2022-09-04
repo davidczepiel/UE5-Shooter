@@ -17,25 +17,16 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
-	UPROPERTY(EditAnywhere)
-		TArray<TSubclassOf<class APickUp>> PickupClasses;
-
-	UPROPERTY()
-		APickUp* SpawnedPickup;
-
 	void SpawnPickup();
 	void SpawnPickupTimerFinished();
 
-	UFUNCTION()
-		void StartSpawnPickupTimer(AActor* DestroyedActor);
+	UPROPERTY(EditAnywhere)		TArray<TSubclassOf<class APickUp>> PickupClasses;
+	UPROPERTY()		APickUp* SpawnedPickup;
+	UFUNCTION()		void StartSpawnPickupTimer(AActor* DestroyedActor);
 private:
+	//Rate of spawning pick ups
 	FTimerHandle SpawnPickupTimer;
-
-	UPROPERTY(EditAnywhere)
-		float SpawnPickupTimeMin;
-
-	UPROPERTY(EditAnywhere)
-		float SpawnPickupTimeMax;
+	UPROPERTY(EditAnywhere)		float SpawnPickupTimeMin;
+	UPROPERTY(EditAnywhere)		float SpawnPickupTimeMax;
 public:
 };

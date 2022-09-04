@@ -11,6 +11,10 @@
 
 #define TRACE_LENGTH 8000.f
 
+/**
+* Class that is meant to manage everything related to combat, having a weapon, managing the ammo...
+*/
+
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class BLASTER_API UCombatComponent : public UActorComponent
 {
@@ -23,14 +27,13 @@ public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 	//Weapon related
-	void FireButtonPressed(bool bPressed);
 	void EquipWeapon(class AWeapon* WeaponToEquip);
-	void Reload();
-	UFUNCTION(BlueprintCallable)		void FinishReloading();
+	void FireButtonPressed(bool bPressed);
+	void PickUpAmmo(EWeaponType type, int32 amount);
 	void UpdateAmmo();
 	void UpdateCarriedAmmo();
-
-	void PickUpAmmo(EWeaponType type, int32 amount);
+	void Reload();
+	UFUNCTION(BlueprintCallable)		void FinishReloading();
 
 	bool bLocallyReloading = false;
 

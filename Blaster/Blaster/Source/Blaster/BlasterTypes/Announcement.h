@@ -1,5 +1,6 @@
 #pragma once
 
+//Announcements for when the match ends
 namespace Announcement
 {
 	const FString NewMatchStartsIn(TEXT("New match starts in:"));

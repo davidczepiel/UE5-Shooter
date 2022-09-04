@@ -10,11 +10,11 @@
 // Sets default values
 APickUp::APickUp()
 {
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	PrimaryActorTick.bCanEverTick = true;
 	bReplicates = true;
 
-	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-
+	//Hitbox to see if the player can pick this object or not
 	OverlapSphere = CreateDefaultSubobject<USphereComponent>(TEXT("OverlapSphere"));
 	OverlapSphere->SetupAttachment(RootComponent);
 	OverlapSphere->SetSphereRadius(150.f);
@@ -23,14 +23,15 @@ APickUp::APickUp()
 	OverlapSphere->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Overlap);
 	OverlapSphere->AddLocalOffset(FVector(0.f, 0.f, 85.f));
 
+	//Visualization of the pickup
 	PickupMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("PickupMesh"));
 	PickupMesh->SetupAttachment(OverlapSphere);
 	PickupMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	PickupMesh->SetRelativeScale3D(FVector(5.f, 5.f, 5.f));
-
 	PickupMesh->SetRenderCustomDepth(true);
 	PickupMesh->SetCustomDepthStencilValue(250);
 
+	//Extra visual effects for the pickup
 	PickupEffectComponent = CreateDefaultSubobject<UNiagaraComponent>(TEXT("PickupEffectComponent"));
 	PickupEffectComponent->SetupAttachment(RootComponent);
 }
@@ -77,6 +78,7 @@ void APickUp::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* 
 {
 }
 
+//This function exist to prevent unwanted behaviour if the pickup spawn at the location of a player
 void APickUp::BindOverlapTimerFinished()
 {
 	if (HasAuthority())

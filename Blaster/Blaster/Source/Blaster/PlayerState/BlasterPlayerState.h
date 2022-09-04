@@ -26,13 +26,12 @@ public:
 protected:
 
 private:
+	UFUNCTION()		void OnRep_Team();
+
 	UPROPERTY()									class ABlasterCharacter* Character;
 	UPROPERTY()									class ABlasterPlayerController* Controller;
 	UPROPERTY(ReplicatedUsing = OnRep_Defeats)	int32 Defeats;
-	UPROPERTY(ReplicatedUsing = OnRep_Team)
-		ETeam Team = ETeam::ET_NoTeam;
-	UFUNCTION()
-		void OnRep_Team();
+	UPROPERTY(ReplicatedUsing = OnRep_Team)		ETeam Team = ETeam::ET_NoTeam;
 
 public:
 	FORCEINLINE ETeam GetTeam() const { return Team; }

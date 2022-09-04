@@ -31,18 +31,15 @@ protected:
 	UPROPERTY(EditAnywhere)
 		float BaseTurnRate = 45.f;
 private:
-	UPROPERTY(EditAnywhere)
-		class USphereComponent* OverlapSphere;
-	UPROPERTY(EditAnywhere)
-		class USoundCue* PickupSound;
-	UPROPERTY(EditAnywhere)
-		UStaticMeshComponent* PickupMesh;
+	//Hitbox to determine if the player is able to pick up this item or not
+	UPROPERTY(EditAnywhere)		class USphereComponent* OverlapSphere;
 
-	UPROPERTY(VisibleAnywhere)
-		class UNiagaraComponent* PickupEffectComponent;
+	//Visual effects
+	UPROPERTY(EditAnywhere)		UStaticMeshComponent* PickupMesh;
+	UPROPERTY(VisibleAnywhere)		class UNiagaraComponent* PickupEffectComponent;
+	UPROPERTY(EditAnywhere)		class UNiagaraSystem* PickupEffect;
 
-	UPROPERTY(EditAnywhere)
-		class UNiagaraSystem* PickupEffect;
+	UPROPERTY(EditAnywhere)		class USoundCue* PickupSound;
 
 	FTimerHandle BindOverlapTimer;
 	float BindOverlapTime = 0.25f;

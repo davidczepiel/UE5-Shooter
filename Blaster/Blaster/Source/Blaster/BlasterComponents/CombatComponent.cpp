@@ -131,27 +131,45 @@ void UCombatComponent::SetHUDCrosshairs(float DeltaTime)
 void UCombatComponent::TraceUnderCrosshairs(FHitResult& TraceHitResult)
 {
 	FVector2D ViewportSize;
-	if (GEngine && GEngine->GameViewport) {
+	if (GEngine && GEngine->GameViewport)
+	{
 		GEngine->GameViewport->GetViewportSize(ViewportSize);
 	}
+
 	FVector2D CrosshairLocation(ViewportSize.X / 2.f, ViewportSize.Y / 2.f);
 	FVector CrosshairWorldPosition;
 	FVector CrosshairWorldDirection;
+	bool bScreenToWorld = UGameplayStatics::DeprojectScreenToWorld(
+		UGameplayStatics::GetPlayerController(this, 0),
+		CrosshairLocation,
+		CrosshairWorldPosition,
+		CrosshairWorldDirection
+	);
 
-	bool bScreeToWorld = UGameplayStatics::DeprojectScreenToWorld(UGameplayStatics::GetPlayerController(this, 0), CrosshairLocation, CrosshairWorldPosition, CrosshairWorldDirection);
-	if (bScreeToWorld) {
-		FVector start = CrosshairWorldPosition;
-		if (Character) {
-			float dist = (Character->GetActorLocation() - start).Size();
-			start += CrosshairWorldDirection * (dist + 100.f);
+	if (bScreenToWorld)
+	{
+		FVector Start = CrosshairWorldPosition;
+
+		if (Character)
+		{
+			float DistanceToCharacter = (Character->GetActorLocation() - Start).Size();
+			Start += CrosshairWorldDirection * (DistanceToCharacter + 100.f);
 		}
-		FVector end = start + (CrosshairWorldDirection * TRACE_LENGTH);
 
-		GetWorld()->LineTraceSingleByChannel(TraceHitResult, start, end, ECollisionChannel::ECC_Visibility);
-		if (TraceHitResult.GetActor() && TraceHitResult.GetActor()->Implements<UInteractWithCrosshairsInterface>()) {
+		FVector End = Start + CrosshairWorldDirection * TRACE_LENGTH;
+
+		GetWorld()->LineTraceSingleByChannel(
+			TraceHitResult,
+			Start,
+			End,
+			ECollisionChannel::ECC_Visibility
+		);
+		if (TraceHitResult.GetActor() && TraceHitResult.GetActor()->Implements<UInteractWithCrosshairsInterface>())
+		{
 			HUDPackage.CrosshairsColor = FLinearColor::Red;
 		}
-		else {
+		else
+		{
 			HUDPackage.CrosshairsColor = FLinearColor::White;
 		}
 	}

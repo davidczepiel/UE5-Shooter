@@ -59,6 +59,8 @@ void AHitScanWeapon::Fire(const FVector& HitTarget)
 				}
 			}
 		}
+
+		//Effects of the fireshot
 		if (ImpactParticles)
 		{
 			UGameplayStatics::SpawnEmitterAtLocation(

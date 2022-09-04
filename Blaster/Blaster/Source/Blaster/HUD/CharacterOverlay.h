@@ -15,25 +15,27 @@ class BLASTER_API UCharacterOverlay : public UUserWidget
 	GENERATED_BODY()
 
 public:
+	//Health and shield
 	UPROPERTY(meta = (BindWidget))		class UProgressBar* HealthBar;
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* HealthText;
 	UPROPERTY(meta = (BindWidget))		UProgressBar* ShieldBar;
 	UPROPERTY(meta = (BindWidget))		UTextBlock* ShieldText;
-	UPROPERTY(meta = (BindWidget))		class UTextBlock* ScoreAmount;
-	UPROPERTY(meta = (BindWidget))		class UTextBlock* DefeatsAmount;
+
+	//Weapon
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* WeaponAmmoAmount;
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* CarriedAmmoAmount;
-	UPROPERTY(meta = (BindWidget))		class UTextBlock* MatchCountDownText;
 
+	//High ping HUD
 	UPROPERTY(meta = (BindWidget))	 class UImage* HighPingImage;
 	UPROPERTY(meta = (BindWidgetAnim), Transient)UWidgetAnimation* HighPingAnimation;
 
-	UPROPERTY(meta = (BindWidget))
-		UTextBlock* RedTeamScore;
+	//Team scores
+	UPROPERTY(meta = (BindWidget))		UTextBlock* RedTeamScore;
+	UPROPERTY(meta = (BindWidget))		UTextBlock* BlueTeamScore;
+	UPROPERTY(meta = (BindWidget))		UTextBlock* ScoreSpacerText;
 
-	UPROPERTY(meta = (BindWidget))
-		UTextBlock* BlueTeamScore;
-
-	UPROPERTY(meta = (BindWidget))
-		UTextBlock* ScoreSpacerText;
+	//Match
+	UPROPERTY(meta = (BindWidget))		class UTextBlock* MatchCountDownText;
+	UPROPERTY(meta = (BindWidget))		class UTextBlock* ScoreAmount;
+	UPROPERTY(meta = (BindWidget))		class UTextBlock* DefeatsAmount;
 };
