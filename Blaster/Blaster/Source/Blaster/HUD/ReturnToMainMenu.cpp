@@ -3,7 +3,7 @@
 #include "ReturnToMainMenu.h"
 #include "GameFramework/PlayerController.h"
 #include "Components/Button.h"
-#include "../Plugins//MultiplayerSessions/Source/MultiplayerSessions/Public/MultiplayerSessionsSubsystem.h"
+#include "MultiplayerSessionsSubsystem.h"
 #include "GameFramework/GameModeBase.h"
 #include "Blaster/Character/BlasterCharacter.h"
 
@@ -33,7 +33,7 @@ void UReturnToMainMenu::MenuSetup()
 	if (GameInstance)
 	{
 		MultiplayerSessionsSubsystem = GameInstance->GetSubsystem<UMultiplayerSessionsSubsystem>();
-		if (MultiplayerSessionsSubsystem && !MultiplayerSessionsSubsystem->MultiplayerOnDestroySessionComplete.IsBound())
+		if (MultiplayerSessionsSubsystem)
 		{
 			MultiplayerSessionsSubsystem->MultiplayerOnDestroySessionComplete.AddDynamic(this, &UReturnToMainMenu::OnDestroySession);
 		}
@@ -106,7 +106,8 @@ void UReturnToMainMenu::ReturnButtonClicked()
 	ReturnButton->SetIsEnabled(false);
 
 	UWorld* World = GetWorld();
-	if (World) {
+	if (World)
+	{
 		APlayerController* FirstPlayerController = World->GetFirstPlayerController();
 		if (FirstPlayerController)
 		{

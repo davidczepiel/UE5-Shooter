@@ -412,14 +412,7 @@ void ABlasterCharacter::CrouchButtonPress()
 void ABlasterCharacter::ReloadButtonPress()
 {
 	if (bDisableGameplay)return;
-
-	int intVar = 5;
-	float floatVar = 3.7f;
-	FString fstringVar = "Llamado al ser pulsado el boton de recargar";
-	UE_LOG(LogTemp, Warning, TEXT("Text, %d %f %s"), intVar, floatVar, *fstringVar);
-	if (Combat) {
-		Combat->Reload();
-	}
+	if (Combat) Combat->Reload();
 }
 
 void ABlasterCharacter::AimButtonPress()

@@ -56,7 +56,7 @@ void UCombatComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	if (Character && Character->IsLocallyControlled()) {
 		FHitResult HitResult;
 		TraceUnderCrosshairs(HitResult);
-		HitTarget = HitResult.TraceEnd;
+		HitTarget = HitResult.ImpactPoint;
 
 		SetHUDCrosshairs(DeltaTime);
 		InterpFOV(DeltaTime);
@@ -131,47 +131,37 @@ void UCombatComponent::SetHUDCrosshairs(float DeltaTime)
 void UCombatComponent::TraceUnderCrosshairs(FHitResult& TraceHitResult)
 {
 	FVector2D ViewportSize;
-	if (GEngine && GEngine->GameViewport)
-	{
-		GEngine->GameViewport->GetViewportSize(ViewportSize);
-	}
+	if (GEngine && GEngine->GameViewport)	GEngine->GameViewport->GetViewportSize(ViewportSize);
 
+	//Transformation from screen point to world position
 	FVector2D CrosshairLocation(ViewportSize.X / 2.f, ViewportSize.Y / 2.f);
 	FVector CrosshairWorldPosition;
 	FVector CrosshairWorldDirection;
-	bool bScreenToWorld = UGameplayStatics::DeprojectScreenToWorld(
-		UGameplayStatics::GetPlayerController(this, 0),
-		CrosshairLocation,
-		CrosshairWorldPosition,
-		CrosshairWorldDirection
-	);
+	bool bScreenToWorld = UGameplayStatics::DeprojectScreenToWorld(UGameplayStatics::GetPlayerController(this, 0), CrosshairLocation, CrosshairWorldPosition, CrosshairWorldDirection);
 
+	//If the projection was succesful
 	if (bScreenToWorld)
 	{
+		//Limits of the trace performed
 		FVector Start = CrosshairWorldPosition;
-
 		if (Character)
 		{
 			float DistanceToCharacter = (Character->GetActorLocation() - Start).Size();
 			Start += CrosshairWorldDirection * (DistanceToCharacter + 100.f);
 		}
-
 		FVector End = Start + CrosshairWorldDirection * TRACE_LENGTH;
 
-		GetWorld()->LineTraceSingleByChannel(
-			TraceHitResult,
-			Start,
-			End,
-			ECollisionChannel::ECC_Visibility
-		);
-		if (TraceHitResult.GetActor() && TraceHitResult.GetActor()->Implements<UInteractWithCrosshairsInterface>())
-		{
-			HUDPackage.CrosshairsColor = FLinearColor::Red;
+		//If the trace collides with whatever that is not world bounds (visibility channel) then an impact point will be provided
+		GetWorld()->LineTraceSingleByChannel(TraceHitResult, Start, End, ECollisionChannel::ECC_Visibility);
+
+		//If there was no impact point the direction the bullet should go to is the trace end
+		if (!TraceHitResult.bBlockingHit) {
+			TraceHitResult.ImpactPoint = End;
 		}
-		else
-		{
-			HUDPackage.CrosshairsColor = FLinearColor::White;
-		}
+
+		//The Crosshair is pointing at a character
+		if (TraceHitResult.GetActor() && TraceHitResult.GetActor()->Implements<UInteractWithCrosshairsInterface>())		HUDPackage.CrosshairsColor = FLinearColor::Red;
+		else																											HUDPackage.CrosshairsColor = FLinearColor::White;
 	}
 }
 
@@ -223,18 +213,23 @@ void UCombatComponent::InterpFOV(float DeltaTime)
 
 bool UCombatComponent::CanFire()
 {
-	if (EquippedWeapon == nullptr || bLocallyReloading) return false;
-	return EquippedWeapon->HasAmmo() && bCanFire && CombatState == ECombatState::ECS_Unoccupied;
+	//if (EquippedWeapon == nullptr || bLocallyReloading) return false;
+	//return EquippedWeapon->HasAmmo() && bCanFire && CombatState == ECombatState::ECS_Unoccupied;
 
-	if (EquippedWeapon == nullptr || !bCanFire || !EquippedWeapon->HasAmmo()) return false;
-	return true;
+	//if (EquippedWeapon == nullptr || !bCanFire || !EquippedWeapon->HasAmmo()) return false;
+	//return true;
+
+	if (EquippedWeapon == nullptr) return false;
+	//if (EquippedWeapon->HasAmmo() && bCanFire && CombatState == ECombatState::ECS_Reloading && EquippedWeapon->GetWeaponType() == EWeaponType::EWT_Shotgun) return true;
+	if (bLocallyReloading) return false;
+	return EquippedWeapon->HasAmmo() && bCanFire && CombatState == ECombatState::ECS_Unoccupied;
 }
 
 void UCombatComponent::Fire()
 {
 	if (CanFire()) {
 		ServerFire(HitTarget);
-		LocalFire(HitTarget);
+		if (!Character->HasAuthority())LocalFire(HitTarget);
 		if (EquippedWeapon) {
 			CrosshairShootingFactor = 1.f;
 		}
@@ -258,7 +253,6 @@ void UCombatComponent::ServerFire_Implementation(const FVector_NetQuantize& Trac
 void UCombatComponent::MulticastFire_Implementation(const FVector_NetQuantize& TraceHitTarget)
 {
 	if (Character && Character->IsLocallyControlled() && !Character->HasAuthority()) return;
-
 	LocalFire(TraceHitTarget);
 }
 
@@ -297,10 +291,20 @@ void UCombatComponent::Reload()
 {
 	if (CarriedAmmo > 0 && CombatState != ECombatState::ECS_Reloading && !bLocallyReloading) {
 		ServerReload();
+		UE_LOG(LogTemp, Warning, TEXT("La animacion si que empieza"));
 		HandleReload();
 		bLocallyReloading = true;
 	}
 }
+
+void UCombatComponent::ServerReload_Implementation()
+{
+	if (Character == nullptr || EquippedWeapon == nullptr)return;
+
+	CombatState = ECombatState::ECS_Reloading;
+	if (!Character->IsLocallyControlled()) HandleReload();
+}
+
 void UCombatComponent::HandleReload()
 {
 	if (Character) {
@@ -329,6 +333,7 @@ void UCombatComponent::FinishReloading()
 	if (Character->HasAuthority()) {
 		CombatState = ECombatState::ECS_Unoccupied;
 		UpdateAmmo();
+		UpdateCarriedAmmo();
 	}
 	if (bFireButtonPressed) {
 		Fire();
@@ -346,7 +351,7 @@ void UCombatComponent::UpdateAmmo()
 	}
 	Controller = Controller == nullptr ? Cast<ABlasterPlayerController>(Character->Controller) : Controller;
 	if (Controller) {
-		Controller->SetHUDCarriedAmmo(CarriedAmmo);
+		Controller->SetHUDWeaponAmmo(CarriedAmmo);
 	}
 	EquippedWeapon->AddAmmo(-ReloadAmount);
 }
@@ -380,14 +385,6 @@ void UCombatComponent::PickUpAmmo(EWeaponType type, int32 amount)
 	if (EquippedWeapon && !EquippedWeapon->HasAmmo() && EquippedWeapon->GetWeaponType() == type) {
 		Reload();
 	}
-}
-
-void UCombatComponent::ServerReload_Implementation()
-{
-	if (Character == nullptr || EquippedWeapon == nullptr)return;
-
-	CombatState = ECombatState::ECS_Reloading;
-	if (!Character->IsLocallyControlled()) HandleReload();
 }
 
 void UCombatComponent::OnRep_CarriedAmmo()

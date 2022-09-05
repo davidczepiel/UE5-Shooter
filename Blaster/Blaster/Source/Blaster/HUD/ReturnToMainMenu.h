@@ -20,13 +20,22 @@ public:
 protected:
 	virtual bool Initialize() override;
 
-	UFUNCTION()		void OnDestroySession(bool bWasSuccessful);
-	UFUNCTION()		void OnPlayerLeftGame();
+	UFUNCTION()
+		void OnDestroySession(bool bWasSuccessful);
+
+	UFUNCTION()
+		void OnPlayerLeftGame();
 
 private:
-	UFUNCTION()		void ReturnButtonClicked();
+	UPROPERTY(meta = (BindWidget))
+		class UButton* ReturnButton;
 
-	UPROPERTY(meta = (BindWidget))		class UButton* ReturnButton;
-	UPROPERTY()		class UMultiplayerSessionsSubsystem* MultiplayerSessionsSubsystem;
-	UPROPERTY()		class APlayerController* PlayerController;
+	UFUNCTION()
+		void ReturnButtonClicked();
+
+	UPROPERTY()
+		class UMultiplayerSessionsSubsystem* MultiplayerSessionsSubsystem;
+
+	UPROPERTY()
+		class APlayerController* PlayerController;
 };
