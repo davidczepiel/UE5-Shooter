@@ -819,7 +819,7 @@ void ABlasterCharacter::SetTeamColor(ETeam Team)
 void ABlasterCharacter::UpdateDissolveMaterial(float DissolveValue)
 {
 	if (DynamicDissolveMaterialInstance) {
-		DynamicDissolveMaterialInstance->SetScalarParameterValue(TEXT("Dissolve"), DissolveValue);
+		DynamicDissolveMaterialInstance->SetScalarParameterValue(TEXT("Disolve"), DissolveValue);
 	}
 }
 

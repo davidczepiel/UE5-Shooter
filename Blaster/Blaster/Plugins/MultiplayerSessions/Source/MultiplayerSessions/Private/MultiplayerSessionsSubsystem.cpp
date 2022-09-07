@@ -17,6 +17,9 @@ UMultiplayerSessionsSubsystem::UMultiplayerSessionsSubsystem() :
 
 void UMultiplayerSessionsSubsystem::CreateSession(int32 NumPublicConections, FString MatchType)
 {
+	DesiredMatchType = MatchType;
+	DesiredNumPublicConnections = NumPublicConections;
+
 	if (!SessionInterface.IsValid()) return;
 
 	auto ExistingSession = SessionInterface->GetNamedSession(NAME_GameSession);

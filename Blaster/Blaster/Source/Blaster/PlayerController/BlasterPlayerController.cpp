@@ -338,6 +338,12 @@ void ABlasterPlayerController::OnMatchStateSet(FName State, bool bTeamsMatch) {
 	//		BlasterHUD->AddCharacterOverlay();
 	//	}
 	//}
+	if (bTeamsMatch) {
+		UE_LOG(LogTemp, Warning, TEXT("Me han pasado true"));
+	}
+	else {
+		UE_LOG(LogTemp, Warning, TEXT("Me han pasado false"));
+	}
 
 	if (MatchState == MatchState::InProgress) {
 		HandleMatchHasStarted(bTeamsMatch);
@@ -436,21 +442,22 @@ void ABlasterPlayerController::HandleCooldown()
 void ABlasterPlayerController::HandleMatchHasStarted(bool bTeamsMatch)
 {
 	if (HasAuthority()) bShowTeamScores = bTeamsMatch;
-
 	BlasterHUD = BlasterHUD == nullptr ? Cast<ABlasterHUD>(GetHUD()) : BlasterHUD;
-	if (BlasterHUD) {
-		if (BlasterHUD->CharacterOverlay == nullptr)BlasterHUD->AddCharacterOverlay();
-		if (BlasterHUD->Anouncement) {
+	if (BlasterHUD)
+	{
+		if (BlasterHUD->CharacterOverlay == nullptr) BlasterHUD->AddCharacterOverlay();
+		if (BlasterHUD->Anouncement)
+		{
 			BlasterHUD->Anouncement->SetVisibility(ESlateVisibility::Hidden);
-			if (!HasAuthority()) return;
-			if (bTeamsMatch)
-			{
-				InitTeamScores();
-			}
-			else
-			{
-				HideTeamScores();
-			}
+		}
+		if (!HasAuthority()) return;
+		if (bTeamsMatch)
+		{
+			InitTeamScores();
+		}
+		else
+		{
+			HideTeamScores();
 		}
 	}
 }
@@ -519,7 +526,7 @@ void ABlasterPlayerController::InitTeamScores()
 		BlasterHUD->CharacterOverlay->ScoreSpacerText;
 	if (bHUDValid)
 	{
-		FString Zero("0");
+		FString Zero("123");
 		FString Spacer("|");
 		BlasterHUD->CharacterOverlay->RedTeamScore->SetText(FText::FromString(Zero));
 		BlasterHUD->CharacterOverlay->BlueTeamScore->SetText(FText::FromString(Zero));

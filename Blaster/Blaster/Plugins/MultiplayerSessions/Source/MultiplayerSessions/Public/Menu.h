@@ -43,7 +43,14 @@ private:
 	class UMultiplayerSessionsSubsystem* MultiplayerSessionsSubsystem;
 
 	//Session configuration, number of players that can play simultaneously, the gamemode that is going to be played and the path to the map that the players are going to spawn in
-	int32 NumPublicConnections{ 4 };
-	FString MatchType{ TEXT("FreeForAll") };
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+		int32 NumPublicConnections {
+		2
+	};
+
+	UPROPERTY(BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
+		FString MatchType {
+		TEXT("FreeForAll")
+	};
 	FString PathToLobby{ TEXT("") };
 };
