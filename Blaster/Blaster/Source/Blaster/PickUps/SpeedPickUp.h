@@ -15,6 +15,9 @@ class BLASTER_API ASpeedPickUp : public APickUp
 	GENERATED_BODY()
 
 protected:
+	/// <summary>
+	/// Callback that gets called whenever the hitbox collides with a player and as a consecuence it is picked by him
+	/// </summary>
 	virtual void OnSphereOverlap(
 		UPrimitiveComponent* OverlappedComponent,
 		AActor* OtherActor,
@@ -25,10 +28,7 @@ protected:
 	);
 
 private:
-	UPROPERTY(EditAnywhere)
-		float BaseSpeedBuff = 1600.f;
-	UPROPERTY(EditAnywhere)
-		float CrouchSpeedBuff = 850.f;
-	UPROPERTY(EditAnywhere)
-		float SpeedBuffTime = 15.f;
+	UPROPERTY(EditAnywhere)		float BaseSpeedBuff = 1600.f;
+	UPROPERTY(EditAnywhere)		float CrouchSpeedBuff = 850.f;
+	UPROPERTY(EditAnywhere)		float SpeedBuffTime = 15.f;
 };

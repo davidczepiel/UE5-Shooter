@@ -6,6 +6,7 @@
 #include "GameFramework/HUD.h"
 #include "BlasterHUD.generated.h"
 
+//Structure that defines all the elements necessary to draw a Crosshair at the screen
 USTRUCT(BlueprintType)
 struct FHUDPackage {
 	GENERATED_BODY()
@@ -30,17 +31,20 @@ class BLASTER_API ABlasterHUD : public AHUD
 	GENERATED_BODY()
 
 public:
+	/// <summary>
+	/// This function is called to draw the hud at the players screen
+	/// </summary>
 	virtual void DrawHUD() override;
 	void AddCharacterOverlay();
 	void AddAnouncement();
+
+	void AddElimAnnouncement(FString Attacker, FString Victim);
 
 	//Type of overlays that are going to be used
 	UPROPERTY(EditAnywhere, Category = "Player Stats")		TSubclassOf<class UUserWidget> CharacterOverlayClass;
 	UPROPERTY()												class UCharacterOverlay* CharacterOverlay;
 	UPROPERTY(EditAnywhere, Category = "Announcements")		TSubclassOf<UUserWidget> AnouncementClass;
 	UPROPERTY()												class UAnouncement* Anouncement;
-
-	void AddElimAnnouncement(FString Attacker, FString Victim);
 
 protected:
 	virtual void BeginPlay() override;

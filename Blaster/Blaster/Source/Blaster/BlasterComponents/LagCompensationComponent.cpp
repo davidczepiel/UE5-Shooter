@@ -27,6 +27,7 @@ FFramePackage ULagCompensationComponent::InterpBetweenFrames(const FFramePackage
 	FFramePackage InterpFramePackage;
 	InterpFramePackage.Time = HitTime;
 
+	//For every hitbox in the package its stats are calculated
 	for (auto& YoungerPair : YoungerFrame.HitBoxInfo)
 	{
 		const FName& BoxInfoName = YoungerPair.Key;
@@ -50,8 +51,10 @@ FServerSideRewindResult ULagCompensationComponent::ConfirmHit(const FFramePackag
 {
 	if (HitCharacter == nullptr) return FServerSideRewindResult();
 
+	//Save character hitboxes position for further reset
 	FFramePackage CurrentFrame;
 	CacheBoxPositions(HitCharacter, CurrentFrame);
+	//Move boxes to be aligned with the hit time
 	MoveBoxes(HitCharacter, Package);
 	EnableCharacterMeshCollision(HitCharacter, ECollisionEnabled::NoCollision);
 
@@ -65,20 +68,18 @@ FServerSideRewindResult ULagCompensationComponent::ConfirmHit(const FFramePackag
 	UWorld* World = GetWorld();
 	if (World)
 	{
-		World->LineTraceSingleByChannel(
-			ConfirmHitResult,
-			TraceStart,
-			TraceEnd,
-			ECC_HitBox
-		);
-		if (ConfirmHitResult.bBlockingHit) // we hit the head, return early
+		World->LineTraceSingleByChannel(ConfirmHitResult, TraceStart, TraceEnd, ECC_HitBox);
+		//Confirm a hit on the head
+		if (ConfirmHitResult.bBlockingHit)
 		{
 			ResetHitBoxes(HitCharacter, CurrentFrame);
 			EnableCharacterMeshCollision(HitCharacter, ECollisionEnabled::QueryAndPhysics);
 			return FServerSideRewindResult{ true, true };
 		}
-		else // didn't hit head, check the rest of the boxes
+		//Confirm a hit in another part of the body
+		else
 		{
+			//All the hitboxes are set to be able to be hit by the trace
 			for (auto& HitBoxPair : HitCharacter->HitCollisionBoxes)
 			{
 				if (HitBoxPair.Value != nullptr)
@@ -87,12 +88,8 @@ FServerSideRewindResult ULagCompensationComponent::ConfirmHit(const FFramePackag
 					HitBoxPair.Value->SetCollisionResponseToChannel(ECC_HitBox, ECollisionResponse::ECR_Block);
 				}
 			}
-			World->LineTraceSingleByChannel(
-				ConfirmHitResult,
-				TraceStart,
-				TraceEnd,
-				ECC_HitBox
-			);
+			//If any of the hitboxes is hit by the trace then the hit is confirmed
+			World->LineTraceSingleByChannel(ConfirmHitResult, TraceStart, TraceEnd, ECC_HitBox);
 			if (ConfirmHitResult.bBlockingHit)
 			{
 				ResetHitBoxes(HitCharacter, CurrentFrame);
@@ -101,7 +98,7 @@ FServerSideRewindResult ULagCompensationComponent::ConfirmHit(const FFramePackag
 			}
 		}
 	}
-
+	//Reset the hitboxes to their usual props
 	ResetHitBoxes(HitCharacter, CurrentFrame);
 	EnableCharacterMeshCollision(HitCharacter, ECollisionEnabled::QueryAndPhysics);
 	return FServerSideRewindResult{ false, false };
@@ -327,15 +324,7 @@ void ULagCompensationComponent::ShowFramePackage(const FFramePackage& Package, c
 {
 	for (auto& BoxInfo : Package.HitBoxInfo)
 	{
-		DrawDebugBox(
-			GetWorld(),
-			BoxInfo.Value.Location,
-			BoxInfo.Value.BoxExtent,
-			FQuat(BoxInfo.Value.Rotation),
-			Color,
-			false,
-			4.f
-		);
+		DrawDebugBox(GetWorld(), BoxInfo.Value.Location, BoxInfo.Value.BoxExtent, FQuat(BoxInfo.Value.Rotation), Color, false, 4.f);
 	}
 }
 
@@ -425,15 +414,9 @@ void ULagCompensationComponent::ServerScoreRequest_Implementation(ABlasterCharac
 
 	if (Character && HitCharacter && Character->GetEquippedWeapon() && Confirm.bHitConfirmed)
 	{
+		//if it was a headshot more damage need to be done
 		const float Damage = Confirm.bHeadShot ? Character->GetEquippedWeapon()->GetHeadShotDamage() : Character->GetEquippedWeapon()->GetDamage();
-
-		UGameplayStatics::ApplyDamage(
-			HitCharacter,
-			Damage,
-			Character->Controller,
-			Character->GetEquippedWeapon(),
-			UDamageType::StaticClass()
-		);
+		UGameplayStatics::ApplyDamage(HitCharacter, Damage, Character->Controller, Character->GetEquippedWeapon(), UDamageType::StaticClass());
 	}
 }
 
@@ -443,15 +426,9 @@ void ULagCompensationComponent::ProjectileServerScoreRequest_Implementation(ABla
 
 	if (Character && HitCharacter && Confirm.bHitConfirmed && Character->GetEquippedWeapon())
 	{
+		//if it was a headshot more damage need to be done
 		const float Damage = Confirm.bHeadShot ? Character->GetEquippedWeapon()->GetHeadShotDamage() : Character->GetEquippedWeapon()->GetDamage();
-
-		UGameplayStatics::ApplyDamage(
-			HitCharacter,
-			Damage,
-			Character->Controller,
-			Character->GetEquippedWeapon(),
-			UDamageType::StaticClass()
-		);
+		UGameplayStatics::ApplyDamage(HitCharacter, Damage, Character->Controller, Character->GetEquippedWeapon(), UDamageType::StaticClass());
 	}
 }
 
@@ -473,13 +450,7 @@ void ULagCompensationComponent::ShotgunServerScoreRequest_Implementation(const T
 			float BodyShotDamage = Confirm.BodyShots[HitCharacter] * HitCharacter->GetEquippedWeapon()->GetDamage();
 			TotalDamage += BodyShotDamage;
 		}
-		UGameplayStatics::ApplyDamage(
-			HitCharacter,
-			TotalDamage,
-			Character->Controller,
-			HitCharacter->GetEquippedWeapon(),
-			UDamageType::StaticClass()
-		);
+		UGameplayStatics::ApplyDamage(HitCharacter, TotalDamage, Character->Controller, HitCharacter->GetEquippedWeapon(), UDamageType::StaticClass());
 	}
 }
 
@@ -493,6 +464,7 @@ void ULagCompensationComponent::TickComponent(float DeltaTime, ELevelTick TickTy
 void ULagCompensationComponent::SaveFramePackage()
 {
 	if (Character == nullptr || !Character->HasAuthority()) return;
+	//if there are no packages saved the a new one is added
 	if (FrameHistory.Num() <= 1)
 	{
 		FFramePackage ThisFrame;
@@ -501,6 +473,7 @@ void ULagCompensationComponent::SaveFramePackage()
 	}
 	else
 	{
+		//If any of the stored packages is too old for further hit confirmations it is removed from the history
 		float HistoryLength = FrameHistory.GetHead()->GetValue().Time - FrameHistory.GetTail()->GetValue().Time;
 		while (HistoryLength > MaxRecordTime)
 		{

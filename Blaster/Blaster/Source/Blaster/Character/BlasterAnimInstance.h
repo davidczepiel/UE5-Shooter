@@ -16,7 +16,9 @@ class BLASTER_API UBlasterAnimInstance : public UAnimInstance
 	GENERATED_BODY()
 
 public:
+	//Init
 	virtual void NativeInitializeAnimation() override;
+	//Tick
 	virtual void NativeUpdateAnimation(float DeltaTime) override;
 
 private:

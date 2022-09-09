@@ -147,6 +147,7 @@ ABlasterCharacter::ABlasterCharacter()
 	foot_r->SetupAttachment(GetMesh(), FName("foot_r"));
 	HitCollisionBoxes.Add(FName("foot_r"), foot_r);
 
+	//All the hitboxes are "disabled" to prevent events
 	for (auto Box : HitCollisionBoxes)
 	{
 		if (Box.Value)
@@ -174,10 +175,6 @@ void ABlasterCharacter::Destroyed()
 {
 	Super::Destroyed();
 
-	//if (ElimBotComponent)
-	//{
-	//	ElimBotComponent->DestroyComponent();
-	//}
 	//If the match still continues and a weapon is equipped, the weapon must be destroyed in order to prevent having 2 weapons later in that match
 	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
 	bool bMatchNotInProgress = BlasterGameMode && BlasterGameMode->GetMatchState() != MatchState::InProgress;
@@ -191,6 +188,7 @@ void ABlasterCharacter::ServerLeaveGame_Implementation()
 {
 	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
 	BlasterPlayerState = BlasterPlayerState == nullptr ? GetPlayerState<ABlasterPlayerState>() : BlasterPlayerState;
+	//THe Game mode is notified so that it can remove this character from the leaderboards
 	if (BlasterGameMode && BlasterPlayerState)
 	{
 		BlasterGameMode->PlayerLeftGame(BlasterPlayerState);
@@ -200,27 +198,20 @@ void ABlasterCharacter::ServerLeaveGame_Implementation()
 void ABlasterCharacter::Elim(bool bPlayerLeftGame)
 {
 	if (Combat && Combat->EquippedWeapon) {
-		if (Combat->EquippedWeapon->bDestroyWeapon)
-		{
-			Combat->EquippedWeapon->Destroy();
-		}
-		else {
-			Combat->EquippedWeapon->Dropped();
-		}
+		//If the character had a weapon it must be either destroyed or dropped
+		if (Combat->EquippedWeapon->bDestroyWeapon)			Combat->EquippedWeapon->Destroy();
+		else 												Combat->EquippedWeapon->Dropped();
 	}
+	//The rest of the machines are notified of this death
 	MulticastElim(bPlayerLeftGame);
 }
 
 void ABlasterCharacter::ElimTimerFinished()
 {
 	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
-	if (BlasterGameMode && !bLeftGame) {
-		BlasterGameMode->RequestRespawn(this, Controller);
-	}
-	if (bLeftGame && IsLocallyControlled())
-	{
-		OnLeftGame.Broadcast();
-	}
+	//Respawn at another position or leave the game
+	if (BlasterGameMode && !bLeftGame) 		BlasterGameMode->RequestRespawn(this, Controller);
+	if (bLeftGame && IsLocallyControlled())		OnLeftGame.Broadcast();
 }
 
 void ABlasterCharacter::MulticastElim_Implementation(bool bPlayerLeftGame)
@@ -230,8 +221,9 @@ void ABlasterCharacter::MulticastElim_Implementation(bool bPlayerLeftGame)
 		BlasterPlayerController->SetHUDWeaponAmmo(0);
 	}
 	bElim = true;
-	PlayElimMontage();
 
+	//All the animations related to death are played
+	PlayElimMontage();
 	if (DissolveMaterialInstance) {
 		DynamicDissolveMaterialInstance = UMaterialInstanceDynamic::Create(DissolveMaterialInstance, this);
 		GetMesh()->SetMaterial(0, DynamicDissolveMaterialInstance);
@@ -244,49 +236,36 @@ void ABlasterCharacter::MulticastElim_Implementation(bool bPlayerLeftGame)
 	GetCharacterMovement()->DisableMovement(); //Prevent move
 	GetCharacterMovement()->StopMovementImmediately(); //Prevent rotate
 
-	bDisableGameplay = true;
-	if (Combat)
-	{
-		Combat->FireButtonPressed(false);
-	}
+	bDisableGameplay = true; //The player wont be able to move while playing death animation
+	if (Combat)		Combat->FireButtonPressed(false);
+
+	//Collision are removed to prevent other players form colliding with the dead player
 	GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	GetMesh()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
-	if (CrownComponent)
-	{
-		CrownComponent->DestroyComponent();
-	}
+	//The crown on top of the head is also destroyed
+	if (CrownComponent)		CrownComponent->DestroyComponent();
 
+	//Callback set for when the respawn timer finishes
 	GetWorldTimerManager().SetTimer(ElimTimer, this, &ABlasterCharacter::ElimTimerFinished, ElimDelay);
 }
 
 void ABlasterCharacter::MulticastGainedTheLead_Implementation()
 {
 	if (CrownSystem == nullptr) return;
+
+	//A crown is spawned on top of this characters head to show that he has the lead
 	if (CrownComponent == nullptr)
-	{
-		CrownComponent = UNiagaraFunctionLibrary::SpawnSystemAttached(
-			CrownSystem,
-			GetMesh(),
-			FName(),
-			GetActorLocation() + FVector(0.f, 0.f, 110.f),
-			GetActorRotation(),
-			EAttachLocation::KeepWorldPosition,
-			false
-		);
-	}
+		CrownComponent = UNiagaraFunctionLibrary::SpawnSystemAttached(CrownSystem, GetMesh(), FName(), GetActorLocation() + FVector(0.f, 0.f, 110.f), GetActorRotation(), EAttachLocation::KeepWorldPosition, false);
 	if (CrownComponent)
-	{
 		CrownComponent->Activate();
-	}
 }
 
 void ABlasterCharacter::MulticastLostTheLead_Implementation()
 {
+	//no longer need to show a crown
 	if (CrownComponent)
-	{
 		CrownComponent->DestroyComponent();
-	}
 }
 
 ///////////////////////////////////////////////////Init////////////////////////////////////
@@ -301,6 +280,7 @@ void ABlasterCharacter::BeginPlay()
 
 	UpdateHUDHealth();
 	UpdateHUDShield();
+	//Only on the server will take place events related to damage
 	if (HasAuthority()) {
 		OnTakeAnyDamage.AddDynamic(this, &ABlasterCharacter::ReceiveDamage);
 	}
@@ -325,17 +305,13 @@ void ABlasterCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCo
 	PlayerInputComponent->BindAxis("LookUp", this, &ABlasterCharacter::LookUp);
 	PlayerInputComponent->BindAction("Fire", IE_Pressed, this, &ABlasterCharacter::FireButtonPressed);
 	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ABlasterCharacter::FireButtonReleased);
-
-	int intVar = 5;
-	float floatVar = 3.7f;
-	FString fstringVar = "Llamado desde inicio";
-	UE_LOG(LogTemp, Warning, TEXT("Text, %d %f %s"), intVar, floatVar, *fstringVar);
 }
 
 void ABlasterCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	//Variables that will be replicated
 	DOREPLIFETIME(ABlasterCharacter, CurrentHealth);
 	DOREPLIFETIME(ABlasterCharacter, CurrentShield);
 	DOREPLIFETIME(ABlasterCharacter, bDisableGameplay);
@@ -345,10 +321,8 @@ void ABlasterCharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 void ABlasterCharacter::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
-	if (Combat) {
-		Combat->Character = this;
-	}
-
+	//Important components are initialized
+	if (Combat) Combat->Character = this;
 	if (Buff) {
 		Buff->Character = this;
 		Buff->SetInitialSpeeds(GetCharacterMovement()->MaxWalkSpeed, GetCharacterMovement()->MaxWalkSpeedCrouched);
@@ -356,9 +330,7 @@ void ABlasterCharacter::PostInitializeComponents()
 	}
 	if (LagCompensation) {
 		LagCompensation->Character = this;
-		if (Controller) {
-			LagCompensation->Controller = Cast<ABlasterPlayerController>(Controller);
-		}
+		if (Controller) LagCompensation->Controller = Cast<ABlasterPlayerController>(Controller);
 	}
 }
 
@@ -371,6 +343,7 @@ void ABlasterCharacter::OnRep_ReplicatedMovement()
 
 void ABlasterCharacter::PollInit()
 {
+	//If this character still doesnt have a state, a new one is created
 	if (BlasterPlayerState == nullptr) {
 		BlasterPlayerState = GetPlayerState<ABlasterPlayerState>();
 		if (BlasterPlayerState) {
@@ -378,12 +351,10 @@ void ABlasterCharacter::PollInit()
 			BlasterPlayerState->AddToDefeats(0);
 			SetTeamColor(BlasterPlayerState->GetTeam());
 
+			//The player is included into the game state leader boards
 			ABlasterGameState* BlasterGameState = Cast<ABlasterGameState>(UGameplayStatics::GetGameState(this));
-
 			if (BlasterGameState && BlasterGameState->TopScoringPlayers.Contains(BlasterPlayerState))
-			{
 				MulticastGainedTheLead();
-			}
 		}
 	}
 }
@@ -394,20 +365,17 @@ void ABlasterCharacter::EquipButtonPress()
 {
 	if (bDisableGameplay)return;
 
-	if (HasAuthority())
-		Combat->EquipWeapon(OverlappingWeapon);
-	else
-		ServerEquipButtonPress();
+	//Only in the server can a character equip weapons (its values will replicate)
+	if (HasAuthority())		Combat->EquipWeapon(OverlappingWeapon);
+	else					ServerEquipButtonPress();
 }
 
 void ABlasterCharacter::CrouchButtonPress()
 {
 	if (bDisableGameplay)return;
 
-	if (bIsCrouched)
-		UnCrouch();
-	else
-		Crouch();
+	if (bIsCrouched)		UnCrouch();
+	else					Crouch();
 }
 void ABlasterCharacter::ReloadButtonPress()
 {
@@ -418,41 +386,30 @@ void ABlasterCharacter::ReloadButtonPress()
 void ABlasterCharacter::AimButtonPress()
 {
 	if (bDisableGameplay)return;
-
-	if (Combat) {
-		Combat->SetAiming(true);
-	}
+	if (Combat) 	Combat->SetAiming(true);
 }
 
 void ABlasterCharacter::AimButtonReleased()
 {
 	if (bDisableGameplay)return;
-
-	if (Combat) {
-		Combat->SetAiming(false);
-	}
+	if (Combat) 	Combat->SetAiming(false);
 }
 
 void ABlasterCharacter::FireButtonPressed()
 {
 	if (bDisableGameplay)return;
-
-	if (Combat) {
-		Combat->FireButtonPressed(true);
-	}
+	if (Combat) 	Combat->FireButtonPressed(true);
 }
 
 void ABlasterCharacter::FireButtonReleased()
 {
 	if (bDisableGameplay)return;
-
-	if (Combat) {
-		Combat->FireButtonPressed(false);
-	}
+	if (Combat)		Combat->FireButtonPressed(false);
 }
 
 void ABlasterCharacter::ServerEquipButtonPress_Implementation()
 {
+	//The combat component is notified to equip a specific weapon (could be nullptr), the weapon equipped will replicate to clients
 	if (Combat) {
 		Combat->EquipWeapon(OverlappingWeapon);
 	}
@@ -463,17 +420,13 @@ void ABlasterCharacter::ServerEquipButtonPress_Implementation()
 void ABlasterCharacter::Jump()
 {
 	if (bDisableGameplay)return;
-	if (bIsCrouched) {
-		UnCrouch();
-	}
-	else {
-		Super::Jump();
-	}
+	if (bIsCrouched) 		UnCrouch();
+	else 					Super::Jump();
 }
 
 void ABlasterCharacter::MoveForward(float Value)
 {
-	if (bDisableGameplay)return;
+	if (bDisableGameplay)	return;
 	if (Controller != nullptr && Value != 0.f) {
 		const FRotator  YawRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
 		const FVector Direction(FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X));
@@ -484,8 +437,7 @@ void ABlasterCharacter::MoveForward(float Value)
 
 void ABlasterCharacter::MoveRight(float Value)
 {
-	if (bDisableGameplay)return;
-
+	if (bDisableGameplay)	return;
 	if (Controller != nullptr && Value != 0.f) {
 		const FRotator  YawRotation(0.f, Controller->GetControlRotation().Yaw, 0.f);
 		const FVector Direction(FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y));
@@ -507,9 +459,12 @@ void ABlasterCharacter::LookUp(float Value)
 void ABlasterCharacter::ReceiveDamage(AActor* DamagedActor, float Damage, const UDamageType* DType, AController* InstigatorController, AActor* DamageCauser)
 {
 	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
+	//If we are already dead there is no point in calculating damage
 	if (bElim || BlasterGameMode == nullptr) return;
+	//We ask the gamemode to calculate the damage to prevent events like friendly fire
 	Damage = BlasterGameMode->CalculateDamage(InstigatorController, Controller, Damage);
 
+	//Shield is reduced before health
 	CurrentShield -= Damage;
 	if (CurrentShield < 0) {
 		CurrentHealth += CurrentShield;
@@ -517,14 +472,17 @@ void ABlasterCharacter::ReceiveDamage(AActor* DamagedActor, float Damage, const 
 	}
 	CurrentHealth = FMath::Clamp(CurrentHealth, 0.f, MaxHealth);
 
+	//HUD UPDATE
 	UpdateHUDHealth();
 	UpdateHUDShield();
+	//Take dama animation
 	PlayHitReactMontage();
 
 	if (CurrentHealth <= 0.f) {
 		if (BlasterGameMode) {
 			BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
 			ABlasterPlayerController* otherController = Cast<ABlasterPlayerController>(InstigatorController);
+			//THe gamemode is notified of our death caused by other player and points are given
 			BlasterGameMode->PlayerEliminated(this, BlasterPlayerController, otherController);
 		}
 	}
@@ -535,7 +493,6 @@ void ABlasterCharacter::RotateInPlace(float DeltaTime)
 	if (bDisableGameplay) {
 		bUseControllerRotationYaw = false;
 		TurningInPlace = ETurningInPlace::ETIP_NotTurning;
-
 		return;
 	}
 
@@ -580,6 +537,7 @@ void ABlasterCharacter::PlayFireMontage(bool bAiming)
 	UAnimInstance* animinstance = GetMesh()->GetAnimInstance();
 	if (animinstance && FireWeaponMontage) {
 		animinstance->Montage_Play(FireWeaponMontage);
+		//Depending on whether we are aiming a section is played or another
 		FName sectionname;
 		sectionname = bAiming ? FName("RifleAim") : FName("RifleHip");
 		animinstance->Montage_JumpToSection(sectionname);
@@ -590,11 +548,7 @@ void ABlasterCharacter::PlayReloadMontage()
 {
 	if (Combat == nullptr || Combat->EquippedWeapon == nullptr) return;
 
-	int intVar = 5;
-	float floatVar = 3.7f;
-	FString fstringVar = "LLamado al iniciar animacion";
-	UE_LOG(LogTemp, Warning, TEXT("Text, %d %f %s"), intVar, floatVar, *fstringVar);
-
+	//Depending on the equipped weapon a specific animation is played
 	UAnimInstance* animinstance = GetMesh()->GetAnimInstance();
 	if (animinstance && ReloadMontage) {
 		animinstance->Montage_Play(ReloadMontage);
@@ -638,8 +592,7 @@ float ABlasterCharacter::CalculateSpeed()
 {
 	FVector Velocity = GetVelocity();
 	Velocity.Z = 0.f;
-	float Speed = Velocity.Size();
-	return Speed;
+	return Velocity.Size();
 }
 
 void ABlasterCharacter::AimOffset(float DeltaTime)
@@ -716,22 +669,20 @@ void ABlasterCharacter::SimProxiesTurn()
 //////////////////////////////////Weapon overlapping/////////////////////////////////////
 void ABlasterCharacter::SetOverlappingWeapon(AWeapon* Weapon)
 {
+	//Currently overlapping weapon is taken care of
 	if (OverlappingWeapon) OverlappingWeapon->ShowPickupWidget(false);
 
 	OverlappingWeapon = Weapon;
+	//Only show the widget if we are controling this character, it is not important to show this widgets to proxies
 	if (IsLocallyControlled()) {
-		if (OverlappingWeapon)
-			OverlappingWeapon->ShowPickupWidget(true);
+		if (OverlappingWeapon)	OverlappingWeapon->ShowPickupWidget(true);
 	}
 }
 
 void ABlasterCharacter::OnRep_OverlappingWeapon(AWeapon* LastWeapon)
 {
-	if (OverlappingWeapon) {
-		OverlappingWeapon->ShowPickupWidget(true);
-	}
-	if (LastWeapon)
-		LastWeapon->ShowPickupWidget(false);
+	if (OverlappingWeapon) 		OverlappingWeapon->ShowPickupWidget(true);
+	if (LastWeapon)				LastWeapon->ShowPickupWidget(false);
 }
 
 //////////////////////////////////////////////Health//////////////////////////////////////////
@@ -739,46 +690,40 @@ void ABlasterCharacter::OnRep_OverlappingWeapon(AWeapon* LastWeapon)
 void ABlasterCharacter::UpdateHUDAmmo()
 {
 	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
+	//HUD is updated with the equipped weapon
 	if (BlasterPlayerController && Combat && Combat->EquippedWeapon) {
 		BlasterPlayerController->SetHUDCarriedAmmo(Combat->CarriedAmmo);
 		BlasterPlayerController->SetHUDWeaponAmmo(Combat->EquippedWeapon->GetAmmo());
 	}
 }
 
-void ABlasterCharacter::UpdateHUDHealth()
-{
-	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
-	if (BlasterPlayerController) {
-		BlasterPlayerController->SetHUDHelth(CurrentHealth, MaxHealth);
-	}
-}
-
 void ABlasterCharacter::OnRep_Health(float lastHealth)
 {
 	UpdateHUDHealth();
-	if (CurrentHealth < lastHealth) {
-		PlayHitReactMontage();
-	}
-}
-
-void ABlasterCharacter::UpdateHUDShield()
-{
-	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
-	if (BlasterPlayerController) {
-		BlasterPlayerController->SetHUDShield(CurrentShield, MaxShield);
-	}
+	if (CurrentHealth < lastHealth) PlayHitReactMontage();
 }
 
 void ABlasterCharacter::OnRep_Shield(float lastShield)
 {
 	UpdateHUDShield();
-	if (CurrentShield < lastShield) {
-		PlayHitReactMontage();
-	}
+	if (CurrentShield < lastShield) PlayHitReactMontage();
+}
+
+void ABlasterCharacter::UpdateHUDHealth()
+{
+	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
+	if (BlasterPlayerController) BlasterPlayerController->SetHUDHelth(CurrentHealth, MaxHealth);
+}
+
+void ABlasterCharacter::UpdateHUDShield()
+{
+	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
+	if (BlasterPlayerController) BlasterPlayerController->SetHUDShield(CurrentShield, MaxShield);
 }
 
 void ABlasterCharacter::HideCameraIfCharacterClose()
 {
+	//There is no need to do this to proxies
 	if (!IsLocallyControlled()) return;
 	if ((FollowCamera->GetComponentLocation() - GetActorLocation()).Size() < CameraThreshHold) {
 		GetMesh()->SetVisibility(false);
@@ -818,14 +763,14 @@ void ABlasterCharacter::SetTeamColor(ETeam Team)
 
 void ABlasterCharacter::UpdateDissolveMaterial(float DissolveValue)
 {
-	if (DynamicDissolveMaterialInstance) {
-		DynamicDissolveMaterialInstance->SetScalarParameterValue(TEXT("Disolve"), DissolveValue);
-	}
+	if (DynamicDissolveMaterialInstance)	DynamicDissolveMaterialInstance->SetScalarParameterValue(TEXT("Disolve"), DissolveValue);
 }
 
 void ABlasterCharacter::StartDissolve()
 {
+	//Callback is set
 	DissolveTrack.BindDynamic(this, &ABlasterCharacter::UpdateDissolveMaterial);
+	//Play the dissolve "animation"
 	if (DissolveCurve && DissolveTimeline) {
 		DissolveTimeline->AddInterpFloat(DissolveCurve, DissolveTrack);
 		DissolveTimeline->Play();
@@ -844,15 +789,13 @@ bool ABlasterCharacter::IsAiming() {
 
 AWeapon* ABlasterCharacter::GetEquippedWeapon()
 {
-	if (Combat == nullptr)
-		return nullptr;
+	if (Combat == nullptr)		return nullptr;
 	else return Combat->EquippedWeapon;
 }
 
 FVector ABlasterCharacter::GetHitTarget() const
 {
-	if (Combat == nullptr)
-		return FVector();
+	if (Combat == nullptr)		return FVector();
 	return Combat->HitTarget;
 }
 
@@ -860,14 +803,12 @@ void ABlasterCharacter::SpawnDefaultWeapon()
 {
 	BlasterGameMode = BlasterGameMode == nullptr ? GetWorld()->GetAuthGameMode<ABlasterGameMode>() : BlasterGameMode;
 	UWorld* World = GetWorld();
+	//On respawn if a default weapon is set, it is equipped and its values are set to be destroyed on player death
 	if (BlasterGameMode && World && !bElim && DefaultWeapon)
 	{
 		AWeapon* StartingWeapon = World->SpawnActor<AWeapon>(DefaultWeapon);
 		StartingWeapon->bDestroyWeapon = true;
-		if (Combat)
-		{
-			Combat->EquipWeapon(StartingWeapon);
-		}
+		if (Combat)			Combat->EquipWeapon(StartingWeapon);
 	}
 }
 

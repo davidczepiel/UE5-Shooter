@@ -20,6 +20,16 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	/// <summary>
+	/// Funciton called whenever the casing hits anything
+	/// </summary>
+	/// <param name="HitComp"> Component that hit the casing </param>
+	/// <param name="OtherActor"> Actor that hit the casing</param>
+	/// <param name="OtherComponent"> Component that hit the casing </param>
+	/// <param name="NormalImpulse"> Normal of the impact point</param>
+	/// <param name="Hit"> Hit result from the collision </param>
+	/// <returns></returns>
 	UFUNCTION()	virtual void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit);
 
 private:

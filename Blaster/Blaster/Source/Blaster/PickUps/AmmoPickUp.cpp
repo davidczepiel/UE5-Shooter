@@ -8,12 +8,11 @@ void AAmmoPickUp::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AAct
 {
 	Super::OnSphereOverlap(OverlappedComponent, OtherActor, OtherComp, OtherBodyIndex, bFromSweep, SweepResult);
 
+	//If a character collided with the hitbox, ammo is given to him and this pick up gets destroyed
 	ABlasterCharacter* character = Cast<ABlasterCharacter>(OtherActor);
 	if (character) {
 		UCombatComponent* combat = character->GetCombat();
-		if (combat) {
-			combat->PickUpAmmo(WeaponType, AmmoAmount);
-		}
+		if (combat) combat->PickUpAmmo(WeaponType, AmmoAmount);
 	}
 	Destroy();
 }

@@ -90,7 +90,6 @@ void AWeapon::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeP
 	//It is important to replicate state and ammo for all of the clients when a change is made at the server
 	DOREPLIFETIME(AWeapon, WeaponState);
 	DOREPLIFETIME_CONDITION(AWeapon, bUseServerSideRewind, COND_OwnerOnly);
-	//DOREPLIFETIME(AWeapon, CurrentAmmo);
 }
 
 void AWeapon::OnRep_WeaponState()
@@ -112,12 +111,6 @@ void AWeapon::OnRep_WeaponState()
 	}
 }
 
-//void AWeapon::OnRep_Ammo()
-//{
-//	OwnerCharacter = OwnerCharacter == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : OwnerCharacter;
-//	SetHUDWeaponAmmo();
-//}
-
 void AWeapon::OnRep_Owner()
 {
 	Super::OnRep_Owner();
@@ -138,6 +131,7 @@ void AWeapon::Fire(const FVector& HitTarget)
 {
 	//Weapon animation
 	if (FireAnimation) 	WeaponMesh->PlayAnimation(FireAnimation, false);
+
 	//If a casing was provided a new casing is spawned from the weapon
 	if (CasingClass) {
 		const USkeletalMeshSocket* AmmoEjectSocket = WeaponMesh->GetSocketByName(FName(TEXT("AmmoEject")));
@@ -154,8 +148,11 @@ void AWeapon::Fire(const FVector& HitTarget)
 
 void AWeapon::SpendRound()
 {
+	//Update the HUD with the ammo left
 	CurrentAmmo = FMath::Clamp(CurrentAmmo - 1, 0, MaxAmmo);
 	SetHUDWeaponAmmo();
+
+	//Notify the server for the ammo spent
 	if (HasAuthority()) {
 		ClientUpdateAmmo(CurrentAmmo);
 	}
@@ -165,6 +162,7 @@ void AWeapon::ClientUpdateAmmo_Implementation(int32 Amount)
 {
 	if (HasAuthority()) return;
 
+	//Take into consideration the ammo amount that this weapon has in the server to update the HUD properly
 	CurrentAmmo = Amount;
 	--Sequence;
 	CurrentAmmo -= Sequence;;
@@ -175,12 +173,15 @@ void AWeapon::AddAmmo(int32 Amount)
 {
 	CurrentAmmo = FMath::Clamp(CurrentAmmo - Amount, 0, MaxAmmo);
 	SetHUDWeaponAmmo();
+	//Collisions with pickups ony happen on the server so this is going to be run on the server and this call will notify the clients
 	ClientAddAmmo(Amount);
 }
 
 void AWeapon::ClientAddAmmo_Implementation(int32 Amount)
 {
+	//IF has authority avoid the rest because the server did already update his ammo
 	if (HasAuthority()) return;
+
 	CurrentAmmo = FMath::Clamp(CurrentAmmo - Amount, 0, MaxAmmo);
 	SetHUDWeaponAmmo();
 }
@@ -221,6 +222,7 @@ void AWeapon::OnDropped()
 	if (OwnerCharacter && bUseServerSideRewind) {
 		OwnerController = OwnerController == nullptr ? Cast<ABlasterPlayerController>(OwnerCharacter->Controller) : OwnerController;
 		if (OwnerController && HasAuthority() && OwnerController->HighPingDelegate.IsBound()) {
+			//Remove the callback to avoid touching the servrside rewind of this weapon while it is on the floor
 			OwnerController->HighPingDelegate.RemoveDynamic(this, &AWeapon::OnPingTooHigh);
 		}
 	}
@@ -240,6 +242,7 @@ void AWeapon::OnEquipped()
 	if (OwnerCharacter && bUseServerSideRewind) {
 		OwnerController = OwnerController == nullptr ? Cast<ABlasterPlayerController>(OwnerCharacter->Controller) : OwnerController;
 		if (OwnerController && HasAuthority() && !OwnerController->HighPingDelegate.IsBound()) {
+			//Set the callback to adjust the server side rewind to the players ping
 			OwnerController->HighPingDelegate.AddDynamic(this, &AWeapon::OnPingTooHigh);
 		}
 	}

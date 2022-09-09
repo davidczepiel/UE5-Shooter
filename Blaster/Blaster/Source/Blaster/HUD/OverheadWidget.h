@@ -15,6 +15,9 @@ class BLASTER_API UOverheadWidget : public UUserWidget
 	GENERATED_BODY()
 
 public:
+	/// <summary>
+	/// This function is called to specify the text that needs to be displayed on top of a characters head
+	/// </summary>
 	void SetDisplayedText(FString TextToDisplay);
 
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* DisplayText;

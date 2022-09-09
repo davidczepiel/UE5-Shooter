@@ -16,12 +16,14 @@ class BLASTER_API UBuffComponent : public UActorComponent
 
 public:
 	friend class ABlasterCharacter;
-	//Init and config
 	UBuffComponent();
+
+	//Functions to specify the default values for specific player stats when their respective buffs run out
 	void SetInitialSpeeds(float base, float crouch);
 	void SetInitialJumpVelocity(float velocity);
 
-	//Avaliable buffs
+	//Avaliable buffs, all of them receive a buff amount and a time, wich can mean the duration of the buff or in case of the health and shield the time that it
+	// will take for the buff to replenish all the health/shield picked up
 	void Heal(float HealAmount, float HealingTime);
 	void ReplenishShield(float ShieldAmount, float ShieldTime);
 	void BuffSpeed(float BaseSpeed, float CrouchSpeed, float time);
@@ -30,8 +32,13 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
-	//Functions that control the healing over time
+	/// <summary>
+	/// Function that updates the character health with the healing rate left from previous healing pickups
+	/// </summary>
 	void HealRampUp(float DeltaTime);
+	/// <summary>
+	/// Function that updates the character shield with the healing rate left from previous shielding pickups
+	/// </summary>
 	void ShieldRampUp(float DeltaTime);
 
 private:
@@ -45,18 +52,31 @@ private:
 	bool bShielding = false;
 	float ShieldRate = 0.f;
 	float AmountToShield = 0.f;
+
 	//Healing variables
 	bool bHealing = false;
 	float HealingRate = 0.f;
 	float AmountToHeal = 0.f;
 
-	//Speed buff
+	/// <summary>
+	/// Multicast that notifies the clients about the value of the speed stats that a character needs to set
+	/// </summary>
+	/// <param name="baseJump"> Value that needs to be set </param>
 	UFUNCTION(NetMulticast, Reliable)		void MulticastSpeedBuff(float baseSpeed, float crouchSpeed);
+	/// <summary>
+	/// Funstion that resets the speed stat
+	/// </summary>
 	void ResetSpeed();
 	FTimerHandle SpeedBuffTimer;
 
-	//Jump buff
+	/// <summary>
+	/// Multicast that notifies the clients about the value of the jump stats that a character needs to set
+	/// </summary>
+	/// <param name="baseJump"> Value that needs to be set </param>
 	UFUNCTION(NetMulticast, Reliable)		void MulticastJumpBuff(float baseJump);
+	/// <summary>
+	/// Function that resets the jump stat
+	/// </summary>
 	void ResetJump();
 	FTimerHandle JumpBuffTimer;
 

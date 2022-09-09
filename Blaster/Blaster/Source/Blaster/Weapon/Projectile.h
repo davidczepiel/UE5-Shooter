@@ -24,16 +24,9 @@ public:
 	FVector_NetQuantize TraceStart;
 	FVector_NetQuantize100 InitialVelocity;
 
-	UPROPERTY(EditAnywhere)
-		float InitialSpeed = 15000;
-
-	// Only set this for Grenades and Rockets
-	UPROPERTY(EditAnywhere)
-		float Damage = 20.f;
-
-	// Doesn't matter for Grenades and Rockets
-	UPROPERTY(EditAnywhere)
-		float HeadShotDamage = 40.f;
+	UPROPERTY(EditAnywhere)		float InitialSpeed = 15000;
+	UPROPERTY(EditAnywhere)		float Damage = 20.f;
+	UPROPERTY(EditAnywhere)		float HeadShotDamage = 40.f;
 
 protected:
 	virtual void BeginPlay() override;
@@ -42,47 +35,21 @@ protected:
 	void SpawnTrailSystem();
 	void ExplodeDamage();
 
-	UFUNCTION()
-		virtual void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	UFUNCTION()		virtual void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
-	UPROPERTY(EditAnywhere)
-		class UParticleSystem* ImpactParticles;
-
-	UPROPERTY(EditAnywhere)
-		class USoundCue* ImpactSound;
-
-	UPROPERTY(EditAnywhere)
-		class UBoxComponent* CollisionBox;
-
-	UPROPERTY(EditAnywhere)
-		class UNiagaraSystem* TrailSystem;
-
-	UPROPERTY()
-		class UNiagaraComponent* TrailSystemComponent;
-
-	UPROPERTY(VisibleAnywhere)
-		class UProjectileMovementComponent* ProjectileMovementComponent;
-
-	UPROPERTY(VisibleAnywhere)
-		UStaticMeshComponent* ProjectileMesh;
-
-	UPROPERTY(EditAnywhere)
-		float DamageInnerRadius = 200.f;
-
-	UPROPERTY(EditAnywhere)
-		float DamageOuterRadius = 500.f;
+	UPROPERTY(VisibleAnywhere)		class UProjectileMovementComponent* ProjectileMovementComponent;
+	UPROPERTY(EditAnywhere)			class UParticleSystem* ImpactParticles;
+	UPROPERTY(EditAnywhere)			class UNiagaraSystem* TrailSystem;
+	UPROPERTY()						class UNiagaraComponent* TrailSystemComponent;
+	UPROPERTY(EditAnywhere)			class USoundCue* ImpactSound;
+	UPROPERTY(VisibleAnywhere)		UStaticMeshComponent* ProjectileMesh;
+	UPROPERTY(EditAnywhere)			class UBoxComponent* CollisionBox;
+	UPROPERTY(EditAnywhere)			float DamageInnerRadius = 200.f;
+	UPROPERTY(EditAnywhere)			float DamageOuterRadius = 500.f;
 
 private:
-
-	UPROPERTY(EditAnywhere)
-		UParticleSystem* Tracer;
-
-	UPROPERTY()
-		class UParticleSystemComponent* TracerComponent;
-
+	UPROPERTY(EditAnywhere)		UParticleSystem* Tracer;
+	UPROPERTY()					class UParticleSystemComponent* TracerComponent;
+	UPROPERTY(EditAnywhere)		float DestroyTime = 3.f;
 	FTimerHandle DestroyTimer;
-
-	UPROPERTY(EditAnywhere)
-		float DestroyTime = 3.f;
-public:
 };

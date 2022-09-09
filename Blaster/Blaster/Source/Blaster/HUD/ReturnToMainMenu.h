@@ -14,28 +14,28 @@ class BLASTER_API UReturnToMainMenu : public UUserWidget
 {
 	GENERATED_BODY()
 public:
+	/// <summary>
+	/// Function to add the widget to the players screan
+	/// </summary>
 	void MenuSetup();
+	/// <summary>
+	/// Function to remove this widget from the players screen
+	/// </summary>
 	void MenuTearDown();
 
 protected:
 	virtual bool Initialize() override;
 
-	UFUNCTION()
-		void OnDestroySession(bool bWasSuccessful);
-
-	UFUNCTION()
-		void OnPlayerLeftGame();
+	UFUNCTION()		void OnDestroySession(bool bWasSuccessful);
+	UFUNCTION()		void OnPlayerLeftGame();
 
 private:
-	UPROPERTY(meta = (BindWidget))
-		class UButton* ReturnButton;
+	/// <summary>
+	/// THis callback is called whenever the button to go back to the main menu is clicked
+	/// </summary>
+	UFUNCTION()		void ReturnButtonClicked();
 
-	UFUNCTION()
-		void ReturnButtonClicked();
-
-	UPROPERTY()
-		class UMultiplayerSessionsSubsystem* MultiplayerSessionsSubsystem;
-
-	UPROPERTY()
-		class APlayerController* PlayerController;
+	UPROPERTY(meta = (BindWidget))		class UButton* ReturnButton;
+	UPROPERTY()							class UMultiplayerSessionsSubsystem* MultiplayerSessionsSubsystem;
+	UPROPERTY()							class APlayerController* PlayerController;
 };

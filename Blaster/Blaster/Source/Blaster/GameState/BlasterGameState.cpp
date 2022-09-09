@@ -16,15 +16,18 @@ void ABlasterGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Ou
 
 void ABlasterGameState::UpdateTopScore(class ABlasterPlayerState* ScoringPlayer)
 {
+	//If nobody ever scored points the new scoring player is the leading player
 	if (TopScoringPlayers.Num() == 0)
 	{
 		TopScoringPlayers.Add(ScoringPlayer);
 		TopScore = ScoringPlayer->GetScore();
 	}
+	//If this new players score is the same as the leading player now we have two leading players
 	else if (ScoringPlayer->GetScore() == TopScore)
 	{
 		TopScoringPlayers.AddUnique(ScoringPlayer);
 	}
+	//If this new players score is better than the leading players, those are thrown away and now we only have one top scoring player
 	else if (ScoringPlayer->GetScore() > TopScore)
 	{
 		TopScoringPlayers.Empty();
@@ -36,37 +39,25 @@ void ABlasterGameState::UpdateTopScore(class ABlasterPlayerState* ScoringPlayer)
 void ABlasterGameState::OnRep_RedTeamScore()
 {
 	ABlasterPlayerController* BPlayer = Cast<ABlasterPlayerController>(GetWorld()->GetFirstPlayerController());
-	if (BPlayer)
-	{
-		BPlayer->SetHUDRedTeamScore(RedTeamScore);
-	}
+	if (BPlayer)	BPlayer->SetHUDRedTeamScore(RedTeamScore);
 }
 
 void ABlasterGameState::OnRep_BlueTeamScore()
 {
 	ABlasterPlayerController* BPlayer = Cast<ABlasterPlayerController>(GetWorld()->GetFirstPlayerController());
-	if (BPlayer)
-	{
-		BPlayer->SetHUDBlueTeamScore(BlueTeamScore);
-	}
+	if (BPlayer)	BPlayer->SetHUDBlueTeamScore(BlueTeamScore);
 }
 
 void ABlasterGameState::RedTeamScores()
 {
 	++RedTeamScore;
 	ABlasterPlayerController* BPlayer = Cast<ABlasterPlayerController>(GetWorld()->GetFirstPlayerController());
-	if (BPlayer)
-	{
-		BPlayer->SetHUDRedTeamScore(RedTeamScore);
-	}
+	if (BPlayer)	BPlayer->SetHUDRedTeamScore(RedTeamScore);
 }
 
 void ABlasterGameState::BlueTeamScores()
 {
 	++BlueTeamScore;
 	ABlasterPlayerController* BPlayer = Cast<ABlasterPlayerController>(GetWorld()->GetFirstPlayerController());
-	if (BPlayer)
-	{
-		BPlayer->SetHUDBlueTeamScore(BlueTeamScore);
-	}
+	if (BPlayer)	BPlayer->SetHUDBlueTeamScore(BlueTeamScore);
 }

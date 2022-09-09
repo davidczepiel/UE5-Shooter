@@ -49,6 +49,7 @@ void APickUp::Destroyed()
 {
 	Super::Destroyed();
 
+	//Visual and sound effects are played whenever the pickup is picked
 	if (PickupEffect)
 	{
 		UNiagaraFunctionLibrary::SpawnSystemAtLocation(
@@ -69,9 +70,8 @@ void APickUp::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (PickupMesh) {
-		PickupMesh->AddLocalRotation(FRotator(0.f, BaseTurnRate * DeltaTime, 0.f));
-	}
+	//The pickup is rotated every tick
+	if (PickupMesh)	PickupMesh->AddLocalRotation(FRotator(0.f, BaseTurnRate * DeltaTime, 0.f));
 }
 
 void APickUp::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -81,6 +81,7 @@ void APickUp::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* 
 //This function exist to prevent unwanted behaviour if the pickup spawn at the location of a player
 void APickUp::BindOverlapTimerFinished()
 {
+	//Only on the server the clalback is bound to assure that only the server has control over the game
 	if (HasAuthority())
 	{
 		OverlapSphere->OnComponentBeginOverlap.AddDynamic(this, &APickUp::OnSphereOverlap);

@@ -25,6 +25,7 @@ void ABlasterGameMode::BeginPlay() {
 
 float ABlasterGameMode::CalculateDamage(AController* Attacker, AController* Victim, float BaseDamage)
 {
+	//THis mode represents a Free4All match so every source of damage needs to be applied its 100%
 	return BaseDamage;
 }
 
@@ -54,9 +55,9 @@ void ABlasterGameMode::OnMatchStateSet() {
 
 	//Every controller from the world is fetched and is notified with the match state the game is in
 	for (FConstPlayerControllerIterator it = GetWorld()->GetPlayerControllerIterator(); it; ++it) {
-		ABlasterPlayerController* p = Cast<ABlasterPlayerController>(*it);
-		if (p) {
-			p->OnMatchStateSet(MatchState, bTeamsMatch);
+		ABlasterPlayerController* player = Cast<ABlasterPlayerController>(*it);
+		if (player) {
+			player->OnMatchStateSet(MatchState, bTeamsMatch);
 		}
 	}
 }
@@ -75,37 +76,33 @@ void ABlasterGameMode::PlayerEliminated(class ABlasterCharacter* ElimCharacter, 
 			PlayersCurrentlyInTheLead.Add(LeadPlayer);
 		}
 
+		//Both the player and gamestate scores are updated
 		AtState->AddToScore(1.f);
 		BlasterGameState->UpdateTopScore(AtState);
 
+		//If after updating the top scoring players the attacker still is on the lead it needs to be notified to everyone (create crowns)
 		if (BlasterGameState->TopScoringPlayers.Contains(AtState))
 		{
 			ABlasterCharacter* Leader = Cast<ABlasterCharacter>(AtState->GetPawn());
-			if (Leader)
-			{
-				Leader->MulticastGainedTheLead();
-			}
+			if (Leader)	Leader->MulticastGainedTheLead();
 		}
 
+		//If any of the previous leaders is not currently in the lead it is notified to everyone (remove crowns)
 		for (int32 i = 0; i < PlayersCurrentlyInTheLead.Num(); i++)
 		{
 			if (!BlasterGameState->TopScoringPlayers.Contains(PlayersCurrentlyInTheLead[i]))
 			{
 				ABlasterCharacter* Loser = Cast<ABlasterCharacter>(PlayersCurrentlyInTheLead[i]->GetPawn());
-				if (Loser)
-				{
-					Loser->MulticastLostTheLead();
-				}
+				if (Loser)	Loser->MulticastLostTheLead();
 			}
 		}
 	}
-	if (VictimState) {
-		VictimState->AddToDefeats(1);
-	}
-	if (ElimCharacter) {
-		ElimCharacter->Elim(false);
-	}
 
+	//The kill is confirmed
+	if (VictimState) 		VictimState->AddToDefeats(1);
+	if (ElimCharacter) 		ElimCharacter->Elim(false);
+
+	//THe kill is broadcasted to all the players so that they can see it on the killfeed
 	for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
 	{
 		ABlasterPlayerController* BlasterPlayer = Cast<ABlasterPlayerController>(*It);
@@ -119,23 +116,22 @@ void ABlasterGameMode::PlayerEliminated(class ABlasterCharacter* ElimCharacter, 
 void ABlasterGameMode::PlayerLeftGame(ABlasterPlayerState* PlayerLeaving)
 {
 	if (PlayerLeaving == nullptr) return;
+	//The leaving player is removed from the score board
 	ABlasterGameState* BlasterGameState = GetGameState<ABlasterGameState>();
-	if (BlasterGameState && BlasterGameState->TopScoringPlayers.Contains(PlayerLeaving))
-	{
-		BlasterGameState->TopScoringPlayers.Remove(PlayerLeaving);
-	}
+	if (BlasterGameState && BlasterGameState->TopScoringPlayers.Contains(PlayerLeaving))	BlasterGameState->TopScoringPlayers.Remove(PlayerLeaving);
+
+	//The leaving player is killed with a true parameter to specify that he is leaving the game
 	ABlasterCharacter* CharacterLeaving = Cast<ABlasterCharacter>(PlayerLeaving->GetPawn());
-	if (CharacterLeaving)
-	{
-		CharacterLeaving->Elim(true);
-	}
+	if (CharacterLeaving)	CharacterLeaving->Elim(true);
 }
 
 bool ABlasterGameMode::RequestRespawn(ACharacter* ElimCharacter, AController* ElimController) {
+	//THe character is killed and destroyed
 	if (ElimCharacter) {
 		ElimCharacter->Reset();
 		ElimCharacter->Destroy();
 	}
+	//The controller is respawned at another position
 	if (ElimController) {
 		TArray<AActor*> PlayerStarts;
 		UGameplayStatics::GetAllActorsOfClass(this, APlayerStart::StaticClass(), PlayerStarts);

@@ -17,6 +17,7 @@ void AProjectileRocket::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 		AController* FiringController = FiringPawn->GetController();
 		if (FiringController)
 		{
+			//Damage is applied to any actor within the explosion radius
 			UGameplayStatics::ApplyRadialDamageWithFalloff(
 				this, // World context object
 				Damage, // BaseDamage

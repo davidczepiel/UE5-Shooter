@@ -26,8 +26,8 @@ public:
 	UPROPERTY(meta = (BindWidget))		class UTextBlock* CarriedAmmoAmount;
 
 	//High ping HUD
-	UPROPERTY(meta = (BindWidget))	 class UImage* HighPingImage;
-	UPROPERTY(meta = (BindWidgetAnim), Transient)UWidgetAnimation* HighPingAnimation;
+	UPROPERTY(meta = (BindWidget))					class UImage* HighPingImage;
+	UPROPERTY(meta = (BindWidgetAnim), Transient)	UWidgetAnimation* HighPingAnimation;
 
 	//Team scores
 	UPROPERTY(meta = (BindWidget))		UTextBlock* RedTeamScore;

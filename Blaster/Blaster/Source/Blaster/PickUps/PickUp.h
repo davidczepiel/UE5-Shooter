@@ -19,6 +19,9 @@ public:
 protected:
 	virtual void BeginPlay() override;
 
+	/// <summary>
+	/// Callback that gets called whenever the hitbox collides with a player and as a consecuence it is picked by him
+	/// </summary>
 	UFUNCTION()		virtual void OnSphereOverlap(
 		UPrimitiveComponent* OverlappedComponent,
 		AActor* OtherActor,
@@ -28,15 +31,14 @@ protected:
 		const FHitResult& SweepResult
 	);
 
-	UPROPERTY(EditAnywhere)
-		float BaseTurnRate = 45.f;
+	UPROPERTY(EditAnywhere)		float BaseTurnRate = 45.f;
 private:
 	//Hitbox to determine if the player is able to pick up this item or not
 	UPROPERTY(EditAnywhere)		class USphereComponent* OverlapSphere;
 
 	//Visual effects
 	UPROPERTY(EditAnywhere)		UStaticMeshComponent* PickupMesh;
-	UPROPERTY(VisibleAnywhere)		class UNiagaraComponent* PickupEffectComponent;
+	UPROPERTY(VisibleAnywhere)	class UNiagaraComponent* PickupEffectComponent;
 	UPROPERTY(EditAnywhere)		class UNiagaraSystem* PickupEffect;
 
 	UPROPERTY(EditAnywhere)		class USoundCue* PickupSound;

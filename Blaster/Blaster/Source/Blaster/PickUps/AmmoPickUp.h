@@ -16,6 +16,10 @@ class BLASTER_API AAmmoPickUp : public APickUp
 	GENERATED_BODY()
 
 protected:
+
+	/// <summary>
+	/// Callback that gets called whenever the hitbox collides with a player and as a consecuence it is picked by him
+	/// </summary>
 	virtual void OnSphereOverlap(
 		UPrimitiveComponent* OverlappedComponent,
 		AActor* OtherActor,
@@ -26,9 +30,6 @@ protected:
 	) override;
 
 private:
-	UPROPERTY(EditAnywhere)
-		int32 AmmoAmount = 30;
-
-	UPROPERTY(EditAnywhere)
-		EWeaponType WeaponType;
+	UPROPERTY(EditAnywhere)		int32 AmmoAmount = 30;
+	UPROPERTY(EditAnywhere)		EWeaponType WeaponType;
 };

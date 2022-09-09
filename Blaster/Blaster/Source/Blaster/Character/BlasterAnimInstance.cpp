@@ -17,10 +17,10 @@ void UBlasterAnimInstance::NativeInitializeAnimation()
 void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 {
 	Super::NativeUpdateAnimation(DeltaTime);
-
 	if (BlasterCharacter == nullptr) BlasterCharacter = Cast<ABlasterCharacter>(TryGetPawnOwner());
 	if (BlasterCharacter == nullptr) return;
 
+	//Checks for major variables related to body poses, rotation and weapon
 	bRotateRootBone = BlasterCharacter->ShouldRotateRootBone();
 	bIsInAir = BlasterCharacter->GetCharacterMovement()->IsFalling();
 	bIsAccelerating = BlasterCharacter->GetCharacterMovement()->GetCurrentAcceleration().Size() > 0.f;
@@ -56,10 +56,10 @@ void UBlasterAnimInstance::NativeUpdateAnimation(float DeltaTime)
 	//If a weapon is equipped the players upper body is handled separately
 	EquippedWeapon = BlasterCharacter->GetEquippedWeapon();
 	if (bWeaponEquipped && EquippedWeapon && EquippedWeapon->GetWeaponMesh() != nullptr && BlasterCharacter->GetMesh() != nullptr) {
-		LeftHandTransform = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("LeftHandSocket"), ERelativeTransformSpace::RTS_World);
-		LeftHandTransform;
+		//Hand position are obtained to determine where should the equipped weapon be
 		FVector OutPosition;
 		FRotator OutRotation;
+		LeftHandTransform = EquippedWeapon->GetWeaponMesh()->GetSocketTransform(FName("LeftHandSocket"), ERelativeTransformSpace::RTS_World);
 		BlasterCharacter->GetMesh()->TransformToBoneSpace(FName("hand_r"), LeftHandTransform.GetLocation(), FRotator::ZeroRotator, OutPosition, OutRotation);
 		LeftHandTransform.SetLocation(OutPosition);
 		LeftHandTransform.SetRotation(FQuat(OutRotation));

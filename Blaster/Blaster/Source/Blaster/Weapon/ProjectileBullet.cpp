@@ -14,13 +14,14 @@ void AProjectileBullet::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, 
 	if (OwnerCharacter) {
 		ABlasterPlayerController* OwnerController = Cast< ABlasterPlayerController>(OwnerCharacter->Controller);
 		if (OwnerController) {
+			//Check if the part hit from the player is the head to do even more damage
 			if (OwnerCharacter->HasAuthority() && !bUseServerSideRewind) {
 				const float DamageToCause = Hit.BoneName.ToString() == FString("head") ? HeadShotDamage : Damage;
-
 				UGameplayStatics::ApplyDamage(OtherActor, DamageToCause, OwnerController, this, UDamageType::StaticClass());
 				Super::OnHit(HitComp, OtherActor, OtherComponent, NormalImpulse, Hit);
 				return;
 			}
+			//If the weapon needs to use server side rewind a request is sent to the server to ensure that the hit counts
 			ABlasterCharacter* character = Cast< ABlasterCharacter>(OtherActor);
 			if (bUseServerSideRewind && OwnerCharacter->GetLagCompensation() && OwnerCharacter->IsLocallyControlled() && character) {
 				OwnerCharacter->GetLagCompensation()->ProjectileServerScoreRequest(character, TraceStart, InitialVelocity, OwnerController->GetServerTime() - OwnerController->SingleTripTime);

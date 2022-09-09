@@ -14,6 +14,9 @@ class BLASTER_API UElimAnnouncement : public UUserWidget
 {
 	GENERATED_BODY()
 public:
+	/// <summary>
+	/// This function is called to specify the text that needs to be displayed at the users HUD
+	/// </summary>
 	void SetElimAnnouncementText(FString AttackerName, FString VictimName);
 
 	UPROPERTY(meta = (BindWidget))		class UHorizontalBox* AnnouncementBox;

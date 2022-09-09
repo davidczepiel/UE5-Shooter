@@ -15,31 +15,30 @@ class BLASTER_API ABlasterGameState : public AGameState
 	GENERATED_BODY()
 public:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
+
+	/// <summary>
+	/// This function es called whenever a player scores a kill to see if he is now the new leading player
+	/// </summary>
+	/// <param name="ScoringPlayer"> Player that just scored a kill </param>
 	void UpdateTopScore(class ABlasterPlayerState* ScoringPlayer);
 
-	UPROPERTY(Replicated)
-		TArray<ABlasterPlayerState*> TopScoringPlayers;
+	UPROPERTY(Replicated)		TArray<ABlasterPlayerState*> TopScoringPlayers;
 
-	/**
-	* Teams
-	*/
+	/// <summary>
+	/// THis function is called whenever a player from the red team scores
+	/// </summary>
+	void RedTeamScores();
+	/// <summary>
+	/// THis function is called whenever a player from the red team scores
+	/// </summary>
+	void BlueTeamScores();
+
 	TArray<ABlasterPlayerState*> RedTeam;
 	TArray<ABlasterPlayerState*> BlueTeam;
-
-	UPROPERTY(ReplicatedUsing = OnRep_RedTeamScore)
-		float RedTeamScore = 0.f;
-
-	UPROPERTY(ReplicatedUsing = OnRep_BlueTeamScore)
-		float BlueTeamScore = 0.f;
-
-	UFUNCTION()
-		void OnRep_RedTeamScore();
-
-	UFUNCTION()
-		void OnRep_BlueTeamScore();
-	void RedTeamScores();
-	void BlueTeamScores();
+	UFUNCTION()		void OnRep_RedTeamScore();
+	UFUNCTION()		void OnRep_BlueTeamScore();
+	UPROPERTY(ReplicatedUsing = OnRep_RedTeamScore)			float RedTeamScore = 0.f;
+	UPROPERTY(ReplicatedUsing = OnRep_BlueTeamScore)		float BlueTeamScore = 0.f;
 private:
-
 	float TopScore = 0.f;
 };

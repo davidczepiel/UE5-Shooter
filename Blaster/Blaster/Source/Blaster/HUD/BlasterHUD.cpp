@@ -24,26 +24,15 @@ void ABlasterHUD::DrawHUD() {
 		GEngine->GameViewport->GetViewportSize(ViewPortSize);
 		const FVector2D ViewportCenter(ViewPortSize.X / 2.f, ViewPortSize.Y / 2.f);
 
-		//Crosshair spread
+		//The crosshair spread is calculated from the HUDPackage available
 		float SpreadScaled = CrosshairSpreadMax * HUDPackage.CrosshairSpread;
 
-		//Crosshair drawing
-		if (HUDPackage.CrosshairCenter) {
-			FVector2D Spread(0.f, 0.f);
-			DrawCrosshair(HUDPackage.CrosshairCenter, ViewportCenter, Spread, HUDPackage.CrosshairsColor);
-		}
-		if (HUDPackage.CrosshairLeft) {
-			DrawCrosshair(HUDPackage.CrosshairLeft, ViewportCenter, FVector2D(-SpreadScaled, 0), HUDPackage.CrosshairsColor);
-		}
-		if (HUDPackage.CrosshairRight) {
-			DrawCrosshair(HUDPackage.CrosshairRight, ViewportCenter, FVector2D(SpreadScaled, 0), HUDPackage.CrosshairsColor);
-		}
-		if (HUDPackage.CrosshairTop) {
-			DrawCrosshair(HUDPackage.CrosshairTop, ViewportCenter, FVector2D(0, -SpreadScaled), HUDPackage.CrosshairsColor);
-		}
-		if (HUDPackage.CrosshairBottom) {
-			DrawCrosshair(HUDPackage.CrosshairBottom, ViewportCenter, FVector2D(0, SpreadScaled), HUDPackage.CrosshairsColor);
-		}
+		//Each part of the crosshair is drawed
+		if (HUDPackage.CrosshairCenter)	DrawCrosshair(HUDPackage.CrosshairCenter, ViewportCenter, FVector2D(0.f, 0.f), HUDPackage.CrosshairsColor);
+		if (HUDPackage.CrosshairLeft)	DrawCrosshair(HUDPackage.CrosshairLeft, ViewportCenter, FVector2D(-SpreadScaled, 0), HUDPackage.CrosshairsColor);
+		if (HUDPackage.CrosshairRight)	DrawCrosshair(HUDPackage.CrosshairRight, ViewportCenter, FVector2D(SpreadScaled, 0), HUDPackage.CrosshairsColor);
+		if (HUDPackage.CrosshairTop)	DrawCrosshair(HUDPackage.CrosshairTop, ViewportCenter, FVector2D(0, -SpreadScaled), HUDPackage.CrosshairsColor);
+		if (HUDPackage.CrosshairBottom)	DrawCrosshair(HUDPackage.CrosshairBottom, ViewportCenter, FVector2D(0, SpreadScaled), HUDPackage.CrosshairsColor);
 	}
 }
 
@@ -84,12 +73,14 @@ void ABlasterHUD::AddElimAnnouncement(FString Attacker, FString Victim)
 	OwningPlayer = OwningPlayer == nullptr ? GetOwningPlayerController() : OwningPlayer;
 	if (OwningPlayer && ElimAnnouncementClass)
 	{
+		//A new killfeed element is created using the names of the players involved in the kill
 		UElimAnnouncement* ElimAnnouncementWidget = CreateWidget<UElimAnnouncement>(OwningPlayer, ElimAnnouncementClass);
 		if (ElimAnnouncementWidget)
 		{
 			ElimAnnouncementWidget->SetElimAnnouncementText(Attacker, Victim);
 			ElimAnnouncementWidget->AddToViewport();
 
+			//All the existing elim anouncements are moved to make space for the new one
 			for (UElimAnnouncement* Msg : ElimMessages)
 			{
 				if (Msg && Msg->AnnouncementBox)
@@ -107,8 +98,10 @@ void ABlasterHUD::AddElimAnnouncement(FString Attacker, FString Victim)
 				}
 			}
 
+			//The new anouncement is added
 			ElimMessages.Add(ElimAnnouncementWidget);
 
+			//A timer is set to remove the anouncement after a short amount of time
 			FTimerHandle ElimMsgTimer;
 			FTimerDelegate ElimMsgDelegate;
 			ElimMsgDelegate.BindUFunction(this, FName("ElimAnnouncementTimerFinished"), ElimAnnouncementWidget);
@@ -124,8 +117,6 @@ void ABlasterHUD::AddElimAnnouncement(FString Attacker, FString Victim)
 
 void ABlasterHUD::ElimAnnouncementTimerFinished(UElimAnnouncement* MsgToRemove)
 {
-	if (MsgToRemove)
-	{
-		MsgToRemove->RemoveFromParent();
-	}
+	//THe elemtent is removed from the screen
+	if (MsgToRemove)		MsgToRemove->RemoveFromParent();
 }

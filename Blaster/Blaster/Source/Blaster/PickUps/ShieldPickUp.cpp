@@ -12,11 +12,7 @@ void AShieldPickup::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AA
 	if (BlasterCharacter)
 	{
 		UBuffComponent* Buff = BlasterCharacter->GetBuff();
-		if (Buff)
-		{
-			Buff->ReplenishShield(ShieldReplenishAmount, ShieldReplenishTime);
-		}
+		if (Buff)			Buff->ReplenishShield(ShieldReplenishAmount, ShieldReplenishTime);
 	}
-
 	Destroy();
 }

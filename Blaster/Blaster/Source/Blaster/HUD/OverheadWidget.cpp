@@ -7,9 +7,7 @@
 void UOverheadWidget::SetDisplayedText(FString TextToDisplay)
 {
 	//IF the overhead text exists we display the text parameter on it
-	if (DisplayText) {
-		DisplayText->SetText(FText::FromString(TextToDisplay));
-	}
+	if (DisplayText)	DisplayText->SetText(FText::FromString(TextToDisplay));
 }
 
 void UOverheadWidget::ShowPlayerNetRole(APawn* InPawn)

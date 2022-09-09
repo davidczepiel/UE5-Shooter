@@ -15,9 +15,11 @@ void ATeamsGameMode::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
 
+	//If the game has a proper gamestate
 	ABlasterGameState* BGameState = Cast<ABlasterGameState>(UGameplayStatics::GetGameState(this));
 	if (BGameState)
 	{
+		//The player state is obtained and he is assigned to a team deppending on the number of players currently in each team
 		ABlasterPlayerState* BPState = NewPlayer->GetPlayerState<ABlasterPlayerState>();
 		if (BPState && BPState->GetTeam() == ETeam::ET_NoTeam)
 		{
@@ -39,16 +41,11 @@ void ATeamsGameMode::Logout(AController* Exiting)
 {
 	ABlasterGameState* BGameState = Cast<ABlasterGameState>(UGameplayStatics::GetGameState(this));
 	ABlasterPlayerState* BPState = Exiting->GetPlayerState<ABlasterPlayerState>();
+	//After the gamestate and the player state are obtained, the player is removed from his team
 	if (BGameState && BPState)
 	{
-		if (BGameState->RedTeam.Contains(BPState))
-		{
-			BGameState->RedTeam.Remove(BPState);
-		}
-		if (BGameState->BlueTeam.Contains(BPState))
-		{
-			BGameState->BlueTeam.Remove(BPState);
-		}
+		if (BGameState->RedTeam.Contains(BPState))			BGameState->RedTeam.Remove(BPState);
+		if (BGameState->BlueTeam.Contains(BPState))			BGameState->BlueTeam.Remove(BPState);
 	}
 }
 
@@ -59,6 +56,7 @@ void ATeamsGameMode::HandleMatchHasStarted()
 	ABlasterGameState* BGameState = Cast<ABlasterGameState>(UGameplayStatics::GetGameState(this));
 	if (BGameState)
 	{
+		//All the players are gathered and their are assigned to a team depending on the amount of people that each team has
 		for (auto PState : BGameState->PlayerArray)
 		{
 			ABlasterPlayerState* BPState = Cast<ABlasterPlayerState>(PState.Get());
@@ -84,14 +82,11 @@ float ATeamsGameMode::CalculateDamage(AController* Attacker, AController* Victim
 	ABlasterPlayerState* AttackerPState = Attacker->GetPlayerState<ABlasterPlayerState>();
 	ABlasterPlayerState* VictimPState = Victim->GetPlayerState<ABlasterPlayerState>();
 	if (AttackerPState == nullptr || VictimPState == nullptr) return BaseDamage;
-	if (VictimPState == AttackerPState)
-	{
-		return BaseDamage;
-	}
-	if (AttackerPState->GetTeam() == VictimPState->GetTeam())
-	{
-		return 0.f;
-	}
+	//If the damage is autoinflicted (explosion) it is all applied
+	if (VictimPState == AttackerPState)		return BaseDamage;
+	//If it is from player of the same team they deal no damage to each other
+	if (AttackerPState->GetTeam() == VictimPState->GetTeam())	return 0.f;
+	//If it is from players of opposite teams the damage is applied
 	return BaseDamage;
 }
 
@@ -101,15 +96,10 @@ void ATeamsGameMode::PlayerEliminated(ABlasterCharacter* ElimmedCharacter, ABlas
 
 	ABlasterGameState* BGameState = Cast<ABlasterGameState>(UGameplayStatics::GetGameState(this));
 	ABlasterPlayerState* AttackerPlayerState = AttackerController ? Cast<ABlasterPlayerState>(AttackerController->PlayerState) : nullptr;
+	//The attackers team score is updated
 	if (BGameState && AttackerPlayerState)
 	{
-		if (AttackerPlayerState->GetTeam() == ETeam::ET_BlueTeam)
-		{
-			BGameState->BlueTeamScores();
-		}
-		if (AttackerPlayerState->GetTeam() == ETeam::ET_RedTeam)
-		{
-			BGameState->RedTeamScores();
-		}
+		if (AttackerPlayerState->GetTeam() == ETeam::ET_BlueTeam)			BGameState->BlueTeamScores();
+		if (AttackerPlayerState->GetTeam() == ETeam::ET_RedTeam)			BGameState->RedTeamScores();
 	}
 }
