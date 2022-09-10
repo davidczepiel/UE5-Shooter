@@ -35,12 +35,13 @@ FFramePackage ULagCompensationComponent::InterpBetweenFrames(const FFramePackage
 		const FBoxInformation& OlderBox = OlderFrame.HitBoxInfo[BoxInfoName];
 		const FBoxInformation& YoungerBox = YoungerFrame.HitBoxInfo[BoxInfoName];
 
+		//THe info of the hitbox is calculated from the timestamp and the two box positions
 		FBoxInformation InterpBoxInfo;
-
 		InterpBoxInfo.Location = FMath::VInterpTo(OlderBox.Location, YoungerBox.Location, 1.f, InterpFraction);
 		InterpBoxInfo.Rotation = FMath::RInterpTo(OlderBox.Rotation, YoungerBox.Rotation, 1.f, InterpFraction);
 		InterpBoxInfo.BoxExtent = YoungerBox.BoxExtent;
 
+		//The new box is added to the package
 		InterpFramePackage.HitBoxInfo.Add(BoxInfoName, InterpBoxInfo);
 	}
 
@@ -54,6 +55,7 @@ FServerSideRewindResult ULagCompensationComponent::ConfirmHit(const FFramePackag
 	//Save character hitboxes position for further reset
 	FFramePackage CurrentFrame;
 	CacheBoxPositions(HitCharacter, CurrentFrame);
+
 	//Move boxes to be aligned with the hit time
 	MoveBoxes(HitCharacter, Package);
 	EnableCharacterMeshCollision(HitCharacter, ECollisionEnabled::NoCollision);
@@ -116,6 +118,7 @@ FServerSideRewindResult ULagCompensationComponent::ProjectileConfirmHit(const FF
 	HeadBox->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	HeadBox->SetCollisionResponseToChannel(ECC_HitBox, ECollisionResponse::ECR_Block);
 
+	//A prediction of the bullet movement is donw to see if it collided with the character
 	FPredictProjectilePathParams PathParams;
 	PathParams.bTraceWithCollision = true;
 	PathParams.MaxSimTime = MaxRecordTime;
@@ -129,14 +132,18 @@ FServerSideRewindResult ULagCompensationComponent::ProjectileConfirmHit(const FF
 	FPredictProjectilePathResult PathResult;
 	UGameplayStatics::PredictProjectilePath(this, PathParams, PathResult);
 
-	if (PathResult.HitResult.bBlockingHit) // we hit the head, return early
+	//The only enabled hitbox is the head one, if a hit was confirmed it is for sure a headshot
+	if (PathResult.HitResult.bBlockingHit)
 	{
+		//The character hitboxes are reset t prevent unwanted behaviour
 		ResetHitBoxes(HitCharacter, CurrentFrame);
 		EnableCharacterMeshCollision(HitCharacter, ECollisionEnabled::QueryAndPhysics);
 		return FServerSideRewindResult{ true, true };
 	}
-	else // we didn't hit the head; check the rest of the boxes
+	//IF not, the same confirmation need to be done with the rest of the bones
+	else
 	{
+		//All the hitboxes are enabled for the hit confirmation
 		for (auto& HitBoxPair : HitCharacter->HitCollisionBoxes)
 		{
 			if (HitBoxPair.Value != nullptr)
@@ -146,15 +153,18 @@ FServerSideRewindResult ULagCompensationComponent::ProjectileConfirmHit(const FF
 			}
 		}
 
+		//A projectile "simulation" is done to see if it actually hit the body
 		UGameplayStatics::PredictProjectilePath(this, PathParams, PathResult);
 		if (PathResult.HitResult.bBlockingHit)
 		{
+			//The character hitboxes are reset t prevent unwanted behaviour
 			ResetHitBoxes(HitCharacter, CurrentFrame);
 			EnableCharacterMeshCollision(HitCharacter, ECollisionEnabled::QueryAndPhysics);
 			return FServerSideRewindResult{ true, false };
 		}
 	}
 
+	//The character hitboxes are reset t prevent unwanted behaviour
 	ResetHitBoxes(HitCharacter, CurrentFrame);
 	EnableCharacterMeshCollision(HitCharacter, ECollisionEnabled::QueryAndPhysics);
 	return FServerSideRewindResult{ false, false };
@@ -269,6 +279,7 @@ FShotgunServerSideRewindResult ULagCompensationComponent::ShotgunConfirmHit(cons
 
 void ULagCompensationComponent::CacheBoxPositions(ABlasterCharacter* HitCharacter, FFramePackage& OutFramePackage)
 {
+	//All the info of all the character hitboxes is stored in the out package for further operations
 	if (HitCharacter == nullptr) return;
 	for (auto& HitBoxPair : HitCharacter->HitCollisionBoxes)
 	{
@@ -285,6 +296,7 @@ void ULagCompensationComponent::CacheBoxPositions(ABlasterCharacter* HitCharacte
 
 void ULagCompensationComponent::MoveBoxes(ABlasterCharacter* HitCharacter, const FFramePackage& Package)
 {
+	//All the character hitboxes are moved to mimic the positions stored at the package
 	if (HitCharacter == nullptr) return;
 	for (auto& HitBoxPair : HitCharacter->HitCollisionBoxes)
 	{
@@ -299,6 +311,7 @@ void ULagCompensationComponent::MoveBoxes(ABlasterCharacter* HitCharacter, const
 
 void ULagCompensationComponent::ResetHitBoxes(ABlasterCharacter* HitCharacter, const FFramePackage& Package)
 {
+	//All the character hitboxes are moved to mimic the positions stored at the package and their collisions are reseted to prevent unwanted behaviour
 	if (HitCharacter == nullptr) return;
 	for (auto& HitBoxPair : HitCharacter->HitCollisionBoxes)
 	{
@@ -322,6 +335,7 @@ void ULagCompensationComponent::EnableCharacterMeshCollision(ABlasterCharacter* 
 
 void ULagCompensationComponent::ShowFramePackage(const FFramePackage& Package, const FColor& Color)
 {
+	//A debug drawing of the hitboxes positions and sizes is rendered
 	for (auto& BoxInfo : Package.HitBoxInfo)
 	{
 		DrawDebugBox(GetWorld(), BoxInfo.Value.Location, BoxInfo.Value.BoxExtent, FQuat(BoxInfo.Value.Rotation), Color, false, 4.f);
@@ -416,6 +430,7 @@ void ULagCompensationComponent::ServerScoreRequest_Implementation(ABlasterCharac
 	{
 		//if it was a headshot more damage need to be done
 		const float Damage = Confirm.bHeadShot ? Character->GetEquippedWeapon()->GetHeadShotDamage() : Character->GetEquippedWeapon()->GetDamage();
+		//THe damage is applied and it will be replicated to the rest of the clients
 		UGameplayStatics::ApplyDamage(HitCharacter, Damage, Character->Controller, Character->GetEquippedWeapon(), UDamageType::StaticClass());
 	}
 }
@@ -428,6 +443,7 @@ void ULagCompensationComponent::ProjectileServerScoreRequest_Implementation(ABla
 	{
 		//if it was a headshot more damage need to be done
 		const float Damage = Confirm.bHeadShot ? Character->GetEquippedWeapon()->GetHeadShotDamage() : Character->GetEquippedWeapon()->GetDamage();
+		//THe damage is applied and it will be replicated to the rest of the clients
 		UGameplayStatics::ApplyDamage(HitCharacter, Damage, Character->Controller, Character->GetEquippedWeapon(), UDamageType::StaticClass());
 	}
 }
@@ -464,7 +480,7 @@ void ULagCompensationComponent::TickComponent(float DeltaTime, ELevelTick TickTy
 void ULagCompensationComponent::SaveFramePackage()
 {
 	if (Character == nullptr || !Character->HasAuthority()) return;
-	//if there are no packages saved the a new one is added
+	//if there are no packages saved then a new one is added
 	if (FrameHistory.Num() <= 1)
 	{
 		FFramePackage ThisFrame;
@@ -490,6 +506,7 @@ void ULagCompensationComponent::SaveFramePackage()
 
 void ULagCompensationComponent::SaveFramePackage(FFramePackage& Package)
 {
+	//All the hitboxes data is stored in the out packege
 	Character = Character == nullptr ? Cast<ABlasterCharacter>(GetOwner()) : Character;
 	if (Character)
 	{

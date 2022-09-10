@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "LagCompensationComponent.generated.h"
 
+///Information related to a hitbox that is needed to confirm hits
 USTRUCT(BlueprintType)
 struct FBoxInformation
 {
@@ -15,6 +16,7 @@ struct FBoxInformation
 	UPROPERTY()			FVector BoxExtent;
 };
 
+///Structure that collects all the data of all the hitboxes of a character and a timestamp
 USTRUCT(BlueprintType)
 struct FFramePackage
 {
@@ -24,6 +26,7 @@ struct FFramePackage
 	UPROPERTY()			ABlasterCharacter* Character;
 };
 
+///Result of the hit confimtation
 USTRUCT(BlueprintType)
 struct FServerSideRewindResult
 {
@@ -58,7 +61,7 @@ public:
 	void ShowFramePackage(const FFramePackage& Package, const FColor& Color);
 
 	/// <summary>
-	/// Function that  confirms a hitscan hit that they did on their machine on a specific timestamp to a given character
+	/// Function called from other components that allows to confirms a hitscan hit that they did on their machine on a specific timestamp to a given character
 	/// </summary>
 	/// <param name="HitCharacter"></param>
 	/// <param name="TraceStart"></param>
@@ -68,7 +71,7 @@ public:
 	FServerSideRewindResult ServerSideRewind(class ABlasterCharacter* HitCharacter, const FVector_NetQuantize& TraceStart, const FVector_NetQuantize& HitLocation, float HitTime);
 
 	/// <summary>
-	/// Function that  confirms a projectile hit that they did on their machine on a specific timestamp to a given character
+	/// Function  called from other components that  confirms a projectile hit that they did on their machine on a specific timestamp to a given character
 	/// </summary>
 	/// <param name="HitCharacter"></param>
 	/// <param name="TraceStart"></param>
