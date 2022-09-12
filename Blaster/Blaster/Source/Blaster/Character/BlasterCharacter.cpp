@@ -712,7 +712,7 @@ void ABlasterCharacter::OnRep_Shield(float lastShield)
 void ABlasterCharacter::UpdateHUDHealth()
 {
 	BlasterPlayerController = BlasterPlayerController == nullptr ? Cast<ABlasterPlayerController>(Controller) : BlasterPlayerController;
-	if (BlasterPlayerController) BlasterPlayerController->SetHUDHelth(CurrentHealth, MaxHealth);
+	if (BlasterPlayerController) BlasterPlayerController->SetHUDHealth(CurrentHealth, MaxHealth);
 }
 
 void ABlasterCharacter::UpdateHUDShield()

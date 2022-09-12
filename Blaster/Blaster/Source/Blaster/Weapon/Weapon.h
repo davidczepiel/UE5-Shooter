@@ -90,6 +90,8 @@ public:
 
 	UPROPERTY(EditAnywhere)		float HeadShotDamage = 40.f;
 	bool bDestroyWeapon = false;
+
+	void EnableCustomDepth(bool enable);
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

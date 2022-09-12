@@ -24,6 +24,9 @@ AWeapon::AWeapon()
 	WeaponMesh->SetCollisionResponseToAllChannels(ECollisionResponse::ECR_Block);
 	WeaponMesh->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECollisionResponse::ECR_Ignore);
 	WeaponMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+	WeaponMesh->SetCustomDepthStencilValue(251);//Blue
+	WeaponMesh->MarkRenderStateDirty();
+	EnableCustomDepth(true);
 	SetRootComponent(WeaponMesh);
 
 	//Trigger to be picked up
@@ -78,6 +81,14 @@ void AWeapon::Dropped()
 	OwnerController = nullptr;
 }
 
+void AWeapon::EnableCustomDepth(bool enabled)
+{
+	if (WeaponMesh)
+	{
+		WeaponMesh->SetRenderCustomDepth(enabled);
+	}
+}
+
 void AWeapon::OnPingTooHigh(bool bPingTooHigh)
 {
 	bUseServerSideRewind = !bPingTooHigh;
@@ -101,12 +112,17 @@ void AWeapon::OnRep_WeaponState()
 		WeaponMesh->SetSimulatePhysics(false);
 		WeaponMesh->SetEnableGravity(false);
 		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+		EnableCustomDepth(false);
 		break;
 	case EWeaponState::EWS_Dropped:
 		//Collisions are activated
 		WeaponMesh->SetSimulatePhysics(true);
 		WeaponMesh->SetEnableGravity(true);
 		WeaponMesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		WeaponMesh->SetCustomDepthStencilValue(251);//Blue
+		WeaponMesh->MarkRenderStateDirty();
+		EnableCustomDepth(true);
 		break;
 	}
 }
@@ -226,6 +242,9 @@ void AWeapon::OnDropped()
 			OwnerController->HighPingDelegate.RemoveDynamic(this, &AWeapon::OnPingTooHigh);
 		}
 	}
+	WeaponMesh->SetCustomDepthStencilValue(251);//Blue
+	WeaponMesh->MarkRenderStateDirty();
+	EnableCustomDepth(true);
 }
 
 void AWeapon::OnEquipped()
@@ -246,6 +265,7 @@ void AWeapon::OnEquipped()
 			OwnerController->HighPingDelegate.AddDynamic(this, &AWeapon::OnPingTooHigh);
 		}
 	}
+	EnableCustomDepth(false);
 }
 
 USphereComponent* AWeapon::GetAreaShpere() {
